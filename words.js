@@ -2,6 +2,7 @@ const WORDS_DATA = [
   {
     id: 1,
     word: "Pragmatic",
+    difficulty: "Medium",
     simple: "Practical / Sensible",
     partOfSpeech: "adjective",
     definition: "Focusing on realistic, real-world solutions rather than theoretical or ideal conditions.",
@@ -17,6 +18,7 @@ const WORDS_DATA = [
   {
     id: 2,
     word: "Benevolent",
+    difficulty: "Medium",
     simple: "Kind / Well-meaning",
     partOfSpeech: "adjective",
     definition: "Kind, generous, and having a genuine desire to do good for others.",
@@ -32,6 +34,7 @@ const WORDS_DATA = [
   {
     id: 3,
     word: "Erudite",
+    difficulty: "Hard",
     simple: "Scholarly / Well-read",
     partOfSpeech: "adjective",
     definition: "Having or showing deep knowledge gained from extensive reading and academic study.",
@@ -47,6 +50,7 @@ const WORDS_DATA = [
   {
     id: 4,
     word: "Placate",
+    difficulty: "Medium",
     simple: "Calm down / Appease",
     partOfSpeech: "verb",
     definition: "To make someone less angry or hostile by doing or saying something to appease them.",
@@ -62,6 +66,7 @@ const WORDS_DATA = [
   {
     id: 5,
     word: "Antiquate",
+    difficulty: "Medium",
     simple: "Make outdated",
     partOfSpeech: "verb",
     definition: "To make something old-fashioned, obsolete, or out-of-date.",
@@ -77,6 +82,7 @@ const WORDS_DATA = [
   {
     id: 6,
     word: "Trivialize",
+    difficulty: "Medium",
     simple: "Downplay / Brush off",
     partOfSpeech: "verb",
     definition: "To make something seem far less important, serious, or complex than it actually is.",
@@ -92,6 +98,7 @@ const WORDS_DATA = [
   {
     id: 7,
     word: "Rant",
+    difficulty: "Easy",
     simple: "Angry tirade",
     partOfSpeech: "noun/verb",
     definition: "To speak or write in an angry, loud, or impassioned way for a long period of time.",
@@ -107,6 +114,7 @@ const WORDS_DATA = [
   {
     id: 8,
     word: "Fortuitous",
+    difficulty: "Medium",
     simple: "Happy accident",
     partOfSpeech: "adjective",
     definition: "Happening by a lucky chance or coincidence rather than by deliberate design.",
@@ -122,6 +130,7 @@ const WORDS_DATA = [
   {
     id: 9,
     word: "Precise",
+    difficulty: "Easy",
     simple: "Exact / Spot-on",
     partOfSpeech: "adjective",
     definition: "Exact, accurate, and carefully expressed with detailed clarity.",
@@ -137,6 +146,7 @@ const WORDS_DATA = [
   {
     id: 10,
     word: "Lithe",
+    difficulty: "Medium",
     simple: "Flexible / Agile",
     partOfSpeech: "adjective",
     definition: "Thin, supple, and graceful in movement or body shape.",
@@ -152,6 +162,7 @@ const WORDS_DATA = [
   {
     id: 11,
     word: "Untimely",
+    difficulty: "Easy",
     simple: "Badly timed / Early",
     partOfSpeech: "adjective",
     definition: "Happening or done at an unsuitable, inappropriate, or unexpectedly early time.",
@@ -167,6 +178,7 @@ const WORDS_DATA = [
   {
     id: 12,
     word: "Flub",
+    difficulty: "Easy",
     simple: "Mess up / Botch",
     partOfSpeech: "verb",
     definition: "To botch, mess up, or blunder through a task, performance, or response.",
@@ -182,6 +194,7 @@ const WORDS_DATA = [
   {
     id: 13,
     word: "Jettisoned",
+    difficulty: "Hard",
     simple: "Dumped / Cast aside",
     partOfSpeech: "verb",
     definition: "Throwing something away, dropping it, or discarding it literally or figuratively.",
@@ -197,6 +210,7 @@ const WORDS_DATA = [
   {
     id: 14,
     word: "Repudiated",
+    difficulty: "Hard",
     simple: "Publicly rejected",
     partOfSpeech: "verb",
     definition: "Formally rejecting, disowning, or denying the truth or authority of something.",
@@ -212,6 +226,7 @@ const WORDS_DATA = [
   {
     id: 15,
     word: "Conjoined",
+    difficulty: "Easy",
     simple: "Joined / Linked",
     partOfSpeech: "adjective",
     definition: "Joined, connected, or combined together into a single unit.",
@@ -227,6 +242,7 @@ const WORDS_DATA = [
   {
     id: 16,
     word: "Encroached",
+    difficulty: "Medium",
     simple: "Intruded / Invaded",
     partOfSpeech: "verb",
     definition: "Intruding or gradually advancing beyond acceptable or established limits.",
@@ -242,6 +258,7 @@ const WORDS_DATA = [
   {
     id: 17,
     word: "Strata",
+    difficulty: "Medium",
     simple: "Layers / Levels",
     partOfSpeech: "noun",
     definition: "Layers or levels within a structure, system, rock formation, or social hierarchy.",
@@ -257,6 +274,7 @@ const WORDS_DATA = [
   {
     id: 18,
     word: "Defiant",
+    difficulty: "Easy",
     simple: "Rebellious / Resistant",
     partOfSpeech: "adjective",
     definition: "Showing bold, open resistance or disobedience toward authority.",
@@ -272,6 +290,7 @@ const WORDS_DATA = [
   {
     id: 19,
     word: "Mysterious",
+    difficulty: "Easy",
     simple: "Puzzling / Secretive",
     partOfSpeech: "adjective",
     definition: "Difficult or impossible to understand, explain, or identify clearly.",
@@ -287,6 +306,7 @@ const WORDS_DATA = [
   {
     id: 20,
     word: "Homogenous",
+    difficulty: "Medium",
     simple: "Uniform / All same",
     partOfSpeech: "adjective",
     definition: "Consisting of parts or elements that are all of the same kind or nature throughout.",
@@ -302,6 +322,7 @@ const WORDS_DATA = [
   {
     id: 21,
     word: "Stratified",
+    difficulty: "Medium",
     simple: "Divided into layers",
     partOfSpeech: "adjective",
     definition: "Arranged, divided, or categorized into distinct layers or hierarchical groups.",
@@ -317,6 +338,7 @@ const WORDS_DATA = [
   {
     id: 22,
     word: "Abhorrence",
+    difficulty: "Hard",
     simple: "Deep hatred / Disgust",
     partOfSpeech: "noun",
     definition: "A feeling of intense hatred, disgust, or extreme repugnance toward something.",
@@ -332,6 +354,7 @@ const WORDS_DATA = [
   {
     id: 23,
     word: "Quintessential",
+    difficulty: "Hard",
     simple: "Classic example",
     partOfSpeech: "adjective",
     definition: "Representing the most perfect, typical, or classic example of a quality or type.",
@@ -347,6 +370,7 @@ const WORDS_DATA = [
   {
     id: 24,
     word: "Censured",
+    difficulty: "Medium",
     simple: "Officially reprimanded",
     partOfSpeech: "verb",
     definition: "Formally and severely reprimanded or condemned by an official authority.",
@@ -362,6 +386,7 @@ const WORDS_DATA = [
   {
     id: 25,
     word: "Flummoxed",
+    difficulty: "Hard",
     simple: "Baffled / Stumped",
     partOfSpeech: "adjective",
     definition: "Completely confused, bewildered, or perplexed by something unexpected.",
@@ -377,6 +402,7 @@ const WORDS_DATA = [
   {
     id: 26,
     word: "Prevaricated",
+    difficulty: "Hard",
     simple: "Evaded direct truth",
     partOfSpeech: "verb",
     definition: "Spoken or acted in an evasive or misleading way to avoid giving a direct answer.",
@@ -392,6 +418,7 @@ const WORDS_DATA = [
   {
     id: 27,
     word: "Feigned",
+    difficulty: "Easy",
     simple: "Pretended / Faked",
     partOfSpeech: "adjective/verb",
     definition: "Pretended to feel, have, or be affected by something.",
@@ -407,6 +434,7 @@ const WORDS_DATA = [
   {
     id: 28,
     word: "Reprisal",
+    difficulty: "Medium",
     simple: "Retaliation / Payback",
     partOfSpeech: "noun",
     definition: "An act of retaliation or revenge against someone for an injury or wrongdoing.",
@@ -422,6 +450,7 @@ const WORDS_DATA = [
   {
     id: 29,
     word: "Adulation",
+    difficulty: "Hard",
     simple: "Excessive praise",
     partOfSpeech: "noun",
     definition: "Excessive praise, admiration, or flattery beyond what is reasonable.",
@@ -437,6 +466,7 @@ const WORDS_DATA = [
   {
     id: 30,
     word: "Retinue",
+    difficulty: "Hard",
     simple: "Entourage / Staff",
     partOfSpeech: "noun",
     definition: "A group of advisers, assistants, or bodyguards accompanying an important person.",
@@ -452,6 +482,7 @@ const WORDS_DATA = [
   {
     id: 31,
     word: "Jovial",
+    difficulty: "Easy",
     simple: "Cheerful / Jolly",
     partOfSpeech: "adjective",
     definition: "Full of happiness, high spirits, and good humor.",
@@ -467,6 +498,7 @@ const WORDS_DATA = [
   {
     id: 32,
     word: "Paltry",
+    difficulty: "Easy",
     simple: "Meager / Worthless",
     partOfSpeech: "adjective",
     definition: "So small or trivial as to be considered negligible, meager, or worthless.",
@@ -482,6 +514,7 @@ const WORDS_DATA = [
   {
     id: 33,
     word: "Stealthy",
+    difficulty: "Easy",
     simple: "Sneaky / Silent",
     partOfSpeech: "adjective",
     definition: "Behaving or done in a cautious, quiet, and secretive manner to avoid notice.",
@@ -497,6 +530,7 @@ const WORDS_DATA = [
   {
     id: 34,
     word: "Gullible",
+    difficulty: "Easy",
     simple: "Easily fooled",
     partOfSpeech: "adjective",
     definition: "Easily persuaded, tricked, or fooled into believing something because of a naive nature.",
@@ -512,6 +546,7 @@ const WORDS_DATA = [
   {
     id: 35,
     word: "Ebullient",
+    difficulty: "Hard",
     simple: "Bursting with energy",
     partOfSpeech: "adjective",
     definition: "Overflowing with enthusiasm, high spirits, and bubbly energy.",
@@ -527,6 +562,7 @@ const WORDS_DATA = [
   {
     id: 36,
     word: "Apocryphal",
+    difficulty: "Hard",
     simple: "Dubious / Unverified",
     partOfSpeech: "adjective",
     definition: "Widely circulated as true, but actually of doubtful authenticity or fabricated.",
@@ -542,6 +578,7 @@ const WORDS_DATA = [
   {
     id: 37,
     word: "Bemused",
+    difficulty: "Medium",
     simple: "Puzzled & amused",
     partOfSpeech: "adjective",
     definition: "Mildly amused in a puzzled or confused way; bewildered.",
@@ -557,6 +594,7 @@ const WORDS_DATA = [
   {
     id: 38,
     word: "Prosaic",
+    difficulty: "Medium",
     simple: "Dull / Ordinary",
     partOfSpeech: "adjective",
     definition: "Lacking poetic beauty, imagination, or excitement; dull and matter-of-fact.",
@@ -572,6 +610,7 @@ const WORDS_DATA = [
   {
     id: 39,
     word: "Fawning",
+    difficulty: "Hard",
     simple: "Excessively flattering",
     partOfSpeech: "adjective",
     definition: "Displaying exaggerated affection or flattery toward someone to gain favor.",
@@ -587,6 +626,7 @@ const WORDS_DATA = [
   {
     id: 40,
     word: "Facetious",
+    difficulty: "Hard",
     simple: "Playfully sarcastic",
     partOfSpeech: "adjective",
     definition: "Treating serious issues with deliberate, inappropriate, or sarcastic humor.",
@@ -602,6 +642,7 @@ const WORDS_DATA = [
   {
     id: 41,
     word: "Abstruse",
+    difficulty: "Hard",
     simple: "Complex / Obscure",
     partOfSpeech: "adjective",
     definition: "Complex, deep, and difficult to comprehend; obscure or highly specialized.",
@@ -617,6 +658,7 @@ const WORDS_DATA = [
   {
     id: 42,
     word: "Magnanimous",
+    difficulty: "Hard",
     simple: "Generous in spirit",
     partOfSpeech: "adjective",
     definition: "Generous, forgiving, and noble in spirit, especially toward a rival.",
@@ -632,6 +674,7 @@ const WORDS_DATA = [
   {
     id: 43,
     word: "Hounded",
+    difficulty: "Easy",
     simple: "Harassed / Pestered",
     partOfSpeech: "verb",
     definition: "Harassed, pursued, or pestered continuously without relief.",
@@ -647,6 +690,7 @@ const WORDS_DATA = [
   {
     id: 44,
     word: "Copious",
+    difficulty: "Medium",
     simple: "Abundant / Plentiful",
     partOfSpeech: "adjective",
     definition: "Abundant in supply or quantity; plentiful.",
@@ -662,6 +706,7 @@ const WORDS_DATA = [
   {
     id: 45,
     word: "Raucous",
+    difficulty: "Medium",
     simple: "Loud & boisterous",
     partOfSpeech: "adjective",
     definition: "Making or constituting a disturbingly harsh, loud, and rowdy noise.",
@@ -677,6 +722,7 @@ const WORDS_DATA = [
   {
     id: 46,
     word: "Morose",
+    difficulty: "Easy",
     simple: "Gloomy / Sullen",
     partOfSpeech: "adjective",
     definition: "Sullen, gloomy, and ill-tempered; maintaining a dark mood.",
@@ -692,6 +738,7 @@ const WORDS_DATA = [
   {
     id: 47,
     word: "Flagrant",
+    difficulty: "Medium",
     simple: "Blatant / Shocking",
     partOfSpeech: "adjective",
     definition: "Conspicuously, blatantly, and outrageously offensive or bad.",
@@ -707,6 +754,7 @@ const WORDS_DATA = [
   {
     id: 48,
     word: "Harbinger",
+    difficulty: "Medium",
     simple: "Sign of things to come",
     partOfSpeech: "noun",
     definition: "A person, event, or signal that announces or indicates the approach of something.",
@@ -722,6 +770,7 @@ const WORDS_DATA = [
   {
     id: 49,
     word: "Dictum",
+    difficulty: "Medium",
     simple: "Formal statement / Maxim",
     partOfSpeech: "noun",
     definition: "A formal or authoritative statement, declaration, or widely accepted principle.",
@@ -737,6 +786,7 @@ const WORDS_DATA = [
   {
     id: 50,
     word: "Metamorphosis",
+    difficulty: "Medium",
     simple: "Total transformation",
     partOfSpeech: "noun",
     definition: "A complete, dramatic transformation in structure, appearance, or character.",
@@ -752,6 +802,7 @@ const WORDS_DATA = [
   {
     id: 51,
     word: "Apogee",
+    difficulty: "Hard",
     simple: "Peak / Highest point",
     partOfSpeech: "noun",
     definition: "The highest point, peak, or climax of something.",
@@ -767,6 +818,7 @@ const WORDS_DATA = [
   {
     id: 52,
     word: "Begrudging",
+    difficulty: "Hard",
     simple: "Reluctant / Resentful",
     partOfSpeech: "adjective",
     definition: "Given, done, or allowed reluctantly, resentfully, or with hesitation.",
@@ -782,6 +834,7 @@ const WORDS_DATA = [
   {
     id: 53,
     word: "Foundling",
+    difficulty: "Medium",
     simple: "Abandoned child",
     partOfSpeech: "noun",
     definition: "An abandoned infant or young child whose parents are unknown and who is cared for by others.",
@@ -797,6 +850,7 @@ const WORDS_DATA = [
   {
     id: 54,
     word: "Yearling",
+    difficulty: "Medium",
     simple: "1-year-old animal",
     partOfSpeech: "noun",
     definition: "An animal (especially a horse or cow) in its second year of life (1–2 years old).",
@@ -812,6 +866,7 @@ const WORDS_DATA = [
   {
     id: 55,
     word: "Starling",
+    difficulty: "Medium",
     simple: "Dark songbird",
     partOfSpeech: "noun",
     definition: "A dark, medium-sized songbird with iridescent feathers, known for flying in large flocks.",
@@ -827,6 +882,7 @@ const WORDS_DATA = [
   {
     id: 56,
     word: "Candid",
+    difficulty: "Easy",
     simple: "Frank / Direct",
     partOfSpeech: "adjective",
     definition: "Truthful, straightforward, and frank; open and honest without sugarcoating.",
@@ -842,6 +898,7 @@ const WORDS_DATA = [
   {
     id: 57,
     word: "Arable",
+    difficulty: "Medium",
     simple: "Farmable / Fertile",
     partOfSpeech: "adjective",
     definition: "Land that is suitable for growing crops or being farmed.",
@@ -857,6 +914,7 @@ const WORDS_DATA = [
   {
     id: 58,
     word: "Timid",
+    difficulty: "Easy",
     simple: "Shy / Hesitant",
     partOfSpeech: "adjective",
     definition: "Lacking courage, confidence, or boldness; easily frightened or hesitant.",
@@ -872,6 +930,7 @@ const WORDS_DATA = [
   {
     id: 59,
     word: "Provincial",
+    difficulty: "Medium",
     simple: "Narrow-minded / Local",
     partOfSpeech: "adjective",
     definition: "Having narrow, unsophisticated, or limited views characteristic of an isolated region.",
@@ -887,6 +946,7 @@ const WORDS_DATA = [
   {
     id: 60,
     word: "Droll",
+    difficulty: "Medium",
     simple: "Dryly funny / Quirky",
     partOfSpeech: "adjective",
     definition: "Having an odd, quirky, or dry sense of humor; amusing in an understated way.",
@@ -902,6 +962,7 @@ const WORDS_DATA = [
   {
     id: 61,
     word: "Decorous",
+    difficulty: "Medium",
     simple: "Proper / Polite",
     partOfSpeech: "adjective",
     definition: "Polite, proper, and in good taste; adhering strictly to etiquette.",
@@ -917,6 +978,7 @@ const WORDS_DATA = [
   {
     id: 62,
     word: "Antebellum",
+    difficulty: "Hard",
     simple: "Pre-Civil War",
     partOfSpeech: "adjective",
     definition: "Occurring or existing before a particular war, especially the American Civil War.",
@@ -932,6 +994,7 @@ const WORDS_DATA = [
   {
     id: 63,
     word: "Rogue",
+    difficulty: "Easy",
     simple: "Renegade / Unprincipled",
     partOfSpeech: "adjective/noun",
     definition: "Operating independently in a way that breaks rules, or a dishonest person.",
@@ -947,6 +1010,7 @@ const WORDS_DATA = [
   {
     id: 64,
     word: "Premature",
+    difficulty: "Easy",
     simple: "Too early",
     partOfSpeech: "adjective",
     definition: "Happening, done, or arriving too early—before the proper or expected time.",
@@ -962,6 +1026,7 @@ const WORDS_DATA = [
   {
     id: 65,
     word: "Punctilious",
+    difficulty: "Hard",
     simple: "Meticulous about rules",
     partOfSpeech: "adjective",
     definition: "Showing great attention to detail, strict etiquette, or correct behavior.",
@@ -977,6 +1042,7 @@ const WORDS_DATA = [
   {
     id: 66,
     word: "Malignant",
+    difficulty: "Medium",
     simple: "Harmful / Cancerous",
     partOfSpeech: "adjective",
     definition: "Harmful, hostile, or dangerous in nature; medically describing a cancerous growth.",
@@ -992,6 +1058,7 @@ const WORDS_DATA = [
   {
     id: 67,
     word: "Resurgent",
+    difficulty: "Medium",
     simple: "Making a comeback",
     partOfSpeech: "adjective",
     definition: "Increasing or reviving after a period of little activity or weakness.",
@@ -1007,6 +1074,7 @@ const WORDS_DATA = [
   {
     id: 68,
     word: "Quintessence",
+    difficulty: "Hard",
     simple: "Purest essence",
     partOfSpeech: "noun",
     definition: "The most perfect or typical representation of a quality, state, or class.",
@@ -1022,6 +1090,7 @@ const WORDS_DATA = [
   {
     id: 69,
     word: "Epitome",
+    difficulty: "Hard",
     simple: "Ideal embodiment",
     partOfSpeech: "noun",
     definition: "A person or thing that serves as a perfect example of a quality or type.",
@@ -1037,6 +1106,7 @@ const WORDS_DATA = [
   {
     id: 70,
     word: "Tempest",
+    difficulty: "Medium",
     simple: "Violent storm / Turmoil",
     partOfSpeech: "noun",
     definition: "A violent, windy storm; or a state of intense commotion or emotional uproar.",
@@ -1052,6 +1122,7 @@ const WORDS_DATA = [
   {
     id: 71,
     word: "Travesty",
+    difficulty: "Medium",
     simple: "Mockery of justice",
     partOfSpeech: "noun",
     definition: "A grotesque, absurd, or grossly distorted representation of something.",
@@ -1067,6 +1138,7 @@ const WORDS_DATA = [
   {
     id: 72,
     word: "Sibilant",
+    difficulty: "Hard",
     simple: "Hissing sound",
     partOfSpeech: "adjective",
     definition: "Making or characterized by a hissing sound, like the 's' or 'sh' sounds.",
@@ -1082,6 +1154,7 @@ const WORDS_DATA = [
   {
     id: 73,
     word: "Scintillating",
+    difficulty: "Hard",
     simple: "Dazzling / Brilliant",
     partOfSpeech: "adjective",
     definition: "Sparkling, brilliant, or exceptionally clever and animated.",
@@ -1097,6 +1170,7 @@ const WORDS_DATA = [
   {
     id: 74,
     word: "Sinuous",
+    difficulty: "Hard",
     simple: "Winding / Curvy",
     partOfSpeech: "adjective",
     definition: "Having many curves, bends, or turns; winding and graceful in movement.",
@@ -1112,6 +1186,7 @@ const WORDS_DATA = [
   {
     id: 75,
     word: "Diverting",
+    difficulty: "Medium",
     simple: "Amusing distraction",
     partOfSpeech: "adjective",
     definition: "Entertaining, amusing, or pleasantly distracting from seriousness or boredom.",
@@ -1127,6 +1202,7 @@ const WORDS_DATA = [
   {
     id: 76,
     word: "Pitiless",
+    difficulty: "Medium",
     simple: "Merciless / Cold",
     partOfSpeech: "adjective",
     definition: "Showing no mercy, compassion, or pity toward others; completely cold-hearted.",
@@ -1142,6 +1218,7 @@ const WORDS_DATA = [
   {
     id: 77,
     word: "Cunning",
+    difficulty: "Easy",
     simple: "Sly / Crafty",
     partOfSpeech: "adjective",
     definition: "Skillful at achieving goals through cleverness, deceit, evasion, or trickery.",
@@ -1157,6 +1234,7 @@ const WORDS_DATA = [
   {
     id: 78,
     word: "Somber",
+    difficulty: "Easy",
     simple: "Gloomy / Solemn",
     partOfSpeech: "adjective",
     definition: "Dark, gloomy, serious, or solemn in mood, color, or tone.",
@@ -1172,6 +1250,7 @@ const WORDS_DATA = [
   {
     id: 79,
     word: "Jubilant",
+    difficulty: "Easy",
     simple: "Overjoyed / Celebrating",
     partOfSpeech: "adjective",
     definition: "Feeling or expressing great happiness, triumph, and celebration.",

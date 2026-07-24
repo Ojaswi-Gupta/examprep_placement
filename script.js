@@ -55,9 +55,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalExtraExamples = document.getElementById('modalExtraExamples');
   const modalTip = document.getElementById('modalTip');
   const modalAntonyms = document.getElementById('modalAntonyms');
+  const modalAudio = document.getElementById('modalAudio');
+  const fcAudio = document.getElementById('fcAudio');
+  const printBtn = document.getElementById('printBtn');
+
+  // SRS & Mastery Data
+  let masteryData = JSON.parse(localStorage.getItem('placementPrepMastery')) || {};
+  function saveMastery() {
+    localStorage.setItem('placementPrepMastery', JSON.stringify(masteryData));
+  }
 
   // Main page sections to hide/show
-  const mainSections = document.querySelectorAll('.hero, .stats, .search-section, .vocabulary-section, .about-section, .footer');
+  const mainSections = document.querySelectorAll('.navbar, .hero, .stats, .search-section, .vocabulary-section, .about-section, .footer');
 
   // =====================
   // SCROLL & NAVIGATION
@@ -121,6 +130,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Audio Pronunciation
+  function playAudio(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(utterance);
+  }
+
+  if (fcAudio) {
+    fcAudio.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playAudio(fcWords[fcIndex].word);
+    });
+  }
+  if (modalAudio) {
+    modalAudio.addEventListener('click', () => {
+      playAudio(modalWord.textContent.trim());
+    });
+  }
+
   // Keyboard shortcuts
   document.addEventListener('keydown', (e) => {
     // Search focus
@@ -171,29 +198,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =====================
-  // INJECT ANTONYMS INTO CARDS
+  // ENHANCE CARDS (Diff & Antonyms)
   // =====================
-  function injectAntonyms() {
+  function enhanceCards() {
     if (typeof WORDS_DATA === 'undefined') return;
     cards.forEach(card => {
       const wordEl = card.querySelector('.word');
       if (!wordEl) return;
       const data = findWordData(wordEl.textContent.trim());
-      if (!data || !data.antonyms || !data.antonyms.length) return;
+      if (!data) return;
 
-      const row = document.createElement('div');
-      row.className = 'card-antonyms';
-      const label = document.createElement('span');
-      label.className = 'card-antonyms-label';
-      label.textContent = 'Opp:';
-      row.appendChild(label);
-      data.antonyms.forEach(a => {
-        const tag = document.createElement('span');
-        tag.className = 'card-antonym-tag';
-        tag.textContent = a;
-        row.appendChild(tag);
-      });
-      card.appendChild(row);
+      // Check Mastery Status
+      if ((masteryData[data.id] || 0) >= 3) {
+        card.classList.add('mastered');
+      }
+
+      // Add Antonyms
+      if (data.antonyms && data.antonyms.length) {
+        const row = document.createElement('div');
+        row.className = 'card-antonyms';
+        const label = document.createElement('span');
+        label.className = 'card-antonyms-label';
+        label.textContent = 'Opp:';
+        row.appendChild(label);
+        data.antonyms.forEach(a => {
+          const tag = document.createElement('span');
+          tag.className = 'card-antonym-tag';
+          tag.textContent = a;
+          row.appendChild(tag);
+        });
+        card.appendChild(row);
+      }
     });
   }
 
@@ -396,7 +431,17 @@ document.addEventListener('DOMContentLoaded', () => {
     quizPlayArea.style.display = 'block';
     quizScore.style.display = 'none';
     
-    quizWords = shuffleArray(WORDS_DATA);
+    if (mode === 'srs') {
+      const strugglingWords = WORDS_DATA.filter(w => (masteryData[w.id] || 0) <= 0);
+      if (strugglingWords.length === 0) {
+        alert("You don't have any struggling words to review! Try a different mode.");
+        openQuizSelection();
+        return;
+      }
+      quizWords = shuffleArray(strugglingWords);
+    } else {
+      quizWords = shuffleArray(WORDS_DATA);
+    }
     
     if (mode === 'quick') {
       maxQuestions = 10;
@@ -418,6 +463,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (mode === 'pressure') {
       maxQuestions = 20;
       quizTimer.style.display = 'block';
+    } else if (mode === 'srs') {
+      maxQuestions = Math.min(quizWords.length, 20); // Test up to 20 struggling words
+      quizTimer.style.display = 'none';
     } else {
       maxQuestions = quizWords.length;
       quizTimer.style.display = 'none';
@@ -583,6 +631,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
     if (isCorrect) score++;
 
+    // SRS Logic: Update mastery data
+    const currentWord = quizWords[currentQ];
+    if (!masteryData[currentWord.id]) masteryData[currentWord.id] = 0;
+    masteryData[currentWord.id] += isCorrect ? 1 : -1;
+    saveMastery();
+
+    // Update UI card dynamically
+    cards.forEach(c => {
+      const wEl = c.querySelector('.word');
+      if (wEl && wEl.textContent.trim() === currentWord.word) {
+        if (masteryData[currentWord.id] >= 3) {
+          c.classList.add('mastered');
+        } else {
+          c.classList.remove('mastered');
+        }
+      }
+    });
+
     // Mark correct/wrong
     quizOptions.querySelectorAll('.quiz-option').forEach(o => {
       o.style.cursor = 'default';
@@ -668,7 +734,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // =====================
   // INITIALIZE
   // =====================
-  injectAntonyms();
+  enhanceCards();
   if (startQuizBtn) startQuizBtn.addEventListener('click', openQuizSelection);
   if (navQuiz) navQuiz.addEventListener('click', (e) => { e.preventDefault(); openQuizSelection(); });
   

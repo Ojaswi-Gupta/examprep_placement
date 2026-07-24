@@ -20,12 +20,12 @@
       .flashcard {
         perspective: 1000px;
         width: 100%;
-        max-width: 600px;
-        height: 420px;
+        max-width: 750px;
+        height: 520px;
         cursor: pointer;
       }
       .fc-example {
-        font-size: 0.9rem;
+        font-size: 1.05rem;
         color: var(--text-3);
         font-style: italic;
         max-width: 90%;
@@ -46,8 +46,8 @@
         gap: 0.4rem;
       }
       .fc-tag {
-        font-size: 0.72rem;
-        padding: 0.2rem 0.5rem;
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
         background: var(--bg);
         border: 1px solid var(--border);
         border-radius: 4px;
@@ -59,11 +59,11 @@
         color: #f87171;
       }
       .fc-tip {
-        margin-top: 1rem;
-        font-size: 0.78rem;
+        margin-top: 1.2rem;
+        font-size: 0.95rem;
         color: var(--text-3);
         max-width: 90%;
-        padding: 0.5rem 0.8rem;
+        padding: 0.75rem 1rem;
         background: rgba(59, 130, 246, 0.05);
         border: 1px dashed rgba(59, 130, 246, 0.2);
         border-radius: 6px;
@@ -123,14 +123,11 @@
         </div>
     </section>
 
-    <!-- Search & Filter Section -->
+    <!-- Search and Actions Section -->
     <section id="vocabulary" class="search-section">
         <div class="container search-container">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search words, meanings, or examples...">
-            </div>
-            <div class="filters">
-                <button class="filter-btn active" data-filter="all">All</button>
+                <input type="text" id="searchInput" placeholder="Search words, meanings, or examples... (Press '/' to focus)">
             </div>
         </div>
     </section>
@@ -956,7 +953,10 @@
             <div class="fc-inner">
               <div class="fc-front">
                 <div class="fc-pos" id="fcPos"></div>
-                <div class="fc-word" id="fcWord"></div>
+                <div class="fc-word-wrap">
+                  <div class="fc-word" id="fcWord"></div>
+                  <button class="audio-btn" id="fcAudio">🔊</button>
+                </div>
                 <div class="fc-hint">Click or press Space to reveal</div>
               </div>
               <div class="fc-back">
@@ -1004,6 +1004,10 @@
               <h4>Pressure 20</h4>
               <p>20 questions, 15s limit per question</p>
             </button>
+            <button class="quiz-mode-btn srs-btn" data-mode="srs">
+              <h4>Smart Review (SRS)</h4>
+              <p>Focus ONLY on words you struggle with</p>
+            </button>
           </div>
         </div>
 
@@ -1031,7 +1035,10 @@
       <div class="modal-content">
         <button class="modal-close" id="modalClose">✕</button>
         <div class="modal-pos" id="modalPos"></div>
-        <h2 class="modal-word" id="modalWord"></h2>
+        <div class="modal-header">
+          <h2 class="modal-word" id="modalWord"></h2>
+          <button class="audio-btn" id="modalAudio">🔊</button>
+        </div>
         <span class="modal-simple" id="modalSimple"></span>
         <p class="modal-definition" id="modalDefinition"></p>
         <div class="modal-section">
