@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset timer for pressure mode
     if (currentQuizMode === 'pressure') {
       clearInterval(timerInterval);
-      timeLeft = 10;
+      timeLeft = 15;
       quizTimer.textContent = timeLeft + 's';
       timerInterval = setInterval(() => {
         timeLeft--;
