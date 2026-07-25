@@ -402,6 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let maxQuestions = 79;
   let timerInterval;
   let timeLeft = 60;
+  let quizHistory = [];
 
   function shuffleArray(arr) {
     const a = [...arr];
@@ -430,6 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
     quizModeSelection.style.display = 'none';
     quizPlayArea.style.display = 'block';
     quizScore.style.display = 'none';
+    quizHistory = [];
     
     if (mode === 'srs') {
       const unmasteredWords = WORDS_DATA.filter(w => (masteryData[w.id] || 0) < 3);
@@ -620,6 +622,14 @@ document.addEventListener('DOMContentLoaded', () => {
     answered = true;
     clearInterval(timerInterval);
     
+    const correctOptionNode = Array.from(quizOptions.querySelectorAll('.quiz-option')).find(o => o.getAttribute('data-correct') === 'true');
+    quizHistory.push({
+      questionText: quizQuestion.innerText,
+      selectedWord: 'No Answer',
+      correctWord: correctOptionNode ? correctOptionNode.getAttribute('data-word') : '',
+      isCorrect: false
+    });
+    
     // Mark correct/wrong but no selection made
     quizOptions.querySelectorAll('.quiz-option').forEach(o => {
       o.style.cursor = 'default';
@@ -628,7 +638,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    displayFeedback("⏱️ Time's Up!");
+    const immediateToggle = document.getElementById('immediateFeedbackToggle');
+    if (immediateToggle && !immediateToggle.checked) {
+      setTimeout(() => {
+        currentQ++;
+        renderQuestion();
+      }, 300);
+    } else {
+      displayFeedback("⏱️ Time's Up!");
+    }
   }
 
   function checkAnswer() {
@@ -638,11 +656,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
     if (isCorrect) score++;
+    
+    const correctOptionNode = Array.from(quizOptions.querySelectorAll('.quiz-option')).find(o => o.getAttribute('data-correct') === 'true');
+    quizHistory.push({
+      questionText: quizQuestion.innerText,
+      selectedWord: selectedOption.getAttribute('data-word'),
+      correctWord: correctOptionNode ? correctOptionNode.getAttribute('data-word') : '',
+      isCorrect: isCorrect
+    });
 
     // SRS Logic: Update mastery data
     const currentWord = quizWords[currentQ];
     if (!masteryData[currentWord.id]) masteryData[currentWord.id] = 0;
-    masteryData[currentWord.id] += isCorrect ? 1 : -1;
+    
+    if (isCorrect) {
+      masteryData[currentWord.id]++;
+    } else {
+      // Only penalize if the word was already Mastered (score >= 3)
+      if (masteryData[currentWord.id] >= 3) {
+        masteryData[currentWord.id]--;
+      }
+    }
     saveMastery();
 
     // Update UI card dynamically
@@ -671,8 +705,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Show feedback: meaning of each option word
-    displayFeedback();
+
+    const immediateToggle = document.getElementById('immediateFeedbackToggle');
+    if (immediateToggle && !immediateToggle.checked) {
+      // Defer feedback: immediately go to next question
+      setTimeout(() => {
+        currentQ++;
+        renderQuestion();
+      }, 300); // Tiny delay for UI click feedback
+    } else {
+      // Show immediate feedback
+      displayFeedback();
+    }
   }
 
   function displayFeedback(customTitle = '') {
@@ -728,12 +772,33 @@ document.addEventListener('DOMContentLoaded', () => {
       else msg = 'Keep practicing — you\'ll get there!';
     }
 
-    quizScore.innerHTML = `
+    const scoreContent = document.getElementById('quizScoreContent');
+    scoreContent.innerHTML = `
       <h3>Quiz Complete</h3>
       <div class="score-number">${finalScore} <span style="font-size:1.5rem;color:var(--text-3)">/ ${currentQuizMode === 'time' ? attempted : maxQuestions}</span></div>
       <p>${msg}</p>
-      <button class="quiz-btn" id="retakeQuiz">Choose Another Mode</button>
     `;
+    
+    const reviewArea = document.getElementById('quizReviewArea');
+    const immediateToggle = document.getElementById('immediateFeedbackToggle');
+    if (immediateToggle && !immediateToggle.checked && quizHistory.length > 0) {
+      let reviewHTML = `<h4>Your Answers:</h4>`;
+      quizHistory.forEach((item, idx) => {
+        reviewHTML += `
+          <div class="review-item">
+            <div class="review-q">Q${idx + 1}: ${item.questionText.replace(/\n/g, ' ')}</div>
+            <div class="review-ans">Your Answer: <span class="${item.isCorrect ? 'review-correct-ans' : 'review-wrong-ans'}">${item.selectedWord}</span></div>
+            ${!item.isCorrect ? `<div class="review-correct-ans">Correct Answer: ${item.correctWord}</div>` : ''}
+          </div>
+        `;
+      });
+      reviewArea.innerHTML = reviewHTML;
+      reviewArea.style.display = 'block';
+    } else {
+      reviewArea.style.display = 'none';
+      reviewArea.innerHTML = '';
+    }
+
     quizScore.style.display = 'block';
 
     document.getElementById('retakeQuiz').addEventListener('click', () => {

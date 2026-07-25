@@ -1009,6 +1009,14 @@
               <p>Focus ONLY on words you struggle with</p>
             </button>
           </div>
+          
+          <div class="quiz-settings">
+            <label class="toggle-switch">
+              <input type="checkbox" id="immediateFeedbackToggle" checked>
+              <span class="slider round"></span>
+            </label>
+            <span class="settings-label">Show answers immediately after each question</span>
+          </div>
         </div>
 
         <div id="quizPlayArea" style="display:none;">
@@ -1026,8 +1034,14 @@
             <button id="nextQuestion" class="quiz-btn" style="display:none;">Next →</button>
           </div>
         </div>
-        <div class="quiz-score" id="quizScore" style="display:none;"></div>
-      </div>
+        </div> <!-- End of quizPlayArea -->
+        
+        <div class="quiz-score" id="quizScore" style="display:none;">
+          <div id="quizScoreContent"></div>
+          <div id="quizReviewArea" class="quiz-review-area"></div>
+          <button class="quiz-btn" id="retakeQuiz">Choose Another Mode</button>
+        </div>
+      </div> <!-- End of container -->
     </section>
 
     <!-- Word Detail Modal -->
