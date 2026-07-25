@@ -432,13 +432,21 @@ document.addEventListener('DOMContentLoaded', () => {
     quizScore.style.display = 'none';
     
     if (mode === 'srs') {
-      const strugglingWords = WORDS_DATA.filter(w => (masteryData[w.id] || 0) <= 0);
-      if (strugglingWords.length === 0) {
-        alert("You don't have any struggling words to review! Try a different mode.");
+      const unmasteredWords = WORDS_DATA.filter(w => (masteryData[w.id] || 0) < 3);
+      if (unmasteredWords.length === 0) {
+        alert("You have mastered all the words! Amazing job. You can reset your data if you want to start over.");
         openQuizSelection();
         return;
       }
-      quizWords = shuffleArray(strugglingWords);
+      // Sort so lowest scores (struggling words) come first, then take the top 20
+      unmasteredWords.sort((a, b) => (masteryData[a.id] || 0) - (masteryData[b.id] || 0));
+      quizWords = unmasteredWords.slice(0, 20); // only take 20
+      
+      // Shuffle the 20 chosen words so they aren't always in the exact same order if scores are tied
+      quizWords = shuffleArray(quizWords);
+      
+      maxQuestions = quizWords.length;
+      quizTimer.style.display = 'none';
     } else {
       quizWords = shuffleArray(WORDS_DATA);
     }
@@ -646,6 +654,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           c.classList.remove('mastered');
         }
+        
+        // Update simple tag to show progress? (Optional, maybe skip to avoid breaking styling)
       }
     });
 
