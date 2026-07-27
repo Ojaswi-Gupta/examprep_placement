@@ -12,11 +12,16 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Offside&display=swap" rel="stylesheet">
     
     <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
+      .logo {
+        font-family: 'Offside', sans-serif;
+        font-weight: 400;
+      }
       .flashcard {
         perspective: 1000px;
         width: 100%;
@@ -81,12 +86,13 @@
     <header class="navbar">
         <div class="container nav-container">
             <div class="logo">
-                <span class="logo-icon">📖</span> Placement Prep
+                <span class="logo-letter" style="--i:0">P</span><span class="logo-letter" style="--i:1">l</span><span class="logo-letter" style="--i:2">a</span><span class="logo-letter" style="--i:3">c</span><span class="logo-letter" style="--i:4">e</span><span class="logo-letter" style="--i:5">m</span><span class="logo-letter" style="--i:6">e</span><span class="logo-letter" style="--i:7">n</span><span class="logo-letter" style="--i:8">t</span><span class="logo-letter logo-space" style="--i:9">&nbsp;</span><span class="logo-letter" style="--i:10">P</span><span class="logo-letter" style="--i:11">r</span><span class="logo-letter" style="--i:12">e</span><span class="logo-letter" style="--i:13">p</span>
             </div>
             <nav class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#vocabulary">Vocabulary</a>
                 <a href="#quiz-section" id="navQuiz">Quiz</a>
+                <a href="#reading-section">Reading</a>
                 <a href="#about">About</a>
             </nav>
         </div>
@@ -931,6 +937,41 @@
         </div>
     </section>
 
+    <!-- Reading Section -->
+    <section id="reading-section" class="reading-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Reading Hub</h2>
+          <p>Read short stories and learn vocabulary in context.</p>
+        </div>
+        
+        <!-- Story Selection Grid -->
+        <div class="story-grid" id="storyGrid">
+          <!-- Story cards injected via JS -->
+        </div>
+
+        <!-- Story Viewer -->
+        <div class="story-viewer" id="storyViewer" style="display:none;">
+          <button class="back-btn" id="backToStories">← Back to Stories</button>
+          <div class="story-content-card">
+            <h3 id="storyTitle" class="story-title"></h3>
+            <span id="storyGenre" class="story-genre"></span>
+            <div id="storyContent" class="story-body"></div>
+          </div>
+        </div>
+        
+        <!-- Vocab Tooltip -->
+        <div class="vocab-tooltip" id="vocabTooltip">
+          <div class="tooltip-header">
+            <h4 id="tooltipWord">Word</h4>
+            <button class="audio-btn" id="tooltipAudio">🔊</button>
+          </div>
+          <p class="tooltip-meaning" id="tooltipMeaning">Meaning</p>
+          <p class="tooltip-def" id="tooltipDef">Definition</p>
+        </div>
+      </div>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container about-container">
@@ -942,10 +983,17 @@
     <!-- Flashcard Section -->
     <section id="flashcard-section" class="flashcard-section" style="display:none;">
       <div class="container">
-        <div class="flashcard-header">
-          <div class="flashcard-counter" id="fcCounter">1 / 79</div>
-          <button id="quitFlashcard" class="quiz-quit">✕ Exit Study Mode</button>
-        </div>
+          <div class="flashcard-toolbar">
+            <span class="fc-counter" id="fcCounter">Word 1 of 79</span>
+            <div class="toggle-container" style="display: flex; align-items: center; margin-left: auto;">
+              <span class="toggle-label" style="font-size: 0.9rem; color: var(--text-3); margin-right: 8px;">Context First</span>
+              <label class="switch">
+                <input type="checkbox" id="contextFirstToggle">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <button id="quitFlashcard" class="quiz-quit">✕ Exit Study Mode</button>
+          </div>
         <div class="flashcard-controls-hint">Press <strong>Spacebar</strong> to flip • <strong>Left/Right</strong> arrows to navigate</div>
         <div class="flashcard-container">
           <button class="fc-nav fc-prev" id="fcPrev">←</button>
@@ -960,6 +1008,7 @@
                 <div class="fc-hint">Click or press Space to reveal</div>
               </div>
               <div class="fc-back">
+                <div class="fc-back-word" id="fcBackWord" style="display:none; font-size:2rem; font-weight:700; margin-bottom:1rem; color:var(--text);"></div>
                 <div class="fc-simple" id="fcSimple"></div>
                 <div class="fc-definition" id="fcDefinition"></div>
                 <div class="fc-example" id="fcExample"></div>
@@ -1001,12 +1050,20 @@
               <p>60 seconds to answer as many as possible</p>
             </button>
             <button class="quiz-mode-btn" data-mode="pressure">
-              <h4>Pressure 20</h4>
-              <p>20 questions, 15s limit per question</p>
+              <h4>⏱️ Pressure 20</h4>
+              <p>20 seconds per question. 20 questions total.</p>
+            </button>
+            <button class="quiz-mode-btn" data-mode="story">
+              <h4>📖 Story Quiz</h4>
+              <p>Fill in the blanks to complete a story.</p>
             </button>
             <button class="quiz-mode-btn srs-btn" data-mode="srs">
               <h4>Smart Review (SRS)</h4>
               <p>Focus ONLY on words you struggle with</p>
+            </button>
+            <button class="quiz-mode-btn" data-mode="bookmarks" style="border-color:var(--accent);">
+              <h4>⭐ Bookmarked</h4>
+              <p>Quiz yourself on your saved words</p>
             </button>
           </div>
           
@@ -1023,15 +1080,40 @@
           <div class="quiz-progress">
             <div class="quiz-progress-bar" id="quizProgressBar"></div>
           </div>
-          <div class="quiz-timer" id="quizTimer" style="display:none;">60s</div>
           <div class="quiz-counter" id="quizCounter">Question 1 of 79</div>
+          
+          <div class="quiz-play-row" id="standardQuizRow">
+          <!-- Left: Quiz Card -->
           <div class="quiz-card" id="quizCard">
-          <p class="quiz-question" id="quizQuestion"></p>
-          <div class="quiz-options" id="quizOptions"></div>
-          <div class="quiz-feedback" id="quizFeedback" style="display:none;"></div>
-          <div class="quiz-actions">
-            <button id="submitAnswer" class="quiz-btn" disabled>Check Answer</button>
-            <button id="nextQuestion" class="quiz-btn" style="display:none;">Next →</button>
+            <h3 id="quizQuestion" class="quiz-question">Question text</h3>
+            <div id="quizOptions" class="quiz-options"></div>
+            <div id="quizFeedback" class="quiz-feedback" style="display:none;"></div>
+            <div class="quiz-actions">
+                <button id="submitAnswer" class="quiz-btn" disabled>Check Answer</button>
+                <button id="nextQuestion" class="quiz-btn" style="display:none;">Next →</button>
+            </div>
+          </div>
+
+          <!-- Right: Circular Timer -->
+          <div class="circular-timer-container" id="quizTimerContainer" style="display:none;">
+            <svg class="circular-timer-svg" viewBox="0 0 100 100">
+              <circle class="timer-bg" cx="50" cy="50" r="45"></circle>
+              <circle class="timer-path" id="timerPath" cx="50" cy="50" r="45"></circle>
+            </svg>
+            <div class="timer-text" id="quizTimerText">60</div>
+          </div>
+        </div>
+
+        <!-- Story Quiz Container -->
+        <div id="storyQuizContainer" style="display: none; width: 100%;">
+          <div class="story-content-card" style="margin-bottom: 2rem; background: var(--surface); color: var(--text);">
+            <h3 id="sqTitle" class="story-title" style="margin-bottom: 1rem;"></h3>
+            <div id="sqContent" class="story-body"></div>
+          </div>
+          <div class="word-bank-container">
+            <h4>Word Bank</h4>
+            <p class="fc-hint" style="margin-bottom: 1rem;">Click a blank space above, then click a word below.</p>
+            <div id="sqWordBank" class="word-bank"></div>
           </div>
         </div>
         </div> <!-- End of quizPlayArea -->
@@ -1088,9 +1170,7 @@
     <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
-    <!-- External JS -->
-    <script src="words.js"></script>
-    <script src="script.js"></script>
+    <!-- Data & Scripts -->
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
-

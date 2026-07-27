@@ -1,4 +1,4 @@
-const WORDS_DATA = [
+export const WORDS_DATA = [
   {
     id: 1,
     word: "Pragmatic",
