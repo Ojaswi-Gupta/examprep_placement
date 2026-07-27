@@ -556,7 +556,7 @@ input:checked + .slider:before {
   max-width: 700px;
 }
 .quiz-question {
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
   line-height: 1.5;

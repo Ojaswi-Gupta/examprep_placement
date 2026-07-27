@@ -627,6 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
       questionText: quizQuestion.innerText,
       selectedWord: 'No Answer',
       correctWord: correctOptionNode ? correctOptionNode.getAttribute('data-word') : '',
+      correctMeaning: correctOptionNode ? correctOptionNode.getAttribute('data-simple') : '',
       isCorrect: false
     });
     
@@ -662,6 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
       questionText: quizQuestion.innerText,
       selectedWord: selectedOption.getAttribute('data-word'),
       correctWord: correctOptionNode ? correctOptionNode.getAttribute('data-word') : '',
+      correctMeaning: correctOptionNode ? correctOptionNode.getAttribute('data-simple') : '',
       isCorrect: isCorrect
     });
 
@@ -789,6 +791,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="review-q">Q${idx + 1}: ${item.questionText.replace(/\n/g, ' ')}</div>
             <div class="review-ans">Your Answer: <span class="${item.isCorrect ? 'review-correct-ans' : 'review-wrong-ans'}">${item.selectedWord}</span></div>
             ${!item.isCorrect ? `<div class="review-correct-ans">Correct Answer: ${item.correctWord}</div>` : ''}
+            <div style="font-size: 0.9em; color: var(--text-2); margin-top: 4px; font-style: italic;">Meaning: ${item.correctMeaning}</div>
           </div>
         `;
       });
