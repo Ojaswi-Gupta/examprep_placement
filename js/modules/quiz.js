@@ -23,10 +23,15 @@ export function initQuiz() {
   const submitAnswer = document.getElementById('submitAnswer');
   const nextQuestion = document.getElementById('nextQuestion');
   const quitQuiz = document.getElementById('quitQuiz');
+  const storySubmitAnswer = document.getElementById('storySubmitAnswer');
+  const storyNextQuestion = document.getElementById('storyNextQuestion');
   
   if (submitAnswer) submitAnswer.addEventListener('click', checkAnswer);
   if (nextQuestion) nextQuestion.addEventListener('click', () => { currentQ++; renderQuestion(); });
   if (quitQuiz) quitQuiz.addEventListener('click', exitQuiz);
+  
+  if (storySubmitAnswer) storySubmitAnswer.addEventListener('click', checkStoryAnswer);
+  if (storyNextQuestion) storyNextQuestion.addEventListener('click', showScore);
 }
 
 export function openQuizSelection() {
@@ -377,20 +382,15 @@ function displayFeedback(customTitle) {
   
   let titleHTML = customTitle ? `<h4>${customTitle}</h4>` : (isCorrect ? '<h4 style="color:var(--green)">Correct!</h4>' : '<h4 style="color:var(--red)">Incorrect</h4>');
   
-  let detailsHTML = '';
-  if (!isCorrect && correctOption) {
-    const word = correctOption.getAttribute('data-word');
-    const simple = correctOption.getAttribute('data-simple');
-    const def = correctOption.getAttribute('data-definition');
-    detailsHTML = `
-      <p><strong>Answer:</strong> ${word} - ${simple}</p>
-      <p style="font-size:0.9rem; margin-top:0.5rem; color:var(--text-3)">${def}</p>
-    `;
-  } else if (isCorrect) {
-    const word = correctOption.getAttribute('data-word');
-    const simple = correctOption.getAttribute('data-simple');
-    detailsHTML = `<p>${word} means ${simple}</p>`;
-  }
+  let detailsHTML = `<h5 style="margin-top:1rem; color:#cccccc; font-size:0.95rem;">Word Meanings:</h5><ul style="list-style:none; padding:0; margin-top:0.5rem;">`;
+  
+  const allOptions = Array.from(document.getElementById('quizOptions').querySelectorAll('.quiz-option'));
+  allOptions.forEach(o => {
+    const word = o.getAttribute('data-word');
+    const simple = o.getAttribute('data-simple');
+    detailsHTML += `<li style="margin-bottom:0.4rem; font-size:0.95rem; color:#ffffff;"><strong>${word}:</strong> ${simple}</li>`;
+  });
+  detailsHTML += `</ul>`;
 
   quizFeedback.innerHTML = titleHTML + detailsHTML;
   quizFeedback.style.display = 'block';
@@ -487,7 +487,22 @@ function startStoryQuiz() {
   const sqTitle = document.getElementById('sqTitle');
   const sqContent = document.getElementById('sqContent');
   const sqWordBank = document.getElementById('sqWordBank');
-  const submitAnswer = document.getElementById('submitAnswer');
+  const storySubmitAnswer = document.getElementById('storySubmitAnswer');
+  const storyNextQuestion = document.getElementById('storyNextQuestion');
+  
+  if (storySubmitAnswer) {
+    storySubmitAnswer.disabled = true;
+    storySubmitAnswer.style.display = 'inline-block';
+  }
+  if (storyNextQuestion) {
+    storyNextQuestion.style.display = 'none';
+  }
+
+  const storyQuizFeedback = document.getElementById('storyQuizFeedback');
+  if (storyQuizFeedback) {
+    storyQuizFeedback.style.display = 'none';
+    storyQuizFeedback.innerHTML = '';
+  }
 
   const story = STORIES_DATA[Math.floor(Math.random() * STORIES_DATA.length)];
   if(sqTitle) sqTitle.textContent = story.title;
@@ -515,7 +530,10 @@ function startStoryQuiz() {
   });
   
   if(sqContent) {
-    sqContent.innerHTML = tempDiv.innerHTML;
+    sqContent.innerHTML = '';
+    while (tempDiv.firstChild) {
+      sqContent.appendChild(tempDiv.firstChild);
+    }
     activeStoryBlanks = Array.from(sqContent.querySelectorAll('.blank-space'));
   }
   
@@ -544,7 +562,8 @@ function startStoryQuiz() {
         chip.classList.add('used');
         selectedBlankObj = null;
         if (activeStoryBlanks.every(b => b.getAttribute('data-filled'))) {
-          if(submitAnswer) submitAnswer.disabled = false;
+          const storySubmitAnswer = document.getElementById('storySubmitAnswer');
+          if(storySubmitAnswer) storySubmitAnswer.disabled = false;
         }
       });
       sqWordBank.appendChild(chip);
@@ -553,8 +572,10 @@ function startStoryQuiz() {
 }
 
 function checkStoryAnswer() {
-  const submitAnswer = document.getElementById('submitAnswer');
-  if(submitAnswer) submitAnswer.style.display = 'none';
+  const storySubmitAnswer = document.getElementById('storySubmitAnswer');
+  const storyNextQuestion = document.getElementById('storyNextQuestion');
+  if(storySubmitAnswer) storySubmitAnswer.style.display = 'none';
+  if(storyNextQuestion) storyNextQuestion.style.display = 'inline-block';
   let correctCount = 0;
   
   activeStoryBlanks.forEach(b => {
@@ -575,6 +596,24 @@ function checkStoryAnswer() {
       b.parentNode.insertBefore(corrSpan, b.nextSibling);
     }
   });
+  
+  const storyQuizFeedback = document.getElementById('storyQuizFeedback');
+  if (storyQuizFeedback) {
+    let detailsHTML = `<h4 style="margin-bottom:0.5rem; color:#ffffff;">Word Meanings:</h4><ul style="list-style:none; padding:0;">`;
+    // We get the meanings of the correct words from WORDS_DATA
+    const uniqueWords = new Set();
+    activeStoryBlanks.forEach(b => uniqueWords.add(b.getAttribute('data-correct').toLowerCase()));
+    
+    uniqueWords.forEach(wStr => {
+      const wObj = WORDS_DATA.find(w => w.word.toLowerCase() === wStr);
+      if (wObj) {
+        detailsHTML += `<li style="margin-bottom:0.4rem; font-size:1rem; color:#ffffff;"><strong>${wObj.word}:</strong> ${wObj.simple}</li>`;
+      }
+    });
+    detailsHTML += `</ul>`;
+    storyQuizFeedback.innerHTML = detailsHTML;
+    storyQuizFeedback.style.display = 'block';
+  }
   
   score = correctCount;
   currentQ = activeStoryBlanks.length - 1;

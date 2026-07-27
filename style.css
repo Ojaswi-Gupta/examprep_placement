@@ -628,8 +628,8 @@ input:checked + .slider:before {
   gap: 1.5rem;
 }
 .quiz-card {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
+  background: #000000;
+  border: 1px solid #333333;
   border-radius: 12px;
   padding: 2rem;
   flex: 1;
@@ -637,10 +637,10 @@ input:checked + .slider:before {
 }
 .quiz-question {
   font-size: 1.35rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.5;
-  color: #111111;
+  color: #ffffff;
 }
 .quiz-options {
   display: flex;
@@ -653,24 +653,25 @@ input:checked + .slider:before {
   align-items: flex-start;
   gap: 0.75rem;
   padding: 0.85rem 1rem;
-  background: #f8f8f8;
-  border: 1px solid #d4d4d4;
+  background: #111111;
+  border: 1px solid #333333;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.15s ease;
   font-size: 0.95rem;
-  color: #333333;
+  color: #ffffff;
+  font-weight: 600;
   line-height: 1.5;
 }
 .quiz-option:hover {
-  border-color: #999;
-  background: #f0f0f0;
-  color: #111111;
+  border-color: #666666;
+  background: #222222;
+  color: #ffffff;
 }
 .quiz-option.selected {
-  border-color: #111111;
-  background: #e8e8e8;
-  color: #111111;
+  border-color: #ffffff;
+  background: #333333;
+  color: #ffffff;
 }
 .quiz-option.correct {
   border-color: var(--green);
@@ -1272,23 +1273,25 @@ input:checked + .slider:before {
   gap: 0.75rem;
 }
 .word-chip {
-  background: var(--bg);
-  border: 1px solid var(--border);
   padding: 0.5rem 1rem;
+  background: #111111;
+  border: 1px solid #333333;
   border-radius: 20px;
   cursor: pointer;
-  font-weight: 500;
+  font-size: 0.95rem;
+  color: #ffffff;
+  font-weight: 600;
   transition: all 0.2s ease;
-  user-select: none;
 }
 .word-chip:hover {
-  background: var(--accent-dim);
-  border-color: var(--accent);
+  background: #333333;
+  border-color: #ffffff;
 }
 .word-chip.used {
-  opacity: 0.4;
+  opacity: 0.5;
   pointer-events: none;
-  text-decoration: line-through;
+  background: #000000;
+  border-color: #333333;
 }
 .blank-space {
   display: inline-block;
@@ -1370,6 +1373,25 @@ input:checked + .slider:before {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 2.5rem;
+}
+
+#storyQuizContainer .story-content-card {
+  background: #000000;
+  border-color: #333333;
+}
+#storyQuizContainer .story-title {
+  color: #ffffff;
+}
+#storyQuizContainer .story-body {
+  color: #ffffff;
+  font-weight: 700;
+}
+#storyQuizFeedback {
+  background: #000000;
+  border: 1px solid #333333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: #ffffff;
 }
 .story-title {
   font-size: 1.8rem;
