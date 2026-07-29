@@ -23,6 +23,19 @@ export function initCards() {
       if (e.target === wordModal) closeModal();
     });
   }
+
+  // Setup Modal Audio
+  const modalAudio = document.getElementById('modalAudio');
+  if (modalAudio) {
+    modalAudio.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const w = document.getElementById('modalWord').textContent;
+      if (w) {
+        const utterance = new SpeechSynthesisUtterance(w);
+        window.speechSynthesis.speak(utterance);
+      }
+    });
+  }
 }
 
 export function renderCards(wordsList) {
