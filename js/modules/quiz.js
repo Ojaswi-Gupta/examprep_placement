@@ -32,6 +32,9 @@ export function initQuiz() {
   
   if (storySubmitAnswer) storySubmitAnswer.addEventListener('click', checkStoryAnswer);
   if (storyNextQuestion) storyNextQuestion.addEventListener('click', showScore);
+  
+  const retakeQuiz = document.getElementById('retakeQuiz');
+  if (retakeQuiz) retakeQuiz.addEventListener('click', openQuizSelection);
 }
 
 export function openQuizSelection() {
@@ -416,9 +419,37 @@ function showScore() {
   
   const percentage = total === 0 ? 0 : Math.round((score / total) * 100);
   if(scoreText) scoreText.innerHTML = `${percentage}%<br><span style="font-size:1rem; font-weight:400; opacity:0.8;">${score} / ${total}</span>`;
-  if(scoreCircle) scoreCircle.style.background = `conic-gradient(var(--green) ${percentage}%, var(--border) 0)`;
+  if(scoreCircle) {
+    scoreCircle.style.background = `conic-gradient(var(--green) ${percentage}%, var(--border) 0)`;
+    
+    scoreCircle.classList.remove('perfect-score-anim');
+    void scoreCircle.offsetWidth; // Force a reflow
+    
+    if (percentage === 100 && total > 0) {
+      scoreCircle.classList.add('perfect-score-anim');
+      createConfetti();
+    }
+  }
   
   renderReviewTable();
+}
+
+function createConfetti() {
+  const colors = ['#34d399', '#60a5fa', '#f472b6', '#fbbf24', '#a78bfa'];
+  for (let i = 0; i < 60; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    confetti.style.animationDelay = (Math.random() * 0.5) + 's';
+    document.body.appendChild(confetti);
+    
+    // Remove after animation completes
+    setTimeout(() => {
+      confetti.remove();
+    }, 5000);
+  }
 }
 
 function renderReviewTable() {

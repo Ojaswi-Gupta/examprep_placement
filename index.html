@@ -1124,8 +1124,25 @@
         </div> <!-- End of quizPlayArea -->
         
         <div class="quiz-score" id="quizScore" style="display:none;">
-          <div id="quizScoreContent"></div>
-          <div id="quizReviewArea" class="quiz-review-area"></div>
+          <div id="quizScoreContent">
+            <h3>Quiz Completed!</h3>
+            <div id="scoreCircle" class="score-circle">
+              <div id="scoreText" class="score-text"></div>
+            </div>
+          </div>
+          <div id="quizReviewArea" class="quiz-review-area">
+            <table id="reviewTable" class="review-table">
+              <thead>
+                <tr>
+                  <th>Question</th>
+                  <th>Your Answer</th>
+                  <th>Correct Answer</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
           <button class="quiz-btn" id="retakeQuiz">Choose Another Mode</button>
         </div>
       </div> <!-- End of container -->
