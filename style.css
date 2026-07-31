@@ -324,6 +324,27 @@ body {
   border-radius: 6px;
   flex-shrink: 0;
 }
+.bookmark-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: auto;
+  color: var(--text-3); /* Ensures visibility on dark background for unselected state */
+  transition: transform 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bookmark-btn:hover {
+  transform: scale(1.1);
+  color: var(--text);
+}
+.bookmark-btn.active {
+  /* color when active is not strictly needed since ⭐ is an emoji, 
+     but setting it doesn't hurt. */
+  color: var(--text); 
+}
 .word {
   font-size: 1.1rem;
   font-weight: 600;

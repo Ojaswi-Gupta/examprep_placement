@@ -9,16 +9,20 @@ export function setupBookmarks(cardElement, wordData) {
   const starBtn = document.createElement('button');
   starBtn.className = 'bookmark-btn';
   starBtn.innerHTML = isBookmarked(wordData.id) ? '⭐' : '☆';
-  starBtn.style.background = 'none';
-  starBtn.style.border = 'none';
-  starBtn.style.cursor = 'pointer';
-  starBtn.style.fontSize = '1.2rem';
-  starBtn.style.marginLeft = 'auto';
+  
+  if (isBookmarked(wordData.id)) {
+    starBtn.classList.add('active');
+  }
 
   starBtn.addEventListener('click', (e) => {
     e.stopPropagation(); // prevent opening the modal
     const bookmarked = toggleBookmark(wordData.id);
     starBtn.innerHTML = bookmarked ? '⭐' : '☆';
+    if (bookmarked) {
+      starBtn.classList.add('active');
+    } else {
+      starBtn.classList.remove('active');
+    }
   });
 
   header.appendChild(starBtn);
