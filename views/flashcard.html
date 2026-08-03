@@ -1,0 +1,45 @@
+<div class="page-view" id="flashcard-section">
+      <section class="flashcard-section">
+        <div class="container">
+            <div class="flashcard-toolbar">
+              <span class="fc-counter" id="fcCounter">Word 1 of 79</span>
+              <div class="toggle-container" style="display: flex; align-items: center; margin-left: auto;">
+                <span class="toggle-label" style="font-size: 0.9rem; color: var(--text-3); margin-right: 8px;">Context First</span>
+                <label class="switch">
+                  <input type="checkbox" id="contextFirstToggle">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <button id="quitFlashcard" class="quiz-quit">✕ Exit Study Mode</button>
+            </div>
+          <div class="flashcard-controls-hint">Press <strong>Spacebar</strong> to flip • <strong>Left/Right</strong> arrows to navigate</div>
+          <div class="flashcard-container">
+            <button class="fc-nav fc-prev" id="fcPrev">←</button>
+            <div class="flashcard" id="flashcard">
+              <div class="fc-inner">
+                <div class="fc-front">
+                  <div class="fc-pos" id="fcPos"></div>
+                  <div class="fc-word-wrap">
+                    <div class="fc-word" id="fcWord"></div>
+                    <button class="audio-btn" id="fcAudio">🔊</button>
+                  </div>
+                  <div class="fc-hint">Click or press Space to reveal</div>
+                </div>
+                <div class="fc-back">
+                  <div class="fc-back-word" id="fcBackWord" style="display:none; font-size:2rem; font-weight:700; margin-bottom:1rem; color:var(--text);"></div>
+                  <div class="fc-simple" id="fcSimple"></div>
+                  <div class="fc-definition" id="fcDefinition"></div>
+                  <div class="fc-example" id="fcExample"></div>
+                  <div class="fc-tags">
+                    <div class="fc-synonyms" id="fcSynonyms"></div>
+                    <div class="fc-antonyms" id="fcAntonyms"></div>
+                  </div>
+                  <div class="fc-tip" id="fcTip"></div>
+                </div>
+              </div>
+            </div>
+            <button class="fc-nav fc-next" id="fcNext">→</button>
+          </div>
+        </div>
+      </section>
+    </div> <!-- /flashcard-section -->

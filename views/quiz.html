@@ -1,0 +1,164 @@
+<div class="page-view" id="quiz-section">
+      <section class="quiz-section">
+        <div class="container">
+          <div class="quiz-header">
+            <h2>Vocabulary Quiz</h2>
+            <button id="quitQuiz" class="quiz-quit">✕ Exit Quiz</button>
+          </div>
+          
+          <!-- Quiz Mode Selection -->
+          <div class="quiz-mode-selection" id="quizModeSelection">
+            <h3>Choose a mode:</h3>
+            <div class="quiz-modes">
+              <button class="quiz-mode-btn" data-mode="full">
+                <h4>Full Quiz</h4>
+                <p>All 79 words</p>
+              </button>
+              <button class="quiz-mode-btn" data-mode="quick">
+                <h4>Quick 10</h4>
+                <p>A fast 10-question sprint</p>
+              </button>
+              <button class="quiz-mode-btn" data-mode="time">
+                <h4>Time Attack</h4>
+                <p>60 seconds to answer as many as possible</p>
+              </button>
+              <button class="quiz-mode-btn" data-mode="pressure">
+                <h4>⏱️ Pressure 20</h4>
+                <p>20 seconds per question. 20 questions total.</p>
+              </button>
+              <button class="quiz-mode-btn" data-mode="story">
+                <h4>📖 Story Quiz</h4>
+                <p>Fill in the blanks to complete a story.</p>
+              </button>
+              <button class="quiz-mode-btn srs-btn" data-mode="srs">
+                <h4>Smart Review (SRS)</h4>
+                <p>Focus ONLY on words you struggle with</p>
+              </button>
+              <button class="quiz-mode-btn" data-mode="bookmarks" style="border-color:var(--accent);">
+                <h4>⭐ Bookmarked</h4>
+                <p>Quiz yourself on your saved words</p>
+              </button>
+            </div>
+            
+            <div class="quiz-settings">
+              <label class="toggle-switch">
+                <input type="checkbox" id="immediateFeedbackToggle" checked>
+                <span class="slider round"></span>
+              </label>
+              <span class="settings-label">Show answers immediately after each question</span>
+            </div>
+          </div>
+
+          <div id="quizPlayArea" style="display:none;">
+            <div class="quiz-progress">
+              <div class="quiz-progress-bar" id="quizProgressBar"></div>
+            </div>
+            <div class="quiz-counter" id="quizCounter">Question 1 of 79</div>
+            
+            <div class="quiz-play-row" id="standardQuizRow">
+            <!-- Left: Quiz Card -->
+            <div class="quiz-card" id="quizCard">
+              <h3 id="quizQuestion" class="quiz-question">Question text</h3>
+              <div id="quizOptions" class="quiz-options"></div>
+              <div id="quizFeedback" class="quiz-feedback" style="display:none;"></div>
+              <div class="quiz-actions">
+                  <button id="submitAnswer" class="quiz-btn" disabled>Check Answer</button>
+                  <button id="nextQuestion" class="quiz-btn" style="display:none;">Next →</button>
+              </div>
+            </div>
+
+            <!-- Right: Circular Timer -->
+            <div class="circular-timer-container" id="quizTimerContainer" style="display:none;">
+              <svg class="circular-timer-svg" viewBox="0 0 100 100">
+                <circle class="timer-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="timer-path" id="timerPath" cx="50" cy="50" r="45"></circle>
+              </svg>
+              <div class="timer-text" id="quizTimerText">60</div>
+            </div>
+          </div>
+
+          <!-- Story Quiz Container -->
+          <div id="storyQuizContainer" style="display: none; width: 100%;">
+            <div class="story-content-card" style="margin-bottom: 2rem; background: var(--surface); color: var(--text);">
+              <h3 id="sqTitle" class="story-title" style="margin-bottom: 1rem;"></h3>
+              <div id="sqContent" class="story-body"></div>
+            </div>
+            <div class="word-bank-container">
+              <h4>Word Bank</h4>
+              <p class="fc-hint" style="margin-bottom: 1rem;">Click a blank space above, then click a word below.</p>
+              <div id="sqWordBank" class="word-bank"></div>
+            </div>
+            <div id="storyQuizFeedback" class="quiz-feedback" style="display:none; margin-top:1.5rem;"></div>
+            <div class="quiz-actions" style="margin-top: 2rem; display: flex; justify-content: flex-end;">
+              <button id="storySubmitAnswer" class="quiz-btn" disabled>Check Answer</button>
+              <button id="storyNextQuestion" class="quiz-btn" style="display:none;">View Results →</button>
+            </div>
+          </div>
+          </div> <!-- End of quizPlayArea -->
+          
+          <div class="quiz-score" id="quizScore" style="display:none;">
+            <div id="quizScoreContent">
+              <h3>Quiz Completed!</h3>
+              <div id="scoreCircle" class="score-circle">
+                <div id="scoreText" class="score-text"></div>
+              </div>
+            </div>
+            <div id="quizReviewArea" class="quiz-review-area">
+              <table id="reviewTable" class="review-table">
+                <thead>
+                  <tr>
+                    <th>Question</th>
+                    <th>Your Answer</th>
+                    <th>Correct Answer</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <button class="quiz-btn" id="retakeQuiz">Choose Another Mode</button>
+          </div>
+        </div> <!-- End of container -->
+      </section>
+    </div> <!-- /quiz-section -->
+
+    <!-- Word Detail Modal -->
+    <div class="modal-overlay" id="wordModal">
+      <div class="modal-content">
+        <button class="modal-close" id="modalClose">✕</button>
+        <div class="modal-pos" id="modalPos"></div>
+        <div class="modal-header">
+          <h2 class="modal-word" id="modalWord"></h2>
+          <button class="audio-btn" id="modalAudio">🔊</button>
+        </div>
+        <span class="modal-simple" id="modalSimple"></span>
+        <p class="modal-definition" id="modalDefinition"></p>
+        <div class="modal-section">
+          <h4>Example</h4>
+          <p class="modal-example" id="modalExample"></p>
+        </div>
+        <div class="modal-section">
+          <h4>Synonyms</h4>
+          <div class="modal-synonyms" id="modalSynonyms"></div>
+        </div>
+        <div class="modal-section">
+          <h4>Antonyms</h4>
+          <div class="modal-antonyms" id="modalAntonyms"></div>
+        </div>
+        <div class="modal-section">
+          <h4>More Usage</h4>
+          <div id="modalExtraExamples"></div>
+        </div>
+        <div class="modal-section">
+          <h4>Tip</h4>
+          <p class="modal-tip" id="modalTip"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Placement Prep &bull; 2026</p>
+        </div>
+    </footer>

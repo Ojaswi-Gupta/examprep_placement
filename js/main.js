@@ -1,126 +1,139 @@
-// js/main.js
+// js/main.js — SPA Router (inline views, CSS show/hide)
 import { WORDS_DATA } from './data/words.js';
 import { initCards, renderCards } from './ui/cards.js';
 import { initFlashcards, startFlashcards, exitFlashcards } from './modules/flashcards.js';
 import { initQuiz, openQuizSelection } from './modules/quiz.js';
 import { initReading } from './modules/reading.js';
+import { initFormulas } from './ui/formulas.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  // 2. Init UI
-  initCards();
-  renderCards(WORDS_DATA);
+// ─── Init all modules once ─────────────────────────
+initCards();
+renderCards(WORDS_DATA);
+initFlashcards();
+initQuiz();
+initReading();
+initFormulas();
 
-  // 3. Init Modules
-  initFlashcards();
-  initQuiz();
-  initReading();
+// ─── SPA View Routing ──────────────────────────────
+function showView(viewId) {
+  // Hide all views
+  document.querySelectorAll('.page-view').forEach(v => {
+    v.classList.remove('active-view');
+  });
 
-  // 4. Global Nav & Buttons
-  const startQuizBtn = document.getElementById('startQuizBtn');
-  const navQuiz = document.getElementById('navQuiz');
-  const startStudyBtn = document.getElementById('startStudyBtn');
-  const quitFlashcard = document.getElementById('quitFlashcard');
-  const searchInput = document.getElementById('searchInput');
+  // Show target
+  const target = document.getElementById(viewId);
+  if (target) {
+    void target.offsetWidth; // force reflow for animations
+    target.classList.add('active-view');
+  }
 
-  if (startQuizBtn) startQuizBtn.addEventListener('click', openQuizSelection);
-  if (navQuiz) navQuiz.addEventListener('click', (e) => { e.preventDefault(); openQuizSelection(); });
-  if (startStudyBtn) startStudyBtn.addEventListener('click', startFlashcards);
-  if (quitFlashcard) quitFlashcard.addEventListener('click', exitFlashcards);
+  // Update body data attribute (for flashcard CSS isolation)
+  document.body.setAttribute('data-active-view', viewId);
 
-  // Global Scroll & Nav Logic
-  const progressBar = document.getElementById('progressBar');
-  const backToTop = document.getElementById('backToTop');
-  const navbar = document.querySelector('.navbar');
+  // Update nav highlight
+  document.querySelectorAll('.nav-links a[data-view]').forEach(a => {
+    a.classList.toggle('nav-active', a.getAttribute('data-view') === viewId);
+  });
 
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        if (progressBar) {
-          const scrollTop = window.scrollY;
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
-        }
-        if (backToTop) {
-          backToTop.classList.toggle('visible', window.scrollY > 400);
-        }
-        if (navbar) {
-          navbar.classList.toggle('scrolled', window.scrollY > 10);
-        }
-        ticking = false;
+  // Scroll to top
+  window.scrollTo(0, 0);
+}
+
+// Expose globally so quiz/flashcard modules can navigate
+window.showView = showView;
+
+// ─── Event Delegation (nav links, logo, buttons) ───
+document.body.addEventListener('click', (e) => {
+  // Nav links & any [data-view] buttons
+  const navLink = e.target.closest('[data-view]');
+  if (navLink) {
+    e.preventDefault();
+    const viewId = navLink.getAttribute('data-view');
+    if (viewId === 'quiz-section') {
+      showView(viewId);
+      openQuizSelection();
+    } else {
+      showView(viewId);
+    }
+    return;
+  }
+
+  // Logo → Home
+  if (e.target.closest('#navLogo')) {
+    showView('view-home');
+    return;
+  }
+
+  // Study Mode button
+  if (e.target.closest('#startStudyBtn')) {
+    startFlashcards();
+    return;
+  }
+
+  // Quit flashcard
+  if (e.target.closest('#quitFlashcard')) {
+    exitFlashcards();
+    return;
+  }
+});
+
+// ─── Scroll / Progress / Back-to-top ────────────────
+const progressBar = document.getElementById('progressBar');
+const backToTop = document.getElementById('backToTop');
+const navbar = document.querySelector('.navbar');
+let ticking = false;
+
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    const y = window.scrollY;
+    if (progressBar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    }
+    if (backToTop) backToTop.classList.toggle('visible', y > 400);
+    if (navbar) navbar.classList.toggle('scrolled', y > 10);
+    ticking = false;
+  });
+});
+
+if (backToTop) {
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+// ─── Search ─────────────────────────────────────────
+const searchInput = document.getElementById('searchInput');
+if (searchInput) {
+  let t;
+  searchInput.addEventListener('input', () => {
+    clearTimeout(t);
+    const term = searchInput.value.toLowerCase();
+    t = setTimeout(() => {
+      document.querySelectorAll('.card').forEach(c => {
+        const d = (c.getAttribute('data-search') || '').toLowerCase();
+        c.style.display = (!term || d.includes(term)) ? '' : 'none';
       });
-      ticking = true;
-    }
+    }, 150);
   });
+}
 
-  if (backToTop) {
-    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+// ─── Keyboard Shortcuts ─────────────────────────────
+document.addEventListener('keydown', (e) => {
+  if (searchInput && ((e.ctrlKey && e.key === 'k') || (e.key === '/' && document.activeElement !== searchInput))) {
+    e.preventDefault();
+    searchInput.focus();
   }
-
-  // Smooth scroll nav links
-  const mainSections = document.querySelectorAll('.navbar, .hero, .stats, .search-section, .vocabulary-section, .reading-section, .about-section, .footer');
-  const quizSection = document.getElementById('quiz-section');
-  const readingSection = document.getElementById('reading-section');
-  const flashcardSection = document.getElementById('flashcard-section');
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function (e) {
-      const id = this.getAttribute('href');
-      if (id === '#quiz-section') return; // Handled by navQuiz
-
-      if (id === '#reading-section' && readingSection) {
-        e.preventDefault();
-        mainSections.forEach(s => s.style.display = '');
-        if(quizSection) quizSection.style.display = 'none';
-        if(flashcardSection) flashcardSection.style.display = 'none';
-        readingSection.style.display = 'block';
-        readingSection.scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-
-      const target = document.querySelector(id);
-      if (target) {
-        e.preventDefault();
-        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
-      }
-    });
-  });
-
-  // Search logic
-  let searchTimeout;
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      clearTimeout(searchTimeout);
-      const term = e.target.value.toLowerCase();
-      
-      searchTimeout = setTimeout(() => {
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-          const data = card.getAttribute('data-search') || '';
-          card.style.display = (term === '' || data.toLowerCase().includes(term)) ? '' : 'none';
-        });
-      }, 150);
-    });
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('wordModal');
+    if (modal && modal.classList.contains('active')) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    } else if (searchInput && searchInput === document.activeElement) {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+      searchInput.blur();
+    }
   }
-
-  // Keyboard shortcuts
-  document.addEventListener('keydown', (e) => {
-    if (!searchInput) return;
-    if ((e.ctrlKey && e.key === 'k') || (e.key === '/' && document.activeElement !== searchInput)) {
-      e.preventDefault();
-      searchInput.focus();
-    }
-    if (e.key === 'Escape') {
-      const wordModal = document.getElementById('wordModal');
-      if (wordModal && wordModal.classList.contains('active')) {
-        wordModal.classList.remove('active');
-        document.body.style.overflow = '';
-      } else if (searchInput === document.activeElement) {
-        searchInput.value = '';
-        searchInput.dispatchEvent(new Event('input'));
-        searchInput.blur();
-      }
-    }
-  });
-
 });

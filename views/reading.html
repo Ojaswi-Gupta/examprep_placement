@@ -1,0 +1,35 @@
+<div class="page-view" id="view-reading">
+        <section class="reading-section">
+          <div class="container">
+            <div class="section-header">
+              <h2>Reading Hub</h2>
+              <p>Read short stories and learn vocabulary in context.</p>
+            </div>
+            
+            <!-- Story Selection Grid -->
+            <div class="story-grid" id="storyGrid">
+              <!-- Story cards injected via JS -->
+            </div>
+
+            <!-- Story Viewer -->
+            <div class="story-viewer" id="storyViewer" style="display:none;">
+              <button class="back-btn" id="backToStories">← Back to Stories</button>
+              <div class="story-content-card">
+                <h3 id="storyTitle" class="story-title"></h3>
+                <span id="storyGenre" class="story-genre"></span>
+                <div id="storyContent" class="story-body"></div>
+              </div>
+            </div>
+            
+            <!-- Vocab Tooltip -->
+            <div class="vocab-tooltip" id="vocabTooltip">
+              <div class="tooltip-header">
+                <h4 id="tooltipWord">Word</h4>
+                <button class="audio-btn" id="tooltipAudio">🔊</button>
+              </div>
+              <p class="tooltip-meaning" id="tooltipMeaning">Meaning</p>
+              <p class="tooltip-def" id="tooltipDef">Definition</p>
+            </div>
+          </div>
+        </section>
+    </div> <!-- /view-reading -->

@@ -39,15 +39,11 @@ export function initQuiz() {
 
 export function openQuizSelection() {
   if (!WORDS_DATA || !WORDS_DATA.length) return;
-  const mainSections = document.querySelectorAll('.navbar, .hero, .stats, .search-section, .vocabulary-section, .reading-section, .about-section, .footer');
-  mainSections.forEach(s => s.style.display = 'none');
   
-  const quizSection = document.getElementById('quiz-section');
   const quizModeSelection = document.getElementById('quizModeSelection');
   const quizPlayArea = document.getElementById('quizPlayArea');
   const quizScore = document.getElementById('quizScore');
   
-  if(quizSection) quizSection.style.display = 'block';
   if(quizModeSelection) quizModeSelection.style.display = 'block';
   if(quizPlayArea) quizPlayArea.style.display = 'none';
   if(quizScore) quizScore.style.display = 'none';
@@ -503,11 +499,9 @@ function shuffleArray(arr) {
 
 function exitQuiz() {
   clearInterval(timerInterval);
-  const mainSections = document.querySelectorAll('.navbar, .hero, .stats, .search-section, .vocabulary-section, .reading-section, .about-section, .footer');
-  const quizSection = document.getElementById('quiz-section');
-  if (quizSection) quizSection.style.display = 'none';
-  mainSections.forEach(s => s.style.display = '');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (typeof window.showView === 'function') {
+    window.showView('view-home');
+  }
 }
 
 // Story Quiz Logic

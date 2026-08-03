@@ -51,6 +51,14 @@ body {
   padding: 0 1.5rem;
 }
 
+/* ===== SPA View Routing ===== */
+.page-view {
+  display: none;
+}
+.page-view.active-view {
+  display: block;
+}
+
 /* ===== Progress Bar ===== */
 .progress-bar-container {
   position: fixed;
@@ -1083,11 +1091,23 @@ input:checked + .slider:before {
 }
 
 /* ===== Flashcard Section ===== */
+body[data-active-view="flashcard-section"] {
+  overflow: hidden;
+}
+body[data-active-view="flashcard-section"] .navbar {
+  display: none !important;
+}
+#flashcard-section.page-view {
+  padding-top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
 .flashcard-section {
-  padding: 3rem 0 5rem;
-  min-height: 80vh;
+  padding: 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 .flashcard-header {
   display: flex;
@@ -1308,7 +1328,8 @@ input:checked + .slider:before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+  padding: 1rem 0 0.5rem 0;
 }
 
 .fc-word {

@@ -9,6 +9,7 @@ export function initFlashcards() {
   const contextFirstToggle = document.getElementById('contextFirstToggle');
   const fcPrev = document.getElementById('fcPrev');
   const fcNext = document.getElementById('fcNext');
+  const fcAudio = document.getElementById('fcAudio');
   
   if (flashcard) {
     flashcard.addEventListener('click', () => {
@@ -24,10 +25,21 @@ export function initFlashcards() {
   
   if (fcPrev) fcPrev.addEventListener('click', (e) => { e.stopPropagation(); prevFlashcard(); });
   if (fcNext) fcNext.addEventListener('click', (e) => { e.stopPropagation(); nextFlashcard(); });
+  
+  if (fcAudio) {
+    fcAudio.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const w = fcWords[fcIndex];
+      if (w && w.word) {
+        const utterance = new SpeechSynthesisUtterance(w.word);
+        utterance.lang = 'en-US';
+        speechSynthesis.speak(utterance);
+      }
+    });
+  }
 
   document.addEventListener('keydown', (e) => {
-    const flashcardSection = document.getElementById('flashcard-section');
-    if (!flashcardSection || flashcardSection.style.display !== 'block') return;
+    if (document.body.getAttribute('data-active-view') !== 'flashcard-section') return;
 
     if (e.key === 'ArrowRight') {
       nextFlashcard();
@@ -41,12 +53,10 @@ export function initFlashcards() {
 }
 
 export function startFlashcards() {
-  const mainSections = document.querySelectorAll('.navbar, .hero, .stats, .search-section, .vocabulary-section, .reading-section, .about-section, .footer');
-  const flashcardSection = document.getElementById('flashcard-section');
-  
   if (!WORDS_DATA || !WORDS_DATA.length) return;
-  mainSections.forEach(s => s.style.display = 'none');
-  if (flashcardSection) flashcardSection.style.display = 'block';
+  if (typeof window.showView === 'function') {
+    window.showView('flashcard-section');
+  }
   
   // Shuffle or keep ordered
   fcWords = [...WORDS_DATA].sort(() => 0.5 - Math.random());
@@ -56,11 +66,9 @@ export function startFlashcards() {
 }
 
 export function exitFlashcards() {
-  const mainSections = document.querySelectorAll('.navbar, .hero, .stats, .search-section, .vocabulary-section, .reading-section, .about-section, .footer');
-  const flashcardSection = document.getElementById('flashcard-section');
-  if (flashcardSection) flashcardSection.style.display = 'none';
-  mainSections.forEach(s => s.style.display = '');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (typeof window.showView === 'function') {
+    window.showView('view-home');
+  }
 }
 
 function renderFlashcard() {
