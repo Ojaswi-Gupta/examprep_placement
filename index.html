@@ -17,67 +17,7 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <style>
-      .logo {
-        font-family: 'Offside', sans-serif;
-        font-weight: 400;
-      }
-      .flashcard {
-        perspective: 1000px;
-        width: 100%;
-        max-width: 100%;
-        height: calc(100vh - 120px);
-        min-height: 400px;
-        max-height: 800px;
-        cursor: pointer;
-        flex-shrink: 1;
-      }
-      .fc-example {
-        font-size: 1.05rem;
-        color: var(--text-3);
-        font-style: italic;
-        max-width: 90%;
-        line-height: 1.5;
-      }
-      .fc-tags {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        width: 90%;
-        align-items: center;
-      }
-      .fc-synonyms, .fc-antonyms {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.4rem;
-      }
-      .fc-tag {
-        font-size: 0.85rem;
-        padding: 0.3rem 0.6rem;
-        background: var(--bg);
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        color: var(--text-2);
-      }
-      .fc-tag.ant {
-        background: rgba(239, 68, 68, 0.08);
-        border-color: rgba(239, 68, 68, 0.15);
-        color: #f87171;
-      }
-      .fc-tip {
-        margin-top: 1.2rem;
-        font-size: 0.95rem;
-        color: var(--text-3);
-        max-width: 90%;
-        padding: 0.75rem 1rem;
-        background: rgba(59, 130, 246, 0.05);
-        border: 1px dashed rgba(59, 130, 246, 0.2);
-        border-radius: 6px;
-        text-align: center;
-      }
-    </style>
+    
 </head>
 <body>
     <!-- Progress Bar -->
@@ -941,7 +881,6 @@
         <div class="container">
           <div class="quiz-header">
             <h2>Vocabulary Quiz</h2>
-            <button id="quitQuiz" class="quiz-quit">✕ Exit Quiz</button>
           </div>
           
           <!-- Quiz Mode Selection -->
@@ -988,6 +927,9 @@
           </div>
 
           <div id="quizPlayArea" style="display:none;">
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+                <button id="quitQuiz" class="quiz-quit" style="position: static;">✕ Exit Quiz</button>
+            </div>
             <div class="quiz-progress">
               <div class="quiz-progress-bar" id="quizProgressBar"></div>
             </div>
@@ -1103,7 +1045,7 @@
 
     <!-- ==================== VIEW: FORMULAS ==================== -->
     <div class="page-view" id="view-formulas">
-        <section class="formulas-section" style="padding-top: 3rem;">
+        <section class="formulas-section" >
             <div class="container formulas-container">
                 <div style="text-align: center; margin-bottom: 3rem;">
                     <h1 style="font-size: 2.5rem; color: var(--text);">Quants & Logical Reasoning</h1>
@@ -1153,18 +1095,29 @@
 
     <!-- ==================== VIEW: ABOUT ==================== -->
     <div class="page-view" id="view-about">
-        <section class="about-section">
-            <div class="container about-container">
-                <h2>About This Resource</h2>
-                <p>Verbal ability is a core section in placement exams. Vocabulary plays a critical role in answering synonyms, antonyms, reading comprehension, and sentence completion questions. This curated list of 79 high-frequency words with plain-English meanings and usage examples is designed for quick, effective revision.</p>
+        <section class="about-section" style="padding: 0 1.5rem 6rem; text-align: center;">
+            <div class="container about-container" style="max-width: 800px; margin: 0 auto; background: var(--surface); padding: 3rem; border-radius: 16px; border: 1px solid var(--border);">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--text);">About Placement Prep Hub</h2>
+                <p style="font-size: 1.1rem; color: var(--text-2); line-height: 1.8; margin-bottom: 2rem;">Verbal ability and Quantitative Aptitude are core sections in placement exams. Vocabulary plays a critical role in answering synonyms, antonyms, reading comprehension, and sentence completion questions. This curated platform provides high-frequency words, detailed formulas, interactive quizzes, and study modes to ensure you are fully prepared.</p>
+                <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+                    <div style="background: var(--surface-2); padding: 1.5rem; border-radius: 12px; flex: 1; min-width: 200px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📚</div>
+                        <h4 style="color: var(--text); margin-bottom: 0.5rem;">Curated Content</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-3);">Handpicked words and formulas specifically for placement exams.</p>
+                    </div>
+                    <div style="background: var(--surface-2); padding: 1.5rem; border-radius: 12px; flex: 1; min-width: 200px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧠</div>
+                        <h4 style="color: var(--text); margin-bottom: 0.5rem;">Active Recall</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-3);">Use Study Mode and Quizzes to lock knowledge into your long-term memory.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </div> <!-- /view-about -->
 
     <!-- ==================== VIEW: FLASHCARD ==================== -->
     <div class="page-view" id="flashcard-section">
-      <section class="flashcard-section">
-        <div class="container">
+      <section class="flashcard-section" style="width: 100%; max-width: 100vw;">
             <div class="flashcard-toolbar">
               <span class="fc-counter" id="fcCounter">Word 1 of 79</span>
               <div class="toggle-container" style="display: flex; align-items: center; margin-left: auto;">
@@ -1204,7 +1157,6 @@
             </div>
             <button class="fc-nav fc-next" id="fcNext">→</button>
           </div>
-        </div>
       </section>
     </div> <!-- /flashcard-section -->
 

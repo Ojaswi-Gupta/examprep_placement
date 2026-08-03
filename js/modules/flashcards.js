@@ -12,7 +12,9 @@ export function initFlashcards() {
   const fcAudio = document.getElementById('fcAudio');
   
   if (flashcard) {
-    flashcard.addEventListener('click', () => {
+    flashcard.addEventListener('click', (e) => {
+      // Ignore click if it originated from the audio button
+      if (e.target && (e.target.closest('#fcAudio') || e.target.id === 'fcAudio')) return;
       flashcard.classList.toggle('flipped');
     });
   }

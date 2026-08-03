@@ -497,10 +497,19 @@ function shuffleArray(arr) {
   return a;
 }
 
-function exitQuiz() {
+export function exitQuiz() {
   clearInterval(timerInterval);
-  if (typeof window.showView === 'function') {
-    window.showView('view-home');
+  window.speechSynthesis.cancel();
+
+  const quizPlayArea = document.getElementById('quizPlayArea');
+  if (quizPlayArea && quizPlayArea.style.display !== 'none' && quizPlayArea.style.display !== '') {
+    // Actively playing a quiz -> Return to Quiz Selection Menu
+    openQuizSelection();
+  } else {
+    // Already in Quiz Selection Menu -> Return to Home
+    if (typeof window.showView === 'function') {
+      window.showView('view-home');
+    }
   }
 }
 

@@ -2,7 +2,7 @@
 import { WORDS_DATA } from './data/words.js';
 import { initCards, renderCards } from './ui/cards.js';
 import { initFlashcards, startFlashcards, exitFlashcards } from './modules/flashcards.js';
-import { initQuiz, openQuizSelection } from './modules/quiz.js';
+import { initQuiz, openQuizSelection, exitQuiz } from './modules/quiz.js';
 import { initReading } from './modules/reading.js';
 import { initFormulas } from './ui/formulas.js';
 
@@ -74,6 +74,12 @@ document.body.addEventListener('click', (e) => {
   // Quit flashcard
   if (e.target.closest('#quitFlashcard')) {
     exitFlashcards();
+    return;
+  }
+
+  // Quit quiz dynamically (prevents DOM detach issues)
+  if (e.target.closest('#quitQuiz')) {
+    exitQuiz();
     return;
   }
 });
