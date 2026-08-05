@@ -591,5 +591,51 @@ export const DIAGRAMS_DATA = {
       <text x="175" y="30" fill="var(--text)" font-size="12" text-anchor="middle">A</text>
       <text x="175" y="55" fill="var(--green)" font-size="10" text-anchor="middle">26</text>
     </svg>
+  `,
+  "Clock Hands Coincide (0°)": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="50" cy="50" r="40" fill="none" stroke="var(--text)" stroke-width="2" />
+      <circle cx="50" cy="50" r="3" fill="var(--text)" />
+      <!-- Overlapping at angle -->
+      <line x1="50" y1="50" x2="70" y2="20" stroke="var(--green)" stroke-width="4" />
+      <line x1="50" y1="50" x2="75" y2="12.5" stroke="var(--accent)" stroke-width="2" />
+      <text x="50" y="90" fill="var(--text)" font-size="10" text-anchor="middle">θ = 0°</text>
+    </svg>
+  `,
+  "Clock Hands Opposite (180°)": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="50" cy="50" r="40" fill="none" stroke="var(--text)" stroke-width="2" />
+      <circle cx="50" cy="50" r="3" fill="var(--text)" />
+      <!-- Opposite -->
+      <line x1="50" y1="50" x2="70" y2="20" stroke="var(--green)" stroke-width="3" />
+      <line x1="50" y1="50" x2="30" y2="80" stroke="var(--accent)" stroke-width="2" />
+      <text x="50" y="90" fill="var(--text)" font-size="10" text-anchor="middle">θ = 180°</text>
+    </svg>
+  `,
+  "Clock Hands at Right Angle (90°)": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="50" cy="50" r="40" fill="none" stroke="var(--text)" stroke-width="2" />
+      <circle cx="50" cy="50" r="3" fill="var(--text)" />
+      <!-- 90 deg -->
+      <line x1="50" y1="50" x2="80" y2="50" stroke="var(--green)" stroke-width="3" />
+      <line x1="50" y1="50" x2="50" y2="15" stroke="var(--accent)" stroke-width="2" />
+      <path d="M 50 40 L 60 40 L 60 50" fill="none" stroke="var(--text)" stroke-width="1" />
+      <text x="50" y="90" fill="var(--text)" font-size="10" text-anchor="middle">θ = 90°</text>
+    </svg>
+  `,
+  "Calendar Repetition": `
+    <svg viewBox="0 0 200 100" width="100%" height="100" style="max-width: 300px;">
+      <rect x="10" y="30" width="50" height="40" rx="4" fill="rgba(46,204,113, 0.2)" stroke="var(--green)" stroke-width="1" />
+      <text x="35" y="50" fill="var(--text)" font-size="10" text-anchor="middle">Leap Yr</text>
+      <text x="35" y="65" fill="var(--green)" font-size="10" text-anchor="middle">+28 Yrs</text>
+      
+      <rect x="75" y="30" width="50" height="40" rx="4" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.2)" stroke="var(--accent)" stroke-width="1" />
+      <text x="100" y="50" fill="var(--text)" font-size="10" text-anchor="middle">Leap + 1</text>
+      <text x="100" y="65" fill="var(--accent)" font-size="10" text-anchor="middle">+6 Yrs</text>
+      
+      <rect x="140" y="30" width="50" height="40" rx="4" fill="rgba(255,255,255, 0.1)" stroke="var(--text)" stroke-width="1" />
+      <text x="165" y="50" fill="var(--text)" font-size="10" text-anchor="middle">Leap + 2/3</text>
+      <text x="165" y="65" fill="var(--text)" font-size="10" text-anchor="middle">+11 Yrs</text>
+    </svg>
   `
 };

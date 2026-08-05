@@ -829,5 +829,62 @@ export const EXAMPLES_DATA = {
       "(b) $d = 8 = R+r$. They touch externally. 3 common tangents.",
       "(c) $d = 6$. $R-r (2) < d < R+r (8)$. They intersect. 2 common tangents."
     ]
+  },
+  "Clock Hands Coincide (0°)": {
+    question: "At what time between 3 and 4 o'clock will the hands of a clock coincide?",
+    steps: [
+      "Here, $H = 3$.",
+      "Formula: $M = \\frac{60}{11} \\times H$.",
+      "$M = \\frac{60}{11} \\times 3 = \\frac{180}{11} = 16 \\frac{4}{11}$ minutes.",
+      "So, they coincide at $16 \\frac{4}{11}$ min past 3."
+    ]
+  },
+  "Clock Hands Opposite (180°)": {
+    question: "At what time between 8 and 9 o'clock will the hands of a clock be opposite to each other?",
+    steps: [
+      "Here, $H = 8$. Since $H > 6$, we use $- 6$.",
+      "Formula: $M = \\frac{60}{11} \\times (H - 6)$.",
+      "$M = \\frac{60}{11} \\times (8 - 6) = \\frac{60}{11} \\times 2 = \\frac{120}{11} = 10 \\frac{10}{11}$ minutes.",
+      "So, they are opposite at $10 \\frac{10}{11}$ min past 8."
+    ]
+  },
+  "Clock Hands at Right Angle (90°)": {
+    question: "At what time between 5 and 6 o'clock are the hands of a clock at right angles?",
+    steps: [
+      "Here, $H = 5$. We compute both $M_1$ and $M_2$.",
+      "$M_1 = \\frac{60}{11} \\times (5 + 3) = \\frac{60}{11} \\times 8 = \\frac{480}{11} = 43 \\frac{7}{11}$ min.",
+      "$M_2 = \\frac{60}{11} \\times (5 - 3) = \\frac{60}{11} \\times 2 = \\frac{120}{11} = 10 \\frac{10}{11}$ min.",
+      "Both times are valid."
+    ]
+  },
+  "Faulty Clocks": {
+    question: "The minute hand of a clock overtakes the hour hand at intervals of 64 minutes of correct time. How much does the clock gain or lose in a day?",
+    steps: [
+      "Correct interval for hands to coincide is $65 \\frac{5}{11}$ minutes.",
+      "Since it overtakes in 64 mins (faster), it is gaining time.",
+      "Gain in 64 mins = $65 \\frac{5}{11} - 64 = 1 \\frac{5}{11} = \\frac{16}{11}$ mins.",
+      "Gain in 1 day (24 $\\times$ 60 mins) = $\\frac{16}{11} \\times \\frac{1}{64} \\times 24 \\times 60 = 32 \\frac{8}{11}$ minutes."
+    ]
+  },
+  "Calendar Repetition": {
+    question: "Which year will have the same calendar as the year 2017?",
+    steps: [
+      "Find the previous leap year. For 2017, the previous leap year is 2016.",
+      "2017 is a 'Leap + 1' year.",
+      "According to the rule, a 'Leap + 1' year repeats after 6 years.",
+      "$2017 + 6 = 2023$. The calendar for 2017 will repeat in 2023."
+    ]
+  },
+  "Zeller's Rule (Day of the week)": {
+    question: "What day of the week was 15th August 1947?",
+    steps: [
+      "Here, date $k = 15$. Month is August, so $m = 6$ (March=1, Apr=2, May=3, Jun=4, Jul=5, Aug=6).",
+      "Year is 1947, so $D = 47$ and $C = 19$.",
+      "$f = 15 + \\lfloor\\frac{13(6)-1}{5}\\rfloor + 47 + \\lfloor\\frac{47}{4}\\rfloor + \\lfloor\\frac{19}{4}\\rfloor - 2(19)$",
+      "$f = 15 + 15 + 47 + 11 + 4 - 38 = 54$.",
+      "Compute $54 \\pmod 7$. $54 = 7 \\times 7 + 5$. Remainder is 5.",
+      "By Zeller's standard indexing: 0=Sunday, 1=Monday, 2=Tuesday, 3=Wednesday, 4=Thursday, 5=Friday.",
+      "So, it was a Friday."
+    ]
   }
 };

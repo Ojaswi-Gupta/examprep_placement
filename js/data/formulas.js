@@ -234,6 +234,61 @@ export const FORMULAS_DATA = [
           { symbol: "Leap Year", definition: "366 days = 2 odd days" },
           { symbol: "100 Years", definition: "5 odd days" }
         ]
+      },
+      {
+        title: "Clock Hands Coincide (0°)",
+        type: "Clocks",
+        formula: "M = \\frac{60}{11} \\times H",
+        variables: [
+          { symbol: "H", definition: "Starting hour (e.g., between 3 and 4, H=3)" },
+          { symbol: "M", definition: "Minutes past H when they coincide" }
+        ]
+      },
+      {
+        title: "Clock Hands Opposite (180°)",
+        type: "Clocks",
+        formula: "M = \\frac{60}{11} \\times (H \\pm 6)",
+        variables: [
+          { symbol: "+ 6", definition: "If H < 6" },
+          { symbol: "- 6", definition: "If H > 6" }
+        ]
+      },
+      {
+        title: "Clock Hands at Right Angle (90°)",
+        type: "Clocks",
+        formula: "M = \\frac{60}{11} \\times (H \\pm 3)",
+        variables: [
+          { symbol: "\\pm 3", definition: "Use both + and - to get two different times per hour" }
+        ]
+      },
+      {
+        title: "Faulty Clocks",
+        type: "Clocks",
+        formula: "\\text{True Time} = \\left( \\frac{\\text{Correct Interval}}{\\text{Faulty Interval}} \\right) \\times \\text{Total Time Passed}",
+        variables: [
+          { symbol: "Correct Interval", definition: "Usually 65 5/11 minutes for hands to coincide" }
+        ]
+      },
+      {
+        title: "Calendar Repetition",
+        type: "Calendars",
+        formula: "\\text{Leap Year } (+28), \\text{ Leap}+1 (+6), \\text{ Leap}+2/+3 (+11)",
+        variables: [
+          { symbol: "Leap Year", definition: "Repeats after 28 years" },
+          { symbol: "Leap + 1", definition: "Repeats after 6 years" },
+          { symbol: "Leap + 2 / 3", definition: "Repeats after 11 years" }
+        ]
+      },
+      {
+        title: "Zeller's Rule (Day of the week)",
+        type: "Calendars",
+        formula: "f = k + \\left\\lfloor\\frac{13m-1}{5}\\right\\rfloor + D + \\left\\lfloor\\frac{D}{4}\\right\\rfloor + \\left\\lfloor\\frac{C}{4}\\right\\rfloor - 2C \\pmod 7",
+        variables: [
+          { symbol: "k", definition: "Day of the month" },
+          { symbol: "m", definition: "Month (March=1, Feb=12 of prev year)" },
+          { symbol: "D", definition: "Last two digits of year" },
+          { symbol: "C", definition: "First two digits of year" }
+        ]
       }
     ]
   },
