@@ -3,6 +3,7 @@ import { EXAMPLES_DATA } from '../data/examples.js';
 import { DIAGRAMS_DATA } from '../data/diagrams.js';
 
 let currentTopicIndex = null;
+let currentSearchQuery = '';
 let katexLoaded = false;
 
 // Dynamically load KaTeX CSS and JS to bypass any index.html caching issues
@@ -42,6 +43,18 @@ export function initFormulas() {
   if (navLink) {
     navLink.addEventListener('click', () => {
       currentTopicIndex = null;
+      currentSearchQuery = '';
+      const searchInput = document.getElementById('formulasSearchInput');
+      if (searchInput) searchInput.value = '';
+      renderFormulas();
+    });
+  }
+  
+  const searchInput = document.getElementById('formulasSearchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      currentSearchQuery = e.target.value.trim().toLowerCase();
+      currentTopicIndex = null;
       renderFormulas();
     });
   }
@@ -57,11 +70,58 @@ function renderFormulas() {
   if (!container) return;
   container.innerHTML = '';
   
-  if (currentTopicIndex === null) {
+  if (currentSearchQuery) {
+    renderSearchResults(container);
+  } else if (currentTopicIndex === null) {
     renderTopicGrid(container);
   } else {
     renderTopicFormulas(container, currentTopicIndex);
   }
+}
+
+function renderSearchResults(container) {
+  let allFormulas = [];
+  FORMULAS_DATA.forEach(cat => {
+    cat.formulas.forEach(f => {
+      allFormulas.push({ ...f, _categoryName: cat.category });
+    });
+  });
+  
+  const filtered = allFormulas.filter(f => 
+    f.title.toLowerCase().includes(currentSearchQuery) || 
+    f.type.toLowerCase().includes(currentSearchQuery) ||
+    f._categoryName.toLowerCase().includes(currentSearchQuery) ||
+    f.formula.toLowerCase().includes(currentSearchQuery)
+  );
+  
+  const headerContainer = document.createElement('div');
+  headerContainer.style.display = 'flex';
+  headerContainer.style.flexDirection = 'column';
+  headerContainer.style.alignItems = 'flex-start';
+  headerContainer.style.marginBottom = '2rem';
+  
+  const catTitle = document.createElement('h2');
+  catTitle.className = 'section-title';
+  catTitle.textContent = \`Search Results (\${filtered.length})\`;
+  catTitle.style.fontSize = '2.2rem';
+  catTitle.style.width = '100%';
+  catTitle.style.borderBottom = '2px solid var(--border)';
+  catTitle.style.paddingBottom = '0.8rem';
+  headerContainer.appendChild(catTitle);
+  
+  container.appendChild(headerContainer);
+  
+  if (filtered.length === 0) {
+    const emptyState = document.createElement('p');
+    emptyState.style.color = 'var(--text-2)';
+    emptyState.style.textAlign = 'center';
+    emptyState.style.marginTop = '2rem';
+    emptyState.textContent = 'No formulas found matching your search.';
+    container.appendChild(emptyState);
+    return;
+  }
+  
+  renderFormulaCards(container, filtered);
 }
 
 function renderTopicGrid(container) {
@@ -151,10 +211,14 @@ function renderTopicFormulas(container, index) {
   container.appendChild(headerContainer);
   
   // Formulas Grid
+  renderFormulaCards(container, categoryData.formulas);
+}
+
+function renderFormulaCards(container, formulasArray) {
   const cardsGrid = document.createElement('div');
   cardsGrid.className = 'vocab-grid'; // Reusing grid layout
   
-  categoryData.formulas.forEach(f => {
+  formulasArray.forEach(f => {
     const card = document.createElement('div');
     card.className = `card formula-card`;
     
