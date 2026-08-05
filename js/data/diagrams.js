@@ -249,5 +249,131 @@ export const DIAGRAMS_DATA = {
       <text x="115" y="45" fill="var(--text)" font-size="10">r</text>
       <text x="75" y="15" fill="var(--green)" font-size="10" text-anchor="middle">DCT</text>
     </svg>
+  `,
+  "Transverse Common Tangent (TCT)": `
+    <svg viewBox="0 0 150 100" width="100%" height="120" style="max-width: 250px;">
+      <circle cx="40" cy="50" r="30" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <circle cx="110" cy="50" r="15" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <line x1="40" y1="20" x2="110" y2="65" stroke="var(--green)" stroke-width="2" />
+      <line x1="40" y1="50" x2="40" y2="20" stroke="var(--text)" stroke-width="1" stroke-dasharray="2" />
+      <line x1="110" y1="50" x2="110" y2="65" stroke="var(--text)" stroke-width="1" stroke-dasharray="2" />
+      <line x1="40" y1="50" x2="110" y2="50" stroke="var(--text)" stroke-width="1" />
+      <text x="75" y="45" fill="var(--text)" font-size="10" text-anchor="middle">d</text>
+      <text x="30" y="40" fill="var(--text)" font-size="10">R</text>
+      <text x="115" y="65" fill="var(--text)" font-size="10">r</text>
+      <text x="75" y="25" fill="var(--green)" font-size="10" text-anchor="middle">TCT</text>
+    </svg>
+  `,
+  "Relative Speed (Same Direction)": `
+    <svg viewBox="0 0 150 100" width="100%" height="100" style="max-width: 250px;">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="var(--text)" />
+        </marker>
+      </defs>
+      <line x1="20" y1="30" x2="100" y2="30" stroke="var(--accent)" stroke-width="4" marker-end="url(#arrow)" />
+      <line x1="20" y1="70" x2="130" y2="70" stroke="var(--green)" stroke-width="4" marker-end="url(#arrow)" />
+      <text x="60" y="20" fill="var(--text)" font-size="12">S1</text>
+      <text x="75" y="60" fill="var(--text)" font-size="12">S2</text>
+    </svg>
+  `,
+  "Relative Speed (Opposite Direction)": `
+    <svg viewBox="0 0 150 100" width="100%" height="100" style="max-width: 250px;">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="var(--text)" />
+        </marker>
+      </defs>
+      <line x1="20" y1="50" x2="60" y2="50" stroke="var(--accent)" stroke-width="4" marker-end="url(#arrow)" />
+      <line x1="130" y1="50" x2="90" y2="50" stroke="var(--green)" stroke-width="4" marker-end="url(#arrow)" />
+      <text x="40" y="40" fill="var(--text)" font-size="12">S1</text>
+      <text x="110" y="40" fill="var(--text)" font-size="12">S2</text>
+    </svg>
+  `,
+  "Type: All A are B": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="50" cy="50" r="40" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <circle cx="50" cy="50" r="20" fill="rgba(46, 204, 113, 0.2)" stroke="var(--green)" stroke-width="2" />
+      <text x="50" y="54" fill="var(--text)" font-size="12" text-anchor="middle">A</text>
+      <text x="50" y="25" fill="var(--text)" font-size="12" text-anchor="middle">B</text>
+    </svg>
+  `,
+  "Type: Some A are B": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="35" cy="50" r="25" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <circle cx="65" cy="50" r="25" fill="rgba(46, 204, 113, 0.2)" stroke="var(--green)" stroke-width="2" />
+      <text x="25" y="54" fill="var(--text)" font-size="12" text-anchor="middle">A</text>
+      <text x="75" y="54" fill="var(--text)" font-size="12" text-anchor="middle">B</text>
+    </svg>
+  `,
+  "Type: No A is B": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="25" cy="50" r="20" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <circle cx="75" cy="50" r="20" fill="rgba(46, 204, 113, 0.2)" stroke="var(--green)" stroke-width="2" />
+      <text x="25" y="54" fill="var(--text)" font-size="12" text-anchor="middle">A</text>
+      <text x="75" y="54" fill="var(--text)" font-size="12" text-anchor="middle">B</text>
+      <line x1="45" y1="45" x2="55" y2="55" stroke="var(--text)" stroke-width="2" />
+      <line x1="55" y1="45" x2="45" y2="55" stroke="var(--text)" stroke-width="2" />
+    </svg>
+  `,
+  "Standard Directions": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <line x1="50" y1="10" x2="50" y2="90" stroke="var(--text)" stroke-width="2" />
+      <line x1="10" y1="50" x2="90" y2="50" stroke="var(--text)" stroke-width="2" />
+      <text x="50" y="8" fill="var(--accent)" font-size="12" text-anchor="middle">N</text>
+      <text x="50" y="100" fill="var(--accent)" font-size="12" text-anchor="middle">S</text>
+      <text x="96" y="54" fill="var(--accent)" font-size="12" text-anchor="middle">E</text>
+      <text x="4" y="54" fill="var(--accent)" font-size="12" text-anchor="middle">W</text>
+    </svg>
+  `,
+  "Two Circles: Relative Positions": `
+    <svg viewBox="0 0 200 100" width="100%" height="100" style="max-width: 300px;">
+      <!-- Disjoint -->
+      <circle cx="30" cy="45" r="20" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="1" />
+      <circle cx="70" cy="45" r="10" fill="none" stroke="var(--green)" stroke-width="1" />
+      <!-- Touch Externally -->
+      <circle cx="130" cy="45" r="20" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="1" />
+      <circle cx="160" cy="45" r="10" fill="none" stroke="var(--green)" stroke-width="1" />
+      <text x="50" y="85" fill="var(--text)" font-size="10" text-anchor="middle">Disjoint (d > R+r)</text>
+      <text x="145" y="85" fill="var(--text)" font-size="10" text-anchor="middle">Touch Externally (d = R+r)</text>
+    </svg>
+  `,
+  "Shortest Distance (Pythagoras)": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <path d="M 20 80 L 80 80 L 80 20 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <rect x="75" y="75" width="5" height="5" fill="none" stroke="var(--accent)" stroke-width="1" />
+      <text x="50" y="95" fill="var(--text)" font-size="10" text-anchor="middle">Base</text>
+      <text x="95" y="50" fill="var(--text)" font-size="10" text-anchor="middle">Perp</text>
+      <text x="40" y="45" fill="var(--green)" font-size="10" text-anchor="middle">Hypotenuse</text>
+    </svg>
+  `,
+  "Pipes & Cisterns": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="var(--text)" />
+        </marker>
+      </defs>
+      <path d="M 30 30 L 30 80 L 70 80 L 70 30" fill="none" stroke="var(--text)" stroke-width="2" />
+      <rect x="32" y="50" width="36" height="28" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.3)" />
+      <!-- Inlet -->
+      <line x1="20" y1="20" x2="40" y2="40" stroke="var(--green)" stroke-width="3" marker-end="url(#arrow)" />
+      <text x="20" y="15" fill="var(--green)" font-size="10">Inlet (+)</text>
+      <!-- Outlet -->
+      <line x1="60" y1="75" x2="90" y2="90" stroke="var(--accent)" stroke-width="3" marker-end="url(#arrow)" />
+      <text x="80" y="98" fill="var(--accent)" font-size="10">Outlet (-)</text>
+    </svg>
+  `,
+  "Angle Between Clock Hands": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="50" cy="50" r="40" fill="none" stroke="var(--text)" stroke-width="2" />
+      <circle cx="50" cy="50" r="3" fill="var(--text)" />
+      <!-- Minute Hand -->
+      <line x1="50" y1="50" x2="50" y2="20" stroke="var(--accent)" stroke-width="2" />
+      <!-- Hour Hand -->
+      <line x1="50" y1="50" x2="70" y2="60" stroke="var(--green)" stroke-width="3" />
+      <path d="M 50 35 A 15 15 0 0 1 58 52" fill="none" stroke="var(--text)" stroke-width="1" stroke-dasharray="2" />
+      <text x="60" y="40" fill="var(--text)" font-size="10">θ</text>
+    </svg>
   `
 };
