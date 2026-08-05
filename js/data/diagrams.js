@@ -375,5 +375,23 @@ export const DIAGRAMS_DATA = {
       <path d="M 50 35 A 15 15 0 0 1 58 52" fill="none" stroke="var(--text)" stroke-width="1" stroke-dasharray="2" />
       <text x="60" y="40" fill="var(--text)" font-size="10">θ</text>
     </svg>
+  `,
+  "Apollonius Theorem": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <!-- Triangle ABC -->
+      <path d="M 50 20 L 20 80 L 80 80 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <!-- Median AD -->
+      <line x1="50" y1="20" x2="50" y2="80" stroke="var(--green)" stroke-width="2" stroke-dasharray="4" />
+      <!-- Labels -->
+      <text x="50" y="15" fill="var(--text)" font-size="10" text-anchor="middle">A</text>
+      <text x="15" y="85" fill="var(--text)" font-size="10" text-anchor="middle">B</text>
+      <text x="85" y="85" fill="var(--text)" font-size="10" text-anchor="middle">C</text>
+      <text x="50" y="92" fill="var(--green)" font-size="10" text-anchor="middle">D (Midpoint)</text>
+      <!-- Tick marks for midpoint -->
+      <line x1="33" y1="78" x2="33" y2="82" stroke="var(--text)" stroke-width="1.5" />
+      <line x1="37" y1="78" x2="37" y2="82" stroke="var(--text)" stroke-width="1.5" />
+      <line x1="63" y1="78" x2="63" y2="82" stroke="var(--text)" stroke-width="1.5" />
+      <line x1="67" y1="78" x2="67" y2="82" stroke="var(--text)" stroke-width="1.5" />
+    </svg>
   `
 };
