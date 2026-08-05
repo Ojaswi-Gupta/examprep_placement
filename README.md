@@ -40,8 +40,9 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 - **Active Reading UI:** A beautifully formatted, distraction-free reading viewer that highlights vocabulary in context.
 
 ### 📐 4. Quants & Logical Reasoning
-- **Formula Cheatsheets:** A categorized, easily scannable library of essential formulas and concepts for quantitative aptitude and reasoning logic.
-- **Quick Reference:** Perfectly formatted layout for quick brushing up before an interview round.
+- **Drill-Down Topic Dashboard:** A clean, icon-based grid dashboard allowing you to select a specific aptitude topic (like "Time & Work") and drill down into only the relevant formulas, eliminating cognitive overload.
+- **Textbook-Quality Math:** 100% of the mathematical formulas are beautifully rendered using the **KaTeX engine** (via dynamic CDN) and standard LaTeX syntax. Fractions, exponents, and square roots are stacked vertically just like a printed textbook.
+- **Formula Cheatsheets:** A categorized library of essential formulas and concepts for quantitative aptitude and reasoning logic perfectly tailored for technical interviews.
 
 ## 🎨 UI/UX & Design
 
@@ -54,7 +55,7 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 
 - **HTML5:** Semantic and accessible structure.
 - **CSS3 (Vanilla):** Modern, dark-themed UI relying on CSS Variables (Custom Properties), Flexbox, and CSS Grid. 
-- **Vanilla JavaScript:** Zero dependencies (aside from a lightweight confetti CDN). Fast, efficient, and native.
+- **Vanilla JavaScript:** Zero heavy frameworks. Uses ES6 modules and relies on lightweight CDNs (KaTeX for math rendering, Canvas-Confetti for celebrations) dynamically injected for maximum performance.
 
 ## 🛠️ How to Run Locally
 
