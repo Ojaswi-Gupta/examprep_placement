@@ -1,5 +1,6 @@
 import { FORMULAS_DATA } from '../data/formulas.js';
 import { EXAMPLES_DATA } from '../data/examples.js';
+import { DIAGRAMS_DATA } from '../data/diagrams.js';
 
 let currentTopicIndex = null;
 let katexLoaded = false;
@@ -217,11 +218,22 @@ function renderTopicFormulas(container, index) {
       `;
     }
 
+    let diagramHtml = '';
+    const diagramData = DIAGRAMS_DATA[f.title];
+    if (diagramData) {
+      diagramHtml = `
+      <div class="formula-diagram" style="text-align: center; margin: 1.5rem 0; background: var(--surface-2); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+        ${diagramData}
+      </div>
+      `;
+    }
+
     card.innerHTML = `
       <div class="word-header" style="border-bottom: none; padding-bottom: 0;">
         <h3 class="word" style="font-size: 1.15rem;">${f.title}</h3>
         <span class="simple ${typeClass}">${f.type}</span>
       </div>
+      ${diagramHtml}
       <div class="formula-math" style="margin: 1.5rem 0; font-size: 1.3rem; color: var(--green); text-align: center; background: var(--surface-2); padding: 1rem; border-radius: 8px; border: 1px dashed var(--border); overflow-x: auto;">
         ${formulaHtml}
       </div>
