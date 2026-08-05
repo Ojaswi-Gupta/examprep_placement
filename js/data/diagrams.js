@@ -393,5 +393,203 @@ export const DIAGRAMS_DATA = {
       <line x1="63" y1="78" x2="63" y2="82" stroke="var(--text)" stroke-width="1.5" />
       <line x1="67" y1="78" x2="67" y2="82" stroke="var(--text)" stroke-width="1.5" />
     </svg>
+  `,
+  "Trains crossing each other": `
+    <svg viewBox="0 0 200 100" width="100%" height="100" style="max-width: 250px;">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="var(--text)" />
+        </marker>
+      </defs>
+      <rect x="20" y="30" width="50" height="15" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.3)" stroke="var(--accent)" stroke-width="2" />
+      <text x="45" y="42" fill="var(--text)" font-size="10" text-anchor="middle">L1 (S1)</text>
+      <rect x="130" y="55" width="40" height="15" fill="rgba(46, 204, 113, 0.3)" stroke="var(--green)" stroke-width="2" />
+      <text x="150" y="67" fill="var(--text)" font-size="10" text-anchor="middle">L2 (S2)</text>
+      <line x1="75" y1="37" x2="100" y2="37" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)" />
+      <line x1="125" y1="62" x2="100" y2="62" stroke="var(--green)" stroke-width="2" marker-end="url(#arrow)" />
+    </svg>
+  `,
+  "Boats & Streams": `
+    <svg viewBox="0 0 150 100" width="100%" height="120" style="max-width: 200px;">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="var(--text)" />
+        </marker>
+      </defs>
+      <!-- Stream (Water) -->
+      <path d="M 10 70 Q 30 60 50 70 T 90 70 T 130 70" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.5" />
+      <path d="M 20 80 Q 40 70 60 80 T 100 80 T 140 80" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.5" />
+      <!-- Boat -->
+      <path d="M 40 60 L 100 60 L 90 70 L 50 70 Z" fill="rgba(46,204,113, 0.3)" stroke="var(--green)" stroke-width="2" />
+      <line x1="70" y1="40" x2="70" y2="60" stroke="var(--text)" stroke-width="2" />
+      <polygon points="70,40 90,50 70,60" fill="var(--text)" />
+      <!-- Speed vectors -->
+      <line x1="105" y1="55" x2="135" y2="55" stroke="var(--green)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="120" y="50" fill="var(--green)" font-size="10" text-anchor="middle">v (Boat)</text>
+      <line x1="105" y1="85" x2="135" y2="85" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="120" y="95" fill="var(--accent)" font-size="10" text-anchor="middle">u (Stream)</text>
+    </svg>
+  `,
+  "Circular Tracks (Meeting)": `
+    <svg viewBox="0 0 150 150" width="100%" height="150" style="max-width: 200px;">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="var(--text)" />
+        </marker>
+      </defs>
+      <circle cx="75" cy="75" r="50" fill="none" stroke="var(--text)" stroke-width="2" stroke-dasharray="4" />
+      <circle cx="75" cy="25" r="4" fill="var(--text)" />
+      <text x="75" y="15" fill="var(--text)" font-size="10" text-anchor="middle">Start</text>
+      <path d="M 75 20 A 55 55 0 0 1 125 55" fill="none" stroke="var(--accent)" stroke-width="3" marker-end="url(#arrow)" />
+      <text x="135" y="40" fill="var(--accent)" font-size="10">S1</text>
+      <path d="M 70 25 A 45 45 0 0 0 35 55" fill="none" stroke="var(--green)" stroke-width="3" marker-end="url(#arrow)" />
+      <text x="15" y="40" fill="var(--green)" font-size="10">S2</text>
+    </svg>
+  `,
+  "Rule of Alligation": `
+    <svg viewBox="0 0 150 120" width="100%" height="150" style="max-width: 250px;">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L9,3 z" fill="var(--text)" />
+        </marker>
+      </defs>
+      <text x="20" y="20" fill="var(--accent)" font-size="12" text-anchor="middle">C</text>
+      <text x="130" y="20" fill="var(--green)" font-size="12" text-anchor="middle">D</text>
+      <text x="75" y="65" fill="var(--text)" font-size="12" text-anchor="middle">M</text>
+      <text x="20" y="110" fill="var(--green)" font-size="10" text-anchor="middle">D - M</text>
+      <text x="130" y="110" fill="var(--accent)" font-size="10" text-anchor="middle">M - C</text>
+      <line x1="30" y1="30" x2="65" y2="55" stroke="var(--text)" stroke-width="1.5" />
+      <line x1="120" y1="30" x2="85" y2="55" stroke="var(--text)" stroke-width="1.5" />
+      <line x1="65" y1="75" x2="30" y2="100" stroke="var(--text)" stroke-width="1.5" marker-end="url(#arrow)" />
+      <line x1="85" y1="75" x2="120" y2="100" stroke="var(--text)" stroke-width="1.5" marker-end="url(#arrow)" />
+    </svg>
+  `,
+  "Coordinate Geometry (Distance & Area)": `
+    <svg viewBox="0 0 150 150" width="100%" height="150" style="max-width: 200px;">
+      <!-- Axes -->
+      <line x1="20" y1="120" x2="140" y2="120" stroke="var(--text)" stroke-width="1" />
+      <line x1="30" y1="10" x2="30" y2="130" stroke="var(--text)" stroke-width="1" />
+      <!-- Points -->
+      <circle cx="50" cy="90" r="3" fill="var(--accent)" />
+      <text x="45" y="85" fill="var(--accent)" font-size="10">P1</text>
+      <circle cx="110" cy="40" r="3" fill="var(--green)" />
+      <text x="115" y="35" fill="var(--green)" font-size="10">P2</text>
+      <!-- Line -->
+      <line x1="50" y1="90" x2="110" y2="40" stroke="var(--text)" stroke-width="2" stroke-dasharray="4" />
+      <text x="85" y="60" fill="var(--text)" font-size="10" text-anchor="middle">d</text>
+    </svg>
+  `,
+  "Generations Tree Method": `
+    <svg viewBox="0 0 150 150" width="100%" height="150" style="max-width: 200px;">
+      <!-- Gen 1 -->
+      <rect x="40" y="10" width="20" height="20" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.2)" stroke="var(--accent)" stroke-width="2" />
+      <circle cx="90" cy="20" r="10" fill="rgba(46,204,113, 0.2)" stroke="var(--green)" stroke-width="2" />
+      <line x1="60" y1="20" x2="80" y2="20" stroke="var(--text)" stroke-width="1.5" stroke-dasharray="2" /> 
+      
+      <!-- Gen 2 -->
+      <line x1="70" y1="20" x2="70" y2="60" stroke="var(--text)" stroke-width="1.5" />
+      <line x1="40" y1="60" x2="100" y2="60" stroke="var(--text)" stroke-width="1.5" />
+      
+      <circle cx="40" cy="80" r="10" fill="rgba(46,204,113, 0.2)" stroke="var(--green)" stroke-width="2" />
+      <line x1="40" y1="60" x2="40" y2="70" stroke="var(--text)" stroke-width="1.5" />
+      
+      <rect x="90" y="70" width="20" height="20" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.2)" stroke="var(--accent)" stroke-width="2" />
+      <line x1="100" y1="60" x2="100" y2="70" stroke="var(--text)" stroke-width="1.5" />
+      
+      <text x="70" y="120" fill="var(--text)" font-size="10" text-anchor="middle">■ Male   ● Female</text>
+    </svg>
+  `,
+  "Tangents from an External Point": `
+    <svg viewBox="0 0 150 120" width="100%" height="150" style="max-width: 250px;">
+      <circle cx="100" cy="60" r="40" fill="none" stroke="var(--accent)" stroke-width="2" />
+      <circle cx="100" cy="60" r="2" fill="var(--text)" />
+      <text x="110" y="65" fill="var(--text)" font-size="10">O</text>
+      <!-- Point P -->
+      <circle cx="20" cy="60" r="3" fill="var(--text)" />
+      <text x="10" y="65" fill="var(--text)" font-size="10">P</text>
+      <!-- Tangents -->
+      <line x1="20" y1="60" x2="80" y2="25" stroke="var(--green)" stroke-width="2" />
+      <line x1="20" y1="60" x2="80" y2="95" stroke="var(--green)" stroke-width="2" />
+      <!-- Radii to tangency points -->
+      <line x1="100" y1="60" x2="80" y2="25" stroke="var(--text)" stroke-width="1" stroke-dasharray="2" />
+      <line x1="100" y1="60" x2="80" y2="95" stroke="var(--text)" stroke-width="1" stroke-dasharray="2" />
+      <!-- Labels -->
+      <text x="85" y="20" fill="var(--text)" font-size="10">A</text>
+      <text x="85" y="110" fill="var(--text)" font-size="10">B</text>
+      <!-- 90 deg markers -->
+      <path d="M 80 32 L 87 35 L 90 28" fill="none" stroke="var(--text)" stroke-width="1" />
+      <path d="M 80 88 L 87 85 L 90 92" fill="none" stroke="var(--text)" stroke-width="1" />
+    </svg>
+  `,
+  "Isosceles Triangle": `
+    <svg viewBox="0 0 100 120" width="100%" height="150" style="max-width: 200px;">
+      <path d="M 50 20 L 20 90 L 80 90 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <line x1="30" y1="55" x2="38" y2="52" stroke="var(--text)" stroke-width="2" />
+      <line x1="70" y1="55" x2="62" y2="52" stroke="var(--text)" stroke-width="2" />
+      <text x="25" y="50" fill="var(--text)" font-size="10">a</text>
+      <text x="70" y="50" fill="var(--text)" font-size="10">a</text>
+      <text x="50" y="105" fill="var(--text)" font-size="10" text-anchor="middle">b (Base)</text>
+    </svg>
+  `,
+  "Sine and Cosine Rules": `
+    <svg viewBox="0 0 120 120" width="100%" height="150" style="max-width: 200px;">
+      <path d="M 20 90 L 100 90 L 60 20 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <text x="60" y="15" fill="var(--text)" font-size="10" text-anchor="middle">A</text>
+      <text x="10" y="100" fill="var(--text)" font-size="10">B</text>
+      <text x="105" y="100" fill="var(--text)" font-size="10">C</text>
+      <text x="60" y="105" fill="var(--green)" font-size="10" text-anchor="middle">a</text>
+      <text x="30" y="50" fill="var(--green)" font-size="10">c</text>
+      <text x="85" y="50" fill="var(--green)" font-size="10">b</text>
+    </svg>
+  `,
+  "Area of a Triangle (Heron's Formula)": `
+    <svg viewBox="0 0 120 120" width="100%" height="150" style="max-width: 200px;">
+      <path d="M 20 90 L 110 90 L 50 30 Z" fill="none" stroke="var(--accent)" stroke-width="2" />
+      <text x="65" y="105" fill="var(--text)" font-size="10" text-anchor="middle">a</text>
+      <text x="25" y="55" fill="var(--text)" font-size="10">b</text>
+      <text x="85" y="55" fill="var(--text)" font-size="10">c</text>
+    </svg>
+  `,
+  "Forward Alphabet Positional Value": `
+    <svg viewBox="0 0 200 60" width="100%" height="60" style="max-width: 300px;">
+      <rect x="10" y="10" width="30" height="30" rx="4" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1" />
+      <text x="25" y="30" fill="var(--text)" font-size="12" text-anchor="middle">A</text>
+      <text x="25" y="55" fill="var(--accent)" font-size="10" text-anchor="middle">1</text>
+      
+      <rect x="50" y="10" width="30" height="30" rx="4" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1" />
+      <text x="65" y="30" fill="var(--text)" font-size="12" text-anchor="middle">B</text>
+      <text x="65" y="55" fill="var(--accent)" font-size="10" text-anchor="middle">2</text>
+      
+      <text x="100" y="30" fill="var(--text)" font-size="14" text-anchor="middle">...</text>
+      
+      <rect x="120" y="10" width="30" height="30" rx="4" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1" />
+      <text x="135" y="30" fill="var(--text)" font-size="12" text-anchor="middle">Y</text>
+      <text x="135" y="55" fill="var(--accent)" font-size="10" text-anchor="middle">25</text>
+      
+      <rect x="160" y="10" width="30" height="30" rx="4" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1" />
+      <text x="175" y="30" fill="var(--text)" font-size="12" text-anchor="middle">Z</text>
+      <text x="175" y="55" fill="var(--accent)" font-size="10" text-anchor="middle">26</text>
+    </svg>
+  `,
+  "Reverse Alphabet Positional Value": `
+    <svg viewBox="0 0 200 60" width="100%" height="60" style="max-width: 300px;">
+      <rect x="10" y="10" width="30" height="30" rx="4" fill="var(--surface-2)" stroke="var(--green)" stroke-width="1" />
+      <text x="25" y="30" fill="var(--text)" font-size="12" text-anchor="middle">Z</text>
+      <text x="25" y="55" fill="var(--green)" font-size="10" text-anchor="middle">1</text>
+      
+      <rect x="50" y="10" width="30" height="30" rx="4" fill="var(--surface-2)" stroke="var(--green)" stroke-width="1" />
+      <text x="65" y="30" fill="var(--text)" font-size="12" text-anchor="middle">Y</text>
+      <text x="65" y="55" fill="var(--green)" font-size="10" text-anchor="middle">2</text>
+      
+      <text x="100" y="30" fill="var(--text)" font-size="14" text-anchor="middle">...</text>
+      
+      <rect x="120" y="10" width="30" height="30" rx="4" fill="var(--surface-2)" stroke="var(--green)" stroke-width="1" />
+      <text x="135" y="30" fill="var(--text)" font-size="12" text-anchor="middle">B</text>
+      <text x="135" y="55" fill="var(--green)" font-size="10" text-anchor="middle">25</text>
+      
+      <rect x="160" y="10" width="30" height="30" rx="4" fill="var(--surface-2)" stroke="var(--green)" stroke-width="1" />
+      <text x="175" y="30" fill="var(--text)" font-size="12" text-anchor="middle">A</text>
+      <text x="175" y="55" fill="var(--green)" font-size="10" text-anchor="middle">26</text>
+    </svg>
   `
 };
