@@ -1,4 +1,5 @@
 import { FORMULAS_DATA } from '../data/formulas.js';
+import { EXAMPLES_DATA } from '../data/examples.js';
 
 let currentTopicIndex = null;
 let katexLoaded = false;
@@ -180,6 +181,42 @@ function renderTopicFormulas(container, index) {
       console.warn("KaTeX not loaded, falling back to raw LaTeX");
     }
     
+    let exampleHtml = '';
+    const exampleData = EXAMPLES_DATA[f.title];
+    
+    if (exampleData) {
+      let stepsHtml = exampleData.steps.map((step, i) => {
+        // Need to render math in steps if it contains $...$
+        // For simplicity, we can let katex render it if we parse it, 
+        // but since we want an interactive easy way, we'll just output the text
+        // and ideally run it through KaTeX if it has $...$ or just use simple styling.
+        let stepText = step;
+        if (window.katex) {
+            // Replace $...$ with katex rendered strings
+            stepText = step.replace(/\\$([^\\$]+)\\$/g, (match, math) => {
+                try {
+                    return katex.renderToString(math, { throwOnError: false, strict: false });
+                } catch(e) { return match; }
+            });
+        }
+        return `<li style="margin-bottom: 0.5rem; color: var(--text-2);">${stepText}</li>`;
+      }).join('');
+
+      exampleHtml = `
+      <div class="formula-example" style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+        <button class="example-toggle" style="background: none; border: none; color: var(--accent); cursor: pointer; font-family: inherit; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; padding: 0;">
+          <span>▶</span> Show Conceptual Example
+        </button>
+        <div class="example-content" style="display: none; margin-top: 1rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px;">
+          <p style="font-weight: 500; margin-bottom: 0.8rem; color: var(--text);">${exampleData.question}</p>
+          <ol style="padding-left: 1.2rem; margin: 0; font-size: 0.9rem;">
+            ${stepsHtml}
+          </ol>
+        </div>
+      </div>
+      `;
+    }
+
     card.innerHTML = `
       <div class="word-header" style="border-bottom: none; padding-bottom: 0;">
         <h3 class="word" style="font-size: 1.15rem;">${f.title}</h3>
@@ -192,7 +229,21 @@ function renderTopicFormulas(container, index) {
         <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-3); margin-bottom: 0.8rem;">Variables Defined</h4>
         ${varsHtml}
       </div>
+      ${exampleHtml}
     `;
+    
+    // Add event listener for the toggle button if it exists
+    if (exampleData) {
+        const toggleBtn = card.querySelector('.example-toggle');
+        const contentDiv = card.querySelector('.example-content');
+        toggleBtn.addEventListener('click', () => {
+            const isHidden = contentDiv.style.display === 'none';
+            contentDiv.style.display = isHidden ? 'block' : 'none';
+            toggleBtn.querySelector('span').textContent = isHidden ? '▼' : '▶';
+            toggleBtn.childNodes[2].textContent = isHidden ? ' Hide Conceptual Example' : ' Show Conceptual Example';
+        });
+    }
+
     cardsGrid.appendChild(card);
   });
   
