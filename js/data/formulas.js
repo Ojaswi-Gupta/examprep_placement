@@ -115,12 +115,30 @@ export const FORMULAS_DATA = [
       },
       {
         title: "Trains crossing each other",
-        type: "Advanced",
-        formula: "\\text{Time} = \\frac{L_1 + L_2}{\\text{Relative S}}",
+        type: "Relative Speed",
+        formula: "\\text{Time} = \\frac{L_1 + L_2}{S_1 \\pm S_2}",
         variables: [
-          { symbol: "L_1", definition: "Length of the first train" },
-          { symbol: "L_2", definition: "Length of the second train (or platform/bridge)" },
-          { symbol: "Relative S", definition: "Relative Speed of the objects" }
+          { symbol: "L_1, L_2", definition: "Lengths of the trains" },
+          { symbol: "S_1, S_2", definition: "Speeds of the trains" },
+          { symbol: "\\pm", definition: "+ for opposite, - for same direction" }
+        ]
+      },
+      {
+        title: "Boats & Streams",
+        type: "Relative Speed",
+        formula: "\\begin{aligned} \\text{Downstream (D)} &= u + v \\\\ \\text{Upstream (U)} &= u - v \\\\ u &= \\frac{D + U}{2} \\\\ v &= \\frac{D - U}{2} \\end{aligned}",
+        variables: [
+          { symbol: "u", definition: "Speed of boat in still water" },
+          { symbol: "v", definition: "Speed of stream/current" }
+        ]
+      },
+      {
+        title: "Circular Tracks (Meeting)",
+        type: "Relative Speed",
+        formula: "\\begin{aligned} \\text{Time for first meet} &= \\frac{\\text{Length of Track}}{\\text{Relative Speed}} \\\\ \\text{Meet at Start} &= \\text{LCM}\\left(\\frac{L}{S_1}, \\frac{L}{S_2}\\right) \\end{aligned}",
+        variables: [
+          { symbol: "L", definition: "Length of track" },
+          { symbol: "S_1, S_2", definition: "Speeds of runners" }
         ]
       }
     ]
@@ -138,28 +156,144 @@ export const FORMULAS_DATA = [
       },
       {
         title: "Two Persons Working Together",
-        type: "Advanced",
-        formula: "\\text{Total Days} = \\frac{A \\times B}{A + B}",
+        type: "Time & Work",
+        formula: "\\text{Together Time} = \\frac{xy}{x+y}",
         variables: [
-          { symbol: "A", definition: "Days taken by Person 1 to complete the work alone" },
-          { symbol: "B", definition: "Days taken by Person 2 to complete the work alone" }
+          { symbol: "x", definition: "Time taken by A alone" },
+          { symbol: "y", definition: "Time taken by B alone" }
+        ]
+      },
+      {
+        title: "Pipes & Cisterns",
+        type: "Time & Work",
+        formula: "\\text{Net Part Filled in 1 hr} = \\frac{1}{x} - \\frac{1}{y}",
+        variables: [
+          { symbol: "x", definition: "Time to fill (Inlet)" },
+          { symbol: "y", definition: "Time to empty (Outlet)" }
         ]
       },
       {
         title: "Chain Rule (MDH Formula)",
-        type: "Advanced",
+        type: "Time & Work",
         formula: "\\frac{M_1 \\times D_1 \\times H_1}{W_1} = \\frac{M_2 \\times D_2 \\times H_2}{W_2}",
         variables: [
-          { symbol: "M", definition: "Number of Men/Workers" },
-          { symbol: "D", definition: "Number of Days" },
-          { symbol: "H", definition: "Number of Hours per day" },
-          { symbol: "W", definition: "Amount of Work done" }
+          { symbol: "M", definition: "Number of workers (Men)" },
+          { symbol: "D", definition: "Number of days" },
+          { symbol: "H", definition: "Hours per day" },
+          { symbol: "W", definition: "Amount of work done" }
+        ]
+      },
+      {
+        title: "Alternate Days Work",
+        type: "Time & Work",
+        formula: "\\text{Find LCM of times, determine efficiency per day, and calculate work done in a 2-day cycle.}",
+        variables: [
+          { symbol: "Cycle", definition: "A+B's combined work over 2 days" }
         ]
       }
     ]
   },
   {
-    category: "Permutation & Combination",
+    category: "Mixtures, Clocks & Calendars",
+    formulas: [
+      {
+        title: "Rule of Alligation",
+        type: "Mixtures",
+        formula: "\\frac{\\text{Qty of Cheaper}}{\\text{Qty of Dearer}} = \\frac{d - m}{m - c}",
+        variables: [
+          { symbol: "c", definition: "Cost Price of Cheaper" },
+          { symbol: "d", definition: "Cost Price of Dearer" },
+          { symbol: "m", definition: "Mean Price of Mixture" }
+        ]
+      },
+      {
+        title: "Successive Replacement",
+        type: "Mixtures",
+        formula: "\\text{Final Qty} = \\text{Initial Qty} \\times \\left(1 - \\frac{y}{x}\\right)^n",
+        variables: [
+          { symbol: "x", definition: "Initial total quantity of liquid" },
+          { symbol: "y", definition: "Quantity replaced each time" },
+          { symbol: "n", definition: "Number of replacement operations" }
+        ]
+      },
+      {
+        title: "Angle Between Clock Hands",
+        type: "Clocks",
+        formula: "\\theta = \\left| 30H - 5.5M \\right|",
+        variables: [
+          { symbol: "H", definition: "Hour (1-12)" },
+          { symbol: "M", definition: "Minutes (0-59)" }
+        ]
+      },
+      {
+        title: "Odd Days (Calendars)",
+        type: "Calendars",
+        formula: "\\text{Odd Days} = \\text{Total Days} \\pmod 7",
+        variables: [
+          { symbol: "Ordinary Year", definition: "365 days = 1 odd day" },
+          { symbol: "Leap Year", definition: "366 days = 2 odd days" },
+          { symbol: "100 Years", definition: "5 odd days" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Number System & Algebra",
+    formulas: [
+      {
+        title: "Number of Factors",
+        type: "Number System",
+        formula: "\\text{If } N = p^a \\times q^b \\times r^c \\text{, Factors} = (a+1)(b+1)(c+1)",
+        variables: [
+          { symbol: "p, q, r", definition: "Prime factors of N" }
+        ]
+      },
+      {
+        title: "Sum of Factors",
+        type: "Number System",
+        formula: "\\text{Sum} = \\frac{p^{a+1}-1}{p-1} \\times \\frac{q^{b+1}-1}{q-1} \\times \\dots",
+        variables: [
+          { symbol: "p, q", definition: "Prime factors" }
+        ]
+      },
+      {
+        title: "Number of Trailing Zeros",
+        type: "Number System",
+        formula: "Z = \\left\\lfloor \\frac{N}{5} \\right\\rfloor + \\left\\lfloor \\frac{N}{25} \\right\\rfloor + \\left\\lfloor \\frac{N}{125} \\right\\rfloor + \\dots",
+        variables: [
+          { symbol: "N!", definition: "Factorial of N" }
+        ]
+      },
+      {
+        title: "Arithmetic Progression (AP)",
+        type: "Algebra",
+        formula: "\\begin{aligned} T_n &= a + (n-1)d \\\\ S_n &= \\frac{n}{2}[2a + (n-1)d] \\end{aligned}",
+        variables: [
+          { symbol: "a", definition: "First term" },
+          { symbol: "d", definition: "Common difference" }
+        ]
+      },
+      {
+        title: "Geometric Progression (GP)",
+        type: "Algebra",
+        formula: "\\begin{aligned} T_n &= a r^{n-1} \\\\ S_n &= \\frac{a(r^n - 1)}{r - 1} \\text{ (for r>1)} \\\\ S_\\infty &= \\frac{a}{1 - r} \\text{ (for |r|<1)} \\end{aligned}",
+        variables: [
+          { symbol: "a", definition: "First term" },
+          { symbol: "r", definition: "Common ratio" }
+        ]
+      },
+      {
+        title: "Logarithm Properties",
+        type: "Algebra",
+        formula: "\\begin{aligned} \\log_a(xy) &= \\log_a x + \\log_a y \\\\ \\log_a(x/y) &= \\log_a x - \\log_a y \\\\ \\log_a(x^n) &= n \\log_a x \\\\ \\log_b a &= \\frac{\\log_c a}{\\log_c b} \\end{aligned}",
+        variables: [
+          { symbol: "a, b, c", definition: "Bases" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Advanced Probability & P&C",
     formulas: [
       {
         title: "Permutation (Arrangement)",
@@ -182,10 +316,35 @@ export const FORMULAS_DATA = [
       },
       {
         title: "Circular Permutation",
-        type: "Advanced",
+        type: "Arrangements",
         formula: "\\text{Ways} = (n - 1)!",
         variables: [
-          { symbol: "n", definition: "Number of items arranged in a circle" }
+          { symbol: "n", definition: "Number of distinct objects" }
+        ]
+      },
+      {
+        title: "Derangement",
+        type: "Advanced P&C",
+        formula: "D_n = n! \\left( 1 - \\frac{1}{1!} + \\frac{1}{2!} - \\frac{1}{3!} + \\dots + \\frac{(-1)^n}{n!} \\right)",
+        variables: [
+          { symbol: "n", definition: "Number of items" }
+        ]
+      },
+      {
+        title: "Stars and Bars (Distribution)",
+        type: "Advanced P&C",
+        formula: "\\text{Ways to distribute } n \\text{ identical items among } r \\text{ groups} = {}^{n+r-1}C_{r-1}",
+        variables: [
+          { symbol: "n", definition: "Identical items" },
+          { symbol: "r", definition: "Distinct groups" }
+        ]
+      },
+      {
+        title: "Bayes Theorem",
+        type: "Probability",
+        formula: "P(A|B) = \\frac{P(B|A) \\times P(A)}{P(B)}",
+        variables: [
+          { symbol: "P(A|B)", definition: "Prob of A given B has occurred" }
         ]
       }
     ]
@@ -449,6 +608,43 @@ export const FORMULAS_DATA = [
         variables: [
           { symbol: "n", definition: "Number of sides" },
           { symbol: "a", definition: "Length of a side" }
+        ]
+      },
+      {
+        title: "Sine and Cosine Rules",
+        type: "Advanced Geometry",
+        formula: "\\begin{aligned} \\frac{a}{\\sin A} &= \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R \\\\ a^2 &= b^2 + c^2 - 2bc \\cos A \\end{aligned}",
+        variables: [
+          { symbol: "R", definition: "Circumradius" },
+          { symbol: "A, B, C", definition: "Angles of triangle" },
+          { symbol: "a, b, c", definition: "Sides opposite to angles" }
+        ]
+      },
+      {
+        title: "Apollonius Theorem",
+        type: "Advanced Geometry",
+        formula: "AB^2 + AC^2 = 2(AD^2 + BD^2)",
+        variables: [
+          { symbol: "AD", definition: "Median to side BC" },
+          { symbol: "BD", definition: "Half of side BC" }
+        ]
+      },
+      {
+        title: "Euler's Polyhedron Formula",
+        type: "Advanced Geometry",
+        formula: "V + F = E + 2",
+        variables: [
+          { symbol: "V", definition: "Vertices" },
+          { symbol: "F", definition: "Faces" },
+          { symbol: "E", definition: "Edges" }
+        ]
+      },
+      {
+        title: "Coordinate Geometry (Distance & Area)",
+        type: "Advanced Geometry",
+        formula: "\\begin{aligned} d &= \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \\\\ \\text{Area} &= \\frac{1}{2}|x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2)| \\end{aligned}",
+        variables: [
+          { symbol: "(x_n, y_n)", definition: "Coordinates of points" }
         ]
       }
     ]

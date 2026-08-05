@@ -553,5 +553,179 @@ export const EXAMPLES_DATA = {
       "Number of sides $n = 360° / \\text{Exterior Angle}$.",
       "$n = 360 / 40 = 9$ sides."
     ]
+  },
+  "Pipes & Cisterns": {
+    question: "Pipe A can fill a tank in 12 hours and Pipe B can fill it in 15 hours. Pipe C can empty the full tank in 20 hours. If all three are opened together, how long will it take to fill the tank?",
+    steps: [
+      "Net part filled in 1 hour = $(1/12) + (1/15) - (1/20)$.",
+      "LCM of 12, 15, 20 is 60.",
+      "Net part = $(5 + 4 - 3) / 60 = 6 / 60 = 1 / 10$.",
+      "The tank will be completely filled in 10 hours."
+    ]
+  },
+  "Alternate Days Work": {
+    question: "A can do a piece of work in 10 days and B in 15 days. They work on alternate days, starting with A. In how many days will the work be finished?",
+    steps: [
+      "Let total work be LCM(10, 15) = 30 units.",
+      "A's efficiency = 3 units/day, B's efficiency = 2 units/day.",
+      "In a 2-day cycle, work done = $3 + 2 = 5$ units.",
+      "Number of such cycles = $30 / 5 = 6$ cycles.",
+      "Total days = $6 \\times 2 = 12$ days."
+    ]
+  },
+  "Rule of Alligation": {
+    question: "In what ratio must a grocer mix two varieties of pulses costing Rs. 15 and Rs. 20 per kg respectively so as to get a mixture worth Rs. 16.50 per kg?",
+    steps: [
+      "Cheaper ($c$) = 15, Dearer ($d$) = 20, Mean ($m$) = 16.50.",
+      "Apply Alligation Cross: $(d - m) = 20 - 16.50 = 3.50$.",
+      "$(m - c) = 16.50 - 15 = 1.50$.",
+      "Ratio = $3.50 : 1.50 = 35 : 15 = 7 : 3$."
+    ]
+  },
+  "Successive Replacement": {
+    question: "A container contains 40 liters of milk. From this container, 4 liters of milk was taken out and replaced by water. This process was repeated further two times. How much milk is now contained by the container?",
+    steps: [
+      "Initial qty $x = 40$, replaced qty $y = 4$, operations $n = 3$.",
+      "Final Milk = $x(1 - y/x)^n$.",
+      "Final Milk = $40(1 - 4/40)^3 = 40(1 - 1/10)^3 = 40(9/10)^3$.",
+      "Final Milk = $40 \\times \\frac{729}{1000} = 29.16$ liters."
+    ]
+  },
+  "Angle Between Clock Hands": {
+    question: "What is the angle between the hour hand and the minute hand at 3:40?",
+    steps: [
+      "Here $H = 3$, $M = 40$.",
+      "Formula: $\\theta = |30H - 5.5M|$.",
+      "$\\theta = |30(3) - 5.5(40)| = |90 - 220| = |-130|$.",
+      "The angle is 130°."
+    ]
+  },
+  "Odd Days (Calendars)": {
+    question: "What day of the week was 15th August 1947?",
+    steps: [
+      "Count odd days from 1 AD to 1946: 1600 (0 odd) + 300 (1 odd) = 1 odd day.",
+      "46 years = 11 leap + 35 ordinary = $11(2) + 35(1) = 57$ odd days. $57 \\pmod 7 = 1$ odd day.",
+      "1947 Jan to Aug: $3(J) + 0(F) + 3(M) + 2(A) + 3(M) + 2(J) + 3(J) + 15(A) = 31$ days.",
+      "$31 \\pmod 7 = 3$ odd days.",
+      "Total odd days = $1 + 1 + 3 = 5$. 5 represents Friday."
+    ]
+  },
+  "Number of Factors": {
+    question: "Find the total number of factors of 1080.",
+    steps: [
+      "Prime factorization: $1080 = 108 \\times 10 = (2^2 \\times 3^3) \\times (2 \\times 5) = 2^3 \\times 3^3 \\times 5^1$.",
+      "Powers are 3, 3, 1.",
+      "Number of factors = $(3+1)(3+1)(1+1)$.",
+      "Total factors = $4 \\times 4 \\times 2 = 32$."
+    ]
+  },
+  "Sum of Factors": {
+    question: "Find the sum of all factors of 120.",
+    steps: [
+      "Prime factorization: $120 = 2^3 \\times 3^1 \\times 5^1$.",
+      "Sum = $\\left(\\frac{2^{3+1}-1}{2-1}\\right) \\times \\left(\\frac{3^{1+1}-1}{3-1}\\right) \\times \\left(\\frac{5^{1+1}-1}{5-1}\\right)$.",
+      "Sum = $\\left(\\frac{15}{1}\\right) \\times \\left(\\frac{8}{2}\\right) \\times \\left(\\frac{24}{4}\\right)$.",
+      "Sum = $15 \\times 4 \\times 6 = 360$."
+    ]
+  },
+  "Number of Trailing Zeros": {
+    question: "Find the number of trailing zeros in 100! (100 factorial).",
+    steps: [
+      "The number of zeros is determined by the highest power of 5 dividing 100!.",
+      "Formula: $Z = \\lfloor 100/5 \\rfloor + \\lfloor 100/25 \\rfloor + \\dots$",
+      "$Z = 20 + 4 = 24$.",
+      "Therefore, 100! ends with 24 zeros."
+    ]
+  },
+  "Arithmetic Progression (AP)": {
+    question: "The sum of the first 5 terms of an AP is 40 and the sum of the first 10 terms is 155. Find the 1st term.",
+    steps: [
+      "$S_5 = 40 \\implies (5/2)[2a + 4d] = 40 \\implies 2a + 4d = 16 \\implies a + 2d = 8$.",
+      "$S_{10} = 155 \\implies (10/2)[2a + 9d] = 155 \\implies 2a + 9d = 31$.",
+      "Substitute $2a = 16 - 4d$: $16 - 4d + 9d = 31 \\implies 5d = 15 \\implies d = 3$.",
+      "$a + 2(3) = 8 \\implies a = 2$."
+    ]
+  },
+  "Geometric Progression (GP)": {
+    question: "The sum of an infinite geometric series is 15 and the sum of the squares of these terms is 45. Find the first term.",
+    steps: [
+      "Given $a / (1-r) = 15 \\implies a = 15(1-r)$.",
+      "Sum of squares forms a GP with first term $a^2$ and ratio $r^2$.",
+      "$a^2 / (1 - r^2) = 45$.",
+      "Substitute $a$: $(15(1-r))^2 / (1-r)(1+r) = 45$.",
+      "$225(1-r) / (1+r) = 45 \\implies 5(1-r) = 1+r \\implies 5 - 5r = 1 + r \\implies 6r = 4 \\implies r = 2/3$.",
+      "First term $a = 15(1 - 2/3) = 15(1/3) = 5$."
+    ]
+  },
+  "Logarithm Properties": {
+    question: "If $\\log_{10} 2 = 0.3010$, find the value of $\\log_{10} 25$.",
+    steps: [
+      "$\\log_{10} 25 = \\log_{10} (100 / 4) = \\log_{10} 100 - \\log_{10} 4$.",
+      "$\\log_{10} 100 = 2$.",
+      "$\\log_{10} 4 = \\log_{10} (2^2) = 2 \\log_{10} 2$.",
+      "$\\log_{10} 25 = 2 - 2(0.3010) = 2 - 0.6020 = 1.3980$."
+    ]
+  },
+  "Derangement": {
+    question: "A person writes 4 letters and addresses 4 envelopes. In how many ways can all letters be placed in the wrong envelopes?",
+    steps: [
+      "This is a derangement problem with $n = 4$.",
+      "$D_4 = 4! \\left( 1 - \\frac{1}{1!} + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!} \\right)$.",
+      "$D_4 = 24 \\left( 0 + \\frac{1}{2} - \\frac{1}{6} + \\frac{1}{24} \\right)$.",
+      "$D_4 = 12 - 4 + 1 = 9$ ways."
+    ]
+  },
+  "Stars and Bars (Distribution)": {
+    question: "In how many ways can 10 identical chocolates be distributed among 3 children such that every child gets at least 1 chocolate?",
+    steps: [
+      "First, give 1 chocolate to each child. Remaining chocolates $n = 7$. Groups $r = 3$.",
+      "Ways to distribute = ${}^{n+r-1}C_{r-1} = {}^{7+3-1}C_{3-1} = {}^{9}C_{2}$.",
+      "${}^{9}C_{2} = \\frac{9 \\times 8}{2 \\times 1} = 36$ ways."
+    ]
+  },
+  "Bayes Theorem": {
+    question: "Bag A contains 3 red, 4 white balls. Bag B contains 5 red, 6 white balls. A bag is chosen at random and a ball is drawn, which is found to be red. What is the probability it came from Bag A?",
+    steps: [
+      "$P(A) = 1/2$, $P(B) = 1/2$.",
+      "$P(Red|A) = 3/7$. $P(Red|B) = 5/11$.",
+      "$P(A|Red) = \\frac{P(Red|A)P(A)}{P(Red|A)P(A) + P(Red|B)P(B)}$.",
+      "$P(A|Red) = \\frac{(3/7)(1/2)}{(3/7)(1/2) + (5/11)(1/2)} = \\frac{3/7}{3/7 + 5/11} = \\frac{3/7}{68/77} = \\frac{33}{68}$."
+    ]
+  },
+  "Sine and Cosine Rules": {
+    question: "In triangle ABC, $a = 5$, $b = 7$, and $c = 8$. Find the angle B.",
+    steps: [
+      "Using Cosine Rule: $\\cos B = \\frac{a^2 + c^2 - b^2}{2ac}$.",
+      "$\\cos B = \\frac{5^2 + 8^2 - 7^2}{2(5)(8)} = \\frac{25 + 64 - 49}{80} = \\frac{40}{80} = \\frac{1}{2}$.",
+      "Since $\\cos B = 1/2$, the angle $B = 60°$."
+    ]
+  },
+  "Apollonius Theorem": {
+    question: "In a triangle ABC, $AB=6, AC=8$, and $BC=10$. Find the length of the median AD to side BC.",
+    steps: [
+      "Here $BC=10$, so $BD = DC = 5$.",
+      "Apollonius Theorem: $AB^2 + AC^2 = 2(AD^2 + BD^2)$.",
+      "$6^2 + 8^2 = 2(AD^2 + 5^2) \\implies 36 + 64 = 2(AD^2 + 25)$.",
+      "$100 = 2(AD^2 + 25) \\implies 50 = AD^2 + 25 \\implies AD^2 = 25$.",
+      "Median $AD = 5$."
+    ]
+  },
+  "Euler's Polyhedron Formula": {
+    question: "A solid polyhedron has 12 faces and 30 edges. How many vertices does it have?",
+    steps: [
+      "Euler's Formula: $V + F = E + 2$.",
+      "Given $F = 12$, $E = 30$.",
+      "$V + 12 = 30 + 2 \\implies V + 12 = 32$.",
+      "Vertices $V = 20$."
+    ]
+  },
+  "Coordinate Geometry (Distance & Area)": {
+    question: "Find the area of the triangle formed by the points (1, 2), (4, 6), and (7, 2).",
+    steps: [
+      "Using the determinant formula: Area = $\\frac{1}{2}|x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2)|$.",
+      "Area = $\\frac{1}{2}|1(6 - 2) + 4(2 - 2) + 7(2 - 6)|$.",
+      "Area = $\\frac{1}{2}|1(4) + 4(0) + 7(-4)| = \\frac{1}{2}|4 - 28| = \\frac{1}{2}|-24|$.",
+      "Area = $12$ sq units."
+    ]
   }
 };
