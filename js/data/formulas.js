@@ -316,6 +316,41 @@ export const FORMULAS_DATA = [
         variables: [
           { symbol: "a, b, c", definition: "Bases" }
         ]
+      },
+      {
+        title: "Quadratic Equation Roots",
+        type: "Advanced",
+        formula: "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
+        variables: [
+          { symbol: "a, b, c", definition: "Coefficients of ax^2 + bx + c = 0" },
+          { symbol: "x", definition: "Roots of the equation" }
+        ]
+      },
+      {
+        title: "Algebraic Expansion",
+        type: "Simple",
+        formula: "(a + b)^2 = a^2 + 2ab + b^2",
+        variables: [
+          { symbol: "a, b", definition: "Terms in the expression" }
+        ]
+      },
+      {
+        title: "Sum of First n Natural Numbers",
+        type: "Simple",
+        formula: "\\text{Sum} = \\frac{n(n + 1)}{2}",
+        variables: [
+          { symbol: "n", definition: "Total number of terms" }
+        ]
+      },
+      {
+        title: "LCM and HCF Relation",
+        type: "Advanced",
+        formula: "\\text{LCM}(a,b) \\times \\text{HCF}(a,b) = a \\times b",
+        variables: [
+          { symbol: "a, b", definition: "Two given numbers" },
+          { symbol: "LCM", definition: "Least Common Multiple" },
+          { symbol: "HCF", definition: "Highest Common Factor" }
+        ]
       }
     ]
   },
@@ -672,46 +707,6 @@ export const FORMULAS_DATA = [
         formula: "\\begin{aligned} d &= \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \\\\ \\text{Area} &= \\frac{1}{2}|x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2)| \\end{aligned}",
         variables: [
           { symbol: "(x_n, y_n)", definition: "Coordinates of points" }
-        ]
-      }
-    ]
-  },
-  {
-    category: "Algebra & Number System",
-    formulas: [
-      {
-        title: "Quadratic Equation Roots",
-        type: "Advanced",
-        formula: "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
-        variables: [
-          { symbol: "a, b, c", definition: "Coefficients of ax^2 + bx + c = 0" },
-          { symbol: "x", definition: "Roots of the equation" }
-        ]
-      },
-      {
-        title: "Algebraic Expansion",
-        type: "Simple",
-        formula: "(a + b)^2 = a^2 + 2ab + b^2",
-        variables: [
-          { symbol: "a, b", definition: "Terms in the expression" }
-        ]
-      },
-      {
-        title: "Sum of First n Natural Numbers",
-        type: "Simple",
-        formula: "\\text{Sum} = \\frac{n(n + 1)}{2}",
-        variables: [
-          { symbol: "n", definition: "Total number of terms" }
-        ]
-      },
-      {
-        title: "LCM and HCF Relation",
-        type: "Advanced",
-        formula: "\\text{LCM}(a,b) \\times \\text{HCF}(a,b) = a \\times b",
-        variables: [
-          { symbol: "a, b", definition: "Two given numbers" },
-          { symbol: "LCM", definition: "Least Common Multiple" },
-          { symbol: "HCF", definition: "Highest Common Factor" }
         ]
       }
     ]
