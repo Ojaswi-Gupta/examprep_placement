@@ -668,6 +668,25 @@ export const EXAMPLES_DATA = {
       "Therefore, 100! ends with 24 zeros."
     ]
   },
+  "Boats & Streams": {
+    question: "A man can row downstream at 14 km/hr and upstream at 9 km/hr. Find his speed in still water and the rate of the current.",
+    steps: [
+      "Downstream speed ($D$) = 14 km/hr, Upstream speed ($U$) = 9 km/hr.",
+      "Speed in still water ($u$) = $\\frac{D + U}{2}$.",
+      "$u = \\frac{14 + 9}{2} = \\frac{23}{2} = 11.5$ km/hr.",
+      "Rate of current ($v$) = $\\frac{D - U}{2}$.",
+      "$v = \\frac{14 - 9}{2} = \\frac{5}{2} = 2.5$ km/hr."
+    ]
+  },
+  "Circular Tracks (Meeting)": {
+    question: "A and B start running on a circular track of 600m with speeds of 10 m/s and 15 m/s respectively in the same direction. When will they meet for the first time?",
+    steps: [
+      "Length of track ($L$) = 600m.",
+      "Since they run in the same direction, Relative Speed = $15 - 10 = 5$ m/s.",
+      "Time to meet for the first time = $\\frac{\\text{Length}}{\\text{Relative Speed}}$.",
+      "Time = $\\frac{600}{5} = 120$ seconds (or 2 minutes)."
+    ]
+  },
   "Arithmetic Progression (AP)": {
     question: "The sum of the first 5 terms of an AP is 40 and the sum of the first 10 terms is 155. Find the 1st term.",
     steps: [

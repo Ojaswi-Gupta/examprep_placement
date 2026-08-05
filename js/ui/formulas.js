@@ -194,7 +194,7 @@ function renderTopicFormulas(container, index) {
         let stepText = step;
         if (window.katex) {
             // Replace $...$ with katex rendered strings
-            stepText = step.replace(/\\$([^\\$]+)\\$/g, (match, math) => {
+            stepText = step.replace(/\$([^$]+)\$/g, (match, math) => {
                 try {
                     return katex.renderToString(math, { throwOnError: false, strict: false });
                 } catch(e) { return match; }
