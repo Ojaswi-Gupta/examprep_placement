@@ -1742,3 +1742,119 @@ input:checked + .slider:before {
 #flashcard-section.page-view {
   padding-top: 0 !important;
 }
+
+/* ========================================================================= */
+/*                      FORMULAS SECTION (Quants & LR)                       */
+/* ========================================================================= */
+
+.formulas-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  position: relative;
+}
+
+.formulas-sidebar {
+  flex: 0 0 250px;
+  position: sticky;
+  top: 100px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.formulas-sidebar h3 {
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.formulas-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formulas-sidebar a {
+  text-decoration: none;
+  color: var(--text-2);
+  font-size: 0.95rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.formulas-sidebar a:hover,
+.formulas-sidebar a.active {
+  background: rgba(142, 68, 173, 0.15); /* Accent tint */
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.formulas-content {
+  flex: 1;
+  min-width: 0; /* Prevents flex blowout */
+}
+
+/* Scrollbar for sidebar */
+.formulas-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.formulas-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.formulas-sidebar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .formulas-layout {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .formulas-sidebar {
+    position: sticky;
+    top: 70px;
+    z-index: 100;
+    flex: none;
+    width: 100%;
+    padding: 1rem;
+    max-height: none;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    margin-left: -1rem; /* Extend to edges */
+    margin-right: -1rem;
+    width: calc(100% + 2rem);
+  }
+  
+  .formulas-sidebar h3 {
+    display: none;
+  }
+  
+  .formulas-sidebar nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .formulas-sidebar nav::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .formulas-sidebar a {
+    white-space: nowrap;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+}

@@ -1,7 +1,53 @@
 import { FORMULAS_DATA } from '../data/formulas.js';
 
+let currentTopicIndex = null;
+let katexLoaded = false;
+
+// Dynamically load KaTeX CSS and JS to bypass any index.html caching issues
+async function loadKatex() {
+  if (katexLoaded || window.katex) return true;
+  
+  return new Promise((resolve, reject) => {
+    // 1. Load CSS
+    if (!document.querySelector('link[href*="katex.min.css"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css';
+      document.head.appendChild(link);
+    }
+    
+    // 2. Load JS
+    if (!document.querySelector('script[src*="katex.min.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js';
+      script.onload = () => {
+        katexLoaded = true;
+        resolve(true);
+      };
+      script.onerror = () => {
+        console.error("Failed to load KaTeX script");
+        resolve(false);
+      };
+      document.head.appendChild(script);
+    } else {
+      resolve(true);
+    }
+  });
+}
+
 export function initFormulas() {
-  renderFormulas();
+  const navLink = document.querySelector('a[data-view="view-formulas"]');
+  if (navLink) {
+    navLink.addEventListener('click', () => {
+      currentTopicIndex = null;
+      renderFormulas();
+    });
+  }
+  
+  // Preload KaTeX when formulas module is initialized
+  loadKatex().then(() => {
+    renderFormulas();
+  });
 }
 
 function renderFormulas() {
@@ -9,53 +55,146 @@ function renderFormulas() {
   if (!container) return;
   container.innerHTML = '';
   
-  FORMULAS_DATA.forEach((categoryData) => {
-    const section = document.createElement('div');
-    section.className = 'formula-category-section';
+  if (currentTopicIndex === null) {
+    renderTopicGrid(container);
+  } else {
+    renderTopicFormulas(container, currentTopicIndex);
+  }
+}
+
+function renderTopicGrid(container) {
+  const grid = document.createElement('div');
+  grid.style.display = 'grid';
+  grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
+  grid.style.gap = '1.5rem';
+  
+  FORMULAS_DATA.forEach((categoryData, index) => {
+    const card = document.createElement('div');
+    card.className = 'card topic-card';
+    card.style.cursor = 'pointer';
+    card.style.display = 'flex';
+    card.style.flexDirection = 'column';
+    card.style.alignItems = 'center';
+    card.style.justifyContent = 'center';
+    card.style.padding = '3rem 1.5rem';
+    card.style.textAlign = 'center';
+    card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
     
-    const catTitle = document.createElement('h2');
-    catTitle.className = 'section-title';
-    catTitle.textContent = categoryData.category;
-    catTitle.style.marginTop = '2rem';
-    catTitle.style.marginBottom = '1.5rem';
-    catTitle.style.fontSize = '1.8rem';
-    catTitle.style.borderBottom = '2px solid var(--border)';
-    catTitle.style.paddingBottom = '0.5rem';
-    section.appendChild(catTitle);
+    // Icon mapping based on keywords
+    let icon = '📘';
+    const cat = categoryData.category.toLowerCase();
+    if (cat.includes('percent')) icon = '📈';
+    else if (cat.includes('profit')) icon = '💰';
+    else if (cat.includes('time') || cat.includes('speed')) icon = '⏱️';
+    else if (cat.includes('interest')) icon = '💵';
+    else if (cat.includes('mensuration') || cat.includes('geometry')) icon = '📐';
+    else if (cat.includes('algebra')) icon = '✖️';
+    else if (cat.includes('blood')) icon = '🩸';
+    else if (cat.includes('direction')) icon = '🧭';
+    else if (cat.includes('syllogism')) icon = '⭕';
+    else if (cat.includes('coding')) icon = '🕵️‍♂️';
     
-    const cardsGrid = document.createElement('div');
-    cardsGrid.className = 'vocab-grid'; // Reusing grid layout from vocabulary
+    card.onmouseover = () => { card.style.transform = 'translateY(-5px)'; };
+    card.onmouseout = () => { card.style.transform = 'translateY(0)'; };
     
-    categoryData.formulas.forEach(f => {
-      const card = document.createElement('div');
-      card.className = `card formula-card`; // Reusing .card for glassmorphism
-      
-      const typeClass = f.type === 'Advanced' ? 'type-advanced' : 'type-simple';
-      
-      let varsHtml = f.variables.map(v => 
-        `<div style="display: flex; gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.9rem;">
-           <span style="color: var(--accent); font-weight: 600; min-width: 40px;">${v.symbol}</span> 
-           <span style="color: var(--text-2);">${v.definition}</span>
-         </div>`
-      ).join('');
-      
-      card.innerHTML = `
-        <div class="word-header" style="border-bottom: none; padding-bottom: 0;">
-          <h3 class="word" style="font-size: 1.15rem;">${f.title}</h3>
-          <span class="simple ${typeClass}">${f.type}</span>
-        </div>
-        <div class="formula-math" style="margin: 1.5rem 0; font-size: 1.3rem; font-weight: 600; color: var(--green); text-align: center; background: var(--surface-2); padding: 1rem; border-radius: 8px; border: 1px dashed var(--border);">
-          ${f.formula}
-        </div>
-        <div class="formula-vars" style="background: rgba(255, 255, 255, 0.02); padding: 1rem; border-radius: 8px;">
-          <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-3); margin-bottom: 0.8rem;">Variables Defined</h4>
-          ${varsHtml}
-        </div>
-      `;
-      cardsGrid.appendChild(card);
-    });
+    card.innerHTML = `
+      <div style="font-size: 3.5rem; margin-bottom: 1rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));">${icon}</div>
+      <h3 style="font-size: 1.3rem; color: var(--text); font-weight: 600;">${categoryData.category}</h3>
+      <p style="color: var(--accent); margin-top: 0.75rem; font-size: 0.9rem; font-weight: 600; background: var(--surface-2); padding: 0.3rem 0.8rem; border-radius: 50px;">${categoryData.formulas.length} Formulas</p>
+    `;
     
-    section.appendChild(cardsGrid);
-    container.appendChild(section);
+    card.onclick = () => {
+      currentTopicIndex = index;
+      renderFormulas();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    
+    grid.appendChild(card);
   });
+  
+  container.appendChild(grid);
+}
+
+function renderTopicFormulas(container, index) {
+  const categoryData = FORMULAS_DATA[index];
+  
+  // Header section for back button and title
+  const headerContainer = document.createElement('div');
+  headerContainer.style.display = 'flex';
+  headerContainer.style.flexDirection = 'column';
+  headerContainer.style.alignItems = 'flex-start';
+  headerContainer.style.marginBottom = '2rem';
+  
+  const backBtn = document.createElement('button');
+  backBtn.className = 'cta-button cta-outline';
+  backBtn.innerHTML = '← Back to Topics';
+  backBtn.style.padding = '0.5rem 1rem';
+  backBtn.style.fontSize = '0.9rem';
+  backBtn.style.marginBottom = '1.5rem';
+  backBtn.onclick = () => {
+    currentTopicIndex = null;
+    renderFormulas();
+  };
+  headerContainer.appendChild(backBtn);
+  
+  const catTitle = document.createElement('h2');
+  catTitle.className = 'section-title';
+  catTitle.textContent = categoryData.category;
+  catTitle.style.fontSize = '2.2rem';
+  catTitle.style.width = '100%';
+  catTitle.style.borderBottom = '2px solid var(--border)';
+  catTitle.style.paddingBottom = '0.8rem';
+  headerContainer.appendChild(catTitle);
+  
+  container.appendChild(headerContainer);
+  
+  // Formulas Grid
+  const cardsGrid = document.createElement('div');
+  cardsGrid.className = 'vocab-grid'; // Reusing grid layout
+  
+  categoryData.formulas.forEach(f => {
+    const card = document.createElement('div');
+    card.className = `card formula-card`;
+    
+    const typeClass = f.type === 'Advanced' ? 'type-advanced' : 'type-simple';
+    
+    let varsHtml = f.variables.map(v => 
+      `<div style="display: flex; gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.9rem;">
+         <span style="color: var(--accent); font-weight: 600; min-width: 40px;">${v.symbol}</span> 
+         <span style="color: var(--text-2);">${v.definition}</span>
+       </div>`
+    ).join('');
+    
+    let formulaHtml = f.formula;
+    if (window.katex) {
+      try {
+        formulaHtml = katex.renderToString(f.formula, {
+          throwOnError: false,
+          displayMode: true,
+          strict: false
+        });
+      } catch (e) {
+        console.error("KaTeX Error:", e);
+      }
+    } else {
+      console.warn("KaTeX not loaded, falling back to raw LaTeX");
+    }
+    
+    card.innerHTML = `
+      <div class="word-header" style="border-bottom: none; padding-bottom: 0;">
+        <h3 class="word" style="font-size: 1.15rem;">${f.title}</h3>
+        <span class="simple ${typeClass}">${f.type}</span>
+      </div>
+      <div class="formula-math" style="margin: 1.5rem 0; font-size: 1.3rem; color: var(--green); text-align: center; background: var(--surface-2); padding: 1rem; border-radius: 8px; border: 1px dashed var(--border); overflow-x: auto;">
+        ${formulaHtml}
+      </div>
+      <div class="formula-vars" style="background: rgba(255, 255, 255, 0.02); padding: 1rem; border-radius: 8px;">
+        <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-3); margin-bottom: 0.8rem;">Variables Defined</h4>
+        ${varsHtml}
+      </div>
+    `;
+    cardsGrid.appendChild(card);
+  });
+  
+  container.appendChild(cardsGrid);
 }
