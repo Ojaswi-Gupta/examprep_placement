@@ -249,7 +249,7 @@ export const FORMULAS_DATA = [
     category: "Mensuration (2D & 3D)",
     formulas: [
       {
-        title: "Area of a Triangle",
+        title: "Area of a Triangle (Base & Height)",
         type: "Simple",
         formula: "\\text{Area} = \\frac{1}{2} \\times b \\times h",
         variables: [
@@ -258,11 +258,82 @@ export const FORMULAS_DATA = [
         ]
       },
       {
+        title: "Area of a Triangle (Heron's Formula)",
+        type: "Advanced",
+        formula: "\\begin{aligned} s &= \\frac{a + b + c}{2} \\\\ \\text{Area} &= \\sqrt{s(s - a)(s - b)(s - c)} \\end{aligned}",
+        variables: [
+          { symbol: "a, b, c", definition: "Side lengths of the triangle" },
+          { symbol: "s", definition: "Semi-perimeter" }
+        ]
+      },
+      {
+        title: "Right-Angled Triangle",
+        type: "Simple",
+        formula: "\\text{Area} = \\frac{1}{2} \\times \\text{Base} \\times \\text{Perpendicular}",
+        variables: [
+          { symbol: "Hypotenuse²", definition: "Base² + Perpendicular² (Pythagoras)" }
+        ]
+      },
+      {
         title: "Area of an Equilateral Triangle",
         type: "Advanced",
         formula: "\\text{Area} = \\frac{\\sqrt{3}}{4} \\times a^2",
         variables: [
           { symbol: "a", definition: "Length of a side" }
+        ]
+      },
+      {
+        title: "Isosceles Triangle",
+        type: "Advanced",
+        formula: "\\text{Area} = \\frac{b}{4} \\times \\sqrt{4a^2 - b^2}",
+        variables: [
+          { symbol: "a", definition: "Length of each of the equal sides" },
+          { symbol: "b", definition: "Length of the base" }
+        ]
+      },
+      {
+        title: "Rectangle",
+        type: "Simple",
+        formula: "\\begin{aligned} \\text{Area} &= l \\times w \\\\ \\text{Perimeter} &= 2(l + w) \\end{aligned}",
+        variables: [
+          { symbol: "l", definition: "Length" },
+          { symbol: "w", definition: "Width" }
+        ]
+      },
+      {
+        title: "Square",
+        type: "Simple",
+        formula: "\\begin{aligned} \\text{Area} &= a^2 \\\\ \\text{Perimeter} &= 4a \\end{aligned}",
+        variables: [
+          { symbol: "a", definition: "Side length" },
+          { symbol: "d", definition: "Diagonal = a\\sqrt{2}" }
+        ]
+      },
+      {
+        title: "Parallelogram",
+        type: "Simple",
+        formula: "\\text{Area} = b \\times h",
+        variables: [
+          { symbol: "b", definition: "Base" },
+          { symbol: "h", definition: "Height" }
+        ]
+      },
+      {
+        title: "Rhombus",
+        type: "Advanced",
+        formula: "\\begin{aligned} \\text{Area} &= \\frac{1}{2} \\times d_1 \\times d_2 \\\\ \\text{Perimeter} &= 4a \\end{aligned}",
+        variables: [
+          { symbol: "d_1, d_2", definition: "Diagonals" },
+          { symbol: "a", definition: "Side length" }
+        ]
+      },
+      {
+        title: "Trapezium",
+        type: "Advanced",
+        formula: "\\text{Area} = \\frac{1}{2} \\times (a + b) \\times h",
+        variables: [
+          { symbol: "a, b", definition: "Parallel sides" },
+          { symbol: "h", definition: "Height (Distance between parallel sides)" }
         ]
       },
       {
@@ -275,12 +346,38 @@ export const FORMULAS_DATA = [
         ]
       },
       {
+        title: "Cube (Volume & Surface Area)",
+        type: "Simple",
+        formula: "\\begin{aligned} \\text{Volume} &= a^3 \\\\ \\text{Total SA} &= 6a^2 \\end{aligned}",
+        variables: [
+          { symbol: "a", definition: "Edge length" }
+        ]
+      },
+      {
+        title: "Cuboid (Volume & Surface Area)",
+        type: "Simple",
+        formula: "\\begin{aligned} \\text{Volume} &= l \\times b \\times h \\\\ \\text{Total SA} &= 2(lb + bh + hl) \\end{aligned}",
+        variables: [
+          { symbol: "l, b, h", definition: "Length, Breadth, Height" }
+        ]
+      },
+      {
         title: "Cylinder (Volume & Surface Area)",
         type: "Advanced",
-        formula: "\\begin{aligned} \\text{Volume} &= \\pi r^2 h \\\\ \\text{Curved SA} &= 2\\pi rh \\end{aligned}",
+        formula: "\\begin{aligned} \\text{Volume} &= \\pi r^2 h \\\\ \\text{Curved SA} &= 2\\pi rh \\\\ \\text{Total SA} &= 2\\pi r(r + h) \\end{aligned}",
         variables: [
           { symbol: "r", definition: "Radius of the circular base" },
           { symbol: "h", definition: "Height of the cylinder" }
+        ]
+      },
+      {
+        title: "Cone (Volume & Surface Area)",
+        type: "Advanced",
+        formula: "\\begin{aligned} \\text{Volume} &= \\frac{1}{3} \\pi r^2 h \\\\ \\text{Curved SA} &= \\pi rl \\\\ \\text{Total SA} &= \\pi r(r + l) \\end{aligned}",
+        variables: [
+          { symbol: "r", definition: "Radius of base" },
+          { symbol: "h", definition: "Vertical height" },
+          { symbol: "l", definition: "Slant height (l² = r² + h²)" }
         ]
       },
       {
