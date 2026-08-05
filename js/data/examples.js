@@ -485,5 +485,73 @@ export const EXAMPLES_DATA = {
       "For BAT: B(2), A(1), T(20). Sum = 23.",
       "Result = $23 \\times 2 = 46$."
     ]
+  },
+  "Hemisphere (Volume & Surface Area)": {
+    question: "A solid hemisphere of radius 14 cm is melted and recast into a solid cone of the same base radius. Find the height of the cone.",
+    steps: [
+      "Volume of hemisphere = $\\frac{2}{3} \\pi r^3 = \\frac{2}{3} \\pi (14)^3$.",
+      "Volume of cone = $\\frac{1}{3} \\pi r^2 h = \\frac{1}{3} \\pi (14)^2 h$.",
+      "Equate volumes: $\\frac{2}{3} \\pi (14)^3 = \\frac{1}{3} \\pi (14)^2 h$.",
+      "Cancel $\\frac{1}{3} \\pi (14)^2$ from both sides: $2 \\times 14 = h$.",
+      "Height of the cone $h = 28$ cm."
+    ]
+  },
+  "Hollow Sphere (Spherical Shell)": {
+    question: "A hollow spherical shell is made of a metal of density 7 g/cm³. If its internal and external radii are 3 cm and 5 cm respectively, find the mass of the shell.",
+    steps: [
+      "Volume of metal = Volume of outer sphere - Volume of inner sphere.",
+      "$V = \\frac{4}{3} \\pi (R^3 - r^3) = \\frac{4}{3} \\times \\frac{22}{7} \\times (5^3 - 3^3)$.",
+      "$V = \\frac{88}{21} \\times (125 - 27) = \\frac{88}{21} \\times 98 = 88 \\times \\frac{14}{3} = 410.67$ cm³.",
+      "Mass = Volume $\\times$ Density = $410.67 \\times 7 = 2874.67$ grams (or 2.87 kg)."
+    ]
+  },
+  "Hollow Cylinder (Pipe)": {
+    question: "A metallic pipe is 77 cm long. The inner diameter of a cross section is 4 cm, the outer diameter being 4.4 cm. Find its total surface area.",
+    steps: [
+      "Inner radius $r = 2$ cm, Outer radius $R = 2.2$ cm, Height $h = 77$ cm.",
+      "Inner Curved Surface Area = $2\\pi rh = 2 \\times \\frac{22}{7} \\times 2 \\times 77 = 968$ cm².",
+      "Outer Curved Surface Area = $2\\pi Rh = 2 \\times \\frac{22}{7} \\times 2.2 \\times 77 = 1064.8$ cm².",
+      "Area of two base rings = $2 \\times \\pi (R^2 - r^2) = 2 \\times \\frac{22}{7} \\times (2.2^2 - 2^2) = \\frac{44}{7} \\times (4.84 - 4) = \\frac{44}{7} \\times 0.84 = 5.28$ cm².",
+      "Total Surface Area = $968 + 1064.8 + 5.28 = 2038.08$ cm²."
+    ]
+  },
+  "Sector of a Circle": {
+    question: "A pendulum swings through an angle of 30° and describes an arc 8.8 cm in length. Find the length of the pendulum.",
+    steps: [
+      "The length of the pendulum is the radius $r$ of the sector.",
+      "Arc length formula: $l = \\frac{\\theta}{360} \\times 2\\pi r$.",
+      "$8.8 = \\frac{30}{360} \\times 2 \\times \\frac{22}{7} \\times r$.",
+      "$8.8 = \\frac{1}{12} \\times \\frac{44}{7} \\times r$.",
+      "$8.8 = \\frac{11}{21} \\times r \\implies r = \frac{8.8 \\times 21}{11} = 0.8 \\times 21 = 16.8$ cm."
+    ]
+  },
+  "Quadrant of a Circle": {
+    question: "A cow is tied to a corner of a square plot of side 15m with a 14m long rope. Find the area of the plot that the cow can graze.",
+    steps: [
+      "The corner of a square has a 90° angle. The grazed area forms a quadrant of a circle.",
+      "Radius of this quadrant = length of the rope = 14m.",
+      "Area of quadrant = $\\frac{1}{4} \\pi r^2$.",
+      "Area = $\\frac{1}{4} \\times \\frac{22}{7} \\times 14 \\times 14 = \\frac{1}{4} \\times 22 \\times 2 \\times 14 = 154$ m²."
+    ]
+  },
+  "Frustum of a Cone": {
+    question: "A drinking glass is in the shape of a frustum of a cone of height 14 cm. The diameters of its two circular ends are 4 cm and 2 cm. Find the capacity of the glass.",
+    steps: [
+      "Radii: $R = 2$ cm, $r = 1$ cm. Height $h = 14$ cm.",
+      "Volume = $\\frac{1}{3} \\pi h (R^2 + r^2 + Rr)$.",
+      "Volume = $\\frac{1}{3} \\times \\frac{22}{7} \\times 14 \\times (2^2 + 1^2 + (2)(1))$.",
+      "Volume = $\\frac{1}{3} \\times 44 \\times (4 + 1 + 2) = \\frac{1}{3} \\times 44 \\times 7 = \\frac{308}{3} = 102.67$ cm³."
+    ]
+  },
+  "Regular Polygon": {
+    question: "The ratio of the interior angle to the exterior angle of a regular polygon is 7:2. Find the number of sides of the polygon.",
+    steps: [
+      "For any regular polygon, Interior Angle + Exterior Angle = 180°.",
+      "Let Interior = $7x$ and Exterior = $2x$.",
+      "$7x + 2x = 9x = 180° \\implies x = 20°$.",
+      "So, Exterior Angle = $2 \\times 20° = 40°$.",
+      "Number of sides $n = 360° / \\text{Exterior Angle}$.",
+      "$n = 360 / 40 = 9$ sides."
+    ]
   }
 };

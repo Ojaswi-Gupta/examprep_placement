@@ -137,5 +137,83 @@ export const DIAGRAMS_DATA = {
       <line x1="50" y1="50" x2="80" y2="30" stroke="var(--green)" stroke-width="1.5" />
       <text x="60" y="35" fill="var(--green)" font-size="10">r</text>
     </svg>
+  `,
+  "Hemisphere (Volume & Surface Area)": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <path d="M 15 50 A 35 35 0 0 0 85 50 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <ellipse cx="50" cy="50" rx="35" ry="12" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <circle cx="50" cy="50" r="2" fill="var(--text)" />
+      <line x1="50" y1="50" x2="85" y2="50" stroke="var(--green)" stroke-width="1.5" />
+      <line x1="50" y1="50" x2="50" y2="85" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="4" />
+      <text x="65" y="45" fill="var(--green)" font-size="10">r</text>
+      <text x="40" y="70" fill="var(--green)" font-size="10">r</text>
+    </svg>
+  `,
+  "Hollow Sphere (Spherical Shell)": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="50" cy="50" r="40" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.05)" stroke="var(--accent)" stroke-width="2" />
+      <circle cx="50" cy="50" r="25" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.15)" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4" />
+      <circle cx="50" cy="50" r="2" fill="var(--text)" />
+      <line x1="50" y1="50" x2="75" y2="50" stroke="var(--green)" stroke-width="1.5" />
+      <line x1="50" y1="50" x2="78" y2="22" stroke="var(--accent)" stroke-width="1.5" />
+      <text x="60" y="45" fill="var(--green)" font-size="10">r</text>
+      <text x="55" y="30" fill="var(--text)" font-size="10">R</text>
+    </svg>
+  `,
+  "Hollow Cylinder (Pipe)": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <ellipse cx="50" cy="20" rx="25" ry="10" fill="none" stroke="var(--accent)" stroke-width="2" />
+      <ellipse cx="50" cy="20" rx="15" ry="6" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.2)" stroke="var(--accent)" stroke-width="2" />
+      <path d="M 25 80 A 25 10 0 0 0 75 80" fill="none" stroke="var(--accent)" stroke-width="2" />
+      <path d="M 35 80 A 15 6 0 0 0 65 80" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4" />
+      <line x1="25" y1="20" x2="25" y2="80" stroke="var(--accent)" stroke-width="2" />
+      <line x1="75" y1="20" x2="75" y2="80" stroke="var(--accent)" stroke-width="2" />
+      <line x1="35" y1="20" x2="35" y2="80" stroke="var(--accent)" stroke-width="2" stroke-dasharray="2,2" />
+      <line x1="65" y1="20" x2="65" y2="80" stroke="var(--accent)" stroke-width="2" stroke-dasharray="2,2" />
+      <line x1="50" y1="20" x2="65" y2="20" stroke="var(--green)" stroke-width="1.5" />
+      <line x1="50" y1="20" x2="75" y2="20" stroke="var(--text)" stroke-width="1.5" />
+      <text x="55" y="15" fill="var(--green)" font-size="8">r</text>
+      <text x="65" y="15" fill="var(--text)" font-size="8">R</text>
+      <text x="15" y="55" fill="var(--green)" font-size="10">h</text>
+    </svg>
+  `,
+  "Sector of a Circle": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <path d="M 50 50 L 90 50 A 40 40 0 0 0 65 13 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <path d="M 60 50 A 10 10 0 0 0 57 40" fill="none" stroke="var(--text)" stroke-width="1" />
+      <text x="65" y="45" fill="var(--text)" font-size="10">θ</text>
+      <text x="70" y="60" fill="var(--green)" font-size="10">r</text>
+    </svg>
+  `,
+  "Quadrant of a Circle": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <path d="M 30 70 L 70 70 A 40 40 0 0 0 30 30 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <rect x="30" y="65" width="5" height="5" fill="none" stroke="var(--text)" stroke-width="1" />
+      <text x="50" y="80" fill="var(--green)" font-size="10">r</text>
+      <text x="15" y="50" fill="var(--green)" font-size="10">r</text>
+    </svg>
+  `,
+  "Frustum of a Cone": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <ellipse cx="50" cy="25" rx="15" ry="6" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <ellipse cx="50" cy="75" rx="30" ry="12" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="0,90,95,0" />
+      <path d="M 20 75 A 30 12 0 0 0 80 75" fill="none" stroke="var(--accent)" stroke-width="2" />
+      <line x1="35" y1="25" x2="20" y2="75" stroke="var(--accent)" stroke-width="2" />
+      <line x1="65" y1="25" x2="80" y2="75" stroke="var(--accent)" stroke-width="2" />
+      <line x1="50" y1="25" x2="65" y2="25" stroke="var(--green)" stroke-width="1.5" />
+      <line x1="50" y1="75" x2="80" y2="75" stroke="var(--text)" stroke-width="1.5" />
+      <line x1="50" y1="25" x2="50" y2="75" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="4" />
+      <text x="55" y="20" fill="var(--green)" font-size="10">r</text>
+      <text x="60" y="70" fill="var(--text)" font-size="10">R</text>
+      <text x="40" y="55" fill="var(--green)" font-size="10">h</text>
+      <text x="75" y="50" fill="var(--text)" font-size="10">l</text>
+    </svg>
+  `,
+  "Regular Polygon": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <polygon points="50,15 80,35 80,65 50,85 20,65 20,35" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <text x="65" y="85" fill="var(--green)" font-size="10">a</text>
+      <text x="50" y="55" fill="var(--text)" font-size="10">n sides</text>
+    </svg>
   `
 };

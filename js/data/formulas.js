@@ -382,10 +382,73 @@ export const FORMULAS_DATA = [
       },
       {
         title: "Sphere (Volume & Surface Area)",
-        type: "Advanced",
+        type: "Mensuration",
         formula: "\\begin{aligned} \\text{Volume} &= \\frac{4}{3} \\pi r^3 \\\\ \\text{Surface Area} &= 4\\pi r^2 \\end{aligned}",
         variables: [
           { symbol: "r", definition: "Radius of the sphere" }
+        ]
+      },
+      {
+        title: "Hemisphere (Volume & Surface Area)",
+        type: "Mensuration",
+        formula: "\\begin{aligned} \\text{Volume} &= \\frac{2}{3} \\pi r^3 \\\\ \\text{Curved Surface Area} &= 2\\pi r^2 \\\\ \\text{Total Surface Area} &= 3\\pi r^2 \\end{aligned}",
+        variables: [
+          { symbol: "r", definition: "Radius of the hemisphere" }
+        ]
+      },
+      {
+        title: "Hollow Sphere (Spherical Shell)",
+        type: "Mensuration",
+        formula: "\\begin{aligned} \\text{Volume} &= \\frac{4}{3} \\pi (R^3 - r^3) \\\\ \\text{External Surface Area} &= 4\\pi R^2 \\end{aligned}",
+        variables: [
+          { symbol: "R", definition: "External radius" },
+          { symbol: "r", definition: "Internal radius" }
+        ]
+      },
+      {
+        title: "Hollow Cylinder (Pipe)",
+        type: "Mensuration",
+        formula: "\\begin{aligned} \\text{Volume} &= \\pi h (R^2 - r^2) \\\\ \\text{Total Surface Area} &= 2\\pi(R+r)(h+R-r) \\end{aligned}",
+        variables: [
+          { symbol: "R", definition: "Outer radius" },
+          { symbol: "r", definition: "Inner radius" },
+          { symbol: "h", definition: "Height / Length" }
+        ]
+      },
+      {
+        title: "Sector of a Circle",
+        type: "Mensuration",
+        formula: "\\begin{aligned} \\text{Area} &= \\frac{\\theta}{360} \\times \\pi r^2 \\\\ \\text{Arc Length} &= \\frac{\\theta}{360} \\times 2\\pi r \\end{aligned}",
+        variables: [
+          { symbol: "r", definition: "Radius" },
+          { symbol: "\\theta", definition: "Central angle in degrees" }
+        ]
+      },
+      {
+        title: "Quadrant of a Circle",
+        type: "Mensuration",
+        formula: "\\begin{aligned} \\text{Area} &= \\frac{1}{4} \\pi r^2 \\\\ \\text{Perimeter} &= \\frac{1}{2}\\pi r + 2r \\end{aligned}",
+        variables: [
+          { symbol: "r", definition: "Radius of the quadrant" }
+        ]
+      },
+      {
+        title: "Frustum of a Cone",
+        type: "Mensuration",
+        formula: "\\begin{aligned} \\text{Volume} &= \\frac{1}{3}\\pi h(R^2 + r^2 + Rr) \\\\ \\text{Slant Height (l)} &= \\sqrt{h^2 + (R-r)^2} \\\\ \\text{Curved Surface} &= \\pi l (R+r) \\end{aligned}",
+        variables: [
+          { symbol: "R", definition: "Base radius" },
+          { symbol: "r", definition: "Top radius" },
+          { symbol: "h", definition: "Height" }
+        ]
+      },
+      {
+        title: "Regular Polygon",
+        type: "Mensuration",
+        formula: "\\begin{aligned} \\text{Interior Angle} &= \\frac{(n-2) \\times 180^{\\circ}}{n} \\\\ \\text{Area} &= \\frac{n a^2}{4 \\tan(180^{\\circ}/n)} \\end{aligned}",
+        variables: [
+          { symbol: "n", definition: "Number of sides" },
+          { symbol: "a", definition: "Length of a side" }
         ]
       }
     ]
