@@ -619,6 +619,17 @@ export const EXAMPLES_DATA = {
       "Total factors = $4 \\times 4 \\times 2 = 32$."
     ]
   },
+  "Odd and Even Factors": {
+    question: "Find the number of even factors and odd factors of 360.",
+    steps: [
+      "Prime factorization: $360 = 36 \\times 10 = 2^3 \\times 3^2 \\times 5^1$.",
+      "Odd factors are formed by ignoring the 2s. Powers of odd primes are 2 (for 3) and 1 (for 5).",
+      "Number of odd factors = $(2+1)(1+1) = 3 \\times 2 = 6$.",
+      "Number of even factors = Total factors - Odd factors.",
+      "Total factors = $(3+1)(2+1)(1+1) = 4 \\times 3 \\times 2 = 24$.",
+      "Even factors = $24 - 6 = 18$. (Or use formula: $a(b+1)(c+1) = 3(3)(2) = 18$)."
+    ]
+  },
   "Sum of Factors": {
     question: "Find the sum of all factors of 120.",
     steps: [
@@ -626,6 +637,26 @@ export const EXAMPLES_DATA = {
       "Sum = $\\left(\\frac{2^{3+1}-1}{2-1}\\right) \\times \\left(\\frac{3^{1+1}-1}{3-1}\\right) \\times \\left(\\frac{5^{1+1}-1}{5-1}\\right)$.",
       "Sum = $\\left(\\frac{15}{1}\\right) \\times \\left(\\frac{8}{2}\\right) \\times \\left(\\frac{24}{4}\\right)$.",
       "Sum = $15 \\times 4 \\times 6 = 360$."
+    ]
+  },
+  "Euler's Totient Function (\\phi)": {
+    question: "How many numbers less than 120 are co-prime to 120?",
+    steps: [
+      "Prime factorization of 120 = $2^3 \\times 3^1 \\times 5^1$.",
+      "The distinct prime factors are 2, 3, and 5.",
+      "Euler's Totient $\\phi(120) = 120 \\times (1 - 1/2) \\times (1 - 1/3) \\times (1 - 1/5)$.",
+      "$\\phi(120) = 120 \\times (1/2) \\times (2/3) \\times (4/5) = 120 \\times (8/30) = 4 \\times 8 = 32$.",
+      "There are 32 numbers less than 120 that are co-prime to it."
+    ]
+  },
+  "Fermat's & Wilson's Theorems": {
+    question: "Find the remainder when $2^{100}$ is divided by 101, and when $100!$ is divided by 101.",
+    steps: [
+      "Since 101 is a prime number and 2 is coprime to 101, we apply Fermat's Little Theorem: $a^{p-1} \\equiv 1 \\pmod p$.",
+      "$2^{101-1} \\equiv 1 \\pmod{101}$, so $2^{100} \\equiv 1 \\pmod{101}$. Remainder is 1.",
+      "For $100! \\pmod{101}$, apply Wilson's Theorem: $(p-1)! \\equiv -1 \\pmod p$.",
+      "$100! \\equiv -1 \\pmod{101}$. Since remainder must be positive, $-1 + 101 = 100$.",
+      "Remainders are 1 and 100 respectively."
     ]
   },
   "Number of Trailing Zeros": {

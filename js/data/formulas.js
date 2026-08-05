@@ -243,17 +243,44 @@ export const FORMULAS_DATA = [
       {
         title: "Number of Factors",
         type: "Number System",
-        formula: "\\text{If } N = p^a \\times q^b \\times r^c \\text{, Factors} = (a+1)(b+1)(c+1)",
+        formula: "\\text{If } N = 2^a \\times p^b \\times q^c \\text{, Factors} = (a+1)(b+1)(c+1)",
         variables: [
-          { symbol: "p, q, r", definition: "Prime factors of N" }
+          { symbol: "2, p, q", definition: "Prime factors of N" }
+        ]
+      },
+      {
+        title: "Odd and Even Factors",
+        type: "Number System",
+        formula: "\\begin{aligned} \\text{Odd Factors} &= (b+1)(c+1) \\dots \\\\ \\text{Even Factors} &= a(b+1)(c+1) \\dots \\end{aligned}",
+        variables: [
+          { symbol: "a", definition: "Power of 2 in prime factorization" },
+          { symbol: "b, c", definition: "Powers of odd primes" }
         ]
       },
       {
         title: "Sum of Factors",
         type: "Number System",
-        formula: "\\text{Sum} = \\frac{p^{a+1}-1}{p-1} \\times \\frac{q^{b+1}-1}{q-1} \\times \\dots",
+        formula: "\\text{Sum} = \\left(\\frac{2^{a+1}-1}{2-1}\\right) \\times \\left(\\frac{p^{b+1}-1}{p-1}\\right) \\times \\dots",
         variables: [
           { symbol: "p, q", definition: "Prime factors" }
+        ]
+      },
+      {
+        title: "Euler's Totient Function (\\phi)",
+        type: "Number Theory",
+        formula: "\\phi(N) = N \\left(1 - \\frac{1}{p}\\right)\\left(1 - \\frac{1}{q}\\right)\\dots",
+        variables: [
+          { symbol: "\\phi(N)", definition: "Count of numbers coprime to N and < N" },
+          { symbol: "p, q", definition: "Distinct prime factors of N" }
+        ]
+      },
+      {
+        title: "Fermat's & Wilson's Theorems",
+        type: "Number Theory",
+        formula: "\\begin{aligned} a^{p-1} &\\equiv 1 \\pmod p \\\\ (p-1)! &\\equiv -1 \\pmod p \\end{aligned}",
+        variables: [
+          { symbol: "p", definition: "A prime number" },
+          { symbol: "a", definition: "An integer coprime to p" }
         ]
       },
       {
