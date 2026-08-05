@@ -820,5 +820,67 @@ export const FORMULAS_DATA = [
         ]
       }
     ]
+  },
+  {
+    category: "Advanced Circle Geometry",
+    formulas: [
+      {
+        title: "Incircle Radius (Inradius)",
+        type: "Geometry",
+        formula: "r = \\frac{\\Delta}{s}",
+        variables: [
+          { symbol: "r", definition: "Inradius (radius of inscribed circle)" },
+          { symbol: "\\Delta", definition: "Area of the triangle" },
+          { symbol: "s", definition: "Semi-perimeter of the triangle" }
+        ]
+      },
+      {
+        title: "Circumcircle Radius (Circumradius)",
+        type: "Geometry",
+        formula: "R = \\frac{abc}{4\\Delta}",
+        variables: [
+          { symbol: "R", definition: "Circumradius (radius of circumscribed circle)" },
+          { symbol: "a, b, c", definition: "Side lengths of the triangle" },
+          { symbol: "\\Delta", definition: "Area of the triangle" }
+        ]
+      },
+      {
+        title: "Tangents from an External Point",
+        type: "Properties",
+        formula: "\\begin{aligned} PA &= PB \\\\ \\angle PAO &= \\angle PBO = 90^{\\circ} \\end{aligned}",
+        variables: [
+          { symbol: "P", definition: "External point" },
+          { symbol: "A, B", definition: "Points of tangency on the circle" },
+          { symbol: "O", definition: "Center of the circle" }
+        ]
+      },
+      {
+        title: "Direct Common Tangent (DCT)",
+        type: "Two Circles",
+        formula: "L_{DCT} = \\sqrt{d^2 - (R - r)^2}",
+        variables: [
+          { symbol: "d", definition: "Distance between the centers of the two circles" },
+          { symbol: "R, r", definition: "Radii of the two circles (R > r)" }
+        ]
+      },
+      {
+        title: "Transverse Common Tangent (TCT)",
+        type: "Two Circles",
+        formula: "L_{TCT} = \\sqrt{d^2 - (R + r)^2}",
+        variables: [
+          { symbol: "d", definition: "Distance between the centers of the two circles" },
+          { symbol: "R, r", definition: "Radii of the two circles" }
+        ]
+      },
+      {
+        title: "Two Circles: Relative Positions",
+        type: "Two Circles",
+        formula: "\\begin{aligned} d &> R+r &\\text{(Disjoint, 4 common tangents)} \\\\ d &= R+r &\\text{(Touch Externally, 3 tangents)} \\\\ |R-r| &< d < R+r &\\text{(Intersecting, 2 tangents)} \\\\ d &= |R-r| &\\text{(Touch Internally, 1 tangent)} \\end{aligned}",
+        variables: [
+          { symbol: "d", definition: "Distance between centers" },
+          { symbol: "R, r", definition: "Radii of the circles" }
+        ]
+      }
+    ]
   }
 ];

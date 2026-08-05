@@ -211,9 +211,43 @@ export const DIAGRAMS_DATA = {
   `,
   "Regular Polygon": `
     <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
-      <polygon points="50,15 80,35 80,65 50,85 20,65 20,35" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
-      <text x="65" y="85" fill="var(--green)" font-size="10">a</text>
-      <text x="50" y="55" fill="var(--text)" font-size="10">n sides</text>
+      <polygon points="50,10 88,37.6 73.5,82.3 26.5,82.3 12,37.6" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <text x="50" y="95" fill="var(--text)" font-size="10" text-anchor="middle">a (side length)</text>
+    </svg>
+  `,
+  "Incircle Radius (Inradius)": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <path d="M 20 80 L 80 80 L 50 20 Z" fill="none" stroke="var(--accent)" stroke-width="2" />
+      <circle cx="50" cy="62.67" r="17.33" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--green)" stroke-width="2" />
+      <line x1="50" y1="62.67" x2="50" y2="80" stroke="var(--text)" stroke-width="1.5" stroke-dasharray="2" />
+      <text x="45" y="75" fill="var(--text)" font-size="10">r</text>
+    </svg>
+  `,
+  "Circumcircle Radius (Circumradius)": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="50" cy="55" r="35" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--green)" stroke-width="2" />
+      <path d="M 18.2 70 L 81.8 70 L 50 20 Z" fill="none" stroke="var(--accent)" stroke-width="2" />
+      <line x1="50" y1="55" x2="18.2" y2="70" stroke="var(--text)" stroke-width="1.5" stroke-dasharray="2" />
+      <text x="35" y="55" fill="var(--text)" font-size="10">R</text>
+      <circle cx="50" cy="55" r="1.5" fill="var(--text)" />
+    </svg>
+  `,
+  "Direct Common Tangent (DCT)": `
+    <svg viewBox="0 0 150 100" width="100%" height="120" style="max-width: 250px;">
+      <!-- Circles -->
+      <circle cx="40" cy="50" r="30" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <circle cx="110" cy="50" r="15" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <!-- Tangent Line -->
+      <line x1="40" y1="20" x2="110" y2="35" stroke="var(--green)" stroke-width="2" />
+      <!-- Radii -->
+      <line x1="40" y1="50" x2="40" y2="20" stroke="var(--text)" stroke-width="1" stroke-dasharray="2" />
+      <line x1="110" y1="50" x2="110" y2="35" stroke="var(--text)" stroke-width="1" stroke-dasharray="2" />
+      <!-- Distance d -->
+      <line x1="40" y1="50" x2="110" y2="50" stroke="var(--text)" stroke-width="1" />
+      <text x="75" y="65" fill="var(--text)" font-size="10" text-anchor="middle">d</text>
+      <text x="30" y="40" fill="var(--text)" font-size="10">R</text>
+      <text x="115" y="45" fill="var(--text)" font-size="10">r</text>
+      <text x="75" y="15" fill="var(--green)" font-size="10" text-anchor="middle">DCT</text>
     </svg>
   `
 };

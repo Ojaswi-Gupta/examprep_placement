@@ -777,5 +777,57 @@ export const EXAMPLES_DATA = {
       "Area = $\\frac{1}{2}|1(4) + 4(0) + 7(-4)| = \\frac{1}{2}|4 - 28| = \\frac{1}{2}|-24|$.",
       "Area = $12$ sq units."
     ]
+  },
+  "Incircle Radius (Inradius)": {
+    question: "Find the inradius of a triangle with sides 13, 14, and 15.",
+    steps: [
+      "First, find semi-perimeter: $s = \\frac{13+14+15}{2} = 21$.",
+      "Area (Heron's Formula): $\\Delta = \\sqrt{21(21-13)(21-14)(21-15)} = \\sqrt{21 \\times 8 \\times 7 \\times 6} = 84$.",
+      "Inradius $r = \\frac{\\Delta}{s}$.",
+      "$r = \\frac{84}{21} = 4$."
+    ]
+  },
+  "Circumcircle Radius (Circumradius)": {
+    question: "Find the circumradius of a triangle with sides 13, 14, and 15.",
+    steps: [
+      "From previous example, $\\Delta = 84$.",
+      "Circumradius formula: $R = \\frac{abc}{4\\Delta}$.",
+      "$R = \\frac{13 \\times 14 \\times 15}{4 \\times 84}$.",
+      "$R = \\frac{2730}{336} = 8.125$."
+    ]
+  },
+  "Tangents from an External Point": {
+    question: "Tangents PA and PB are drawn to a circle with center O from an external point P. If $\\angle APB = 60^{\\circ}$, find $\\angle AOB$.",
+    steps: [
+      "The angle between the tangents and the angle subtended by the points of tangency at the center are supplementary.",
+      "$\\angle AOB + \\angle APB = 180^{\\circ}$.",
+      "$\\angle AOB = 180^{\\circ} - 60^{\\circ} = 120^{\\circ}$."
+    ]
+  },
+  "Direct Common Tangent (DCT)": {
+    question: "The distance between the centers of two circles is 13 cm. Their radii are 8 cm and 3 cm. Find the length of the Direct Common Tangent.",
+    steps: [
+      "$d = 13$, $R = 8$, $r = 3$.",
+      "$L_{DCT} = \\sqrt{d^2 - (R - r)^2}$.",
+      "$L_{DCT} = \\sqrt{13^2 - (8 - 3)^2} = \\sqrt{169 - 5^2}$.",
+      "$L_{DCT} = \\sqrt{169 - 25} = \\sqrt{144} = 12$ cm."
+    ]
+  },
+  "Transverse Common Tangent (TCT)": {
+    question: "The distance between the centers of two circles is 15 cm. Their radii are 6 cm and 3 cm. Find the length of the Transverse Common Tangent.",
+    steps: [
+      "$d = 15$, $R = 6$, $r = 3$.",
+      "$L_{TCT} = \\sqrt{d^2 - (R + r)^2}$.",
+      "$L_{TCT} = \\sqrt{15^2 - (6 + 3)^2} = \\sqrt{225 - 9^2}$.",
+      "$L_{TCT} = \\sqrt{225 - 81} = \\sqrt{144} = 12$ cm."
+    ]
+  },
+  "Two Circles: Relative Positions": {
+    question: "Two circles have radii 5 cm and 3 cm. Find the number of common tangents if the distance between their centers is (a) 10 cm, (b) 8 cm, (c) 6 cm.",
+    steps: [
+      "(a) $d = 10 > R+r (8)$. They are disjoint. 4 common tangents.",
+      "(b) $d = 8 = R+r$. They touch externally. 3 common tangents.",
+      "(c) $d = 6$. $R-r (2) < d < R+r (8)$. They intersect. 2 common tangents."
+    ]
   }
 };
