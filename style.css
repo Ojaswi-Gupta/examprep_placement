@@ -1858,3 +1858,242 @@ input:checked + .slider:before {
     border: 1px solid var(--border);
   }
 }
+
+/* ==========================================================================
+   Phase 1 & 2: Scratchpad & Daily Challenge
+   ========================================================================== */
+
+/* Daily Challenge Banner on Home */
+.daily-challenge-banner {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(46, 204, 113, 0.2));
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.daily-challenge-info h3 {
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.daily-challenge-info p {
+  color: var(--text-2);
+  font-size: 0.95rem;
+}
+
+.daily-streak {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface-2);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  color: #fbbf24;
+}
+
+@media (max-width: 600px) {
+  .daily-challenge-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Floating Action Button (FAB) for Scratchpad */
+.scratchpad-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #4f46e5);
+  color: white;
+  border: none;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.5);
+  cursor: pointer;
+  z-index: 9999;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.scratchpad-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.7);
+}
+
+/* Scratchpad Widget Container */
+.scratchpad-widget {
+  position: fixed;
+  top: 15vh;
+  right: 2rem;
+  width: 320px;
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  overflow: hidden;
+  resize: both;
+}
+.scratchpad-widget.active {
+  display: flex;
+}
+
+/* Draggable Header */
+.scratchpad-header {
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  user-select: none;
+}
+.scratchpad-header:active {
+  cursor: grabbing;
+}
+.scratchpad-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  pointer-events: none;
+}
+.scratchpad-close {
+  background: none;
+  border: none;
+  color: var(--text-2);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.scratchpad-close:hover {
+  color: var(--red);
+}
+
+/* Tabs */
+.scratchpad-tabs {
+  display: flex;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.scratchpad-tab {
+  flex: 1;
+  padding: 0.6rem;
+  background: none;
+  border: none;
+  color: var(--text-2);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.scratchpad-tab.active {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Content Area */
+.scratchpad-content {
+  flex: 1;
+  position: relative;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Canvas Mode */
+.scratchpad-canvas-container {
+  display: flex; /* Flex by default if tab is active */
+  flex-direction: column;
+  height: 100%;
+}
+canvas#scratchCanvas {
+  width: 100%;
+  height: 250px; /* Min height */
+  background: #2a2a2a;
+  cursor: crosshair;
+  touch-action: none;
+}
+.scratchpad-tools {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+  justify-content: center;
+}
+.sp-tool-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.sp-tool-btn:hover {
+  border-color: var(--accent);
+}
+
+/* Calculator Mode */
+.scratchpad-calc-container {
+  display: none; /* Hidden by default */
+  padding: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+}
+.calc-display {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-align: right;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--green);
+  font-family: monospace;
+  margin-bottom: 0.5rem;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  flex: 1;
+}
+.calc-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.calc-btn:active {
+  background: var(--border);
+}
+.calc-btn.op {
+  color: var(--accent);
+  font-weight: bold;
+}
+.calc-btn.eq {
+  background: var(--green);
+  color: white;
+  border: none;
+}

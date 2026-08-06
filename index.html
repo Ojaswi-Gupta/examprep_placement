@@ -1168,51 +1168,65 @@
           </div>
       </section>
     </div> <!-- /flashcard-section -->
-    </div> <!-- /flashcard-section -->
-
-    <!-- ==================== VIEW: FORMULA QUIZ (FLASHCARD MODE) ==================== -->
-    <div class="page-view" id="formula-quiz-section">
-      <section class="flashcard-section" style="width: 100%; max-width: 100vw; position: relative;">
-        <!-- Reuse flashcard styling but custom IDs -->
-        <button id="quitFormulaQuiz" class="quiz-quit" style="position: absolute; top: 1rem; right: 2rem;">✕ Exit Quiz</button>
-        <div class="fc-container" style="max-width: 800px; margin: 0 auto; padding-top: 4rem;">
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding: 0 3rem;">
-            <div id="fqCounter" style="color: var(--text-3); font-size: 0.9rem; font-weight: 600;">1 / 10</div>
-            <div style="color: var(--accent); font-size: 0.9rem; font-weight: 600;" id="fqCategory">Category</div>
-          </div>
-          
-          <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
-            <button class="fc-nav fc-prev" id="fqPrev">←</button>
-            <div class="fc-card-wrapper" style="flex-grow: 1; margin: 0 1rem;">
-              <div class="fc-card" id="fqCard" style="min-height: 400px; padding: 2rem;">
-                <div class="fc-front" style="display: flex; flex-direction: column; justify-content: center;">
-                  <div id="fqQuestion" style="font-size: 1.3rem; font-weight: 500; line-height: 1.6; color: var(--text);"></div>
-                  <div class="fc-hint" style="margin-top: 2rem;">Click or press Space to reveal solution</div>
-                </div>
-                <div class="fc-back" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left;">
-                  <div id="fqFormula" style="margin-bottom: 1.5rem; font-size: 1.2rem; color: var(--green); text-align: center; width: 100%; overflow-x: auto;"></div>
-                  <div id="fqDiagram" style="margin-bottom: 1.5rem; text-align: center; width: 100%;"></div>
-                  <div style="font-weight: 600; color: var(--text); margin-bottom: 0.5rem; width: 100%;">Step-by-step Solution:</div>
-                  <ol id="fqSteps" style="padding-left: 1.2rem; margin: 0; font-size: 0.95rem; color: var(--text-2);"></ol>
-                  
-                  <div style="display: flex; gap: 1rem; width: 100%; margin-top: 2rem; justify-content: center;" id="fqButtons">
-                    <button class="cta-button cta-outline" id="fqWrongBtn" style="border-color: var(--red); color: var(--red);">Need Practice</button>
-                    <button class="cta-button" id="fqRightBtn" style="background: var(--green); border-color: var(--green); color: #000;">Got It Right</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="fc-nav fc-next" id="fqNext">→</button>
-          </div>
-
-        </div>
-      </section>
-    </div> <!-- /formula-quiz-section -->
 
 
     <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+    <!-- Phase 1: Scratchpad & Calculator Widget -->
+    <button id="scratchpadFab" class="scratchpad-fab" title="Open Scratchpad">🧮</button>
+    
+    <div id="scratchpadWidget" class="scratchpad-widget">
+      <div class="scratchpad-header" id="scratchpadHeader">
+        <span class="scratchpad-title">Math Scratchpad</span>
+        <button class="scratchpad-close" id="scratchpadClose">×</button>
+      </div>
+      <div class="scratchpad-tabs">
+        <button class="scratchpad-tab active" data-target="canvas">Draw</button>
+        <button class="scratchpad-tab" data-target="calc">Calc</button>
+      </div>
+      <div class="scratchpad-content">
+        <!-- Canvas Mode -->
+        <div id="sp-canvas" class="scratchpad-canvas-container">
+          <canvas id="scratchCanvas"></canvas>
+          <div class="scratchpad-tools">
+            <button class="sp-tool-btn" id="spClearBtn">Clear</button>
+            <button class="sp-tool-btn" id="spEraserBtn">Eraser</button>
+            <button class="sp-tool-btn" id="spPenBtn" style="border-color: var(--accent);">Pen</button>
+          </div>
+        </div>
+        <!-- Calculator Mode -->
+        <div id="sp-calc" class="scratchpad-calc-container">
+          <div class="calc-display" id="calcDisplay">0</div>
+          <div class="calc-grid" id="calcGrid">
+            <!-- Row 1 -->
+            <button class="calc-btn op" data-val="C">C</button>
+            <button class="calc-btn op" data-val="(">(</button>
+            <button class="calc-btn op" data-val=")">)</button>
+            <button class="calc-btn op" data-val="/">÷</button>
+            <!-- Row 2 -->
+            <button class="calc-btn" data-val="7">7</button>
+            <button class="calc-btn" data-val="8">8</button>
+            <button class="calc-btn" data-val="9">9</button>
+            <button class="calc-btn op" data-val="*">×</button>
+            <!-- Row 3 -->
+            <button class="calc-btn" data-val="4">4</button>
+            <button class="calc-btn" data-val="5">5</button>
+            <button class="calc-btn" data-val="6">6</button>
+            <button class="calc-btn op" data-val="-">−</button>
+            <!-- Row 4 -->
+            <button class="calc-btn" data-val="1">1</button>
+            <button class="calc-btn" data-val="2">2</button>
+            <button class="calc-btn" data-val="3">3</button>
+            <button class="calc-btn op" data-val="+">+</button>
+            <!-- Row 5 -->
+            <button class="calc-btn" data-val="0" style="grid-column: span 2;">0</button>
+            <button class="calc-btn" data-val=".">.</button>
+            <button class="calc-btn eq" data-val="=">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- App Scripts -->
     <script type="module" src="js/main.js"></script>

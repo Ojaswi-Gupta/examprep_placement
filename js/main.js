@@ -5,7 +5,7 @@ import { initFlashcards, startFlashcards, exitFlashcards } from './modules/flash
 import { initQuiz, openQuizSelection, exitQuiz } from './modules/quiz.js';
 import { initReading } from './modules/reading.js';
 import { initFormulas } from './ui/formulas.js';
-import { initFormulaQuiz } from './modules/formulaQuiz.js';
+import { initScratchpad } from './ui/scratchpad.js';
 
 // ─── Init all modules once ─────────────────────────
 initCards();
@@ -14,7 +14,7 @@ initFlashcards();
 initQuiz();
 initReading();
 initFormulas();
-initFormulaQuiz();
+initScratchpad();
 
 // ─── SPA View Routing ──────────────────────────────
 function showView(viewId) {
