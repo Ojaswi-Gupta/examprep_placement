@@ -57,6 +57,20 @@
                     <button class="cta-button cta-outline" data-view="quiz-section">🎯 Take Quiz</button>
                     <button class="cta-button cta-outline" id="startStudyBtn">🧠 Study Mode</button>
                 </div>
+                
+                <!-- Phase 2: Daily Mixed Challenge -->
+                <div class="daily-challenge-banner" style="max-width: 800px; margin: 3rem auto 0 auto; text-align: left;">
+                  <div class="daily-challenge-info">
+                    <h3>🔥 Daily Mixed Challenge</h3>
+                    <p>5 Vocab Words • 1 Story • 3 Math Problems</p>
+                  </div>
+                  <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="daily-streak" title="Current Streak">
+                      ⭐ <span id="dailyStreakCount">0 Days</span>
+                    </div>
+                    <button id="startDailyBtn" class="cta-button">Start Today's Challenge</button>
+                  </div>
+                </div>
             </div>
         </section>
 
@@ -1101,6 +1115,11 @@
           </div>
         </section>
     </div> <!-- /view-reading -->
+
+    <!-- ==================== VIEW: DAILY CHALLENGE ==================== -->
+    <div class="page-view" id="view-daily">
+      <div id="dailyPlayArea" style="min-height: 80vh; padding-top: 2rem;"></div>
+    </div>
 
     <!-- ==================== VIEW: ABOUT ==================== -->
     <div class="page-view" id="view-about">

@@ -35,3 +35,44 @@ export function toggleBookmark(wordId) {
 export function isBookmarked(wordId) {
   return bookmarks.includes(wordId);
 }
+
+// 3. Daily Challenge Streak
+export let streakData = JSON.parse(localStorage.getItem('placementPrepStreak')) || {
+  streak: 0,
+  lastPlayedDate: null
+};
+
+export function updateStreak() {
+  const today = new Date().toDateString(); // e.g. "Thu Aug 06 2026"
+  
+  if (streakData.lastPlayedDate === today) {
+    // Already played today, no change
+    return streakData.streak;
+  }
+
+  if (!streakData.lastPlayedDate) {
+    // First time playing
+    streakData.streak = 1;
+  } else {
+    // Check if yesterday
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    if (streakData.lastPlayedDate === yesterday.toDateString()) {
+      streakData.streak++;
+    } else {
+      // Streak broken
+      streakData.streak = 1;
+    }
+  }
+
+  streakData.lastPlayedDate = today;
+  localStorage.setItem('placementPrepStreak', JSON.stringify(streakData));
+  
+  // Update UI if element exists
+  const streakEl = document.getElementById('dailyStreakCount');
+  if (streakEl) {
+    streakEl.textContent = streakData.streak + ' Day' + (streakData.streak > 1 ? 's' : '');
+  }
+  
+  return streakData.streak;
+}

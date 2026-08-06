@@ -6,6 +6,8 @@ import { initQuiz, openQuizSelection, exitQuiz } from './modules/quiz.js';
 import { initReading } from './modules/reading.js';
 import { initFormulas } from './ui/formulas.js';
 import { initScratchpad } from './ui/scratchpad.js';
+import { initDailyQuiz } from './modules/dailyQuiz.js';
+import { updateStreak } from './data/state.js';
 
 // ─── Init all modules once ─────────────────────────
 initCards();
@@ -15,6 +17,11 @@ initQuiz();
 initReading();
 initFormulas();
 initScratchpad();
+initDailyQuiz();
+
+// Init daily streak UI
+updateStreak();
+
 
 // ─── SPA View Routing ──────────────────────────────
 function showView(viewId) {
