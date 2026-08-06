@@ -255,8 +255,8 @@ function renderMathQuestion(container) {
       </div>
       
       <div id="dqMathInputArea" style="text-align:center; margin-bottom:2rem;">
-        <p style="color:var(--text-3); font-size:0.9rem; margin-bottom:1rem;">Solve this and enter your final answer below:</p>
-        <input type="text" id="dqMathInput" placeholder="Type your answer here..." style="padding: 0.8rem; font-size: 1.1rem; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); width: 100%; max-width: 300px; margin-bottom: 1rem; text-align: center;">
+        <p style="color:var(--text-3); font-size:0.9rem; margin-bottom:1rem;">Solve this and enter your final answer below <em>(e.g. 42, 3.14, or 1/7)</em>:</p>
+        <input type="text" id="dqMathInput" placeholder="Enter answer (e.g., 1/7)" style="padding: 0.8rem; font-size: 1.1rem; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); width: 100%; max-width: 300px; margin-bottom: 1rem; text-align: center;">
         <br>
         <button id="dqRevealBtn" class="cta-button cta-outline">Submit & Check Answer</button>
       </div>
