@@ -263,8 +263,9 @@ function renderMathQuestion(container) {
 
       <div id="dqSolution" style="display:none; background:rgba(0,0,0,0.2); padding:1.5rem; border-radius:12px; margin-bottom:2rem;">
         <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;">
+          <h3 id="dqResultTitle" style="font-size: 1.5rem; margin-bottom: 0.5rem;"></h3>
           <p style="color: var(--text-3); font-size: 0.9rem; margin-bottom: 0.5rem;">Your Answer:</p>
-          <div id="dqUserAnswer" style="font-size: 1.3rem; font-weight: bold; color: var(--accent);"></div>
+          <div id="dqUserAnswer" style="font-size: 1.3rem; font-weight: bold; color: var(--text);"></div>
         </div>
         <div style="margin-bottom:1rem; font-size:1.2rem; color:var(--green); text-align:center;">
           ${formulaHtml}
@@ -274,36 +275,45 @@ function renderMathQuestion(container) {
         </ol>
       </div>
 
-      <div id="dqSelfAssess" style="display:none; text-align:center; gap:1rem; justify-content:center;">
-        <button id="dqMathWrong" class="quiz-mode-btn" style="background:rgba(231, 76, 60, 0.1); color:var(--red); border-color:var(--red);">I got it wrong</button>
-        <button id="dqMathRight" class="quiz-mode-btn" style="background:rgba(46, 204, 113, 0.1); color:var(--green); border-color:var(--green);">I got it right!</button>
+      <div id="dqMathNextArea" style="display:none; text-align:center;">
+        <button id="dqMathNextBtn" class="cta-button">Continue →</button>
       </div>
     </div>
   `;
   container.innerHTML = html;
 
   document.getElementById('dqRevealBtn').addEventListener('click', () => {
-    const userInput = document.getElementById('dqMathInput').value.trim() || 'No answer provided';
-    document.getElementById('dqUserAnswer').textContent = userInput;
+    const userInput = document.getElementById('dqMathInput').value.trim();
+    document.getElementById('dqUserAnswer').textContent = userInput || '(None)';
+    
+    // Auto-check logic
+    const finalStep = example.steps[example.steps.length - 1];
+    // Extract all numbers, decimals, and fractions from the final step
+    const possibleAnswers = finalStep.match(/\d+(\.\d+)?(\/\d+)?/g) || [];
+    
+    const isCorrect = userInput && possibleAnswers.includes(userInput);
+    
+    const resultTitle = document.getElementById('dqResultTitle');
+    if (isCorrect) {
+      resultTitle.textContent = "✅ Correct!";
+      resultTitle.style.color = "var(--green)";
+      document.getElementById('dqUserAnswer').style.color = "var(--green)";
+      mathScore++;
+    } else {
+      resultTitle.textContent = "❌ Incorrect";
+      resultTitle.style.color = "var(--red)";
+      document.getElementById('dqUserAnswer').style.color = "var(--red)";
+    }
     
     document.getElementById('dqMathInputArea').style.display = 'none';
     document.getElementById('dqSolution').style.display = 'block';
-    document.getElementById('dqSelfAssess').style.display = 'flex';
+    document.getElementById('dqMathNextArea').style.display = 'block';
   });
 
-  document.getElementById('dqMathWrong').addEventListener('click', () => {
-    nextMath();
-  });
-
-  document.getElementById('dqMathRight').addEventListener('click', () => {
-    mathScore++;
-    nextMath();
-  });
-  
-  function nextMath() {
+  document.getElementById('dqMathNextBtn').addEventListener('click', () => {
     mathIndex++;
     renderStage();
-  }
+  });
 }
 
 function renderResults(container) {
