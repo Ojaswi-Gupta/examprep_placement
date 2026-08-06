@@ -42,7 +42,10 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 ### 📐 4. Quants & Logical Reasoning
 - **Drill-Down Topic Dashboard:** A clean, icon-based grid dashboard allowing you to select a specific aptitude topic (like "Time & Work") and drill down into only the relevant formulas, eliminating cognitive overload.
 - **Textbook-Quality Math:** 100% of the mathematical formulas are beautifully rendered using the **KaTeX engine** (via dynamic CDN) and standard LaTeX syntax. Fractions, exponents, and square roots are stacked vertically just like a printed textbook.
-- **Formula Cheatsheets:** A categorized library of essential formulas and concepts for quantitative aptitude and reasoning logic perfectly tailored for technical interviews.
+- **Formula Cheatsheets:** A categorized library of 90+ essential advanced formulas (spanning Number Theory, Circle Geometry, Calendars, Clocks, etc.) perfectly tailored for CAT, aptitude tests, and technical company exams.
+- **Rich SVG Visualizations:** Custom, mathematically accurate SVG diagrams generated inline to explicitly detail concepts like Syllogisms, Relative Speed, Clock Angles, Pipe & Cisterns, Apollonius Theorem, Calendar Repetition, and Advanced Circle Geometry.
+- **Conceptual Step-by-Step Examples:** Expandable dropdowns attached to formulas containing detailed, step-by-step word problem walkthroughs showing exactly how to apply the formula to solve tough questions.
+- **Real-Time Instant Search:** A built-in search bar in the Formulas tab that filters through all 90+ formulas, definitions, and types instantly across all categories.
 
 ## 🎨 UI/UX & Design
 
