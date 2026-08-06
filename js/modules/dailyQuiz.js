@@ -288,10 +288,31 @@ function renderMathQuestion(container) {
     
     // Auto-check logic
     const finalStep = example.steps[example.steps.length - 1];
-    // Extract all numbers, decimals, and fractions from the final step
-    const possibleAnswers = finalStep.match(/\d+(\.\d+)?(\/\d+)?/g) || [];
     
-    const isCorrect = userInput && possibleAnswers.includes(userInput);
+    let targetText = finalStep;
+    // Assume the actual final answer is after the last '=' sign
+    if (finalStep.includes('=')) {
+      const parts = finalStep.split('=');
+      targetText = parts[parts.length - 1];
+    }
+    
+    // Extract numbers, decimals, fractions, and ratios (e.g. 10, 3.14, 1/7, 7:3)
+    const possibleAnswers = targetText.match(/\d+(\.\d+)?(\/\d+)?(:\d+)?/g) || [];
+    if (possibleAnswers.length === 0) {
+       possibleAnswers.push(...(finalStep.match(/\d+(\.\d+)?(\/\d+)?(:\d+)?/g) || []));
+    }
+    
+    const normalizedInput = userInput.replace(/\s/g, '');
+    let isCorrect = possibleAnswers.some(ans => ans === normalizedInput);
+    
+    // Lenient fallback for partial decimals or units
+    if (!isCorrect && normalizedInput.length > 0 && /\d/.test(normalizedInput)) {
+        const cleanTarget = targetText.replace(/[^0-9a-z\.\/:]/gi, '').toLowerCase();
+        const cleanInput = normalizedInput.replace(/[^0-9a-z\.\/:]/gi, '').toLowerCase();
+        if (cleanTarget === cleanInput || cleanTarget.includes(cleanInput)) {
+            isCorrect = true;
+        }
+    }
     
     const resultTitle = document.getElementById('dqResultTitle');
     if (isCorrect) {
