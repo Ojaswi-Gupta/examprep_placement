@@ -223,6 +223,38 @@ function renderMathQuestion(container) {
   const mathData = dailyData.math[mathIndex];
   const example = mathData.example;
   
+  // Pre-calculate answers to determine placeholder type
+  const finalStep = example.steps[example.steps.length - 1];
+  let targetText = finalStep;
+  if (finalStep.includes('=')) {
+    const parts = finalStep.split('=');
+    targetText = parts[parts.length - 1];
+  }
+  
+  const answerRegex = /\d+(\.\d+)?(\/\d+)?(:\d+)?|(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/gi;
+  const possibleAnswers = targetText.match(answerRegex) || [];
+  if (possibleAnswers.length === 0) {
+     possibleAnswers.push(...(finalStep.match(answerRegex) || []));
+  }
+  
+  let hintText = "e.g., 42";
+  let promptDetail = "(e.g., an integer like 42)";
+  const ansStr = possibleAnswers.join(' ').toLowerCase();
+  
+  if (/(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/.test(ansStr)) {
+      hintText = "e.g., Friday";
+      promptDetail = "(e.g., a day like Friday)";
+  } else if (ansStr.includes(':')) {
+      hintText = "e.g., 2:3";
+      promptDetail = "(e.g., a ratio like 2:3)";
+  } else if (ansStr.includes('/')) {
+      hintText = "e.g., 1/4";
+      promptDetail = "(e.g., a fraction like 1/4)";
+  } else if (ansStr.includes('.')) {
+      hintText = "e.g., 4.56";
+      promptDetail = "(e.g., rounded to 2 decimals like 4.56)";
+  }
+  
   let questionText = example.question;
   if (window.katex) {
     questionText = questionText.replace(/\$([^$]+)\$/g, (match, math) => {
@@ -255,8 +287,8 @@ function renderMathQuestion(container) {
       </div>
       
       <div id="dqMathInputArea" style="text-align:center; margin-bottom:2rem;">
-        <p style="color:var(--text-3); font-size:0.9rem; margin-bottom:1rem;">Solve this and enter your final answer below <em>(e.g. 42, 3.14, or 1/7)</em>:</p>
-        <input type="text" id="dqMathInput" placeholder="Enter answer (e.g., 1/7)" style="padding: 0.8rem; font-size: 1.1rem; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); width: 100%; max-width: 300px; margin-bottom: 1rem; text-align: center;">
+        <p style="color:var(--text-3); font-size:0.9rem; margin-bottom:1rem;">Solve this and enter your final answer below <em>${promptDetail}</em>:</p>
+        <input type="text" id="dqMathInput" placeholder="Enter answer (${hintText})" style="padding: 0.8rem; font-size: 1.1rem; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); width: 100%; max-width: 300px; margin-bottom: 1rem; text-align: center;">
         <br>
         <button id="dqRevealBtn" class="cta-button cta-outline">Submit & Check Answer</button>
       </div>
@@ -286,31 +318,20 @@ function renderMathQuestion(container) {
     const userInput = document.getElementById('dqMathInput').value.trim();
     document.getElementById('dqUserAnswer').textContent = userInput || '(None)';
     
-    // Auto-check logic
-    const finalStep = example.steps[example.steps.length - 1];
+    const normalizedInput = userInput.replace(/\s/g, '').toLowerCase();
+    const normalizedAnswers = possibleAnswers.map(a => a.toLowerCase());
     
-    let targetText = finalStep;
-    // Assume the actual final answer is after the last '=' sign
-    if (finalStep.includes('=')) {
-      const parts = finalStep.split('=');
-      targetText = parts[parts.length - 1];
-    }
-    
-    // Extract numbers, decimals, fractions, and ratios (e.g. 10, 3.14, 1/7, 7:3)
-    const possibleAnswers = targetText.match(/\d+(\.\d+)?(\/\d+)?(:\d+)?/g) || [];
-    if (possibleAnswers.length === 0) {
-       possibleAnswers.push(...(finalStep.match(/\d+(\.\d+)?(\/\d+)?(:\d+)?/g) || []));
-    }
-    
-    const normalizedInput = userInput.replace(/\s/g, '');
-    let isCorrect = possibleAnswers.some(ans => ans === normalizedInput);
+    let isCorrect = normalizedAnswers.some(ans => ans === normalizedInput);
     
     // Lenient fallback for partial decimals or units
-    if (!isCorrect && normalizedInput.length > 0 && /\d/.test(normalizedInput)) {
+    if (!isCorrect && normalizedInput.length > 0) {
         const cleanTarget = targetText.replace(/[^0-9a-z\.\/:]/gi, '').toLowerCase();
         const cleanInput = normalizedInput.replace(/[^0-9a-z\.\/:]/gi, '').toLowerCase();
         if (cleanTarget === cleanInput || cleanTarget.includes(cleanInput)) {
-            isCorrect = true;
+            // Only fallback if the input contains a number or a day
+            if (/\d/.test(normalizedInput) || /(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/.test(normalizedInput)) {
+                isCorrect = true;
+            }
         }
     }
     
