@@ -1,6 +1,7 @@
 // js/modules/dailyQuiz.js
 import { getDailyChallengeData } from './dailyChallenge.js';
 import { updateStreak } from '../data/state.js';
+import { WORDS_DATA } from '../data/words.js';
 
 let dailyData = null;
 let currentStage = 0; // 0 = vocab, 1 = story, 2 = math
@@ -70,7 +71,7 @@ function renderVocabQuestion(container) {
       <h3 style="color:var(--text-3); font-size:1rem; margin-bottom:1rem; text-transform:uppercase;">Vocabulary (${vocabIndex + 1}/5)</h3>
       <h2 style="font-size:2rem; margin-bottom:2rem; color:var(--text);">${questionText}</h2>
       <div id="dqOptions" style="display:flex; flex-direction:column; gap:1rem; max-width:600px; margin:0 auto;">
-        ${options.map((opt, i) => `
+        ${options.map((opt) => `
           <div class="quiz-option" data-correct="${opt.correct}" style="padding:1rem; background:var(--surface-2); border:1px solid var(--border); border-radius:8px; cursor:pointer; transition:0.2s;">
             ${opt.simple}
           </div>
@@ -114,13 +115,24 @@ function renderStoryQuestion(container) {
   const highlights = tempDiv.querySelectorAll('.vocab-highlight');
   let wordsInStory = [];
   
+  let activeStoryBlanks = [];
+  let selectedBlankObj = null;
+  
   highlights.forEach((hl, idx) => {
     const w = hl.getAttribute('data-word');
     wordsInStory.push(w);
     const blank = document.createElement('span');
     blank.className = 'blank-space daily-blank';
+    blank.setAttribute('data-id', idx);
     blank.setAttribute('data-correct', w.toLowerCase());
     blank.textContent = '___';
+    
+    blank.addEventListener('click', () => {
+      container.querySelectorAll('.daily-blank').forEach(b => b.classList.remove('selected'));
+      blank.classList.add('selected');
+      selectedBlankObj = blank;
+    });
+    
     hl.parentNode.replaceChild(blank, hl);
   });
 
@@ -128,24 +140,82 @@ function renderStoryQuestion(container) {
     <div style="padding: 2rem; max-width:800px; margin:0 auto;">
       <h3 style="color:var(--text-3); font-size:1rem; margin-bottom:1rem; text-transform:uppercase; text-align:center;">Reading Comprehension</h3>
       <h2 style="font-size:1.8rem; margin-bottom:1rem; color:var(--text); text-align:center;">${story.title}</h2>
-      <div style="font-size:1.1rem; line-height:1.8; color:var(--text-2); background:var(--surface-2); padding:1.5rem; border-radius:12px;">
-        ${tempDiv.innerHTML}
+      
+      <div id="dqStoryContent" style="font-size:1.1rem; line-height:1.8; color:var(--text-2); background:var(--surface-2); padding:1.5rem; border-radius:12px; margin-bottom: 2rem;">
       </div>
-      <div style="margin-top:2rem; text-align:center;">
-        <button id="dqStorySubmit" class="cta-button" style="padding:1rem 2rem;">I read it! Continue →</button>
+      
+      <div id="dqWordBank" style="display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; margin-bottom:2rem;"></div>
+      
+      <div style="text-align:center;">
+        <button id="dqStorySubmit" class="cta-button" style="padding:1rem 2rem;" disabled>Check Answers</button>
       </div>
     </div>
   `;
   container.innerHTML = html;
   
-  // Note: For simplicity in the daily challenge, we just have them read it and observe the blanks or we could build the drag-drop. 
-  // To save complexity and since this is a quick challenge, let's just show the story with highlights instead of blanks.
-  // Actually let's override the blanks and just let them read it.
+  const sqContent = document.getElementById('dqStoryContent');
+  while (tempDiv.firstChild) {
+    sqContent.appendChild(tempDiv.firstChild);
+  }
+  activeStoryBlanks = Array.from(sqContent.querySelectorAll('.daily-blank'));
   
-  document.getElementById('dqStorySubmit').addEventListener('click', () => {
-    storyScore = 1; // Mark as read
-    currentStage = 2;
-    renderStage();
+  const sqWordBank = document.getElementById('dqWordBank');
+  let bankWords = [...wordsInStory];
+  const decoyWords = [...WORDS_DATA].filter(w => !bankWords.includes(w.word)).sort(() => 0.5 - Math.random()).slice(0, 2);
+  decoyWords.forEach(w => bankWords.push(w.word));
+  bankWords.sort(() => 0.5 - Math.random());
+  
+  bankWords.forEach(bw => {
+    const chip = document.createElement('div');
+    chip.className = 'word-chip';
+    chip.textContent = bw;
+    chip.addEventListener('click', () => {
+      if (!selectedBlankObj || chip.classList.contains('used')) return;
+      if (selectedBlankObj.getAttribute('data-filled')) {
+        const oldWord = selectedBlankObj.getAttribute('data-filled');
+        const oldChip = Array.from(sqWordBank.querySelectorAll('.word-chip')).find(c => c.textContent === oldWord);
+        if (oldChip) oldChip.classList.remove('used');
+      }
+      selectedBlankObj.textContent = bw;
+      selectedBlankObj.setAttribute('data-filled', bw);
+      selectedBlankObj.classList.add('filled');
+      selectedBlankObj.classList.remove('selected');
+      chip.classList.add('used');
+      selectedBlankObj = null;
+      if (activeStoryBlanks.every(b => b.getAttribute('data-filled'))) {
+        document.getElementById('dqStorySubmit').disabled = false;
+      }
+    });
+    sqWordBank.appendChild(chip);
+  });
+  
+  document.getElementById('dqStorySubmit').addEventListener('click', (e) => {
+    let correctCount = 0;
+    activeStoryBlanks.forEach(b => {
+      const expected = b.getAttribute('data-correct').toLowerCase();
+      const actual = (b.getAttribute('data-filled') || '').toLowerCase();
+      if (expected === actual) {
+        b.style.borderBottomColor = 'var(--green)';
+        b.style.color = 'var(--green)';
+        correctCount++;
+      } else {
+        b.style.borderBottomColor = 'var(--red)';
+        b.style.color = 'var(--red)';
+        const corrSpan = document.createElement('span');
+        corrSpan.style.color = 'var(--green)';
+        corrSpan.style.fontSize = '0.8rem';
+        corrSpan.style.marginLeft = '4px';
+        corrSpan.textContent = `(${b.getAttribute('data-correct')})`;
+        b.parentNode.insertBefore(corrSpan, b.nextSibling);
+      }
+    });
+    storyScore = (correctCount === activeStoryBlanks.length) ? 1 : 0;
+    
+    e.target.textContent = "Continue →";
+    e.target.onclick = () => {
+      currentStage = 2;
+      renderStage();
+    };
   });
 }
 
@@ -184,12 +254,18 @@ function renderMathQuestion(container) {
         ${questionText}
       </div>
       
-      <div style="text-align:center; margin-bottom:2rem;">
-        <p style="color:var(--text-3); font-size:0.9rem; margin-bottom:1rem;">Solve this on the scratchpad, then click reveal.</p>
-        <button id="dqRevealBtn" class="cta-button cta-outline">Reveal Solution</button>
+      <div id="dqMathInputArea" style="text-align:center; margin-bottom:2rem;">
+        <p style="color:var(--text-3); font-size:0.9rem; margin-bottom:1rem;">Solve this and enter your final answer below:</p>
+        <input type="text" id="dqMathInput" placeholder="Type your answer here..." style="padding: 0.8rem; font-size: 1.1rem; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); width: 100%; max-width: 300px; margin-bottom: 1rem; text-align: center;">
+        <br>
+        <button id="dqRevealBtn" class="cta-button cta-outline">Submit & Check Answer</button>
       </div>
 
       <div id="dqSolution" style="display:none; background:rgba(0,0,0,0.2); padding:1.5rem; border-radius:12px; margin-bottom:2rem;">
+        <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;">
+          <p style="color: var(--text-3); font-size: 0.9rem; margin-bottom: 0.5rem;">Your Answer:</p>
+          <div id="dqUserAnswer" style="font-size: 1.3rem; font-weight: bold; color: var(--accent);"></div>
+        </div>
         <div style="margin-bottom:1rem; font-size:1.2rem; color:var(--green); text-align:center;">
           ${formulaHtml}
         </div>
@@ -206,8 +282,11 @@ function renderMathQuestion(container) {
   `;
   container.innerHTML = html;
 
-  document.getElementById('dqRevealBtn').addEventListener('click', (e) => {
-    e.target.style.display = 'none';
+  document.getElementById('dqRevealBtn').addEventListener('click', () => {
+    const userInput = document.getElementById('dqMathInput').value.trim() || 'No answer provided';
+    document.getElementById('dqUserAnswer').textContent = userInput;
+    
+    document.getElementById('dqMathInputArea').style.display = 'none';
     document.getElementById('dqSolution').style.display = 'block';
     document.getElementById('dqSelfAssess').style.display = 'flex';
   });
