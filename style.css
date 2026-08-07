@@ -60,6 +60,19 @@ body {
   display: block;
 }
 
+/* ===== Utilities & Animations ===== */
+.relative-z { position: relative; z-index: 10; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fadeInUp 0.8s ease forwards; opacity: 0; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.hover-lift { transition: transform 0.2s ease, border-color 0.2s ease; }
+.hover-lift:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.2); }
+
 /* ===== Progress Bar ===== */
 .progress-bar-container {
   position: fixed;
@@ -176,6 +189,11 @@ body {
 .hero {
   text-align: center;
   padding: 6rem 1.5rem 4rem;
+  position: relative;
+}
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
 }
 .hero-title, .hero h1 {
   font-size: 3rem;
@@ -183,13 +201,13 @@ body {
   color: var(--text);
   letter-spacing: -1.5px;
   margin-bottom: 0.75rem;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 .hero-subtitle, .hero p {
   font-size: 1.1rem;
-  color: var(--text-3);
-  max-width: 480px;
-  margin: 0 auto 2rem;
+  color: var(--text-2);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
 }
 .cta-button {
   display: inline-block;
@@ -2069,6 +2087,184 @@ canvas#scratchCanvas {
   color: var(--green);
   font-family: monospace;
   margin-bottom: 0.5rem;
+}
+/* ===== Clean Elements & Stats ===== */
+.daily-challenge-glass {
+  max-width: 800px;
+  margin: 3rem auto 0 auto;
+  text-align: left;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.daily-badge {
+  display: inline-block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+.daily-challenge-info h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+.daily-challenge-info p { color: var(--text-3); font-size: 0.95rem; margin: 0; }
+.daily-challenge-actions { display: flex; gap: 1rem; align-items: center; }
+.premium-streak { font-weight: 600; color: #fbbf24; font-size: 0.95rem; }
+
+/* Feature Carousel */
+.carousel-wrapper {
+  position: relative;
+  padding-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.carousel-container {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  flex-grow: 1;
+}
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+}
+.feature-glass-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 0 0 calc(33.333% - 1rem);
+  min-width: 280px;
+  scroll-snap-align: start;
+}
+.carousel-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.carousel-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+@media (max-width: 992px) {
+  .feature-glass-card { flex: 0 0 calc(50% - 0.75rem); }
+}
+@media (max-width: 600px) {
+  .feature-glass-card { flex: 0 0 100%; }
+  .carousel-btn { display: none; } /* Rely on swipe for mobile */
+}
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+.feature-glass-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+}
+.feature-glass-card p {
+  color: var(--text-3);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .daily-challenge-glass { flex-direction: column; gap: 1rem; text-align: center; }
+  .daily-challenge-actions { flex-direction: column; width: 100%; }
+}
+
+.stats {
+  padding: 0 1.5rem 4rem;
+}
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+.stat-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+}
+.stat-value {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.stat-label {
+  color: var(--text-3);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  margin-top: 2rem;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Offside', sans-serif;
+  font-size: 1.25rem;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+.footer-copyright {
+  color: var(--text-3);
+  font-size: 0.85rem;
+}
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-links a {
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.footer-links a:hover {
+  color: var(--text);
+}
+@media (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 .calc-grid {
   display: grid;

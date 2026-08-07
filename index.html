@@ -48,24 +48,27 @@
         
     <!-- ==================== VIEW: HOME ==================== -->
     <div class="page-view active-view" id="view-home">
-        <section class="hero">
+        <section class="hero relative-z">
             <div class="container hero-container">
-                <h1 class="hero-title">Placement Prep Hub</h1>
-                <p class="hero-subtitle">Your one-stop resource for acing verbal ability & quantitative aptitude in placement exams.</p>
-                <div class="hero-buttons">
-                    <button class="cta-button" data-view="view-vocabulary">📚 Vocabulary</button>
-                    <button class="cta-button cta-outline" data-view="quiz-section">🎯 Take Quiz</button>
-                    <button class="cta-button cta-outline" id="startStudyBtn">🧠 Study Mode</button>
+                <div class="hero-content fade-in-up">
+                    <h1 class="hero-title">Placement Prep Hub</h1>
+                    <p class="hero-subtitle">Your one-stop resource for acing verbal ability & quantitative aptitude in top-tier placement exams.</p>
+                    <div class="hero-buttons">
+                        <button class="cta-button" data-view="view-vocabulary">📚 Vocabulary</button>
+                        <button class="cta-button cta-outline hover-lift" data-view="quiz-section">🎯 Take Quiz</button>
+                        <button class="cta-button cta-outline hover-lift" id="startStudyBtn">🧠 Study Mode</button>
+                    </div>
                 </div>
                 
-                <!-- Phase 2: Daily Mixed Challenge -->
-                <div class="daily-challenge-banner" style="max-width: 800px; margin: 3rem auto 0 auto; text-align: left;">
+                <!-- Phase 2: Daily Mixed Challenge Banner -->
+                <div class="daily-challenge-glass fade-in-up delay-1">
                   <div class="daily-challenge-info">
+                    <div class="daily-badge">NEW</div>
                     <h3>🔥 Daily Mixed Challenge</h3>
                     <p>5 Vocab Words • 1 Story • 3 Math Problems</p>
                   </div>
-                  <div style="display: flex; gap: 1rem; align-items: center;">
-                    <div class="daily-streak" title="Current Streak">
+                  <div class="daily-challenge-actions">
+                    <div class="daily-streak premium-streak" title="Current Streak">
                       ⭐ <span id="dailyStreakCount">0 Days</span>
                     </div>
                     <button id="startDailyBtn" class="cta-button">Start Today's Challenge</button>
@@ -74,22 +77,72 @@
             </div>
         </section>
 
-        <section class="stats">
+        <section class="features relative-z fade-in-up delay-2">
+            <div class="container carousel-wrapper">
+                <button class="carousel-btn prev-btn" id="featPrevBtn" aria-label="Previous">❮</button>
+                <div class="carousel-container" id="featureCarousel">
+                    <div class="carousel-track">
+                        <div class="feature-glass-card">
+                            <div class="feature-icon">🧠</div>
+                            <h3>Smart Review SRS</h3>
+                            <p>An intelligent Spaced Repetition System that targets only the words you haven't mastered yet.</p>
+                        </div>
+                        <div class="feature-glass-card">
+                            <div class="feature-icon">📐</div>
+                            <h3>Textbook Quants</h3>
+                            <p>90+ advanced formulas perfectly rendered using KaTeX with inline mathematical visualizations.</p>
+                        </div>
+                        <div class="feature-glass-card">
+                            <div class="feature-icon">📖</div>
+                            <h3>Contextual Stories</h3>
+                            <p>Engaging, dynamic stories generated to organically test and embed vocabulary in context.</p>
+                        </div>
+                        <div class="feature-glass-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Daily Challenge</h3>
+                            <p>Build a habit with a seeded daily test featuring vocab words, reading, and math problems.</p>
+                        </div>
+                        <div class="feature-glass-card">
+                            <div class="feature-icon">📝</div>
+                            <h3>Scratchpad</h3>
+                            <p>Doodle math steps or crunch numbers directly on the screen without physical paper.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next-btn" id="featNextBtn" aria-label="Next">❯</button>
+            </div>
+        </section>
+
+        <section class="stats relative-z fade-in-up delay-3">
             <div class="container stats-container">
-                <div class="stat-card">
+                <div class="stat-card hover-lift">
                     <div class="stat-value">79</div>
                     <div class="stat-label">Words</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card hover-lift">
                     <div class="stat-value">6</div>
                     <div class="stat-label">Quiz Modes</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card hover-lift">
                     <div class="stat-value">6</div>
                     <div class="stat-label">Formula Topics</div>
                 </div>
             </div>
         </section>
+
+        <!-- Minimal Footer -->
+        <footer class="site-footer fade-in-up delay-3">
+            <div class="container footer-container">
+                <div class="footer-info">
+                    <span class="footer-logo">Placement Prep</span>
+                    <p class="footer-copyright">© 2026. Built for Placement Exams.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Ojaswi-Gupta/examprep_placement" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                    <a href="#" data-view="view-about">About</a>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <!-- ==================== VIEW: VOCABULARY ==================== -->
@@ -1274,6 +1327,47 @@
           }
         }
       }, true); // Use capture phase to ensure it runs before flashcard click
+
+      // Feature Carousel Navigation & Auto-Loop
+      document.addEventListener('DOMContentLoaded', () => {
+        const carousel = document.getElementById('featureCarousel');
+        const prevBtn = document.getElementById('featPrevBtn');
+        const nextBtn = document.getElementById('featNextBtn');
+        
+        if(carousel && prevBtn && nextBtn) {
+          const scrollAmount = 300;
+          let autoScrollInterval;
+
+          const scrollNext = () => {
+            if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10) {
+              carousel.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+              carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+          };
+
+          const startAutoScroll = () => {
+            autoScrollInterval = setInterval(scrollNext, 2500);
+          };
+
+          const stopAutoScroll = () => {
+            clearInterval(autoScrollInterval);
+          };
+
+          startAutoScroll();
+          carousel.addEventListener('mouseenter', stopAutoScroll);
+          carousel.addEventListener('mouseleave', startAutoScroll);
+
+          prevBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            stopAutoScroll(); startAutoScroll();
+          });
+          nextBtn.addEventListener('click', () => {
+            scrollNext();
+            stopAutoScroll(); startAutoScroll();
+          });
+        }
+      });
     </script>
 </body>
 </html>
