@@ -39,7 +39,14 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 - **Contextual Stories:** Read highly engaging, short generated stories designed to organically embed the exact vocabulary words from your list. 
 - **Active Reading UI:** A beautifully formatted, distraction-free reading viewer that highlights vocabulary in context.
 
-### 📐 4. Quants & Logical Reasoning
+### 📅 4. Daily Mixed Challenge
+- **Seeded Daily Content:** Features a custom Seeded Pseudo-Random Number Generator (Mulberry32) tied to the current date. Every user receives the exact same randomized set of 5 advanced vocab words, 1 reading comprehension passage, and 3 tough math questions every day, making it perfect for competitive peer study.
+- **Interactive Story Blanks:** Fill in the blanks of the daily reading comprehension passage using an interactive, clickable word bank.
+- **Smart Math Evaluation:** Math questions in the daily challenge feature intelligent text inputs. The system dynamically reads the correct answer format (integers, fractions, decimals, ratios, or days of the week), adjusts placeholder hints accordingly, and auto-evaluates your typed answer against the hidden solution using advanced regex parsing.
+- **Streak Tracking:** Keeps track of your daily challenge completions globally using `localStorage`.
+
+### 📐 5. Quants & Logical Reasoning
+- **Interactive Scratchpad & Calculator:** A global, draggable, floating glassmorphism widget that allows you to doodle math steps or crunch numbers without leaving the page or needing physical paper.
 - **Drill-Down Topic Dashboard:** A clean, icon-based grid dashboard allowing you to select a specific aptitude topic (like "Time & Work") and drill down into only the relevant formulas, eliminating cognitive overload.
 - **Textbook-Quality Math:** 100% of the mathematical formulas are beautifully rendered using the **KaTeX engine** (via dynamic CDN) and standard LaTeX syntax. Fractions, exponents, and square roots are stacked vertically just like a printed textbook.
 - **Formula Cheatsheets:** A categorized library of 90+ essential advanced formulas (spanning Number Theory, Circle Geometry, Calendars, Clocks, etc.) perfectly tailored for CAT, aptitude tests, and technical company exams.
