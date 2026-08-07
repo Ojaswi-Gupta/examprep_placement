@@ -6,6 +6,7 @@ import { initQuiz, openQuizSelection, exitQuiz } from './modules/quiz.js';
 import { initReading } from './modules/reading.js';
 import { initFormulas } from './ui/formulas.js';
 import { initScratchpad } from './ui/scratchpad.js';
+import { initPomodoro } from './ui/pomodoro.js';
 import { initDailyQuiz } from './modules/dailyQuiz.js';
 import { updateStreak } from './data/state.js';
 
@@ -17,6 +18,7 @@ initQuiz();
 initReading();
 initFormulas();
 initScratchpad();
+initPomodoro();
 initDailyQuiz();
 
 // Init daily streak UI

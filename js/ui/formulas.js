@@ -1,7 +1,6 @@
 import { FORMULAS_DATA } from '../data/formulas.js';
 import { EXAMPLES_DATA } from '../data/examples.js';
 import { DIAGRAMS_DATA } from '../data/diagrams.js';
-import { startFormulaQuiz } from '../modules/formulaQuiz.js';
 
 let currentTopicIndex = null;
 let katexLoaded = false;
@@ -160,26 +159,6 @@ function renderTopicFormulas(container, index) {
   });
   
   container.appendChild(cardsGrid);
-  
-  const hasExamples = categoryData.formulas.some(f => EXAMPLES_DATA[f.title]);
-  if (hasExamples) {
-    const ctaContainer = document.createElement('div');
-    ctaContainer.style.textAlign = 'center';
-    ctaContainer.style.marginTop = '4rem';
-    ctaContainer.style.marginBottom = '2rem';
-    
-    const ctaBtn = document.createElement('button');
-    ctaBtn.className = 'cta-button';
-    ctaBtn.innerHTML = '🎯 Test me on this topic';
-    ctaBtn.style.fontSize = '1.2rem';
-    ctaBtn.style.padding = '1rem 2.5rem';
-    ctaBtn.onclick = () => {
-      startFormulaQuiz(categoryData);
-    };
-    
-    ctaContainer.appendChild(ctaBtn);
-    container.appendChild(ctaContainer);
-  }
 }
 
 function createFormulaCard(f, categoryName) {
