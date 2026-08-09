@@ -16,7 +16,7 @@ The project has recently undergone a major architectural overhaul to ensure scal
 ## 🚀 Features & Modules
 
 ### 📚 1. Vocabulary Hub
-- **Curated Word List:** 79 essential placement words complete with simple meanings, formal definitions, and contextual examples.
+- **Curated Word List:** 114 essential placement words complete with simple meanings, formal definitions, and contextual examples.
 - **Interactive Flashcards:** Click to flip cards and reveal detailed examples.
 - **Text-to-Speech Audio:** Built-in pronunciation for every word (click the 🔊 icon).
 - **Bookmarks:** Save difficult words you want to focus on by clicking the star (☆) icon.
@@ -49,10 +49,10 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 - **Interactive Scratchpad & Calculator:** A global, draggable, floating glassmorphism widget that allows you to doodle math steps or crunch numbers without leaving the page or needing physical paper.
 - **Drill-Down Topic Dashboard:** A clean, icon-based grid dashboard allowing you to select a specific aptitude topic (like "Time & Work") and drill down into only the relevant formulas, eliminating cognitive overload.
 - **Textbook-Quality Math:** 100% of the mathematical formulas are beautifully rendered using the **KaTeX engine** (via dynamic CDN) and standard LaTeX syntax. Fractions, exponents, and square roots are stacked vertically just like a printed textbook.
-- **Formula Cheatsheets:** A categorized library of 90+ essential advanced formulas (spanning Number Theory, Circle Geometry, Calendars, Clocks, etc.) perfectly tailored for CAT, aptitude tests, and technical company exams.
+- **Formula Cheatsheets:** A categorized library of 130+ essential advanced formulas (spanning Number Theory, Circle Geometry, Calendars, Clocks, etc.) perfectly tailored for CAT, aptitude tests, and technical company exams.
 - **Rich SVG Visualizations:** Custom, mathematically accurate SVG diagrams generated inline to explicitly detail concepts like Syllogisms, Relative Speed, Clock Angles, Pipe & Cisterns, Apollonius Theorem, Calendar Repetition, and Advanced Circle Geometry.
 - **Conceptual Step-by-Step Examples:** Expandable dropdowns attached to formulas containing detailed, step-by-step word problem walkthroughs showing exactly how to apply the formula to solve tough questions.
-- **Real-Time Instant Search:** A built-in search bar in the Formulas tab that filters through all 90+ formulas, definitions, and types instantly across all categories.
+- **Real-Time Instant Search:** A built-in search bar in the Formulas tab that filters through all 130+ formulas, definitions, and types instantly across all categories.
 
 ## 🎨 UI/UX & Design
 
