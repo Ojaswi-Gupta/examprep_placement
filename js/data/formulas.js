@@ -3,6 +3,24 @@ export const FORMULAS_DATA = [
     category: "Percentages",
     formulas: [
       {
+        title: "Set Theory (Inclusion-Exclusion)",
+        type: "Advanced",
+        formula: "n(A\\cup B\\cup C) = \\Sigma n(A) - \\Sigma n(A\\cap B) + n(A\\cap B\\cap C)",
+        variables: [{ symbol: "n(A)", definition: "Number of elements in set A" }]
+      },
+      {
+        title: "Population Growth & Depreciation",
+        type: "Advanced",
+        formula: "P_n = P_0\\left(1 \\pm \\frac{R}{100}\\right)^n",
+        variables: [{ symbol: "P_n", definition: "Final Population/Value" }, { symbol: "P_0", definition: "Initial Population/Value" }, { symbol: "R", definition: "Rate" }, { symbol: "n", definition: "Time" }]
+      },
+      {
+        title: "Product Constancy Rule",
+        type: "Advanced",
+        formula: "\\text{If } A \\times B = C \\text{ and } A \\uparrow \\frac{x}{y}, B \\downarrow \\frac{x}{y+x}",
+        variables: [{ symbol: "x, y", definition: "Numerator and denominator of fraction" }]
+      },
+      {
         title: "Basic Percentage",
         type: "Simple",
         formula: "P = \\frac{V}{T} \\times 100",
@@ -35,6 +53,24 @@ export const FORMULAS_DATA = [
   {
     category: "Profit & Loss",
     formulas: [
+      {
+        title: "Buy X Get Y Free",
+        type: "Advanced",
+        formula: "\\text{Discount}\\% = \\frac{Y}{X+Y} \\times 100",
+        variables: [{ symbol: "X", definition: "Items paid for" }, { symbol: "Y", definition: "Free items" }]
+      },
+      {
+        title: "Successive Discounts",
+        type: "Advanced",
+        formula: "\\text{Net Discount} = d_1 + d_2 - \\frac{d_1 \\times d_2}{100}",
+        variables: [{ symbol: "d_1, d_2", definition: "Discount percentages" }]
+      },
+      {
+        title: "Marked Price & Discount",
+        type: "Advanced",
+        formula: "\\frac{MP}{CP} = \\frac{100+\\text{Profit}\\%}{100-\\text{Discount}\\%}",
+        variables: [{ symbol: "MP", definition: "Marked Price" }, { symbol: "CP", definition: "Cost Price" }]
+      },
       {
         title: "Basic Profit / Loss",
         type: "Simple",
@@ -78,6 +114,24 @@ export const FORMULAS_DATA = [
   {
     category: "Time, Speed & Distance",
     formulas: [
+      {
+        title: "Late/Early Shortcut",
+        type: "Advanced",
+        formula: "D = \\frac{S_1 \\times S_2}{S_1 - S_2} \\times \\Delta T",
+        variables: [{ symbol: "S_1, S_2", definition: "Speeds" }, { symbol: "\Delta T", definition: "Difference in time" }]
+      },
+      {
+        title: "Escalator Problems",
+        type: "Advanced",
+        formula: "\\text{Effective steps} = \\text{Person's steps} \\pm \\text{Escalator's steps}",
+        variables: [{ symbol: "\pm", definition: "+ if moving with escalator, - if against" }]
+      },
+      {
+        title: "Races & Games",
+        type: "Advanced",
+        formula: "\\frac{\\text{Speed}_A}{\\text{Speed}_B} = \\frac{D}{D-d}",
+        variables: [{ symbol: "D", definition: "Total distance" }, { symbol: "d", definition: "Distance by which A beats B" }]
+      },
       {
         title: "Basic Relation",
         type: "Simple",
@@ -147,6 +201,24 @@ export const FORMULAS_DATA = [
     category: "Time & Work",
     formulas: [
       {
+        title: "Wages Distribution",
+        type: "Advanced",
+        formula: "\\text{Wages} \\propto \\text{Work Done}",
+        variables: [{ symbol: "Work Done", definition: "Efficiency x Time worked" }]
+      },
+      {
+        title: "Joining/Leaving Midway",
+        type: "Advanced",
+        formula: "\\sum \\frac{t_i}{T_i} = 1",
+        variables: [{ symbol: "t_i", definition: "Time worked by person i" }, { symbol: "T_i", definition: "Total time person i takes alone" }]
+      },
+      {
+        title: "Efficiency Ratio",
+        type: "Advanced",
+        formula: "\\frac{E_1}{E_2} = \\frac{T_2}{T_1}",
+        variables: [{ symbol: "E", definition: "Efficiency" }, { symbol: "T", definition: "Time taken" }]
+      },
+      {
         title: "Work and Time Relation",
         type: "Simple",
         formula: "\\text{Work Done} = \\text{Rate of Work} \\times \\text{Time}",
@@ -196,6 +268,24 @@ export const FORMULAS_DATA = [
   {
     category: "Mixtures, Clocks & Calendars",
     formulas: [
+      {
+        title: "Reflex Angle (Clocks)",
+        type: "Clocks",
+        formula: "\\text{Reflex angle} = 360^{\\circ} - \\theta",
+        variables: [{ symbol: "\theta", definition: "Interior angle" }]
+      },
+      {
+        title: "Century Year Odd Days",
+        type: "Calendars",
+        formula: "\\text{100yr}=5, \\text{200yr}=3, \\text{300yr}=1, \\text{400yr}=0",
+        variables: [{ symbol: "Odd days", definition: "Remainder of days / 7" }]
+      },
+      {
+        title: "Weighted Average (3 Mixtures)",
+        type: "Advanced",
+        formula: "C_m = \\frac{v_1c_1 + v_2c_2 + v_3c_3}{v_1+v_2+v_3}",
+        variables: [{ symbol: "v_i", definition: "Volumes" }, { symbol: "c_i", definition: "Concentrations" }]
+      },
       {
         title: "Rule of Alligation",
         type: "Mixtures",
@@ -295,6 +385,42 @@ export const FORMULAS_DATA = [
   {
     category: "Number System & Algebra",
     formulas: [
+      {
+        title: "Remainder Theorem & Cyclicity",
+        type: "Advanced",
+        formula: "f(a) = R",
+        variables: [{ symbol: "R", definition: "Remainder when f(x) divided by (x-a)" }]
+      },
+      {
+        title: "Sum of Cubes",
+        type: "Advanced",
+        formula: "\\sum n^3 = \\left[\\frac{n(n+1)}{2}\\right]^2",
+        variables: [{ symbol: "n", definition: "Number of terms" }]
+      },
+      {
+        title: "Sum of Squares",
+        type: "Advanced",
+        formula: "\\sum n^2 = \\frac{n(n+1)(2n+1)}{6}",
+        variables: [{ symbol: "n", definition: "Number of terms" }]
+      },
+      {
+        title: "Legendre's Formula",
+        type: "Advanced",
+        formula: "E_p(n!) = \\sum \\left\\lfloor \\frac{n}{p^k} \\right\\rfloor",
+        variables: [{ symbol: "p", definition: "Prime number" }, { symbol: "n", definition: "Number for factorial" }]
+      },
+      {
+        title: "AM-GM-HM Inequality",
+        type: "Advanced",
+        formula: "\\text{AM} \\ge \\text{GM} \\ge \\text{HM}",
+        variables: [{ symbol: "AM, GM, HM", definition: "Arithmetic, Geometric, Harmonic Means" }]
+      },
+      {
+        title: "Product of Factors",
+        type: "Advanced",
+        formula: "\\text{Product} = N^{\\frac{\\text{Total Factors}}{2}}",
+        variables: [{ symbol: "N", definition: "The number" }]
+      },
       {
         title: "Number of Factors",
         type: "Number System",
@@ -413,6 +539,30 @@ export const FORMULAS_DATA = [
     category: "Advanced Probability & P&C",
     formulas: [
       {
+        title: "Conditional Probability",
+        type: "Advanced",
+        formula: "P(A|B) = \\frac{P(A\\cap B)}{P(B)}",
+        variables: [{ symbol: "P(A|B)", definition: "Probability of A given B" }]
+      },
+      {
+        title: "Rank of Word in Dictionary",
+        type: "Advanced",
+        formula: "\\text{Rank} = 1 + \\sum (\\text{permutations of words before})",
+        variables: [{ symbol: "Rank", definition: "Dictionary position" }]
+      },
+      {
+        title: "Inclusion-Exclusion (P&C)",
+        type: "Advanced",
+        formula: "|A\\cup B\\cup C| = |A|+|B|+|C| - |A\\cap B| - |B\\cap C| - |A\\cap C| + |A\\cap B\\cap C|",
+        variables: [{ symbol: "A, B, C", definition: "Sets" }]
+      },
+      {
+        title: "Pigeonhole Principle",
+        type: "Advanced",
+        formula: "\\text{If } n > m, \\text{ at least 1 bin has } \\ge 2 \\text{ items}",
+        variables: [{ symbol: "n", definition: "Items" }, { symbol: "m", definition: "Containers" }]
+      },
+      {
         title: "Permutation (Arrangement)",
         type: "Advanced",
         formula: "{}^n P_r = \\frac{n!}{(n - r)!}",
@@ -469,6 +619,24 @@ export const FORMULAS_DATA = [
   {
     category: "Simple & Compound Interest",
     formulas: [
+      {
+        title: "Effective Annual Rate",
+        type: "Advanced",
+        formula: "\\text{EAR} = \\left(1 + \\frac{R}{n}\\right)^n - 1",
+        variables: [{ symbol: "n", definition: "Compounding periods per year" }]
+      },
+      {
+        title: "Compounding Frequencies",
+        type: "Advanced",
+        formula: "\\text{Half-yrly: } \\frac{R}{2}, 2T \\quad \\text{Quarterly: } \\frac{R}{4}, 4T",
+        variables: [{ symbol: "R", definition: "Rate" }, { symbol: "T", definition: "Time" }]
+      },
+      {
+        title: "Equal Installments (SI)",
+        type: "Advanced",
+        formula: "A = nx + \\left(\\frac{Rx}{100}\\right)\\frac{n(n-1)}{2}",
+        variables: [{ symbol: "x", definition: "Installment" }, { symbol: "n", definition: "Number of years" }]
+      },
       {
         title: "Simple Interest (SI)",
         type: "Simple",
@@ -763,12 +931,62 @@ export const FORMULAS_DATA = [
         variables: [
           { symbol: "(x_n, y_n)", definition: "Coordinates of points" }
         ]
+      },
+      {
+        title: "Prism (Volume & Surface Area)",
+        type: "Mensuration",
+        formula: "\\begin{aligned} \\text{Volume} &= \\text{Base Area} \\times h \\\\ \\text{LSA} &= \\text{Perimeter of Base} \\times h \\\\ \\text{TSA} &= \\text{LSA} + 2 \\times \\text{Base Area} \\end{aligned}",
+        variables: [
+          { symbol: "h", definition: "Height of the prism" },
+          { symbol: "Base Area", definition: "Area of the cross-sectional base (triangle, pentagon, etc.)" }
+        ]
+      },
+      {
+        title: "Pyramid (Volume & Surface Area)",
+        type: "Mensuration",
+        formula: "\\begin{aligned} \\text{Volume} &= \\frac{1}{3} \\times \\text{Base Area} \\times h \\\\ \\text{LSA} &= \\frac{1}{2} \\times \\text{Perimeter} \\times l \\\\ \\text{TSA} &= \\text{LSA} + \\text{Base Area} \\end{aligned}",
+        variables: [
+          { symbol: "h", definition: "Perpendicular height from apex to base" },
+          { symbol: "l", definition: "Slant height" }
+        ]
+      },
+      {
+        title: "Regular Tetrahedron",
+        type: "Advanced Geometry",
+        formula: "\\begin{aligned} \\text{Volume} &= \\frac{a^3}{6\\sqrt{2}} \\\\ \\text{TSA} &= \\sqrt{3}\\, a^2 \\\\ \\text{Height} &= a\\sqrt{\\frac{2}{3}} \\end{aligned}",
+        variables: [
+          { symbol: "a", definition: "Edge length of the regular tetrahedron" }
+        ]
+      },
+      {
+        title: "Cyclic Quadrilateral (Brahmagupta)",
+        type: "Advanced Geometry",
+        formula: "\\text{Area} = \\sqrt{(s-a)(s-b)(s-c)(s-d)}, \\quad s = \\frac{a+b+c+d}{2}",
+        variables: [
+          { symbol: "a, b, c, d", definition: "Sides of the cyclic quadrilateral" },
+          { symbol: "s", definition: "Semi-perimeter" }
+        ]
+      },
+      {
+        title: "Perpendicular Distance (Point to Line)",
+        type: "Advanced Geometry",
+        formula: "d = \\frac{|ax_1 + by_1 + c|}{\\sqrt{a^2 + b^2}}",
+        variables: [
+          { symbol: "(x_1, y_1)", definition: "Coordinates of the point" },
+          { symbol: "ax + by + c = 0", definition: "Equation of the line" }
+        ]
       }
     ]
   },
   {
     category: "Logical Reasoning: Blood Relations",
     formulas: [
+      {
+        title: "Coded Blood Relations",
+        type: "Advanced",
+        formula: "\\text{Analyze symbols to draw family tree}",
+        variables: [{ symbol: "+, -, *, /", definition: "Code for relations" }]
+      },
       {
         title: "Paternal vs Maternal",
         type: "Simple",
@@ -803,6 +1021,12 @@ export const FORMULAS_DATA = [
     category: "Logical Reasoning: Direction Sense",
     formulas: [
       {
+        title: "Shadows & Sun Position",
+        type: "Advanced",
+        formula: "\\text{Morning: Sun E, Shadow W; Evening: Sun W, Shadow E}",
+        variables: [{ symbol: "Shadow", definition: "Opposite to sun" }]
+      },
+      {
         title: "Standard Directions",
         type: "Simple",
         formula: "\\text{North (Up), South (Down), East (Right), West (Left)}",
@@ -825,6 +1049,12 @@ export const FORMULAS_DATA = [
   {
     category: "Logical Reasoning: Syllogism",
     formulas: [
+      {
+        title: "Only a Few / Only A are B",
+        type: "Advanced",
+        formula: "\\text{Only A are B } \\implies \\text{ All B are A, and B cannot be anything else}",
+        variables: [{ symbol: "Only a few", definition: "Some + Some not" }]
+      },
       {
         title: "Type: All A are B",
         type: "Simple",
@@ -857,6 +1087,12 @@ export const FORMULAS_DATA = [
   {
     category: "Logical Reasoning: Coding-Decoding",
     formulas: [
+      {
+        title: "Opposite Letter Pairs",
+        type: "Advanced",
+        formula: "A\\leftrightarrow Z, B\\leftrightarrow Y \\dots M\\leftrightarrow N",
+        variables: [{ symbol: "Sum", definition: "Positional sum is always 27" }]
+      },
       {
         title: "Forward Alphabet Positional Value",
         type: "Simple",

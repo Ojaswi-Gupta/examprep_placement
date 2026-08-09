@@ -638,4 +638,104 @@ export const DIAGRAMS_DATA = {
       <text x="165" y="65" fill="var(--text)" font-size="10" text-anchor="middle">+11 Yrs</text>
     </svg>
   `
+
+  "Prism": `
+  <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+    <!-- Triangular Prism -->
+    <path d="M 50 10 L 20 40 L 80 40 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+    <path d="M 50 60 L 20 90 L 80 90 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+    <line x1="50" y1="10" x2="50" y2="60" stroke="var(--accent)" stroke-width="2" />
+    <line x1="20" y1="40" x2="20" y2="90" stroke="var(--accent)" stroke-width="2" />
+    <line x1="80" y1="40" x2="80" y2="90" stroke="var(--accent)" stroke-width="2" />
+    <text x="30" y="65" fill="var(--text)" font-size="8">h</text>
+  </svg>
+  `,
+  "Pyramid": `
+  <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+    <!-- Square Pyramid -->
+    <path d="M 20 70 L 80 70 L 90 90 L 30 90 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" />
+    <path d="M 55 20 L 20 70" stroke="var(--accent)" stroke-width="2" />
+    <path d="M 55 20 L 80 70" stroke="var(--accent)" stroke-width="2" />
+    <path d="M 55 20 L 90 90" stroke="var(--accent)" stroke-width="2" />
+    <path d="M 55 20 L 30 90" stroke="var(--accent)" stroke-width="2" />
+    <line x1="55" y1="20" x2="55" y2="80" stroke="var(--green)" stroke-width="1" stroke-dasharray="2,2" />
+    <text x="58" y="50" fill="var(--text)" font-size="8">h</text>
+  </svg>
+  `,
+  "Regular Tetrahedron": `
+  <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+    <!-- Tetrahedron -->
+    <path d="M 50 15 L 15 85 L 85 85 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" />
+    <line x1="50" y1="15" x2="50" y2="65" stroke="var(--accent)" stroke-width="2" />
+    <path d="M 15 85 L 50 65 L 85 85" stroke="var(--green)" stroke-width="1" stroke-dasharray="2,2" />
+  </svg>
+  `,
+  "Shadows & Sun Position": `
+  <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+    <!-- Sun & Shadow -->
+    <circle cx="80" cy="20" r="10" fill="var(--accent)" />
+    <line x1="70" y1="30" x2="50" y2="50" stroke="var(--accent)" stroke-width="2" />
+    <rect x="40" y="50" width="10" height="40" fill="var(--text)" />
+    <rect x="10" y="85" width="30" height="5" fill="var(--green)" />
+    <text x="10" y="80" fill="var(--text)" font-size="8">Shadow</text>
+  </svg>
+  `,
+  "Only a Few / Only A are B": `
+  <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+    <!-- Syllogism Venn Diagram -->
+    <circle cx="50" cy="50" r="40" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+    <circle cx="50" cy="50" r="20" fill="rgba(var(--green-rgb, 16, 185, 129), 0.2)" stroke="var(--green)" stroke-width="2" />
+    <text x="45" y="30" fill="var(--text)" font-size="12">A</text>
+    <text x="45" y="55" fill="var(--text)" font-size="12">B</text>
+  </svg>
+  `,
+  "Opposite Letter Pairs": `
+  <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+    <text x="10" y="30" fill="var(--text)" font-size="12">A (1)</text>
+    <path d="M 45 26 L 55 26 M 55 26 L 50 21 M 55 26 L 50 31 M 45 26 L 50 21 M 45 26 L 50 31" stroke="var(--accent)" stroke-width="1.5" fill="none" />
+    <text x="60" y="30" fill="var(--text)" font-size="12">Z (26)</text>
+
+    <text x="10" y="60" fill="var(--text)" font-size="12">B (2)</text>
+    <path d="M 45 56 L 55 56 M 55 56 L 50 51 M 55 56 L 50 61 M 45 56 L 50 51 M 45 56 L 50 61" stroke="var(--accent)" stroke-width="1.5" fill="none" />
+    <text x="60" y="60" fill="var(--text)" font-size="12">Y (25)</text>
+
+    <text x="25" y="90" fill="var(--green)" font-size="10">Sum = 27</text>
+  </svg>
+  `,
+  "Prism (Volume & Surface Area)": `
+    <svg viewBox="0 0 120 110" width="100%" height="150" style="max-width: 220px;">
+      <path d="M 30 85 L 80 85 L 95 55 L 45 55 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <path d="M 30 85 L 30 35 L 45 5 L 45 55" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.05)" stroke="var(--accent)" stroke-width="2" />
+      <path d="M 80 85 L 80 35 L 95 5 L 95 55" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.05)" stroke="var(--accent)" stroke-width="2" />
+      <path d="M 30 35 L 80 35 L 95 5 L 45 5 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.08)" stroke="var(--accent)" stroke-width="2" />
+      <line x1="105" y1="55" x2="105" y2="85" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="4" />
+      <text x="110" y="73" fill="var(--green)" font-size="10">h</text>
+      <text x="50" y="100" fill="var(--text)" font-size="10" text-anchor="middle">Base</text>
+    </svg>
+  `,
+  "Pyramid (Volume & Surface Area)": `
+    <svg viewBox="0 0 120 110" width="100%" height="150" style="max-width: 220px;">
+      <path d="M 20 90 L 100 90 L 80 60 L 40 60 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <line x1="60" y1="10" x2="20" y2="90" stroke="var(--accent)" stroke-width="2" />
+      <line x1="60" y1="10" x2="100" y2="90" stroke="var(--accent)" stroke-width="2" />
+      <line x1="60" y1="10" x2="80" y2="60" stroke="var(--accent)" stroke-width="2" />
+      <line x1="60" y1="10" x2="40" y2="60" stroke="var(--accent)" stroke-width="2" />
+      <line x1="60" y1="10" x2="60" y2="75" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="4" />
+      <rect x="57" y="72" width="4" height="4" fill="none" stroke="var(--green)" stroke-width="1" />
+      <text x="65" y="50" fill="var(--green)" font-size="10">h</text>
+      <text x="90" y="50" fill="var(--text)" font-size="9">l</text>
+      <text x="55" y="8" fill="var(--text)" font-size="9">Apex</text>
+    </svg>
+  `,
+  "Regular Tetrahedron": `
+    <svg viewBox="0 0 120 110" width="100%" height="150" style="max-width: 220px;">
+      <path d="M 20 90 L 100 90 L 60 10 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <line x1="60" y1="10" x2="75" y2="65" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4" />
+      <line x1="100" y1="90" x2="75" y2="65" stroke="var(--accent)" stroke-width="2" />
+      <line x1="20" y1="90" x2="75" y2="65" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4" />
+      <text x="55" y="105" fill="var(--text)" font-size="10" text-anchor="middle">a</text>
+      <text x="30" y="48" fill="var(--text)" font-size="10">a</text>
+      <text x="85" y="48" fill="var(--text)" font-size="10">a</text>
+    </svg>
+  `,
 };

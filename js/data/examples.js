@@ -887,4 +887,223 @@ export const EXAMPLES_DATA = {
       "So, it was a Friday."
     ]
   }
+
+  "Product Constancy Rule": {
+    question: "If price increases by 25%, consumption decreases by what % to keep expenditure same?",
+    steps: ["$25\\\\% = 1/4$. Thus $x=1, y=4$.",
+      "Decrease = $x/(x+y) = 1/5 = 20\\\\%$."]
+  },
+  "Population Growth & Depreciation": {
+    question: "A town's population increases by 10% annually. If current is 10000, what will it be after 2 years?",
+    steps: ["$P_n = 10000(1 + 10/100)^2$",
+      "$P_n = 10000(1.1)^2 = 12100$."]
+  },
+  "Set Theory (Inclusion-Exclusion)": {
+    question: "In a class of 50, 30 like Math, 25 like Physics. 10 like both. How many like neither?",
+    steps: ["$n(M \\\\cup P) = 30 + 25 - 10 = 45$",
+      "Neither = $50 - 45 = 5$."]
+  },
+  "Marked Price & Discount": {
+    question: "Profit is 20% after giving a 10% discount. Find MP/CP ratio.",
+    steps: ["$\\\\frac{MP}{CP} = \\\\frac{100+20}{100-10} = \\\\frac{120}{90} = \\\\frac{4}{3}$."]
+  },
+  "Successive Discounts": {
+    question: "Two successive discounts of 20% and 10%. Find net discount.",
+    steps: ["Net = $20 + 10 - \\\\frac{20 \\\\times 10}{100}$",
+      "$30 - 2 = 28\\\\%$."]
+  },
+  "Buy X Get Y Free": {
+    question: "Buy 3 get 1 free. Find discount %.",
+    steps: ["Discount = $\\\\frac{1}{3+1} \\\\times 100 = 25\\\\%$."]
+  },
+  "Races & Games": {
+    question: "In a 100m race, A beats B by 10m. Find ratio of speeds.",
+    steps: ["Ratio = };
+00 / (100 - 10) = 100/90 = 10:9$."]
+  },
+  "Escalator Problems": {
+    question: "A man takes 40 steps up a moving escalator. Escalator has 20 steps. Total steps?",
+    steps: ["Total = $40 + 20 = 60$ steps."]
+  },
+  "Late/Early Shortcut": {
+    question: "If a boy walks at 4km/h he is 10 min late. At 5km/h he is 5 min early. Find distance.",
+    steps: ["$\\\\Delta T = 15$ min = };
+/4$ hr.",
+      "$D = \\\\frac{4 \\\\times 5}{5 - 4} \\\\times \\\\frac{1}{4} = 5$ km."]
+  },
+  "Efficiency Ratio": {
+    question: "A is twice as efficient as B. If B takes 20 days, how long does A take?",
+    steps: ["$E_A / E_B = 2/1 \\\\implies T_A / T_B = 1/2$",
+      "$T_A = 20 / 2 = 10$ days."]
+  },
+  "Joining/Leaving Midway": {
+    question: "A does work in 10 days, B in 15 days. A leaves after 2 days. B finishes remaining.",
+    steps: ["Let B work for $x$ days total. $2/10 + x/15 = 1$.",
+      "$x/15 = 4/5 \\\\implies x = 12$ days."]
+  },
+  "Wages Distribution": {
+    question: "A and B do work in 10 and 15 days. They get Rs 500. A's share?",
+    steps: ["Efficiency ratio = };
+5:10 = 3:2$.",
+      "A's share = $\\\\frac{3}{5} \\\\times 500 = 300$."]
+  },
+  "Product of Factors": {
+    question: "Find product of all factors of 12.",
+    steps: ["Factors = 6. Product = };
+2^{6/2} = 12^3 = 1728$."]
+  },
+  "AM-GM-HM Inequality": {
+    question: "Given two positive numbers a, b. Which is largest: AM, GM or HM?",
+    steps: ["Always $\\\\text{AM} \\\\ge \\\\text{GM} \\\\ge \\\\text{HM}$. AM is largest."]
+  },
+  "Legendre's Formula": {
+    question: "Find exponent of 3 in 50!.",
+    steps: ["$E_3(50!) = \\\\lfloor 50/3 \\\\rfloor + \\\\lfloor 50/9 \\\\rfloor + \\\\lfloor 50/27 \\\\rfloor$",
+      "};
+6 + 5 + 1 = 22$."]
+  },
+  "Sum of Squares": {
+    question: "Find sum of squares of first 5 natural numbers.",
+    steps: ["$\\\\frac{5(6)(11)}{6} = 55$."]
+  },
+  "Sum of Cubes": {
+    question: "Find sum of cubes of first 4 natural numbers.",
+    steps: ["$(4 \\\\times 5 / 2)^2 = 10^2 = 100$."]
+  },
+  "Remainder Theorem & Cyclicity": {
+    question: "Find remainder when $x^3 - 2x + 1$ is divided by $x-2$.",
+    steps: ["Put $x=2$. Remainder = $2^3 - 2(2) + 1 = 8 - 4 + 1 = 5$."]
+  },
+  "Pigeonhole Principle": {
+    question: "How many people needed to guarantee 2 are born in same month?",
+    steps: ["Months = 12. Need };
+2 + 1 = 13$ people."]
+  },
+  "Inclusion-Exclusion (P&C)": {
+    question: "Calculate $|A \cup B|$ if $|A|=10, |B|=15, |A \cap B|=5$.",
+    steps: ["};
+0 + 15 - 5 = 20$."]
+  },
+  "Rank of Word in Dictionary": {
+    question: "Rank of 'CAB'?",
+    steps: ["Alphabetical: A, B, C. Start with A: 2! = 2. Start with B: 2! = 2.",
+      "CAB is first word with C. Rank = $2 + 2 + 1 = 5$."]
+  },
+  "Conditional Probability": {
+    question: "P(A)=0.5, P(B)=0.4, P(A and B)=0.2. Find P(A|B).",
+    steps: ["$P(A|B) = 0.2 / 0.4 = 0.5$."]
+  },
+  "Equal Installments (SI)": {
+    question: "Debt of 1092 due in 3 years at 12% SI. Find annual installment.",
+    steps: ["};
+092 = 3x + \\\\frac{12x}{100}\\\\frac{3(2)}{2} = 3x + 0.36x = 3.36x$",
+      "$x = 1092 / 3.36 = 325$."]
+  },
+  "Compounding Frequencies": {
+    question: "10% p.a. compounded half yearly. Effective rate for 6 months?",
+    steps: ["Rate = };
+0/2 = 5\\\\%$."]
+  },
+  "Effective Annual Rate": {
+    question: "10% p.a. compounded half-yearly. EAR?",
+    steps: ["$(1 + 0.05)^2 - 1 = 1.1025 - 1 = 10.25\\\\%$."]
+  },
+  "Prism": {
+    question: "Triangular prism, base area 10, height 5. Volume?",
+    steps: ["$V = 10 \\\\times 5 = 50$."]
+  },
+  "Pyramid": {
+    question: "Square pyramid, base side 4, height 6. Volume?",
+    steps: ["$V = \\\\frac{1}{3} \\\\times (4 \\\\times 4) \\\\times 6 = 32$."]
+  },
+  "Regular Tetrahedron": {
+    question: "Tetrahedron of side 2. Volume?",
+    steps: ["$V = \\\\frac{2^3}{6\\\\sqrt{2}} = \\\\frac{8}{6\\\\sqrt{2}} = \\\\frac{2\\\\sqrt{2}}{3}$."]
+  },
+  "Cyclic Quadrilateral (Brahmagupta)": {
+    question: "Cyclic quad with sides 1, 2, 3, 4. Area?",
+    steps: ["$s = 5$. Area = $\\\\sqrt{4 \\\\times 3 \\\\times 2 \\\\times 1} = \\\\sqrt{24} = 2\\\\sqrt{6}$."]
+  },
+  "Perpendicular Distance": {
+    question: "Distance of (0,0) from 3x + 4y - 10 = 0?",
+    steps: ["$d = \\\\frac{|-10|}{\\\\sqrt{3^2 + 4^2}} = 10/5 = 2$."]
+  },
+  "Coded Blood Relations": {
+    question: "A+B means A is father of B. A-B means mother. What is P+Q-R?",
+    steps: ["P is father of Q. Q is mother of R.",
+      "Thus P is maternal grandfather of R."]
+  },
+  "Shadows & Sun Position": {
+    question: "Morning, A and B facing each other. A's shadow to right of B. B facing?",
+    steps: ["Morning sun East, shadow West.",
+      "West is to right of B. So B faces South."]
+  },
+  "Only a Few / Only A are B": {
+    question: "Only A are B. Conclusion: Some B are C?",
+    steps: ["Only A are B implies B cannot be C. False."]
+  },
+  "Opposite Letter Pairs": {
+    question: "Code A as Z, B as Y. Code for DOG?",
+    steps: ["D=4, opp=23(W). O=15, opp=12(L). G=7, opp=20(T).",
+      "Code is WLT."]
+  },
+  "Weighted Average (3 Mixtures)": {
+    question: "Mix 1L of 10%, 2L of 20%, 3L of 30%. Conc?",
+    steps: ["$\\\\frac{1(10) + 2(20) + 3(30)}{1+2+3} = \\\\frac{10+40+90}{6} = 140/6 = 23.33\\\\%$."]
+  },
+  "Century Year Odd Days": {
+    question: "Odd days in 2000 years?",
+    steps: ["Multiple of 400. Odd days = 0."]
+  },
+  "Reflex Angle (Clocks)": {
+    question: "Angle between hands is 60. Reflex angle?",
+    steps: ["$360 - 60 = 300$ degrees."]
+  },
+  "Prism (Volume & Surface Area)": {
+    question: "A triangular prism has a base that is an equilateral triangle with side 6 cm and the height of the prism is 10 cm. Find the volume and total surface area.",
+    steps: [
+      "Base is an equilateral triangle with side $a = 6$ cm.",
+      "Base Area $= \\frac{\\sqrt{3}}{4} \\times 6^2 = \\frac{\\sqrt{3}}{4} \\times 36 = 9\\sqrt{3} \\approx 15.59$ sq cm.",
+      "Volume $= \\text{Base Area} \\times h = 9\\sqrt{3} \\times 10 = 90\\sqrt{3} \\approx 155.88$ cu cm.",
+      "Perimeter of base $= 3 \\times 6 = 18$ cm. LSA $= 18 \\times 10 = 180$ sq cm.",
+      "TSA $= 180 + 2 \\times 9\\sqrt{3} = 180 + 18\\sqrt{3} \\approx 211.18$ sq cm."
+    ]
+  },
+  "Pyramid (Volume & Surface Area)": {
+    question: "A square pyramid has a base side of 10 cm and a slant height of 13 cm. Find its volume and lateral surface area.",
+    steps: [
+      "Base Area $= 10^2 = 100$ sq cm. Perimeter $= 4 \\times 10 = 40$ cm.",
+      "Height $h = \\sqrt{l^2 - (a/2)^2} = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = \\sqrt{144} = 12$ cm.",
+      "Volume $= \\frac{1}{3} \\times 100 \\times 12 = 400$ cu cm.",
+      "LSA $= \\frac{1}{2} \\times 40 \\times 13 = 260$ sq cm.",
+      "TSA $= 260 + 100 = 360$ sq cm."
+    ]
+  },
+  "Regular Tetrahedron": {
+    question: "Find the volume, total surface area, and height of a regular tetrahedron with edge length 6 cm.",
+    steps: [
+      "Edge $a = 6$ cm.",
+      "Volume $= \\frac{a^3}{6\\sqrt{2}} = \\frac{216}{6\\sqrt{2}} = \\frac{36}{\\sqrt{2}} = 18\\sqrt{2} \\approx 25.46$ cu cm.",
+      "TSA $= \\sqrt{3} \\times a^2 = \\sqrt{3} \\times 36 = 36\\sqrt{3} \\approx 62.35$ sq cm.",
+      "Height $= a\\sqrt{\\frac{2}{3}} = 6\\sqrt{\\frac{2}{3}} = 6 \\times 0.8165 \\approx 4.90$ cm."
+    ]
+  },
+  "Cyclic Quadrilateral (Brahmagupta)": {
+    question: "A cyclic quadrilateral has sides 3, 4, 5, and 6 cm. Find its area using Brahmagupta's formula.",
+    steps: [
+      "Semi-perimeter $s = \\frac{3 + 4 + 5 + 6}{2} = 9$.",
+      "Area $= \\sqrt{(s-a)(s-b)(s-c)(s-d)}$.",
+      "$= \\sqrt{(9-3)(9-4)(9-5)(9-6)} = \\sqrt{6 \\times 5 \\times 4 \\times 3}$.",
+      "$= \\sqrt{360} = 6\\sqrt{10} \\approx 18.97$ sq cm."
+    ]
+  },
+  "Perpendicular Distance (Point to Line)": {
+    question: "Find the perpendicular distance from the point (3, 4) to the line 3x + 4y - 5 = 0.",
+    steps: [
+      "Using formula: $d = \\frac{|ax_1 + by_1 + c|}{\\sqrt{a^2 + b^2}}$.",
+      "Here $a = 3, b = 4, c = -5, x_1 = 3, y_1 = 4$.",
+      "$d = \\frac{|3(3) + 4(4) + (-5)|}{\\sqrt{3^2 + 4^2}} = \\frac{|9 + 16 - 5|}{\\sqrt{9 + 16}}$.",
+      "$= \\frac{20}{5} = 4$ units."
+    ]
+  }
 };

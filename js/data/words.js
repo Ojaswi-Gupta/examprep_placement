@@ -1262,6 +1262,566 @@ export const WORDS_DATA = [
       "She let out a jubilant laugh when she saw the acceptance letter in the mail."
     ],
     usageTip: "Use 'jubilant' for extreme, expressive joy resulting from a major success or victory."
+  },
+  {
+    id: 80,
+    word: "Acerbic",
+    difficulty: "Hard",
+    simple: "Sharp/biting in temper or speech",
+    partOfSpeech: "adjective",
+    definition: "Sharp and forthright; tasting sour or astringent.",
+    example: "The critic's acerbic review of the play was not well received by the cast.",
+    synonyms: ["sharp", "sarcastic", "biting", "cutting"],
+    antonyms: ["mild", "kind", "sweet", "soothing"],
+    additionalExamples: [
+      "Her acerbic tone let everyone know she was not amused.",
+      "The acerbic comments made the atmosphere uncomfortable."
+    ],
+    usageTip: "Use 'acerbic' to describe comments that are unusually sharp or biting."
+  },
+  {
+    id: 81,
+    word: "Alacrity",
+    difficulty: "Hard",
+    simple: "Eager, brisk readiness",
+    partOfSpeech: "noun",
+    definition: "Brisk and cheerful readiness.",
+    example: "She accepted the invitation with alacrity, thrilled to finally attend the gala.",
+    synonyms: ["eagerness", "willingness", "readiness", "enthusiasm"],
+    antonyms: ["reluctance", "apathy", "hesitation", "lethargy"],
+    additionalExamples: [
+      "The employees responded to the new challenge with alacrity.",
+      "He performed his duties with an alacrity that impressed everyone."
+    ],
+    usageTip: "Alacrity often implies a quick, enthusiastic response."
+  },
+  {
+    id: 82,
+    word: "Anomaly",
+    difficulty: "Medium",
+    simple: "Something deviating from normal",
+    partOfSpeech: "noun",
+    definition: "Something that deviates from what is standard, normal, or expected.",
+    example: "The sudden drop in temperature was an anomaly for the usually warm region.",
+    synonyms: ["abnormality", "irregularity", "exception", "oddity"],
+    antonyms: ["norm", "standard", "regularity", "conformity"],
+    additionalExamples: [
+      "There's an anomaly in your blood test results that we need to investigate.",
+      "His peaceful demeanor was an anomaly in such a chaotic environment."
+    ],
+    usageTip: "Use 'anomaly' for data points or occurrences that don't fit the expected pattern."
+  },
+  {
+    id: 83,
+    word: "Belligerent",
+    difficulty: "Hard",
+    simple: "Hostile, aggressive",
+    partOfSpeech: "adjective",
+    definition: "Hostile and aggressive; engaged in a war or conflict.",
+    example: "The belligerent customer yelled at the cashier for a minor mistake.",
+    synonyms: ["hostile", "aggressive", "combative", "pugnacious"],
+    antonyms: ["peaceful", "friendly", "cooperative", "amicable"],
+    additionalExamples: [
+      "The nations remained belligerent despite international peace efforts.",
+      "He adopted a belligerent stance when questioned about his actions."
+    ],
+    usageTip: "Belligerent implies a readiness to fight or argue."
+  },
+  {
+    id: 84,
+    word: "Capricious",
+    difficulty: "Hard",
+    simple: "Given to sudden changes; fickle",
+    partOfSpeech: "adjective",
+    definition: "Given to sudden and unaccountable changes of mood or behavior.",
+    example: "The capricious nature of the stock market makes it risky for inexperienced investors.",
+    synonyms: ["fickle", "unpredictable", "volatile", "erratic"],
+    antonyms: ["stable", "consistent", "predictable", "reliable"],
+    additionalExamples: [
+      "Her capricious decisions often frustrated her team.",
+      "The weather in the mountains can be highly capricious."
+    ],
+    usageTip: "Capricious describes things or people that change without apparent reason."
+  },
+  {
+    id: 85,
+    word: "Caustic",
+    difficulty: "Hard",
+    simple: "Sarcastic in a scathing way",
+    partOfSpeech: "adjective",
+    definition: "Sarcastic in a scathing and bitter way; able to burn or corrode organic tissue by chemical action.",
+    example: "The comedian was known for his caustic wit that spared no one.",
+    synonyms: ["scathing", "sarcastic", "biting", "mordant"],
+    antonyms: ["kind", "complimentary", "flattering", "gentle"],
+    additionalExamples: [
+      "She wrote a caustic letter to the editor regarding the new policy.",
+      "His caustic remarks created enemies rather than allies."
+    ],
+    usageTip: "Caustic can be used literally for chemicals or figuratively for speech."
+  },
+  {
+    id: 86,
+    word: "Cogent",
+    difficulty: "Hard",
+    simple: "Clear, logical, convincing",
+    partOfSpeech: "adjective",
+    definition: "(of an argument or case) clear, logical, and convincing.",
+    example: "She presented a cogent argument for why the project should be funded.",
+    synonyms: ["convincing", "compelling", "strong", "effective"],
+    antonyms: ["vague", "weak", "ineffective", "unconvincing"],
+    additionalExamples: [
+      "The lawyer's cogent defense swayed the jury.",
+      "He offered no cogent reason for his sudden departure."
+    ],
+    usageTip: "Cogent describes reasoning that is powerfully persuasive."
+  },
+  {
+    id: 87,
+    word: "Diffident",
+    difficulty: "Medium",
+    simple: "Modest/shy, lacking self-confidence",
+    partOfSpeech: "adjective",
+    definition: "Modest or shy because of a lack of self-confidence.",
+    example: "The diffident student was hesitant to speak up during the lively debate.",
+    synonyms: ["shy", "bashful", "timid", "hesitant"],
+    antonyms: ["confident", "assertive", "bold", "outgoing"],
+    additionalExamples: [
+      "He was diffident about expressing his opinions to his superiors.",
+      "Despite her diffident nature, she proved to be an excellent leader."
+    ],
+    usageTip: "Diffident focuses specifically on a lack of self-confidence."
+  },
+  {
+    id: 88,
+    word: "Disparate",
+    difficulty: "Hard",
+    simple: "Essentially different; impossible to compare",
+    partOfSpeech: "adjective",
+    definition: "Essentially different in kind; not allowing comparison.",
+    example: "The committee brought together people from disparate backgrounds to form a unified strategy.",
+    synonyms: ["contrasting", "different", "diverse", "dissimilar"],
+    antonyms: ["similar", "identical", "alike", "homogeneous"],
+    additionalExamples: [
+      "It was difficult to combine such disparate ideas into one cohesive plan.",
+      "The universe contains disparate elements that somehow function together."
+    ],
+    usageTip: "Disparate emphasizes complete dissimilarity."
+  },
+  {
+    id: 89,
+    word: "Dogmatic",
+    difficulty: "Hard",
+    simple: "Asserting opinions as truth without evidence",
+    partOfSpeech: "adjective",
+    definition: "Inclined to lay down principles as incontrovertibly true.",
+    example: "His dogmatic approach left no room for alternative perspectives or debate.",
+    synonyms: ["opinionated", "assertive", "inflexible", "rigid"],
+    antonyms: ["open-minded", "flexible", "tolerant", "amenable"],
+    additionalExamples: [
+      "She grew tired of her manager's dogmatic directives.",
+      "The political debate was ruined by dogmatic statements rather than nuanced discussion."
+    ],
+    usageTip: "Dogmatic often carries a negative connotation of being overly rigid."
+  },
+  {
+    id: 90,
+    word: "Ephemeral",
+    difficulty: "Hard",
+    simple: "Lasting a very short time; fleeting",
+    partOfSpeech: "adjective",
+    definition: "Lasting for a very short time.",
+    example: "The beauty of a sunset is ephemeral, lasting only a few moments before fading.",
+    synonyms: ["fleeting", "transitory", "short-lived", "momentary"],
+    antonyms: ["permanent", "everlasting", "enduring", "eternal"],
+    additionalExamples: [
+      "Fashion trends are often ephemeral, changing from season to season.",
+      "They experienced an ephemeral moment of peace amidst the chaos."
+    ],
+    usageTip: "Ephemeral is often used to describe delicate, short-lived concepts."
+  },
+  {
+    id: 91,
+    word: "Equivocal",
+    difficulty: "Hard",
+    simple: "Ambiguous; open to multiple interpretations",
+    partOfSpeech: "adjective",
+    definition: "Open to more than one interpretation; ambiguous.",
+    example: "The politician gave an equivocal answer to avoid taking a firm stance.",
+    synonyms: ["ambiguous", "vague", "unclear", "indefinite"],
+    antonyms: ["unequivocal", "clear", "certain", "definite"],
+    additionalExamples: [
+      "The experimental results were equivocal and required further study.",
+      "Her equivocal response left us wondering whether she agreed or not."
+    ],
+    usageTip: "Equivocal often implies intentional vagueness to avoid commitment."
+  },
+  {
+    id: 92,
+    word: "Esoteric",
+    difficulty: "Hard",
+    simple: "Understood by only a small specialized group",
+    partOfSpeech: "adjective",
+    definition: "Intended for or likely to be understood by only a small number of people with a specialized knowledge or interest.",
+    example: "The professor's esoteric lecture on quantum mechanics left most of the freshmen confused.",
+    synonyms: ["obscure", "arcane", "abstruse", "cryptic"],
+    antonyms: ["common", "familiar", "obvious", "mainstream"],
+    additionalExamples: [
+      "He has an interest in esoteric philosophical theories.",
+      "The manual was filled with esoteric jargon that only engineers understood."
+    ],
+    usageTip: "Esoteric implies that something is highly specialized and not meant for the general public."
+  },
+  {
+    id: 93,
+    word: "Exacerbate",
+    difficulty: "Hard",
+    simple: "Make a problem worse",
+    partOfSpeech: "verb",
+    definition: "Make (a problem, bad situation, or negative feeling) worse.",
+    example: "Scratching the rash will only exacerbate the itchiness and cause irritation.",
+    synonyms: ["aggravate", "worsen", "inflame", "compound"],
+    antonyms: ["alleviate", "mitigate", "soothe", "improve"],
+    additionalExamples: [
+      "The new law threatens to exacerbate the economic crisis.",
+      "His harsh words served only to exacerbate the conflict."
+    ],
+    usageTip: "Exacerbate is specifically used for making a bad situation worse."
+  },
+  {
+    id: 94,
+    word: "Fastidious",
+    difficulty: "Hard",
+    simple: "Very attentive to accuracy and detail",
+    partOfSpeech: "adjective",
+    definition: "Very attentive to and concerned about accuracy and detail.",
+    example: "The fastidious editor caught grammatical errors that everyone else had missed.",
+    synonyms: ["meticulous", "scrupulous", "punctilious", "exacting"],
+    antonyms: ["careless", "sloppy", "lax", "negligent"],
+    additionalExamples: [
+      "He was fastidious about keeping his workspace organized.",
+      "Her fastidious approach to research ensured the study's validity."
+    ],
+    usageTip: "Fastidious can sometimes imply being overly fussy or demanding."
+  },
+  {
+    id: 95,
+    word: "Garrulous",
+    difficulty: "Hard",
+    simple: "Excessively talkative",
+    partOfSpeech: "adjective",
+    definition: "Excessively talkative, especially on trivial matters.",
+    example: "The garrulous neighbor kept me chatting at the fence for nearly an hour.",
+    synonyms: ["talkative", "loquacious", "voluble", "chatty"],
+    antonyms: ["taciturn", "reticent", "quiet", "silent"],
+    additionalExamples: [
+      "He became garrulous after a few glasses of wine.",
+      "The usually garrulous man was surprisingly quiet during the meeting."
+    ],
+    usageTip: "Garrulous usually implies talking too much about unimportant things."
+  },
+  {
+    id: 96,
+    word: "Gregarious",
+    difficulty: "Medium",
+    simple: "Fond of company; sociable",
+    partOfSpeech: "adjective",
+    definition: "(of a person) fond of company; sociable.",
+    example: "Dolphins are gregarious animals that live in large, structured social groups.",
+    synonyms: ["sociable", "outgoing", "convivial", "extroverted"],
+    antonyms: ["introverted", "reclusive", "solitary", "unsociable"],
+    additionalExamples: [
+      "His gregarious nature made him the life of every party.",
+      "They are a gregarious species, rarely found in isolation."
+    ],
+    usageTip: "Gregarious comes from the Latin word for 'flock' and emphasizes sociability."
+  },
+  {
+    id: 97,
+    word: "Inchoate",
+    difficulty: "Hard",
+    simple: "Just begun; not fully formed",
+    partOfSpeech: "adjective",
+    definition: "Just begun and so not fully formed or developed; rudimentary.",
+    example: "The startup had only an inchoate business plan, leaving potential investors hesitant.",
+    synonyms: ["rudimentary", "undeveloped", "immature", "unformed"],
+    antonyms: ["developed", "mature", "complete", "finished"],
+    additionalExamples: [
+      "Her inchoate ideas eventually grew into a brilliant novel.",
+      "The project is still in an inchoate stage and requires much more planning."
+    ],
+    usageTip: "Inchoate is often used to describe ideas, plans, or feelings."
+  },
+  {
+    id: 98,
+    word: "Incisive",
+    difficulty: "Hard",
+    simple: "Intelligently analytical and clear-thinking",
+    partOfSpeech: "adjective",
+    definition: "(of a person or mental process) intelligently analytical and clear-thinking.",
+    example: "Her incisive questioning quickly revealed the flaws in the proposal.",
+    synonyms: ["penetrating", "acute", "sharp", "analytical"],
+    antonyms: ["vague", "dull", "superficial", "rambling"],
+    additionalExamples: [
+      "He provided an incisive analysis of the current political situation.",
+      "The documentary offered an incisive look at modern consumerism."
+    ],
+    usageTip: "Incisive refers to a sharp, cutting intellect that gets straight to the point."
+  },
+  {
+    id: 99,
+    word: "Intransigent",
+    difficulty: "Hard",
+    simple: "Uncompromising; refusing to change views",
+    partOfSpeech: "adjective",
+    definition: "Unwilling or refusing to change one's views or to agree about something.",
+    example: "The union remained intransigent in their demand for higher wages.",
+    synonyms: ["uncompromising", "inflexible", "stubborn", "resolute"],
+    antonyms: ["compliant", "flexible", "pliant", "accommodating"],
+    additionalExamples: [
+      "The negotiations failed due to the intransigent attitude of both sides.",
+      "He was an intransigent hardliner who never yielded an inch."
+    ],
+    usageTip: "Intransigent is a formal word for stubborn, often used in political or negotiating contexts."
+  },
+  {
+    id: 100,
+    word: "Laconic",
+    difficulty: "Hard",
+    simple: "Using very few words; concise",
+    partOfSpeech: "adjective",
+    definition: "(of a person, speech, or style of writing) using very few words.",
+    example: "The hero of the film was a laconic cowboy who let his actions speak for him.",
+    synonyms: ["brief", "concise", "terse", "succinct"],
+    antonyms: ["verbose", "garrulous", "loquacious", "wordy"],
+    additionalExamples: [
+      "She gave a laconic reply to the lengthy question.",
+      "His laconic style of writing left much to the reader's imagination."
+    ],
+    usageTip: "Laconic describes communication that gets straight to the point without extra words."
+  },
+  {
+    id: 101,
+    word: "Loquacious",
+    difficulty: "Hard",
+    simple: "Tendency to talk a great deal",
+    partOfSpeech: "adjective",
+    definition: "Tending to talk a great deal; talkative.",
+    example: "The loquacious host entertained his guests with endless stories of his travels.",
+    synonyms: ["talkative", "voluble", "chatty", "garrulous"],
+    antonyms: ["reticent", "taciturn", "silent", "quiet"],
+    additionalExamples: [
+      "She was naturally loquacious and easily dominated any conversation.",
+      "He is a loquacious writer whose sentences sometimes span entire pages."
+    ],
+    usageTip: "Loquacious is synonymous with garrulous but often slightly less negative."
+  },
+  {
+    id: 102,
+    word: "Mendacity",
+    difficulty: "Hard",
+    simple: "Untruthfulness",
+    partOfSpeech: "noun",
+    definition: "Untruthfulness; tendency to lie.",
+    example: "The politician's mendacity cost him the trust of his constituents.",
+    synonyms: ["deceit", "untruthfulness", "dishonesty", "duplicity"],
+    antonyms: ["truthfulness", "honesty", "veracity", "sincerity"],
+    additionalExamples: [
+      "She was shocked by the sheer mendacity of his claims.",
+      "A culture of mendacity had infected the entire corporation."
+    ],
+    usageTip: "Mendacity refers to a systemic or habitual untruthfulness."
+  },
+  {
+    id: 103,
+    word: "Mitigate",
+    difficulty: "Medium",
+    simple: "Make less severe",
+    partOfSpeech: "verb",
+    definition: "Make less severe, serious, or painful.",
+    example: "The doctor prescribed painkillers to mitigate the patient's suffering.",
+    synonyms: ["alleviate", "reduce", "diminish", "lessen"],
+    antonyms: ["aggravate", "exacerbate", "intensify", "worsen"],
+    additionalExamples: [
+      "Emergency funds were established to mitigate the impact of the disaster.",
+      "We need to implement strategies to mitigate environmental damage."
+    ],
+    usageTip: "Mitigate is often used when dealing with risks, damage, or pain."
+  },
+  {
+    id: 104,
+    word: "Obsequious",
+    difficulty: "Hard",
+    simple: "Excessively obedient/servile",
+    partOfSpeech: "adjective",
+    definition: "Obedient or attentive to an excessive or servile degree.",
+    example: "The obsequious waiters hovered around the wealthy patron, eager to please.",
+    synonyms: ["servile", "sycophantic", "fawning", "submissive"],
+    antonyms: ["assertive", "arrogant", "domineering", "independent"],
+    additionalExamples: [
+      "She found his obsequious behavior toward the boss highly annoying.",
+      "They were served by obsequious staff who anticipated their every need."
+    ],
+    usageTip: "Obsequious implies a negative level of submission, similar to 'kissing up'."
+  },
+  {
+    id: 105,
+    word: "Perfunctory",
+    difficulty: "Hard",
+    simple: "Done with minimum effort; superficial",
+    partOfSpeech: "adjective",
+    definition: "(of an action or gesture) carried out with a minimum of effort or reflection.",
+    example: "He gave a perfunctory nod as he continued reading the newspaper.",
+    synonyms: ["cursory", "superficial", "desultory", "halfhearted"],
+    antonyms: ["careful", "thorough", "meticulous", "detailed"],
+    additionalExamples: [
+      "The inspector gave the machinery only a perfunctory glance.",
+      "Their perfunctory apology did little to ease her anger."
+    ],
+    usageTip: "Perfunctory describes actions done purely out of routine or duty, without interest."
+  },
+  {
+    id: 106,
+    word: "Pernicious",
+    difficulty: "Hard",
+    simple: "Harmful in a gradual/subtle way",
+    partOfSpeech: "adjective",
+    definition: "Having a harmful effect, especially in a gradual or subtle way.",
+    example: "The pernicious effects of the long-term stress slowly damaged his health.",
+    synonyms: ["harmful", "destructive", "detrimental", "insidious"],
+    antonyms: ["beneficial", "harmless", "favorable", "benign"],
+    additionalExamples: [
+      "Misinformation can have a pernicious influence on society.",
+      "They failed to recognize the pernicious nature of the new policy."
+    ],
+    usageTip: "Pernicious emphasizes a subtle, hidden danger that grows over time."
+  },
+  {
+    id: 107,
+    word: "Pugnacious",
+    difficulty: "Hard",
+    simple: "Eager to argue or fight",
+    partOfSpeech: "adjective",
+    definition: "Eager or quick to argue, quarrel, or fight.",
+    example: "The pugnacious rooster aggressively defended its territory from intruders.",
+    synonyms: ["combative", "aggressive", "belligerent", "quarrelsome"],
+    antonyms: ["peaceful", "amiable", "friendly", "easygoing"],
+    additionalExamples: [
+      "His pugnacious attitude made him difficult to work with.",
+      "The debate quickly descended into a pugnacious shouting match."
+    ],
+    usageTip: "Pugnacious comes from the Latin word for 'fist', signifying a readiness to brawl."
+  },
+  {
+    id: 108,
+    word: "Reticent",
+    difficulty: "Medium",
+    simple: "Reserved; not revealing thoughts easily",
+    partOfSpeech: "adjective",
+    definition: "Not revealing one's thoughts or feelings readily.",
+    example: "The usually reticent teenager surprisingly opened up during the group therapy session.",
+    synonyms: ["reserved", "withdrawn", "introverted", "taciturn"],
+    antonyms: ["expansive", "outgoing", "talkative", "communicative"],
+    additionalExamples: [
+      "He was reticent about his past and rarely spoke of his family.",
+      "The suspect remained reticent despite hours of interrogation."
+    ],
+    usageTip: "Reticent specifically means being hesitant to speak or reveal information."
+  },
+  {
+    id: 109,
+    word: "Sycophant",
+    difficulty: "Hard",
+    simple: "Person who flatters for advantage",
+    partOfSpeech: "noun",
+    definition: "A person who acts obsequiously toward someone important in order to gain advantage.",
+    example: "The dictator surrounded himself with sycophants who never challenged his terrible ideas.",
+    synonyms: ["flatterer", "toady", "yes-man", "bootlicker"],
+    antonyms: ["critic", "detractor", "opponent", "rebel"],
+    additionalExamples: [
+      "He realized too late that she was a sycophant, not a true friend.",
+      "Corporate environments sometimes reward sycophants rather than independent thinkers."
+    ],
+    usageTip: "Sycophant is a highly critical term for someone who uses flattery for personal gain."
+  },
+  {
+    id: 110,
+    word: "Taciturn",
+    difficulty: "Hard",
+    simple: "Reserved in speech; saying little",
+    partOfSpeech: "adjective",
+    definition: "(of a person) reserved or uncommunicative in speech; saying little.",
+    example: "The taciturn detective sat in the corner, observing everything but saying nothing.",
+    synonyms: ["untalkative", "reticent", "quiet", "silent"],
+    antonyms: ["talkative", "loquacious", "garrulous", "chatty"],
+    additionalExamples: [
+      "After the accident, he became increasingly taciturn and withdrawn.",
+      "Her taciturn nature was often mistaken for arrogance."
+    ],
+    usageTip: "Taciturn describes someone who is habitually quiet."
+  },
+  {
+    id: 111,
+    word: "Truculent",
+    difficulty: "Hard",
+    simple: "Aggressively defiant",
+    partOfSpeech: "adjective",
+    definition: "Eager or quick to argue or fight; aggressively defiant.",
+    example: "The truculent teenager scowled and crossed his arms when asked to clean his room.",
+    synonyms: ["defiant", "aggressive", "antagonistic", "combative"],
+    antonyms: ["cooperative", "compliant", "friendly", "amiable"],
+    additionalExamples: [
+      "He spoke in a truculent tone that immediately put everyone on edge.",
+      "The critics wrote a truculent review of the controversial film."
+    ],
+    usageTip: "Truculent combines aggressiveness with a defiant, surly attitude."
+  },
+  {
+    id: 112,
+    word: "Ubiquitous",
+    difficulty: "Medium",
+    simple: "Found everywhere",
+    partOfSpeech: "adjective",
+    definition: "Present, appearing, or found everywhere.",
+    example: "Smartphones have become ubiquitous in modern society, changing how we interact.",
+    synonyms: ["omnipresent", "everywhere", "pervasive", "universal"],
+    antonyms: ["rare", "scarce", "uncommon", "infrequent"],
+    additionalExamples: [
+      "The company's logo is ubiquitous, seen on billboards and screens worldwide.",
+      "Coffee shops are ubiquitous in the city center."
+    ],
+    usageTip: "Ubiquitous is used to describe things that are seemingly everywhere at once."
+  },
+  {
+    id: 113,
+    word: "Veracity",
+    difficulty: "Hard",
+    simple: "Truthfulness; accuracy",
+    partOfSpeech: "noun",
+    definition: "Conformity to facts; accuracy; habitual truthfulness.",
+    example: "The judge questioned the veracity of the witness's testimony given the contradictory evidence.",
+    synonyms: ["truthfulness", "accuracy", "authenticity", "credibility"],
+    antonyms: ["mendacity", "falsity", "deceit", "dishonesty"],
+    additionalExamples: [
+      "We must confirm the veracity of these claims before acting upon them.",
+      "His known veracity made him an excellent candidate for the ethics committee."
+    ],
+    usageTip: "Veracity is related to truth, while voracious (similar sounding) relates to appetite."
+  },
+  {
+    id: 114,
+    word: "Voracious",
+    difficulty: "Medium",
+    simple: "Wanting great quantities; insatiable",
+    partOfSpeech: "adjective",
+    definition: "Wanting or devouring great quantities of food; having a very eager approach to an activity.",
+    example: "The teenager had a voracious appetite and could eat a whole pizza by himself.",
+    synonyms: ["insatiable", "unquenchable", "ravenous", "gluttonous"],
+    antonyms: ["satisfied", "full", "quenched", "apathetic"],
+    additionalExamples: [
+      "She is a voracious reader, finishing three books a week.",
+      "His voracious ambition drove him to the top of the corporate ladder."
+    ],
+    usageTip: "Voracious can describe an appetite for food, knowledge, or success."
   }
 ];
 
