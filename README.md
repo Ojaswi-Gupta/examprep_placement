@@ -56,7 +56,9 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 
 ## 🎨 UI/UX & Design
 
-- **Glassmorphism Navbar:** A sleek, sticky navigation bar with background blur that gracefully floats above the content.
+- **Lightweight Feature Carousel:** A clean, horizontal auto-scrolling carousel on the home page highlighting app features without cluttering the screen or relying on heavy third-party libraries.
+- **Draggable Pomodoro Timer:** A tiny, unobtrusive 25-minute focus timer widget that can be opened, dragged anywhere on the screen, and minimized to a pill shape while studying. Features an automatic fullscreen prompt for maximum focus.
+- **Glassmorphism Elements:** A sleek, sticky navigation bar with background blur that gracefully floats above the content, accompanied by a clean, minimal footer.
 - **Adaptive Spacing:** Precisely engineered CSS padding algorithms (`padding-top: 110px` global offsets) guarantee that no content ever slides under the fixed navbar.
 - **Responsive Fluid Grids:** The UI flawlessly adapts to any screen size, from ultra-wide desktop monitors to narrow mobile screens.
 - **Micro-Animations:** Smooth CSS transitions on hover, layout shifts, and route changes to provide a premium software feel.
