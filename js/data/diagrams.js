@@ -637,7 +637,7 @@ export const DIAGRAMS_DATA = {
       <text x="165" y="50" fill="var(--text)" font-size="10" text-anchor="middle">Leap + 2/3</text>
       <text x="165" y="65" fill="var(--text)" font-size="10" text-anchor="middle">+11 Yrs</text>
     </svg>
-  `
+  `,
 
   "Prism": `
   <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">

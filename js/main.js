@@ -1,28 +1,32 @@
 // js/main.js — SPA Router (inline views, CSS show/hide)
-import { WORDS_DATA } from './data/words.js';
-import { initCards, renderCards } from './ui/cards.js';
-import { initFlashcards, startFlashcards, exitFlashcards } from './modules/flashcards.js';
-import { initQuiz, openQuizSelection, exitQuiz } from './modules/quiz.js';
-import { initReading } from './modules/reading.js';
-import { initFormulas } from './ui/formulas.js';
-import { initScratchpad } from './ui/scratchpad.js';
-import { initPomodoro } from './ui/pomodoro.js';
-import { initDailyQuiz } from './modules/dailyQuiz.js';
-import { updateStreak } from './data/state.js';
+import { WORDS_DATA } from './data/words.js?v=2';
+import { initCards, renderCards } from './ui/cards.js?v=2';
+import { initFlashcards, startFlashcards, exitFlashcards } from './modules/flashcards.js?v=2';
+import { initQuiz, openQuizSelection, exitQuiz } from './modules/quiz.js?v=2';
+import { initReading } from './modules/reading.js?v=2';
+import { initFormulas } from './ui/formulas.js?v=2';
+import { initInterview } from './ui/interview.js?v=2';
+import { initScratchpad } from './ui/scratchpad.js?v=2';
+import { initPomodoro } from './ui/pomodoro.js?v=2';
+import { initDailyQuiz } from './modules/dailyQuiz.js?v=2';
+import { updateStreak } from './data/state.js?v=2';
 
 // ─── Init all modules once ─────────────────────────
-initCards();
-renderCards(WORDS_DATA);
-initFlashcards();
-initQuiz();
-initReading();
-initFormulas();
-initScratchpad();
-initPomodoro();
-initDailyQuiz();
+const safeInit = (name, fn) => {
+  try { fn(); } catch (e) { console.error(`Module crash [${name}]:`, e); alert(`Crash in ${name}: ${e.message}`); }
+};
 
-// Init daily streak UI
-updateStreak();
+safeInit('initCards', () => initCards());
+safeInit('renderCards', () => renderCards(WORDS_DATA));
+safeInit('initFlashcards', () => initFlashcards());
+safeInit('initQuiz', () => initQuiz());
+safeInit('initReading', () => initReading());
+safeInit('initFormulas', () => initFormulas());
+safeInit('initInterview', () => initInterview());
+safeInit('initScratchpad', () => initScratchpad());
+safeInit('initPomodoro', () => initPomodoro());
+safeInit('initDailyQuiz', () => initDailyQuiz());
+safeInit('updateStreak', () => updateStreak());
 
 
 // ─── SPA View Routing ──────────────────────────────
@@ -47,51 +51,99 @@ function showView(viewId) {
     a.classList.toggle('nav-active', a.getAttribute('data-view') === viewId);
   });
 
+  // Highlight parent dropdown label when child is active
+  document.querySelectorAll('.nav-dropdown').forEach(dd => {
+    const hasActive = dd.querySelector('a.nav-active');
+    dd.classList.toggle('dropdown-active', !!hasActive);
+  });
+
+  // Update URL hash without jumping
+  if (window.location.hash !== '#' + viewId) {
+    window.history.pushState(null, null, '#' + viewId);
+  }
+
   // Scroll to top
   window.scrollTo(0, 0);
 }
+
+// Read hash on initial load
+const initialHash = window.location.hash.replace('#', '');
+if (initialHash && document.getElementById(initialHash)) {
+  showView(initialHash);
+  if (initialHash === 'quiz-section') openQuizSelection();
+}
+
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (hash && document.getElementById(hash)) {
+    showView(hash);
+  } else {
+    showView('view-home');
+  }
+});
 
 // Expose globally so quiz/flashcard modules can navigate
 window.showView = showView;
 
 // ─── Event Delegation (nav links, logo, buttons) ───
 document.body.addEventListener('click', (e) => {
-  // Nav links & any [data-view] buttons
-  const navLink = e.target.closest('[data-view]');
-  if (navLink) {
-    e.preventDefault();
-    const viewId = navLink.getAttribute('data-view');
-    if (viewId === 'quiz-section') {
-      showView(viewId);
-      openQuizSelection();
-    } else {
-      showView(viewId);
+  try {
+    // Mobile dropdown toggle
+    const dropdownLabel = e.target.closest('.nav-dropdown-label');
+    if (dropdownLabel) {
+      const dropdown = dropdownLabel.closest('.nav-dropdown');
+      const wasOpen = dropdown.classList.contains('touch-open');
+      document.querySelectorAll('.nav-dropdown').forEach(dd => dd.classList.remove('touch-open'));
+      if (!wasOpen) dropdown.classList.add('touch-open');
+      return;
     }
-    return;
-  }
 
-  // Logo → Home
-  if (e.target.closest('#navLogo')) {
-    showView('view-home');
-    return;
-  }
+    // Nav links & any [data-view] buttons
+    const navLink = e.target.closest('[data-view]');
+    if (navLink) {
+      document.querySelectorAll('.nav-dropdown').forEach(dd => dd.classList.remove('touch-open'));
+      e.preventDefault();
+      const viewId = navLink.getAttribute('data-view');
+      
+      // Fallback debug alert if element not found
+      if (!document.getElementById(viewId)) {
+        alert("Debug: View ID '" + viewId + "' not found in DOM!");
+      }
+      
+      if (viewId === 'quiz-section') {
+        showView(viewId);
+        openQuizSelection();
+      } else {
+        showView(viewId);
+      }
+      return;
+    }
 
-  // Study Mode button
-  if (e.target.closest('#startStudyBtn')) {
-    startFlashcards();
-    return;
-  }
+    // Logo → Home
+    if (e.target.closest('#navLogo')) {
+      showView('view-home');
+      return;
+    }
 
-  // Quit flashcard
-  if (e.target.closest('#quitFlashcard')) {
-    exitFlashcards();
-    return;
-  }
+    // Study Mode button
+    if (e.target.closest('#startStudyBtn')) {
+      startFlashcards();
+      return;
+    }
 
-  // Quit quiz dynamically (prevents DOM detach issues)
-  if (e.target.closest('#quitQuiz')) {
-    exitQuiz();
-    return;
+    // Quit flashcard
+    if (e.target.closest('#quitFlashcard')) {
+      exitFlashcards();
+      return;
+    }
+
+    // Quit quiz dynamically (prevents DOM detach issues)
+    if (e.target.closest('#quitQuiz')) {
+      exitQuiz();
+      return;
+    }
+  } catch (err) {
+    alert("Routing Error: " + err.message + "\n\n" + err.stack);
   }
 });
 

@@ -116,6 +116,7 @@ body {
 .navbar:hover {
   border-color: rgba(59, 130, 246, 0.5);
   box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15), 0 0 15px rgba(59, 130, 246, 0.1);
+  overflow: visible;
 }
 .nav-container {
   display: flex;
@@ -161,6 +162,7 @@ body {
 }
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 1.5rem;
   list-style: none;
   max-width: 0;
@@ -174,6 +176,7 @@ body {
   max-width: 600px;
   opacity: 1;
   margin-left: 2rem;
+  overflow: visible;
 }
 .nav-links a {
   color: var(--text-2);
@@ -184,6 +187,76 @@ body {
   padding: 0.4rem 0.2rem;
 }
 .nav-links a:hover { color: #ffffff; }
+
+/* ── Nav Dropdown Menus ────────────────────── */
+.nav-dropdown {
+  position: relative;
+}
+.nav-dropdown-label {
+  color: var(--text-2);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.4rem 0.2rem;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+.nav-dropdown:hover .nav-dropdown-label {
+  color: #ffffff;
+}
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.5rem 0;
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+/* Invisible bridge so mouse doesn't lose hover over the gap */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  right: 0;
+  height: 1rem;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown.touch-open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.nav-dropdown-menu a:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+.nav-dropdown-menu a.nav-active {
+  color: var(--accent);
+}
+.nav-dropdown.dropdown-active .nav-dropdown-label {
+  color: var(--accent);
+}
 
 /* ===== Hero ===== */
 .hero {
@@ -1509,12 +1582,16 @@ input:checked + .slider:before {
   
   /* On mobile, adjust the island expansion size */
   .navbar:hover .nav-links {
-    max-width: 250px;
+    max-width: 350px;
     margin-left: 1rem;
     gap: 0.75rem;
   }
-  .nav-links a {
+  .nav-links a,
+  .nav-dropdown-label {
     font-size: 0.8rem;
+  }
+  .nav-dropdown-menu {
+    min-width: 150px;
   }
 }
 
@@ -2443,4 +2520,302 @@ canvas#scratchCanvas {
   background: var(--green);
   color: white;
   border: none;
+}
+
+/* ============================================
+   Technical Interview Questions Section
+   ============================================ */
+
+.interview-section {
+  padding: 4rem 0;
+}
+
+/* ── Role Dashboard Grid ───────────────────── */
+.interview-role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.interview-role-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.interview-role-card:hover {
+  border-color: var(--accent);
+  background: var(--surface-2);
+  transform: translateY(-4px);
+}
+
+.interview-role-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.interview-role-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.interview-role-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-2);
+  margin-bottom: 1rem;
+}
+.interview-dot {
+  color: var(--text-3);
+}
+
+.interview-role-bar {
+  height: 4px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.interview-role-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+/* ── Back Button ───────────────────────────── */
+.interview-back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s ease;
+}
+.interview-back-btn:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border-hover);
+}
+
+/* ── Role Header ───────────────────────────── */
+.interview-role-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.interview-header-icon {
+  font-size: 2rem;
+}
+.interview-role-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.interview-header-sub {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  margin-left: auto;
+  padding: 0.3rem 0.75rem;
+  background: var(--surface-2);
+  border-radius: 6px;
+}
+
+/* ── Topic Grid ────────────────────────────── */
+.interview-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.interview-topic-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.interview-topic-card:hover {
+  border-color: var(--accent);
+  background: var(--surface-2);
+  transform: translateY(-3px);
+}
+
+.interview-topic-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.interview-topic-count {
+  font-size: 0.85rem;
+  color: var(--text-2);
+  margin-bottom: 0.75rem;
+}
+
+/* ── Difficulty Pills ──────────────────────── */
+.interview-difficulty-pills {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.interview-pill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.pill-basic {
+  background: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+}
+.pill-intermediate {
+  background: rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+}
+.pill-advanced {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+}
+
+/* ── Q&A Accordion ─────────────────────────── */
+.interview-qa-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.interview-qa-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+.interview-qa-card:hover {
+  border-color: var(--border-hover);
+}
+.interview-qa-card.open {
+  border-color: var(--accent);
+}
+
+.interview-qa-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.interview-qa-number {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 2ch;
+  flex-shrink: 0;
+}
+
+.interview-qa-question {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.interview-qa-chevron {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+.interview-qa-card.open .interview-qa-chevron {
+  transform: rotate(90deg);
+  color: var(--accent);
+}
+
+.interview-qa-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 1.25rem;
+}
+.interview-qa-card.open .interview-qa-answer {
+  max-height: 600px;
+  padding: 0 1.25rem 1.25rem;
+}
+
+.interview-qa-answer p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text-2);
+}
+
+.interview-qa-breadcrumb {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  margin-bottom: 0.5rem;
+}
+
+/* ── Search Highlight ──────────────────────── */
+.interview-qa-answer mark,
+.interview-qa-question mark {
+  background: rgba(59, 130, 246, 0.25);
+  color: var(--text);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* ── No Results ────────────────────────────── */
+.interview-no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-2);
+  font-size: 1.1rem;
+}
+
+.interview-search-count {
+  color: var(--text-2);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 600px) {
+  .interview-role-grid {
+    grid-template-columns: 1fr;
+  }
+  .interview-topic-grid {
+    grid-template-columns: 1fr;
+  }
+  .interview-qa-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .interview-qa-question {
+    font-size: 0.88rem;
+  }
+  .interview-role-header h2 {
+    font-size: 1.4rem;
+  }
+  .interview-header-sub {
+    display: none;
+  }
 }

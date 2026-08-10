@@ -886,7 +886,7 @@ export const EXAMPLES_DATA = {
       "By Zeller's standard indexing: 0=Sunday, 1=Monday, 2=Tuesday, 3=Wednesday, 4=Thursday, 5=Friday.",
       "So, it was a Friday."
     ]
-  }
+  },
 
   "Product Constancy Rule": {
     question: "If price increases by 25%, consumption decreases by what % to keep expenditure same?",
@@ -918,8 +918,7 @@ export const EXAMPLES_DATA = {
   },
   "Races & Games": {
     question: "In a 100m race, A beats B by 10m. Find ratio of speeds.",
-    steps: ["Ratio = };
-00 / (100 - 10) = 100/90 = 10:9$."]
+    steps: ["Ratio = $100 / (100 - 10) = 100/90 = 10:9$."]
   },
   "Escalator Problems": {
     question: "A man takes 40 steps up a moving escalator. Escalator has 20 steps. Total steps?",
@@ -927,8 +926,7 @@ export const EXAMPLES_DATA = {
   },
   "Late/Early Shortcut": {
     question: "If a boy walks at 4km/h he is 10 min late. At 5km/h he is 5 min early. Find distance.",
-    steps: ["$\\\\Delta T = 15$ min = };
-/4$ hr.",
+    steps: ["$\\\\Delta T = 15$ min = $1/4$ hr.",
       "$D = \\\\frac{4 \\\\times 5}{5 - 4} \\\\times \\\\frac{1}{4} = 5$ km."]
   },
   "Efficiency Ratio": {
@@ -943,14 +941,12 @@ export const EXAMPLES_DATA = {
   },
   "Wages Distribution": {
     question: "A and B do work in 10 and 15 days. They get Rs 500. A's share?",
-    steps: ["Efficiency ratio = };
-5:10 = 3:2$.",
+    steps: ["Efficiency ratio = $15:10 = 3:2$.",
       "A's share = $\\\\frac{3}{5} \\\\times 500 = 300$."]
   },
   "Product of Factors": {
     question: "Find product of all factors of 12.",
-    steps: ["Factors = 6. Product = };
-2^{6/2} = 12^3 = 1728$."]
+    steps: ["Factors = 6. Product = $12^{6/2} = 12^3 = 1728$."]
   },
   "AM-GM-HM Inequality": {
     question: "Given two positive numbers a, b. Which is largest: AM, GM or HM?",
@@ -959,8 +955,7 @@ export const EXAMPLES_DATA = {
   "Legendre's Formula": {
     question: "Find exponent of 3 in 50!.",
     steps: ["$E_3(50!) = \\\\lfloor 50/3 \\\\rfloor + \\\\lfloor 50/9 \\\\rfloor + \\\\lfloor 50/27 \\\\rfloor$",
-      "};
-6 + 5 + 1 = 22$."]
+      "$= 16 + 5 + 1 = 22$."]
   },
   "Sum of Squares": {
     question: "Find sum of squares of first 5 natural numbers.",
@@ -976,13 +971,11 @@ export const EXAMPLES_DATA = {
   },
   "Pigeonhole Principle": {
     question: "How many people needed to guarantee 2 are born in same month?",
-    steps: ["Months = 12. Need };
-2 + 1 = 13$ people."]
+    steps: ["Months = 12. Need $12 + 1 = 13$ people."]
   },
   "Inclusion-Exclusion (P&C)": {
     question: "Calculate $|A \cup B|$ if $|A|=10, |B|=15, |A \cap B|=5$.",
-    steps: ["};
-0 + 15 - 5 = 20$."]
+    steps: ["$= 10 + 15 - 5 = 20$."]
   },
   "Rank of Word in Dictionary": {
     question: "Rank of 'CAB'?",
@@ -995,14 +988,12 @@ export const EXAMPLES_DATA = {
   },
   "Equal Installments (SI)": {
     question: "Debt of 1092 due in 3 years at 12% SI. Find annual installment.",
-    steps: ["};
-092 = 3x + \\\\frac{12x}{100}\\\\frac{3(2)}{2} = 3x + 0.36x = 3.36x$",
+    steps: ["$1092 = 3x + \\\\frac{12x}{100}\\\\frac{3(2)}{2} = 3x + 0.36x = 3.36x$",
       "$x = 1092 / 3.36 = 325$."]
   },
   "Compounding Frequencies": {
     question: "10% p.a. compounded half yearly. Effective rate for 6 months?",
-    steps: ["Rate = };
-0/2 = 5\\\\%$."]
+    steps: ["Rate = $10/2 = 5\\\\%$."]
   },
   "Effective Annual Rate": {
     question: "10% p.a. compounded half-yearly. EAR?",

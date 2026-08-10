@@ -1,6 +1,6 @@
-import { FORMULAS_DATA } from '../data/formulas.js';
-import { EXAMPLES_DATA } from '../data/examples.js';
-import { DIAGRAMS_DATA } from '../data/diagrams.js';
+import { FORMULAS_DATA } from '../data/formulas.js?v=2';
+import { EXAMPLES_DATA } from '../data/examples.js?v=2';
+import { DIAGRAMS_DATA } from '../data/diagrams.js?v=2';
 
 let currentTopicIndex = null;
 let katexLoaded = false;

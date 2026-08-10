@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placement Prep - Vocabulary & Verbal Ability</title>
-    <meta name="description" content="Master 79 high-frequency vocabulary words with simple meanings and practical examples to boost your verbal ability score for placement exams.">
+    <title>Placement Prep - Vocabulary, Quants & Interview Prep</title>
+    <meta name="description" content="Master 114 vocabulary words, 130+ quants formulas, and 200+ technical interview questions for AI/ML, Data Analyst, SWE, and System Design roles.">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
@@ -16,6 +16,16 @@
     
     <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
+    <script>
+      window.addEventListener("error", function(e) {
+        if(e.message && e.filename) alert("CRASH: " + e.message + "\nFile: " + e.filename + ":" + e.lineno);
+        else console.error("Crash:", e);
+      });
+      // Capture unhandled promise rejections (often used by dynamic module imports)
+      window.addEventListener("unhandledrejection", function(e) {
+        alert("PROMISE REJECTION: " + (e.reason ? e.reason.message || e.reason : "Unknown error"));
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <!-- KaTeX Math Formatting -->
@@ -35,12 +45,23 @@
                 <span class="logo-letter" style="--i:0">P</span><span class="logo-letter" style="--i:1">l</span><span class="logo-letter" style="--i:2">a</span><span class="logo-letter" style="--i:3">c</span><span class="logo-letter" style="--i:4">e</span><span class="logo-letter" style="--i:5">m</span><span class="logo-letter" style="--i:6">e</span><span class="logo-letter" style="--i:7">n</span><span class="logo-letter" style="--i:8">t</span><span class="logo-letter logo-space" style="--i:9">&nbsp;</span><span class="logo-letter" style="--i:10">P</span><span class="logo-letter" style="--i:11">r</span><span class="logo-letter" style="--i:12">e</span><span class="logo-letter" style="--i:13">p</span>
             </div>
             <nav class="nav-links">
-                <a href="#" data-view="view-home" class="nav-active">Home</a>
-                <a href="#" data-view="view-vocabulary">Vocabulary</a>
-                <a href="#" data-view="quiz-section">Quiz</a>
-                <a href="#" data-view="view-formulas">Quants & Reasoning</a>
-                <a href="#" data-view="view-reading">Reading</a>
-                <a href="#" data-view="view-about">About</a>
+                <a href="#view-home" data-view="view-home" class="nav-active">Home</a>
+                <div class="nav-dropdown">
+                    <span class="nav-dropdown-label">Learn ▾</span>
+                    <div class="nav-dropdown-menu">
+                        <a href="#view-vocabulary" data-view="view-vocabulary">📚 Vocabulary</a>
+                        <a href="#view-reading" data-view="view-reading">📖 Reading</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <span class="nav-dropdown-label">Practice ▾</span>
+                    <div class="nav-dropdown-menu">
+                        <a href="#quiz-section" data-view="quiz-section">🎯 Quiz</a>
+                        <a href="#view-formulas" data-view="view-formulas">📐 Quants & Reasoning</a>
+                        <a href="#view-interview" data-view="view-interview">💼 Interview Prep</a>
+                    </div>
+                </div>
+                <a href="#view-about" data-view="view-about">About</a>
             </nav>
         </div>
     </header>
@@ -112,6 +133,11 @@
                             <h3>Focus Timer</h3>
                             <p>Built-in draggable Pomodoro widget with fullscreen mode to eliminate distractions.</p>
                         </div>
+                        <div class="feature-glass-card">
+                            <div class="feature-icon">💼</div>
+                            <h3>Interview Prep</h3>
+                            <p>200+ technical interview questions for AI/ML, Data Analyst, SWE, and System Design roles.</p>
+                        </div>
                     </div>
                 </div>
                 <button class="carousel-btn next-btn" id="featNextBtn" aria-label="Next">❯</button>
@@ -131,6 +157,10 @@
                 <div class="stat-card hover-lift">
                     <div class="stat-value">14</div>
                     <div class="stat-label">Formula Topics</div>
+                </div>
+                <div class="stat-card hover-lift">
+                    <div class="stat-value">200+</div>
+                    <div class="stat-label">Interview Qs</div>
                 </div>
             </div>
         </section>
@@ -1137,6 +1167,25 @@
         </section>
     </div> <!-- /view-formulas -->
 
+    <!-- ==================== VIEW: INTERVIEW PREP ==================== -->
+    <div class="page-view" id="view-interview">
+        <section class="interview-section">
+            <div class="container formulas-container">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h1 style="font-size: 2.5rem; color: var(--text);">Technical Interview Prep</h1>
+                    <p style="color: var(--text-2); max-width: 600px; margin: 1rem auto;">200+ curated questions across AI/ML, Data Analytics, Software Engineering, and System Design — from fundamentals to cutting-edge topics.</p>
+                </div>
+
+                <!-- Interview Search -->
+                <div class="search-box" style="margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <input type="text" id="interviewSearchInput" placeholder="Search questions... (e.g. 'RAG', 'HTTP', 'SQL join', 'system design')">
+                </div>
+
+                <div id="interviewGrid"></div>
+            </div>
+        </section>
+    </div> <!-- /view-interview -->
+
     <!-- ==================== VIEW: READING ==================== -->
     <div class="page-view" id="view-reading">
         <section class="reading-section">
@@ -1327,7 +1376,7 @@
     </div>
 
     <!-- App Scripts -->
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/main.js?v=3"></script>
     <script>
       // Global click handler to bypass module cache issues
       document.addEventListener('click', function(e) {
