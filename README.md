@@ -54,6 +54,45 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 - **Conceptual Step-by-Step Examples:** Expandable dropdowns attached to formulas containing detailed, step-by-step word problem walkthroughs showing exactly how to apply the formula to solve tough questions.
 - **Real-Time Instant Search:** A built-in search bar in the Formulas tab that filters through all 130+ formulas, definitions, and types instantly across all categories.
 
+### 🤝 6. Technical Interview Prep
+- **Extensive Q&A Library:** Over 200 curated technical interview questions categorized into core roles: AI/Machine Learning 🤖, Data Analyst 📊, Software Engineering 💻, and System Design 🏗️.
+- **Role-Based Filtering:** Easily toggle between roles to see questions specific to that domain (e.g. ML Fundamentals, SQL & Databases, OS & Memory, Scalability).
+- **Difficulty Badges:** Questions are tagged with difficulty levels (Basic, Intermediate, Advanced) and color-coded for quick scanning.
+- **Interactive Accordions:** Clean UI where questions act as clickable headers that expand to reveal detailed, thorough answers.
+
+## 🗂️ Directory Map
+
+```text
+.
+├── README.md               # Project documentation
+├── index.html              # The single-page application entry point
+├── style.css               # Global styles, variables, and responsive grids
+└── js/
+    ├── main.js             # Core SPA router and global event delegator
+    ├── data/               # Static data stores
+    │   ├── diagrams.js     # Mathematical SVG definitions
+    │   ├── examples.js     # Step-by-step formula word problems
+    │   ├── formulas.js     # Formula database with KaTeX syntax
+    │   ├── interview.js    # 200+ technical interview questions
+    │   ├── state.js        # LocalStorage state management
+    │   ├── stories.js      # Reading comprehension passages
+    │   └── words.js        # Vocabulary dictionary
+    ├── features/
+    │   └── bookmarks.js    # Bookmark toggling logic
+    ├── modules/            # Core logical engines
+    │   ├── dailyChallenge.js
+    │   ├── dailyQuiz.js
+    │   ├── flashcards.js   # Flashcard flip and speak logic
+    │   ├── quiz.js         # Adaptive quiz engine and scoring
+    │   └── reading.js      # Story generation and UI logic
+    └── ui/                 # View-specific DOM manipulators
+        ├── cards.js        # Vocabulary card rendering
+        ├── formulas.js     # Formula dashboard rendering
+        ├── interview.js    # Interview accordion rendering
+        ├── pomodoro.js     # Draggable timer widget
+        └── scratchpad.js   # Floating math scratchpad
+```
+
 ## 🎨 UI/UX & Design
 
 - **Lightweight Feature Carousel:** A clean, horizontal auto-scrolling carousel on the home page highlighting app features without cluttering the screen or relying on heavy third-party libraries.
