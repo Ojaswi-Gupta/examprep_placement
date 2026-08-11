@@ -2,7 +2,7 @@
 
 A beautifully designed, highly interactive, and comprehensive web application tailored specifically for placement exam preparation. 
 
-Originally built as a vocabulary learning tool, it has evolved into a complete **Single Page Application (SPA)** that covers Verbal Ability, Reading Comprehension, Quantitative Aptitude, and Logical Reasoning.
+Originally built as a vocabulary learning tool, it has evolved into a complete **Single Page Application (SPA)** that covers Verbal Ability, Reading Comprehension, Quantitative Aptitude, Logical Reasoning, Technical Interview Prep (710+ questions), and HR/Behavioral Interview Practice.
 
 ## 🏛️ Architectural Overview
 
@@ -54,43 +54,65 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 - **Conceptual Step-by-Step Examples:** Expandable dropdowns attached to formulas containing detailed, step-by-step word problem walkthroughs showing exactly how to apply the formula to solve tough questions.
 - **Real-Time Instant Search:** A built-in search bar in the Formulas tab that filters through all 130+ formulas, definitions, and types instantly across all categories.
 
-### 🤝 6. Technical Interview Prep
-- **Extensive Q&A Library:** Over 200 curated technical interview questions categorized into core roles: AI/Machine Learning 🤖, Data Analyst 📊, Software Engineering 💻, and System Design 🏗️.
-- **Role-Based Filtering:** Easily toggle between roles to see questions specific to that domain (e.g. ML Fundamentals, SQL & Databases, OS & Memory, Scalability).
-- **Difficulty Badges:** Questions are tagged with difficulty levels (Basic, Intermediate, Advanced) and color-coded for quick scanning.
+### 🤝 6. Technical Interview Prep — 710+ Questions
+- **Massive Q&A Library:** 710+ curated interview questions spanning **10 roles** and **50+ topics**, covering everything from core CS to HR behavioral rounds.
+- **Role-Based Filtering:** Drill down into specific roles to focus your preparation:
+
+| Role | Icon | Questions | Key Topics |
+|---|---|---|---|
+| AI / Machine Learning | 🤖 | 200 | ML Fundamentals, Neural Networks, NLP, RAG, Computer Vision, Model Evaluation |
+| Full Stack & Web Dev | 🌐 | 80 | React.js, Node.js, TypeScript, WebRTC, WebSockets, Auth & Security, CI/CD |
+| AI/ML & GenAI (Resume) | 🧠 | 60 | RAG Deep Dive, Fine-Tuning vs Prompt Engineering, NLP Pipelines, Hugging Face |
+| Docker, Cloud & DevOps | ☁️ | 40 | Docker, AWS/Azure, Firebase/Supabase, DevOps Practices |
+| AI/ML Deep Dive | 🔬 | 90 | Classical ML, Deep Learning Advanced, GenAI, MLOps, AI Ethics, Math for ML, Agentic AI |
+| Software Engineering Deep | ⚙️ | 80 | Java, Python, Advanced DSA Patterns, Concurrency, Testing, Architecture, Security |
+| System Design Advanced | 🛠️ | 60 | Distributed Systems, Scalability, API Design, Observability, Microservices |
+| Data Analyst | 📊 | — | SQL, Statistics, Data Visualization, ETL, Business Metrics |
+| HR & Behavioral Interview | 🎯 | 70 | STAR Method, Tricky Scenarios, Teamwork, Leadership, Stress Management |
+| Aptitude & Logical Reasoning | 🧩 | 30 | Puzzles & Brain Teasers, Guesstimates, Situational Judgment & Ethics |
+
+- **Difficulty Badges:** Every question is tagged with difficulty levels (Basic, Intermediate, Advanced) and color-coded for quick scanning.
 - **Interactive Accordions:** Clean UI where questions act as clickable headers that expand to reveal detailed, thorough answers.
+- **Global Search:** Search across all 710+ questions instantly by keyword.
+- **Resume-Tailored:** Questions specifically mapped to resume projects (Vibe Connect, GistProbe, Quiz Portal) and technologies (WebRTC, FAISS, Prisma, Docker).
 
 ## 🗂️ Directory Map
 
 ```text
 .
-├── README.md               # Project documentation
-├── index.html              # The single-page application entry point
-├── style.css               # Global styles, variables, and responsive grids
+├── README.md                    # Project documentation
+├── index.html                   # Single-page application entry point
+├── style.css                    # Global styles, variables, responsive grids
+├── server.py                    # No-cache dev server for local development
 └── js/
-    ├── main.js             # Core SPA router and global event delegator
-    ├── data/               # Static data stores
-    │   ├── diagrams.js     # Mathematical SVG definitions
-    │   ├── examples.js     # Step-by-step formula word problems
-    │   ├── formulas.js     # Formula database with KaTeX syntax
-    │   ├── interview.js    # 200+ technical interview questions
-    │   ├── state.js        # LocalStorage state management
-    │   ├── stories.js      # Reading comprehension passages
-    │   └── words.js        # Vocabulary dictionary
+    ├── main.js                  # Core SPA router & global event delegator
+    ├── data/                    # Static data stores (710+ interview Qs)
+    │   ├── words.js             # Vocabulary dictionary (114 words)
+    │   ├── formulas.js          # Formula database with KaTeX syntax
+    │   ├── examples.js          # Step-by-step formula word problems
+    │   ├── diagrams.js          # Mathematical SVG definitions
+    │   ├── stories.js           # Reading comprehension passages
+    │   ├── state.js             # LocalStorage state management
+    │   ├── interview.js         # Core interview Qs (AI/ML, Data, SWE, SysDesign)
+    │   ├── interview_resume.js  # Resume-specific Qs (React, Node, WebRTC, Auth)
+    │   ├── interview_resume2.js # Resume-specific Qs (RAG, Docker, Cloud)
+    │   ├── interview_deep1.js   # Deep dive (Classical ML, GenAI, MLOps, Ethics)
+    │   ├── interview_deep2.js   # Deep dive (Java, Python, DSA, Distributed Sys)
+    │   └── interview_hr.js      # HR, behavioral, puzzles, guesstimates
     ├── features/
-    │   └── bookmarks.js    # Bookmark toggling logic
-    ├── modules/            # Core logical engines
-    │   ├── dailyChallenge.js
-    │   ├── dailyQuiz.js
-    │   ├── flashcards.js   # Flashcard flip and speak logic
-    │   ├── quiz.js         # Adaptive quiz engine and scoring
-    │   └── reading.js      # Story generation and UI logic
-    └── ui/                 # View-specific DOM manipulators
-        ├── cards.js        # Vocabulary card rendering
-        ├── formulas.js     # Formula dashboard rendering
-        ├── interview.js    # Interview accordion rendering
-        ├── pomodoro.js     # Draggable timer widget
-        └── scratchpad.js   # Floating math scratchpad
+    │   └── bookmarks.js         # Bookmark toggling logic
+    ├── modules/                 # Core logical engines
+    │   ├── dailyChallenge.js    # Seeded daily mixed challenge
+    │   ├── dailyQuiz.js         # Daily quiz mode
+    │   ├── flashcards.js        # Flashcard flip and speak logic
+    │   ├── quiz.js              # Adaptive quiz engine and scoring
+    │   └── reading.js           # Story generation and UI logic
+    └── ui/                      # View-specific DOM manipulators
+        ├── cards.js             # Vocabulary card rendering
+        ├── formulas.js          # Formula dashboard rendering
+        ├── interview.js         # Interview accordion UI (merges all data)
+        ├── pomodoro.js          # Draggable timer widget
+        └── scratchpad.js        # Floating math scratchpad
 ```
 
 ## 🎨 UI/UX & Design
@@ -110,14 +132,36 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 
 ## 🛠️ How to Run Locally
 
-Because this project is entirely built with standard web technologies, there is no complicated build step, dependency installation, or node server required.
+No build step, no `npm install`, no frameworks required.
 
-1. Clone or download the repository.
-2. Double-click on `index.html` to open it in your default web browser, OR serve it via a local python server for module support:
+1. Clone the repository:
    ```bash
-   python3 -m http.server 8000
+   git clone https://github.com/Ojaswi-Gupta/examprep_placement.git
+   cd examprep_placement
    ```
-3. Open `http://localhost:8000` in your browser.
+2. Start the no-cache dev server (recommended):
+   ```bash
+   python3 server.py
+   ```
+   Or use the standard Python server:
+   ```bash
+   python3 -m http.server 9000
+   ```
+3. Open `http://localhost:9000` in your browser.
 4. That's it!
 
-*(Note: The app saves your quiz scores and mastery data to your browser's Local Storage, meaning your progress is completely saved even if you close the tab!)*
+> **Note:** ES6 modules require a local server — opening `index.html` directly via `file://` will not work due to CORS restrictions.
+
+*(The app saves your quiz scores, mastery data, and streaks to your browser's Local Storage — your progress persists even if you close the tab!)*
+
+## 📊 Content Stats
+
+| Content Type | Count |
+|---|---|
+| Vocabulary Words | 114 |
+| Math Formulas | 130+ |
+| Interview Questions | 710+ |
+| Interview Roles | 10 |
+| Interview Topics | 50+ |
+| Quiz Modes | 7 |
+| Reading Passages | 10+ |
