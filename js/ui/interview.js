@@ -1,5 +1,10 @@
 // js/ui/interview.js — Technical Interview Questions UI (drill-down: Roles → Topics → Q&A)
-import { INTERVIEW_DATA } from '../data/interview.js';
+import { INTERVIEW_DATA as BASE_DATA } from '../data/interview.js';
+import { INTERVIEW_RESUME_DATA } from '../data/interview_resume.js';
+import { INTERVIEW_RESUME_DATA_2 } from '../data/interview_resume2.js';
+
+// Merge all interview data sources into one unified array
+const INTERVIEW_DATA = [...BASE_DATA, ...INTERVIEW_RESUME_DATA, ...INTERVIEW_RESUME_DATA_2];
 
 let currentRole = null;   // index into INTERVIEW_DATA
 let currentTopic = null;  // index into role.topics
