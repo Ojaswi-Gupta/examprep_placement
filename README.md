@@ -76,6 +76,14 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 - **Global Search:** Search across all 710+ questions instantly by keyword.
 - **Resume-Tailored:** Questions specifically mapped to resume projects (Vibe Connect, GistProbe, Quiz Portal) and technologies (WebRTC, FAISS, Prisma, Docker).
 
+### 💻 7. Programming & MCQs — Syntax & Quizzes
+- **Tabbed Interface:** A clean, full-width UI split into two dedicated learning modes: **📖 Syntax & Concepts** and **🎯 Practice MCQs**.
+- **Deep-Dive Concepts:** Advanced, placement-level coverage for core programming languages:
+  - **🐍 Python:** Decorators, Generators, GIL, Memory Management, Dunder methods, comprehensions, and basic algorithm implementations (Fibonacci, Factorial, Prime).
+  - **☕ Java:** Multithreading (`volatile`, `synchronized`), OOP traps (overriding vs overloading), Garbage Collection, Collections framework, and String pool logic.
+  - **🛢️ SQL:** Window functions (`ROW_NUMBER`, `RANK`), CTEs, Advanced Joins, `COALESCE`, Indexing, and Date/Time interval arithmetic.
+- **Interactive MCQ Engine:** Test your knowledge with tricky, output-based questions. Clicking an option provides immediate visual feedback (✅/❌) along with a detailed explanation for the correct answer.
+
 ## 🗂️ Directory Map
 
 ```text
@@ -98,7 +106,8 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
     │   ├── interview_resume2.js # Resume-specific Qs (RAG, Docker, Cloud)
     │   ├── interview_deep1.js   # Deep dive (Classical ML, GenAI, MLOps, Ethics)
     │   ├── interview_deep2.js   # Deep dive (Java, Python, DSA, Distributed Sys)
-    │   └── interview_hr.js      # HR, behavioral, puzzles, guesstimates
+    │   ├── interview_hr.js      # HR, behavioral, puzzles, guesstimates
+    │   └── programming.js       # SQL, Python, Java syntax & MCQs data
     ├── features/
     │   └── bookmarks.js         # Bookmark toggling logic
     ├── modules/                 # Core logical engines
@@ -111,6 +120,7 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
         ├── cards.js             # Vocabulary card rendering
         ├── formulas.js          # Formula dashboard rendering
         ├── interview.js         # Interview accordion UI (merges all data)
+        ├── programming.js       # Programming tabs & MCQ rendering
         ├── pomodoro.js          # Draggable timer widget
         └── scratchpad.js        # Floating math scratchpad
 ```
@@ -162,6 +172,8 @@ No build step, no `npm install`, no frameworks required.
 | Math Formulas | 130+ |
 | Interview Questions | 710+ |
 | Interview Roles | 10 |
-| Interview Topics | 50+ |
+| Programming Languages | 3 (SQL, Python, Java) |
+| Programming Syntax/Concepts | 30+ |
+| Programming MCQs | 30+ |
 | Quiz Modes | 7 |
 | Reading Passages | 10+ |
