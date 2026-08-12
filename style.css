@@ -2819,3 +2819,209 @@ canvas#scratchCanvas {
     display: none;
   }
 }
+
+/* ==================== PROGRAMMING & MCQS SECTION ==================== */
+.programming-section {
+  padding-top: 110px;
+}
+
+.programming-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.lang-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lang-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lang-btn:hover {
+  border-color: var(--accent);
+}
+
+.lang-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.lang-description {
+  color: var(--text-2);
+  font-size: 1rem;
+}
+
+.programming-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .programming-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.syntax-section, .mcq-section {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.syntax-section h3, .mcq-section h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+  font-size: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.syntax-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.syntax-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.syntax-keyword code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.syntax-meaning {
+  margin: 0.75rem 0;
+  color: var(--text-2);
+  font-size: 0.95rem;
+}
+
+.syntax-example pre {
+  margin: 0;
+  background: #1e1e1e;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.syntax-example code {
+  font-family: monospace;
+  color: #d4d4d4;
+  font-size: 0.9rem;
+}
+
+.mcq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mcq-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.mcq-question {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.mcq-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mcq-option {
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mcq-option:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mcq-option:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.mcq-option.correct {
+  background: rgba(46, 204, 113, 0.2);
+  border-color: #2ecc71;
+  color: #2ecc71;
+}
+
+.mcq-option.wrong {
+  background: rgba(231, 76, 60, 0.2);
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.mcq-feedback {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.mcq-feedback.hidden {
+  display: none;
+}
+
+.mcq-feedback.correct-feedback {
+  background: rgba(46, 204, 113, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.mcq-feedback.wrong-feedback {
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
