@@ -65,6 +65,26 @@ export const PROGRAMMING_DATA = [
         keyword: "EXISTS vs IN",
         meaning: "EXISTS evaluates to true/false and stops checking once a match is found (faster for large subqueries). IN compares all values.",
         example: "SELECT name FROM departments d WHERE EXISTS (SELECT 1 FROM employees e WHERE e.dept_id = d.id);"
+      },
+      {
+        keyword: "DATE, TIME, TIMESTAMP",
+        meaning: "Data types for storing date and time. TIMESTAMP includes both date and time (and sometimes timezone depending on SQL engine).",
+        example: "CREATE TABLE events (event_name varchar(50), event_date DATE, created_at TIMESTAMP);"
+      },
+      {
+        keyword: "INTERVAL",
+        meaning: "Used to add or subtract a specified time interval from a date/time.",
+        example: "SELECT DATE_ADD(event_date, INTERVAL 7 DAY) FROM events; -- MySQL\nSELECT event_date + INTERVAL '1 month' FROM events; -- PostgreSQL"
+      },
+      {
+        keyword: "EXTRACT() / DATE_PART()",
+        meaning: "Extracts a part (year, month, day, hour, etc.) from a given date/time.",
+        example: "SELECT EXTRACT(YEAR FROM order_date) as order_year FROM orders;"
+      },
+      {
+        keyword: "CURRENT_DATE / NOW()",
+        meaning: "Returns the current date or current date and time.",
+        example: "SELECT * FROM orders WHERE order_date = CURRENT_DATE;"
       }
     ],
     mcqs: [
@@ -147,6 +167,28 @@ export const PROGRAMMING_DATA = [
         options: ["WHERE", "GROUP BY", "SELECT", "ORDER BY"],
         answer: 3,
         explanation: "Execution order: FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY -> LIMIT."
+      },
+      {
+        q: "If you want to find all employees hired in the last 30 days, which query condition is generally standard?",
+        options: [
+          "hire_date > CURRENT_DATE - 30",
+          "hire_date > DATE_SUB(NOW(), INTERVAL 30 DAY)",
+          "hire_date >= CURRENT_DATE - INTERVAL '30 days'",
+          "All of the above (depends on the SQL dialect)"
+        ],
+        answer: 3,
+        explanation: "Date arithmetic heavily depends on the dialect. MySQL uses DATE_SUB/DATE_ADD, Postgres/Oracle use INTERVAL strings, and SQLite uses date() modifier functions."
+      },
+      {
+        q: "What does the EXTRACT function do?",
+        options: [
+          "Downloads the database to a CSV file",
+          "Gets a specific part like YEAR or MONTH from a timestamp",
+          "Removes a row from a table based on a condition",
+          "Decompresses a ZIP blob from the database"
+        ],
+        answer: 1,
+        explanation: "EXTRACT(field FROM source) pulls out sub-fields such as year or hour from date/time values."
       }
     ]
   },
@@ -204,6 +246,26 @@ export const PROGRAMMING_DATA = [
         keyword: "Global and Nonlocal",
         meaning: "global modifies variables at the module level. nonlocal modifies variables in the nearest enclosing scope (closures).",
         example: "def outer():\n    x = 1\n    def inner():\n        nonlocal x\n        x = 2"
+      },
+      {
+        keyword: "Fibonacci Sequence",
+        meaning: "Classic basic program: Generating the Fibonacci sequence up to n terms.",
+        example: "def fibonacci(n):\n    a, b = 0, 1\n    for _ in range(n):\n        print(a, end=' ')\n        a, b = b, a + b"
+      },
+      {
+        keyword: "Factorial (Recursive vs Iterative)",
+        meaning: "Classic basic program: Finding the factorial of a number.",
+        example: "def fact_rec(n):\n    return 1 if n <= 1 else n * fact_rec(n - 1)\n\ndef fact_iter(n):\n    res = 1\n    for i in range(2, n + 1): res *= i\n    return res"
+      },
+      {
+        keyword: "Palindrome Check",
+        meaning: "Classic basic program: Checking if a string is read the same forwards and backwards.",
+        example: "def is_palindrome(s):\n    s = s.lower().replace(' ', '')\n    return s == s[::-1]"
+      },
+      {
+        keyword: "Prime Number Check",
+        meaning: "Classic basic program: Checking if a number is divisible only by 1 and itself.",
+        example: "def is_prime(n):\n    if n <= 1: return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0: return False\n    return True"
       }
     ],
     mcqs: [
@@ -266,6 +328,28 @@ export const PROGRAMMING_DATA = [
         options: ["[1, 3]", "[0, 2, 4]", "[2, 4]", "[0, 1, 2, 3, 4]"],
         answer: 1,
         explanation: "This list comprehension loops from 0 to 4 and filters for even numbers: 0, 2, 4."
+      },
+      {
+        q: "In the string slicing `s[::-1]`, what does it do?",
+        options: [
+          "Throws a SyntaxError",
+          "Returns the string reversed",
+          "Returns the last character of the string",
+          "Skips every second character"
+        ],
+        answer: 1,
+        explanation: "The slice [start:stop:step] with a step of -1 iterates backwards, effectively reversing the string."
+      },
+      {
+        q: "To optimize a prime number check, up to which number should you iterate?",
+        options: [
+          "n / 2",
+          "n - 1",
+          "The square root of n",
+          "You must iterate all the way to n"
+        ],
+        answer: 2,
+        explanation: "You only need to check up to int(n**0.5) because a larger factor of n must be a multiple of a smaller factor that has already been checked."
       }
     ]
   },
