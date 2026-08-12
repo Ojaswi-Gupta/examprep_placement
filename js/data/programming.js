@@ -4,303 +4,387 @@ export const PROGRAMMING_DATA = [
   {
     language: "SQL",
     icon: "🛢️",
-    description: "Structured Query Language used for communicating with databases.",
+    description: "Advanced SQL queries, tricky joins, and performance optimization concepts.",
     syntax: [
       {
-        keyword: "SELECT",
-        meaning: "Extracts data from a database.",
-        example: "SELECT column1, column2 FROM table_name;"
+        keyword: "SELECT ... FROM ... WHERE",
+        meaning: "Core querying syntax to extract and filter records.",
+        example: "SELECT name, salary FROM employees WHERE salary > 50000;"
       },
       {
-        keyword: "WHERE",
-        meaning: "Filters records that fulfill a specified condition.",
-        example: "SELECT * FROM users WHERE age >= 18;"
+        keyword: "INNER vs OUTER JOIN",
+        meaning: "INNER JOIN returns matches in both tables. LEFT/RIGHT OUTER returns all from one table and matches from the other.",
+        example: "SELECT e.name, d.dept_name FROM employees e LEFT JOIN departments d ON e.dept_id = d.id;"
       },
       {
-        keyword: "JOIN",
-        meaning: "Combines rows from two or more tables, based on a related column between them.",
-        example: "SELECT orders.id, customers.name FROM orders INNER JOIN customers ON orders.customer_id = customers.id;"
+        keyword: "GROUP BY ... HAVING",
+        meaning: "Groups rows and applies aggregates. HAVING filters after aggregation (WHERE filters before).",
+        example: "SELECT dept_id, AVG(salary) FROM employees GROUP BY dept_id HAVING AVG(salary) > 60000;"
       },
       {
-        keyword: "GROUP BY",
-        meaning: "Groups rows that have the same values into summary rows.",
-        example: "SELECT COUNT(id), country FROM customers GROUP BY country;"
+        keyword: "UNION vs UNION ALL",
+        meaning: "Combines result sets. UNION removes duplicates (slower), UNION ALL keeps duplicates (faster).",
+        example: "SELECT email FROM customers UNION ALL SELECT email FROM suppliers;"
       },
       {
-        keyword: "HAVING",
-        meaning: "Added to SQL because the WHERE keyword cannot be used with aggregate functions.",
-        example: "SELECT COUNT(id), country FROM customers GROUP BY country HAVING COUNT(id) > 5;"
+        keyword: "ROW_NUMBER() OVER()",
+        meaning: "Window function that assigns a sequential integer to each row in a partition.",
+        example: "SELECT name, ROW_NUMBER() OVER(PARTITION BY dept_id ORDER BY salary DESC) as rank FROM employees;"
       },
       {
-        keyword: "ORDER BY",
-        meaning: "Sorts the result-set in ascending or descending order.",
-        example: "SELECT * FROM users ORDER BY created_at DESC;"
+        keyword: "RANK() vs DENSE_RANK()",
+        meaning: "RANK skips numbers for ties (1, 2, 2, 4). DENSE_RANK does not skip (1, 2, 2, 3).",
+        example: "SELECT name, DENSE_RANK() OVER(ORDER BY salary DESC) as rank FROM employees;"
       },
       {
-        keyword: "INSERT INTO",
-        meaning: "Inserts new records in a table.",
-        example: "INSERT INTO users (name, email) VALUES ('John', 'john@example.com');"
+        keyword: "WITH (CTEs)",
+        meaning: "Common Table Expressions allow creating temporary result sets that can be referenced within a SELECT, INSERT, UPDATE, or DELETE.",
+        example: "WITH HighEarners AS (SELECT * FROM employees WHERE salary > 100000) SELECT * FROM HighEarners WHERE dept_id = 1;"
       },
       {
-        keyword: "UPDATE",
-        meaning: "Modifies the existing records in a table.",
-        example: "UPDATE users SET status = 'active' WHERE id = 1;"
+        keyword: "CASE WHEN",
+        meaning: "SQL's version of IF-THEN-ELSE logic.",
+        example: "SELECT name, CASE WHEN salary > 100000 THEN 'High' ELSE 'Normal' END as category FROM employees;"
       },
       {
-        keyword: "DELETE",
-        meaning: "Deletes existing records in a table.",
-        example: "DELETE FROM users WHERE id = 1;"
+        keyword: "COALESCE()",
+        meaning: "Returns the first non-null value in a list. Useful for handling NULLs in joins.",
+        example: "SELECT name, COALESCE(phone, email, 'No Contact Info') as contact FROM users;"
       },
       {
-        keyword: "CREATE TABLE",
-        meaning: "Creates a new table in the database.",
-        example: "CREATE TABLE persons (id int, name varchar(255));"
+        keyword: "INDEX",
+        meaning: "Improves read performance but slows down writes (INSERT/UPDATE). Uses B-Tree or Hash structures under the hood.",
+        example: "CREATE INDEX idx_employee_name ON employees(last_name);"
+      },
+      {
+        keyword: "Correlated Subquery",
+        meaning: "A subquery that uses values from the outer query. It runs once for every row returned by the outer query (can be slow).",
+        example: "SELECT e1.name FROM employees e1 WHERE e1.salary > (SELECT AVG(salary) FROM employees e2 WHERE e1.dept_id = e2.dept_id);"
+      },
+      {
+        keyword: "EXISTS vs IN",
+        meaning: "EXISTS evaluates to true/false and stops checking once a match is found (faster for large subqueries). IN compares all values.",
+        example: "SELECT name FROM departments d WHERE EXISTS (SELECT 1 FROM employees e WHERE e.dept_id = d.id);"
       }
     ],
     mcqs: [
       {
-        q: "Which SQL statement is used to extract data from a database?",
-        options: ["GET", "OPEN", "EXTRACT", "SELECT"],
+        q: "Table A has 5 rows, Table B has 10 rows. If you do a CROSS JOIN between A and B, how many rows are in the result?",
+        options: ["15", "5", "10", "50"],
         answer: 3,
-        explanation: "The SELECT statement is used to select data from a database. The data returned is stored in a result table."
+        explanation: "A CROSS JOIN produces a Cartesian product, multiplying the number of rows: 5 x 10 = 50 rows."
       },
       {
-        q: "Which SQL statement is used to update data in a database?",
-        options: ["SAVE", "SAVE AS", "MODIFY", "UPDATE"],
-        answer: 3,
-        explanation: "The UPDATE statement is used to modify the existing records in a table."
-      },
-      {
-        q: "Which SQL statement is used to delete data from a database?",
-        options: ["COLLAPSE", "REMOVE", "DELETE", "DROP"],
-        answer: 2,
-        explanation: "The DELETE statement is used to delete existing records in a table."
-      },
-      {
-        q: "Which keyword is used to sort the result-set?",
-        options: ["ORDER", "SORT BY", "ORDER BY", "SORT"],
-        answer: 2,
-        explanation: "The ORDER BY keyword is used to sort the result-set in ascending or descending order."
-      },
-      {
-        q: "What is the most common type of JOIN?",
-        options: ["INNER JOIN", "INSIDE JOIN", "JOINED", "OUTER JOIN"],
+        q: "What is the result of joining a table with 3 rows of NULLs to another table with 3 rows of NULLs using an INNER JOIN on that column?",
+        options: ["0 rows", "3 rows", "6 rows", "9 rows"],
         answer: 0,
-        explanation: "INNER JOIN selects records that have matching values in both tables."
+        explanation: "In SQL, NULL != NULL. Therefore, an INNER JOIN on a NULL value will never find a match, resulting in 0 rows."
       },
       {
-        q: "Which operator is used to search for a specified pattern in a column?",
-        options: ["LIKE", "GET", "FROM", "MATCH"],
-        answer: 0,
-        explanation: "The LIKE operator is used in a WHERE clause to search for a specified pattern in a column."
+        q: "Which of the following is true regarding DELETE and TRUNCATE?",
+        options: ["DELETE cannot be rolled back, TRUNCATE can", "TRUNCATE logs individual row deletions, DELETE does not", "TRUNCATE resets identity/auto-increment columns, DELETE does not", "TRUNCATE is a DML command, DELETE is DDL"],
+        answer: 2,
+        explanation: "TRUNCATE is a DDL command that resets identity columns and does not log individual row deletions (making it faster). DELETE is a DML command that logs each deletion and does not reset identity."
       },
       {
-        q: "How do you select all columns from a table named 'Persons'?",
-        options: ["SELECT Persons", "SELECT *.Persons", "SELECT [all] FROM Persons", "SELECT * FROM Persons"],
+        q: "You need to find the second highest salary from the Employee table. Which query works?",
+        options: [
+          "SELECT MAX(salary) FROM Employee WHERE salary < (SELECT MAX(salary) FROM Employee)",
+          "SELECT salary FROM Employee ORDER BY salary DESC LIMIT 1 OFFSET 1",
+          "SELECT salary FROM (SELECT salary, DENSE_RANK() OVER(ORDER BY salary DESC) as r FROM Employee) WHERE r = 2",
+          "All of the above"
+        ],
         answer: 3,
-        explanation: "The asterisk (*) is used to select all columns."
+        explanation: "All three queries correctly return the second highest salary using subqueries, offset/limit, or window functions."
+      },
+      {
+        q: "What is the difference between a Clustered and Non-Clustered Index?",
+        options: [
+          "A table can have multiple clustered indexes but only one non-clustered index",
+          "Clustered index stores data in random order, non-clustered sorts the data",
+          "Clustered index physically sorts the data rows; non-clustered index creates a separate pointer structure",
+          "They are the same thing just different terminology across SQL engines"
+        ],
+        answer: 2,
+        explanation: "A Clustered Index physically orders the data on the disk (hence only one per table). A Non-Clustered index is stored separately and points to the physical rows."
+      },
+      {
+        q: "What does the ACID acronym stand for in database transactions?",
+        options: [
+          "Atomicity, Consistency, Isolation, Durability",
+          "Availability, Concurrency, Integrity, Durability",
+          "Atomicity, Concurrency, Isolation, Dependency",
+          "Availability, Consistency, Integrity, Dependency"
+        ],
+        answer: 0,
+        explanation: "ACID guarantees database reliability. Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent safe), Durability (saved permanently)."
+      },
+      {
+        q: "What is a 'Phantom Read' in database isolation levels?",
+        options: [
+          "Reading uncommitted data from another transaction",
+          "A row is modified by another transaction while you are reading it",
+          "Another transaction inserts a new row that matches your WHERE clause during your transaction",
+          "Reading data from a deleted table"
+        ],
+        answer: 2,
+        explanation: "Phantom reads occur when a transaction reads a set of rows, and a concurrent transaction INSERTS or DELETES a row that satisfies the original read condition."
+      },
+      {
+        q: "Consider a table 'Users' with a column 'Age'. If there are 5 rows with ages [20, 30, NULL, 40, NULL], what does COUNT(Age) return?",
+        options: ["5", "3", "0", "NULL"],
+        answer: 1,
+        explanation: "COUNT(column_name) counts only non-NULL values. Since there are 3 non-NULL ages, it returns 3. COUNT(*) would return 5."
+      },
+      {
+        q: "Which normalization form ensures that there are no transitive dependencies?",
+        options: ["First Normal Form (1NF)", "Second Normal Form (2NF)", "Third Normal Form (3NF)", "Boyce-Codd Normal Form (BCNF)"],
+        answer: 2,
+        explanation: "3NF ensures that all non-key attributes are strictly dependent on the primary key and nothing else (no transitive dependencies)."
+      },
+      {
+        q: "Which clause executes LAST in a standard SQL query lifecycle?",
+        options: ["WHERE", "GROUP BY", "SELECT", "ORDER BY"],
+        answer: 3,
+        explanation: "Execution order: FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY -> LIMIT."
       }
     ]
   },
   {
     language: "Python",
     icon: "🐍",
-    description: "An interpreted, high-level, general-purpose programming language.",
+    description: "Advanced Python concepts including decorators, generators, OOP dunders, and tricky outputs.",
     syntax: [
       {
-        keyword: "def",
-        meaning: "Defines a function.",
-        example: "def greet(name):\n    print(f'Hello, {name}')"
+        keyword: "*args and **kwargs",
+        meaning: "Allows passing a variable number of positional (*args) and keyword (**kwargs) arguments to a function.",
+        example: "def func(*args, **kwargs):\n    print(args)  # Tuple of pos args\n    print(kwargs) # Dict of kw args"
       },
       {
-        keyword: "for",
-        meaning: "Used for iterating over a sequence (like a list, tuple, dictionary, set, or string).",
-        example: "for i in range(5):\n    print(i)"
+        keyword: "Decorators (@)",
+        meaning: "A function that modifies the behavior of another function. Wraps the original function.",
+        example: "def timer(func):\n    def wrapper(*args):\n        print('Start')\n        return func(*args)\n    return wrapper\n\n@timer\ndef run(): pass"
       },
       {
-        keyword: "if...elif...else",
-        meaning: "Used for conditional execution.",
-        example: "if x > 0:\n    print('Positive')\nelif x == 0:\n    print('Zero')\nelse:\n    print('Negative')"
+        keyword: "Generators (yield)",
+        meaning: "Functions that return an iterator and yield values one at a time, suspending state. Highly memory efficient.",
+        example: "def fib():\n    a, b = 0, 1\n    while True:\n        yield a\n        a, b = b, a + b"
       },
       {
-        keyword: "import",
-        meaning: "Used to import modules.",
-        example: "import math\nprint(math.pi)"
+        keyword: "List/Dict Comprehensions",
+        meaning: "Elegant way to define and create lists/dictionaries based on existing iterables.",
+        example: "squares = [x**2 for x in range(10) if x % 2 == 0]\nlookup = {x: x**2 for x in range(5)}"
       },
       {
-        keyword: "try...except",
-        meaning: "Used for exception handling.",
-        example: "try:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')"
+        keyword: "Dunder Methods (__init__, __str__)",
+        meaning: "Magic methods that allow classes to define behavior for built-in operations.",
+        example: "class Car:\n    def __init__(self, brand):\n        self.brand = brand\n    def __str__(self):\n        return f'Car: {self.brand}'"
       },
       {
-        keyword: "class",
-        meaning: "Defines a class.",
-        example: "class Dog:\n    def __init__(self, name):\n        self.name = name"
+        keyword: "Context Managers (with)",
+        meaning: "Ensures resources are properly acquired and released (e.g., closing files automatically). Uses __enter__ and __exit__.",
+        example: "with open('file.txt', 'r') as f:\n    data = f.read()\n# File is automatically closed here"
       },
       {
-        keyword: "lambda",
-        meaning: "Creates an anonymous function.",
-        example: "square = lambda x: x ** 2\nprint(square(5))"
+        keyword: "Deep vs Shallow Copy",
+        meaning: "Shallow copy (copy.copy) creates a new object but references nested objects. Deep copy (copy.deepcopy) creates full recursive copies.",
+        example: "import copy\nnew_list = copy.deepcopy(nested_list)"
       },
       {
-        keyword: "yield",
-        meaning: "Returns a generator.",
-        example: "def count_up_to(n):\n    i = 1\n    while i <= n:\n        yield i\n        i += 1"
+        keyword: "Lambda & Map/Filter",
+        meaning: "Functional programming tools. Map applies a function to all items, filter removes items.",
+        example: "nums = [1, 2, 3]\ndoubled = list(map(lambda x: x*2, nums))\nevens = list(filter(lambda x: x%2==0, nums))"
       },
       {
-        keyword: "with",
-        meaning: "Used to wrap the execution of a block with methods defined by a context manager.",
-        example: "with open('file.txt', 'r') as f:\n    content = f.read()"
+        keyword: "is vs ==",
+        meaning: "== checks for value equality. 'is' checks for memory identity (do they point to the exact same object in memory).",
+        example: "a = [1, 2]; b = [1, 2]\nprint(a == b) # True\nprint(a is b) # False"
       },
       {
-        keyword: "list comprehension",
-        meaning: "A concise way to create lists.",
-        example: "squares = [x**2 for x in range(10)]"
+        keyword: "Global and Nonlocal",
+        meaning: "global modifies variables at the module level. nonlocal modifies variables in the nearest enclosing scope (closures).",
+        example: "def outer():\n    x = 1\n    def inner():\n        nonlocal x\n        x = 2"
       }
     ],
     mcqs: [
       {
-        q: "What is the correct syntax to output 'Hello World' in Python?",
-        options: ["echo 'Hello World'", "print('Hello World')", "p('Hello World')", "console.log('Hello World')"],
+        q: "What is the output of the following code?\n\ndef append_to(num, target=[]):\n    target.append(num)\n    return target\n\nprint(append_to(1))\nprint(append_to(2))",
+        options: ["[1], [2]", "[1], [1, 2]", "Error", "[1], [1]"],
         answer: 1,
-        explanation: "Python uses the print() function to output data to the standard output device."
+        explanation: "Mutable default arguments are evaluated ONLY ONCE when the function is defined. The same list object is used across both calls, so [1] becomes [1, 2]."
       },
       {
-        q: "How do you insert comments in Python code?",
-        options: ["//This is a comment", "/*This is a comment*/", "#This is a comment", "--This is a comment"],
-        answer: 2,
-        explanation: "Comments in Python start with the hash character (#)."
+        q: "What is the time complexity of checking if an element exists in a Python set vs a Python list?",
+        options: ["O(1) for set, O(n) for list", "O(n) for set, O(1) for list", "O(log n) for both", "O(1) for both"],
+        answer: 0,
+        explanation: "Sets in Python are implemented as Hash Tables, providing O(1) average lookup time. Lists require O(n) linear search."
       },
       {
-        q: "Which of the following is the correct extension of the Python file?",
-        options: [".python", ".pl", ".py", ".p"],
-        answer: 2,
-        explanation: "Python files have the .py extension."
-      },
-      {
-        q: "What is used to define a block of code in Python?",
-        options: ["Key", "Brackets", "Indentation", "Parentheses"],
-        answer: 2,
-        explanation: "Python uses indentation (whitespace at the beginning of a line) to define scope in the code."
-      },
-      {
-        q: "Which keyword is used for function in Python language?",
-        options: ["Function", "def", "Fun", "Define"],
+        q: "What will be the output of `print(0.1 + 0.2 == 0.3)`?",
+        options: ["True", "False", "SyntaxError", "TypeError"],
         answer: 1,
-        explanation: "The 'def' keyword is used to create a function."
+        explanation: "Due to floating-point precision limitations in IEEE 754, 0.1 + 0.2 evaluates to 0.30000000000000004, which is not strictly equal to 0.3."
       },
       {
-        q: "What will be the output of: type([])?",
-        options: ["<class 'list'>", "<class 'array'>", "<class 'tuple'>", "<class 'set'>"],
-        answer: 0,
-        explanation: "Square brackets [] represent a list in Python."
+        q: "What is the GIL (Global Interpreter Lock) in CPython?",
+        options: ["A lock that prevents multiple threads from accessing databases", "A lock that allows multi-core true parallelism in Python", "A mutex that allows only one thread to execute Python bytecodes at a time", "A security mechanism to prevent infinite loops"],
+        answer: 2,
+        explanation: "The GIL prevents multiple native threads from executing Python bytecodes at once, meaning multithreading in CPython doesn't utilize multiple CPU cores for CPU-bound tasks (use multiprocessing instead)."
       },
       {
-        q: "Which of the following functions can help us to find the version of python that we are currently working on?",
-        options: ["sys.version", "sys.version()", "sys.version(1)", "sys.version(0)"],
-        answer: 0,
-        explanation: "The sys.version attribute returns a string representing the Python version."
+        q: "What is the output of the following code?\n\nx = [1, 2, 3]\ny = x\ny.append(4)\nprint(x)",
+        options: ["[1, 2, 3]", "[1, 2, 3, 4]", "Error", "[4]"],
+        answer: 1,
+        explanation: "Variables in Python are just pointers to objects. Both x and y point to the exact same list in memory. Modifying y modifies x."
+      },
+      {
+        q: "How does Python handle memory management?",
+        options: ["Manual allocation using malloc/free", "Reference counting and a cycle-detecting Garbage Collector", "Mark-and-sweep algorithm only", "Memory is never freed until the program closes"],
+        answer: 1,
+        explanation: "Python primarily uses Reference Counting. When an object's reference count drops to zero, it is deallocated. It also has a cycle-detecting GC to clean up circular references."
+      },
+      {
+        q: "What is the purpose of the `__new__` method in Python?",
+        options: ["It initializes an existing object", "It creates and returns a new instance of a class", "It destroys an object", "It is an alias for __init__"],
+        answer: 1,
+        explanation: "`__new__` is responsible for actually creating the object instance and returning it. `__init__` only initializes the object after it has been created."
+      },
+      {
+        q: "What does the `zip()` function do in Python?",
+        options: ["Compresses a file into a .zip format", "Combines elements from multiple iterables into tuples", "Sorts a list in ascending order", "Calculates the checksum of a string"],
+        answer: 1,
+        explanation: "zip() takes iterables, aggregates them in a tuple, and returns an iterator. E.g., zip([1,2], ['a','b']) yields (1, 'a') and (2, 'b')."
+      },
+      {
+        q: "Which of the following is true about Python tuples?",
+        options: ["They are mutable like lists", "They cannot contain mixed data types", "They are immutable and can be used as dictionary keys", "They are created using curly braces {}"],
+        answer: 2,
+        explanation: "Tuples are immutable, which makes them hashable, allowing them to be used as keys in a dictionary (unlike lists)."
+      },
+      {
+        q: "What will `print([i for i in range(5) if i % 2 == 0])` output?",
+        options: ["[1, 3]", "[0, 2, 4]", "[2, 4]", "[0, 1, 2, 3, 4]"],
+        answer: 1,
+        explanation: "This list comprehension loops from 0 to 4 and filters for even numbers: 0, 2, 4."
       }
     ]
   },
   {
     language: "Java",
     icon: "☕",
-    description: "A class-based, object-oriented programming language.",
+    description: "Deep dive into OOP, Collections, Concurrency, and tricky outputs.",
     syntax: [
       {
-        keyword: "class",
-        meaning: "Declares a class.",
-        example: "public class MyClass {\n    // fields and methods\n}"
+        keyword: "Abstraction (abstract class vs interface)",
+        meaning: "Abstract classes can have state (instance variables) and constructors. Interfaces (pre-Java 8) only have abstract methods. Interfaces support multiple inheritance.",
+        example: "public interface Flyable { void fly(); }\npublic abstract class Bird { int age; abstract void chirp(); }"
       },
       {
-        keyword: "public static void main(String[] args)",
-        meaning: "The entry point of any Java program.",
-        example: "public static void main(String[] args) {\n    System.out.println(\"Hello\");\n}"
+        keyword: "Polymorphism (Overloading vs Overriding)",
+        meaning: "Compile-time (Method Overloading: same name, different parameters). Run-time (Method Overriding: subclass redefines superclass method).",
+        example: "@Override\npublic void makeSound() { System.out.println(\"Bark\"); }"
       },
       {
-        keyword: "System.out.println()",
-        meaning: "Prints text to the console.",
-        example: "System.out.println(\"Hello World\");"
+        keyword: "static vs instance variables",
+        meaning: "Static variables belong to the class (shared among all instances). Instance variables belong to the object.",
+        example: "public static int totalCars = 0;\npublic String licensePlate;"
       },
       {
-        keyword: "new",
-        meaning: "Creates a new object.",
-        example: "MyClass obj = new MyClass();"
+        keyword: "final, finally, finalize()",
+        meaning: "final: constant variable/un-overridable method/un-inheritable class. finally: block always executes after try/catch. finalize(): GC callback (deprecated).",
+        example: "final int MAX = 100;\ntry { } finally { cleanup(); }"
       },
       {
-        keyword: "extends",
-        meaning: "Indicates that a class inherits from a superclass.",
-        example: "class Dog extends Animal {\n    // Dog methods\n}"
+        keyword: "super() and this()",
+        meaning: "super() calls the parent class constructor. this() calls another constructor in the same class. Must be the first statement in constructor.",
+        example: "public Dog() { super(); this.name = \"Dog\"; }"
       },
       {
-        keyword: "implements",
-        meaning: "Indicates that a class implements an interface.",
-        example: "class Dog implements Runnable {\n    public void run() {}\n}"
+        keyword: "Checked vs Unchecked Exceptions",
+        meaning: "Checked (Exception) must be declared or caught at compile time (e.g., IOException). Unchecked (RuntimeException) are logic errors (e.g., NullPointerException).",
+        example: "public void readFile() throws IOException { ... }"
       },
       {
-        keyword: "interface",
-        meaning: "Declares a special type of class that only contains abstract methods.",
-        example: "public interface Animal {\n    void makeSound();\n}"
+        keyword: "HashMap vs ConcurrentHashMap",
+        meaning: "HashMap is not thread-safe. ConcurrentHashMap is thread-safe and locks at the segment level (highly concurrent), unlike HashTable which locks the whole object.",
+        example: "Map<String, Integer> map = new ConcurrentHashMap<>();"
       },
       {
-        keyword: "try...catch...finally",
-        meaning: "Handles exceptions.",
-        example: "try {\n    int[] arr = {1};\n    System.out.println(arr[1]);\n} catch (Exception e) {\n    System.out.println(\"Error\");\n} finally {\n    System.out.println(\"Done\");\n}"
+        keyword: "volatile keyword",
+        meaning: "Ensures that variable updates are immediately written to main memory and visible to all threads, bypassing CPU caches.",
+        example: "private volatile boolean isRunning = true;"
       },
       {
-        keyword: "final",
-        meaning: "Defines an entity that can only be assigned once (constant).",
-        example: "final double PI = 3.14159;"
+        keyword: "synchronized keyword",
+        meaning: "Acquires an intrinsic lock (monitor) on the object or class to prevent concurrent execution by multiple threads.",
+        example: "public synchronized void increment() { count++; }"
       },
       {
-        keyword: "static",
-        meaning: "Indicates that the member belongs to the type itself, rather than to an instance of the type.",
-        example: "public static int counter = 0;"
+        keyword: "String Pool (== vs .equals)",
+        meaning: "String literals are pooled. '==' checks memory references, '.equals()' checks logical string value.",
+        example: "String a = \"hi\"; String b = new String(\"hi\");\n// a == b is false\n// a.equals(b) is true"
       }
     ],
     mcqs: [
       {
-        q: "What is the correct syntax to output 'Hello World' in Java?",
-        options: ["echo(\"Hello World\");", "System.out.println(\"Hello World\");", "print(\"Hello World\");", "Console.WriteLine(\"Hello World\");"],
+        q: "What is the output?\nString s1 = \"hello\";\nString s2 = \"hello\";\nSystem.out.println(s1 == s2);",
+        options: ["false", "true", "Compilation Error", "Runtime Error"],
         answer: 1,
-        explanation: "System.out.println() is used to print text to the console in Java."
+        explanation: "Because both are string literals, they are placed in the Java String Pool. Both s1 and s2 point to the exact same object in memory, so == is true."
       },
       {
-        q: "Java is short for \"JavaScript\".",
-        options: ["True", "False", "Partially True", "Context Dependent"],
+        q: "What happens if you try to catch an exception but a `finally` block also returns a value?",
+        options: ["The return from the catch block is used", "The return from the finally block overrides any other return", "Compilation error", "The JVM crashes"],
         answer: 1,
-        explanation: "Java and JavaScript are two completely different languages in both concept and design."
+        explanation: "If a finally block contains a return statement, it overrides any return statement executed in the try or catch blocks."
       },
       {
-        q: "How do you insert single-line comments in Java?",
-        options: ["// This is a comment", "/* This is a comment", "# This is a comment", "-- This is a comment"],
-        answer: 0,
-        explanation: "Single-line comments start with two forward slashes (//)."
-      },
-      {
-        q: "Which data type is used to create a variable that should store text?",
-        options: ["myString", "string", "String", "Txt"],
+        q: "Which Collection maintains insertion order?",
+        options: ["HashSet", "HashMap", "LinkedHashMap", "TreeSet"],
         answer: 2,
-        explanation: "The String type is used to store text. In Java, String is a class, so it starts with a capital letter."
+        explanation: "LinkedHashMap and LinkedHashSet maintain a doubly-linked list running through their entries, preserving the insertion order. TreeSet sorts elements, HashSet is unordered."
       },
       {
-        q: "How do you create a variable with the numeric value 5?",
-        options: ["x = 5;", "int x = 5;", "num x = 5", "float x = 5;"],
-        answer: 1,
-        explanation: "To create an integer variable, use the 'int' keyword."
-      },
-      {
-        q: "Which method can be used to find the length of a string?",
-        options: ["getSize()", "len()", "length()", "length"],
+        q: "What is the time complexity of `get()` in a HashMap under ideal conditions?",
+        options: ["O(n)", "O(log n)", "O(1)", "O(n^2)"],
         answer: 2,
-        explanation: "The length() method returns the length of a string."
+        explanation: "Under ideal conditions (no hash collisions), finding the bucket and the element takes O(1) constant time. With collisions, Java 8 degrades to O(log n) using Red-Black Trees."
       },
       {
-        q: "Which keyword is used to create a class in Java?",
-        options: ["class", "MyClass", "class()", "className"],
-        answer: 0,
-        explanation: "The 'class' keyword is used to declare a class in Java."
+        q: "Can you override a `static` method in Java?",
+        options: ["Yes, just like instance methods", "No, but you can overload them", "No, they are hidden (method hiding) rather than overridden", "Yes, but only in abstract classes"],
+        answer: 2,
+        explanation: "Static methods belong to the class, not the instance. If a subclass defines a static method with the same signature, it 'hides' the parent method, it doesn't dynamically override it."
+      },
+      {
+        q: "What does the `transient` keyword do?",
+        options: ["Marks a variable to be garbage collected immediately", "Prevents a variable from being serialized", "Makes a variable thread-safe", "Allows a variable to change its type at runtime"],
+        answer: 1,
+        explanation: "When an object is serialized (converted to a byte stream), any variable marked as `transient` is ignored and not saved."
+      },
+      {
+        q: "What is the output of the following code?\nint x = 5;\nSystem.out.println(x++ + ++x);",
+        options: ["10", "11", "12", "13"],
+        answer: 2,
+        explanation: "x++ evaluates to 5 (then x becomes 6). Next, ++x increments x to 7 and evaluates to 7. So, 5 + 7 = 12."
+      },
+      {
+        q: "What is a Memory Leak in Java?",
+        options: ["When the JVM runs out of RAM and crashes immediately", "When objects are no longer needed but are still referenced, preventing the Garbage Collector from freeing them", "When C++ pointers are used in JNI", "When the heap size is set too small"],
+        answer: 1,
+        explanation: "Even with a GC, if you unintentionally maintain active references to objects you no longer need (e.g., in a static List), the GC cannot destroy them, causing a memory leak."
+      },
+      {
+        q: "Which interface does not allow duplicate elements?",
+        options: ["List", "Queue", "Set", "Map"],
+        answer: 2,
+        explanation: "The Set interface (like HashSet, TreeSet) does not allow duplicate elements. If you add a duplicate, the add() method simply returns false."
+      },
+      {
+        q: "What is the purpose of the `volatile` keyword?",
+        options: ["To make an object immutable", "To guarantee visibility of changes to variables across multiple threads", "To prevent inheritance", "To handle exceptions gracefully"],
+        answer: 1,
+        explanation: "`volatile` ensures that reads and writes go straight to main memory, bypassing CPU caches, ensuring all threads see the most up-to-date value."
       }
     ]
   }

@@ -2867,19 +2867,48 @@ canvas#scratchCanvas {
   font-size: 1rem;
 }
 
-.programming-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  max-width: 1200px;
+.prog-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.prog-tab-btn {
+  background: transparent;
+  border: 2px solid var(--border);
+  color: var(--text-2);
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.prog-tab-btn:hover {
+  color: var(--text);
+  border-color: var(--text-3);
+}
+
+.prog-tab-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.programming-content.full-width {
+  display: block;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-@media (max-width: 900px) {
-  .programming-content {
-    grid-template-columns: 1fr;
-  }
+.full-width-card {
+  width: 100%;
 }
+
+
 
 .syntax-section, .mcq-section {
   background: var(--surface-1);
