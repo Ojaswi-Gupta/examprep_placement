@@ -77,10 +77,10 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 - **Resume-Tailored:** Questions specifically mapped to resume projects (Vibe Connect, GistProbe, Quiz Portal) and technologies (WebRTC, FAISS, Prisma, Docker).
 
 ### 💻 7. Programming & MCQs — Syntax & Quizzes
-- **Tabbed Interface:** A clean, full-width UI split into two dedicated learning modes: **📖 Syntax & Concepts** and **🎯 Practice MCQs**.
+- **Dynamic Tabbed Interface:** A clean, full-width UI dynamically driven by the data architecture. SQL and Python feature **📖 Syntax & Concepts** and **🎯 Practice MCQs**, while Java renders **5 distinct tabs** including 🏗️ Data Structures and 0️⃣1️⃣ Bit Manipulation.
 - **Deep-Dive Concepts:** Advanced, placement-level coverage for core programming languages:
   - **🐍 Python:** Decorators, Generators, GIL, Memory Management, Dunder methods, comprehensions, and basic algorithm implementations (Fibonacci, Factorial, Prime).
-  - **☕ Java:** Multithreading (`volatile`, `synchronized`), OOP traps (overriding vs overloading), Garbage Collection, Collections framework, and String pool logic.
+  - **☕ Java:** Multithreading, OOP traps, extensive Data Structures methods (Collections, Arrays, Maps), String manipulation, and Bitwise operations (Even/Odd checks, Power of 2).
   - **🛢️ SQL:** Window functions (`ROW_NUMBER`, `RANK`), CTEs, Advanced Joins, `COALESCE`, Indexing, and Date/Time interval arithmetic.
 - **Interactive MCQ Engine:** Test your knowledge with tricky, output-based questions. Clicking an option provides immediate visual feedback (✅/❌) along with a detailed explanation for the correct answer.
 
@@ -107,7 +107,11 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
     │   ├── interview_deep1.js   # Deep dive (Classical ML, GenAI, MLOps, Ethics)
     │   ├── interview_deep2.js   # Deep dive (Java, Python, DSA, Distributed Sys)
     │   ├── interview_hr.js      # HR, behavioral, puzzles, guesstimates
-    │   └── programming.js       # SQL, Python, Java syntax & MCQs data
+    │   ├── programming.js       # SQL, Python, Java syntax & MCQs data
+    │   └── java/                # Modular Java data structures
+    │       ├── data_structures.js
+    │       ├── strings.js
+    │       └── bit_manipulation.js
     ├── features/
     │   └── bookmarks.js         # Bookmark toggling logic
     ├── modules/                 # Core logical engines
@@ -173,7 +177,7 @@ No build step, no `npm install`, no frameworks required.
 | Interview Questions | 710+ |
 | Interview Roles | 10 |
 | Programming Languages | 3 (SQL, Python, Java) |
-| Programming Syntax/Concepts | 30+ |
+| Programming Syntax/Concepts | 60+ |
 | Programming MCQs | 30+ |
 | Quiz Modes | 7 |
 | Reading Passages | 10+ |
