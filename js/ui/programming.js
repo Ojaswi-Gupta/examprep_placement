@@ -2,7 +2,7 @@
 import { PROGRAMMING_DATA } from '../data/programming.js';
 
 let currentLangIndex = 0; // Default to first language (SQL)
-let currentTab = 'syntax'; // 'syntax' or 'mcqs'
+let currentTabId = 'syntax'; 
 
 export function initProgramming() {
   const navLink = document.querySelector('a[data-view="view-programming"]');
@@ -18,6 +18,14 @@ function renderProgrammingView() {
   if (!container) return;
 
   const currentData = PROGRAMMING_DATA[currentLangIndex];
+  
+  // Ensure the currentTabId is valid for the selected language
+  const tabExists = currentData.tabs.find(t => t.id === currentTabId);
+  if (!tabExists) {
+    currentTabId = currentData.tabs[0].id;
+  }
+  
+  const activeTab = currentData.tabs.find(t => t.id === currentTabId);
 
   let html = `
     <div class="programming-header">
@@ -31,22 +39,23 @@ function renderProgrammingView() {
       </div>
       <p class="lang-description">${currentData.description}</p>
       
-      <!-- Sub Tabs: Syntax vs MCQs -->
+      <!-- Sub Tabs (Dynamic) -->
       <div class="prog-tabs">
-        <button class="prog-tab-btn ${currentTab === 'syntax' ? 'active' : ''}" data-tab="syntax">📖 Syntax & Concepts</button>
-        <button class="prog-tab-btn ${currentTab === 'mcqs' ? 'active' : ''}" data-tab="mcqs">🎯 Practice MCQs</button>
+        ${currentData.tabs.map(tab => `
+          <button class="prog-tab-btn ${tab.id === currentTabId ? 'active' : ''}" data-tab="${tab.id}">${tab.name}</button>
+        `).join('')}
       </div>
     </div>
 
     <div class="programming-content full-width">
   `;
 
-  if (currentTab === 'syntax') {
+  if (activeTab.type === 'syntax') {
     html += `
       <div class="syntax-section full-width-card">
-        <h3>Syntax & Concepts (${currentData.language})</h3>
+        <h3>${activeTab.name} (${currentData.language})</h3>
         <div class="syntax-grid">
-          ${currentData.syntax.map(item => `
+          ${activeTab.data.map(item => `
             <div class="syntax-card">
               <div class="syntax-keyword"><code>${escapeHTML(item.keyword)}</code></div>
               <div class="syntax-meaning">${escapeHTML(item.meaning)}</div>
@@ -56,12 +65,12 @@ function renderProgrammingView() {
         </div>
       </div>
     `;
-  } else {
+  } else if (activeTab.type === 'mcqs') {
     html += `
       <div class="mcq-section full-width-card">
-        <h3>Practice MCQs (${currentData.language})</h3>
+        <h3>${activeTab.name} (${currentData.language})</h3>
         <div class="mcq-list">
-          ${currentData.mcqs.map((mcq, qIndex) => `
+          ${activeTab.data.map((mcq, qIndex) => `
             <div class="mcq-card" data-qindex="${qIndex}">
               <p class="mcq-question">${qIndex + 1}. ${escapeHTML(mcq.q).replace(/\n/g, '<br>')}</p>
               <div class="mcq-options">
@@ -94,16 +103,16 @@ function renderProgrammingView() {
   // Event Listeners for Tabs
   container.querySelectorAll('.prog-tab-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      currentTab = e.currentTarget.dataset.tab;
+      currentTabId = e.currentTarget.dataset.tab;
       renderProgrammingView();
     });
   });
 
   // Event Listeners for MCQs
-  if (currentTab === 'mcqs') {
+  if (activeTab.type === 'mcqs') {
     container.querySelectorAll('.mcq-card').forEach(card => {
       const qIndex = parseInt(card.dataset.qindex);
-      const mcqData = currentData.mcqs[qIndex];
+      const mcqData = activeTab.data[qIndex];
       const feedbackEl = card.querySelector('.mcq-feedback');
       const feedbackIcon = feedbackEl.querySelector('.feedback-icon');
 

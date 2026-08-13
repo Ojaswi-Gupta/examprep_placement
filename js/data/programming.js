@@ -1,3 +1,7 @@
+import { javaDataStructures } from './java/data_structures.js';
+import { javaStrings } from './java/strings.js';
+import { javaBitManipulation } from './java/bit_manipulation.js';
+
 // js/data/programming.js
 
 export const PROGRAMMING_DATA = [
@@ -5,7 +9,12 @@ export const PROGRAMMING_DATA = [
     language: "SQL",
     icon: "🛢️",
     description: "Advanced SQL queries, tricky joins, and performance optimization concepts.",
-    syntax: [
+    tabs: [
+      {
+        id: 'syntax',
+        name: '📖 Syntax & Concepts',
+        type: 'syntax',
+        data: [
       {
         keyword: "SELECT ... FROM ... WHERE",
         meaning: "Core querying syntax to extract and filter records.",
@@ -86,8 +95,13 @@ export const PROGRAMMING_DATA = [
         meaning: "Returns the current date or current date and time.",
         example: "SELECT * FROM orders WHERE order_date = CURRENT_DATE;"
       }
-    ],
-    mcqs: [
+        ]
+      },
+      {
+        id: 'mcqs',
+        name: '🎯 Practice MCQs',
+        type: 'mcqs',
+        data: [
       {
         q: "Table A has 5 rows, Table B has 10 rows. If you do a CROSS JOIN between A and B, how many rows are in the result?",
         options: ["15", "5", "10", "50"],
@@ -190,13 +204,20 @@ export const PROGRAMMING_DATA = [
         answer: 1,
         explanation: "EXTRACT(field FROM source) pulls out sub-fields such as year or hour from date/time values."
       }
+        ]
+      }
     ]
   },
   {
     language: "Python",
     icon: "🐍",
     description: "Advanced Python concepts including decorators, generators, OOP dunders, and tricky outputs.",
-    syntax: [
+    tabs: [
+      {
+        id: 'syntax',
+        name: '📖 Syntax & Concepts',
+        type: 'syntax',
+        data: [
       {
         keyword: "*args and **kwargs",
         meaning: "Allows passing a variable number of positional (*args) and keyword (**kwargs) arguments to a function.",
@@ -267,8 +288,13 @@ export const PROGRAMMING_DATA = [
         meaning: "Classic basic program: Checking if a number is divisible only by 1 and itself.",
         example: "def is_prime(n):\n    if n <= 1: return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0: return False\n    return True"
       }
-    ],
-    mcqs: [
+        ]
+      },
+      {
+        id: 'mcqs',
+        name: '🎯 Practice MCQs',
+        type: 'mcqs',
+        data: [
       {
         q: "What is the output of the following code?\n\ndef append_to(num, target=[]):\n    target.append(num)\n    return target\n\nprint(append_to(1))\nprint(append_to(2))",
         options: ["[1], [2]", "[1], [1, 2]", "Error", "[1], [1]"],
@@ -351,13 +377,20 @@ export const PROGRAMMING_DATA = [
         answer: 2,
         explanation: "You only need to check up to int(n**0.5) because a larger factor of n must be a multiple of a smaller factor that has already been checked."
       }
+        ]
+      }
     ]
   },
   {
     language: "Java",
     icon: "☕",
     description: "Deep dive into OOP, Collections, Concurrency, and tricky outputs.",
-    syntax: [
+    tabs: [
+      {
+        id: 'syntax',
+        name: '📖 Syntax & Concepts',
+        type: 'syntax',
+        data: [
       {
         keyword: "Abstraction (abstract class vs interface)",
         meaning: "Abstract classes can have state (instance variables) and constructors. Interfaces (pre-Java 8) only have abstract methods. Interfaces support multiple inheritance.",
@@ -408,8 +441,13 @@ export const PROGRAMMING_DATA = [
         meaning: "String literals are pooled. '==' checks memory references, '.equals()' checks logical string value.",
         example: "String a = \"hi\"; String b = new String(\"hi\");\n// a == b is false\n// a.equals(b) is true"
       }
-    ],
-    mcqs: [
+        ]
+      },
+      {
+        id: 'mcqs',
+        name: '🎯 Practice MCQs',
+        type: 'mcqs',
+        data: [
       {
         q: "What is the output?\nString s1 = \"hello\";\nString s2 = \"hello\";\nSystem.out.println(s1 == s2);",
         options: ["false", "true", "Compilation Error", "Runtime Error"],
@@ -469,6 +507,26 @@ export const PROGRAMMING_DATA = [
         options: ["To make an object immutable", "To guarantee visibility of changes to variables across multiple threads", "To prevent inheritance", "To handle exceptions gracefully"],
         answer: 1,
         explanation: "`volatile` ensures that reads and writes go straight to main memory, bypassing CPU caches, ensuring all threads see the most up-to-date value."
+      }
+        ]
+      },
+      {
+        id: 'ds',
+        name: '🏗️ Data Structures',
+        type: 'syntax',
+        data: javaDataStructures
+      },
+      {
+        id: 'strings',
+        name: '🔤 Strings',
+        type: 'syntax',
+        data: javaStrings
+      },
+      {
+        id: 'bit',
+        name: '0️⃣1️⃣ Bit Manipulation',
+        type: 'syntax',
+        data: javaBitManipulation
       }
     ]
   }
