@@ -6,7 +6,7 @@ export const INTERVIEW_PROJECTS_DATA = [
       {
         topic: "GistProbe (NLP & MLOps)",
         questions: [
-          // Original Questions
+          // === ORIGINAL QUESTIONS ===
           {
             q: "Why did you choose a decoupled microservice architecture for GistProbe instead of a monolith?",
             a: "Free-tier hosting platforms like Render have strict 512MB RAM limits. Heavy NLP models (PyTorch, spaCy, scikit-learn) and Playwright easily exceed this. By splitting the frontend (Flask/Render) from the heavy ML worker (FastAPI/HuggingFace Spaces with 16GB RAM), I ensured scalable, crash-free execution while keeping the UI highly responsive.",
@@ -47,7 +47,7 @@ export const INTERVIEW_PROJECTS_DATA = [
             a: "I used Flask-APScheduler to run asynchronous background jobs. It queries the SQLite database for user-subscribed URLs based on their frequency (e.g., daily), triggers the FastAPI crawler endpoint to re-analyze the page, and updates the historical sentiment and subjectivity scores, which are then graphed using Chart.js.",
             difficulty: "Advanced"
           },
-          // New Expanded Questions
+          // === SECOND BATCH ===
           {
             q: "Why did you use Playwright alongside BeautifulSoup instead of just BeautifulSoup?",
             a: "BeautifulSoup cannot execute JavaScript, meaning it fails to scrape modern SPAs (Single Page Applications) or content loaded dynamically. Playwright launches a headless Chromium browser to fully render the DOM, and then passes the loaded HTML to BeautifulSoup for efficient parsing.",
@@ -92,13 +92,94 @@ export const INTERVIEW_PROJECTS_DATA = [
             q: "Why did you choose Llama-3.1 via Groq instead of OpenAI's GPT-4?",
             a: "Groq utilizes LPU (Language Processing Unit) inference engines which provide incredibly fast token generation times compared to standard GPUs. Using Llama-3.1 on Groq allowed me to deliver near-instantaneous responses for the Chat and Debate modes without the high latency typical of heavy LLMs.",
             difficulty: "Intermediate"
+          },
+          // === THIRD BATCH — EVERY CORNER DETAIL ===
+          {
+            q: "How does the Flask frontend communicate with the FastAPI ML worker?",
+            a: "The Flask app makes HTTP requests (using the `requests` library) to the FastAPI worker endpoints like `/probe`, `/retrieve`, and `/similarity`. The ML_API_URL is configured via environment variables, defaulting to `http://localhost:8000` for local development and pointing to the HuggingFace Spaces URL in production.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "Why did you choose FastAPI over Flask for the heavy ML worker?",
+            a: "FastAPI is built on Starlette and supports asynchronous request handling natively. For a heavy compute worker that needs to handle concurrent scraping and ML inference requests without blocking, FastAPI's async capabilities and automatic OpenAPI documentation made it the ideal choice over Flask.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "How does the Playwright scraper handle anti-bot measures?",
+            a: "The scraper uses rotating user-agents to mimic different browsers and bypass basic bot-detection mechanisms. Playwright also renders the full page including JavaScript execution, which defeats simple server-side checks that block headless browsers based on missing JS capabilities.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "Why did you choose Silhouette Score over the Elbow Method for K-Means optimization?",
+            a: "The Elbow Method requires visual inspection of a plot to subjectively identify a bend, making it impossible to automate. Silhouette Score produces a single numerical value (ranging -1 to 1) that can be programmatically compared across iterations, enabling fully automated k-selection without human intervention.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "What is FAISS and why did you use it instead of a traditional database for vector search?",
+            a: "FAISS (Facebook AI Similarity Search) is a library optimized for extremely fast nearest-neighbor searches over dense vectors. Traditional SQL databases cannot efficiently compute cosine similarity across high-dimensional embedding vectors. FAISS uses optimized index structures (like IVF or flat L2) for sub-millisecond retrieval.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "How does the 'Fact Check Mode' work in the Chat feature?",
+            a: "When Fact Check Mode is enabled, the system prompt sent to Llama-3.1 is modified to instruct the LLM to cross-reference claims in the scraped content against its pre-trained world knowledge. The AI explicitly flags statements that may be misleading, biased, or factually incorrect.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How did you implement the WordCloud visualization?",
+            a: "I used a TF-IDF-weighted approach to determine the most important terms from the scraped content. The `wordcloud_gen.py` module generates a visual representation where word size is proportional to its TF-IDF weight, giving users an instant visual summary of dominant themes on the page.",
+            difficulty: "Basic"
+          },
+          {
+            q: "How does the Business Analyst Excel (.xlsx) export feature work?",
+            a: "After the NLP pipeline completes, the Flask backend compiles the AI-generated summaries, semantic clusters, entity lists, and sentiment scores into structured sheets using a Python Excel library. The user downloads a comprehensive .xlsx report for offline analysis and stakeholder presentations.",
+            difficulty: "Basic"
+          },
+          {
+            q: "Explain the Cost-Savings Dashboard feature.",
+            a: "The dashboard automatically calculates the estimated human reading time for the scraped content (based on average reading speed of ~250 words/minute) and compares it against the AI processing time. This delta is visualized to demonstrate the ROI of using GistProbe over manual analysis.",
+            difficulty: "Basic"
+          },
+          {
+            q: "Why did you cache NLP results as JSON blobs in the ProbeResult table instead of normalized tables?",
+            a: "NLP outputs like K-Means cluster arrays and entity graphs are complex, nested structures that would require many normalized tables with heavy join queries. Storing them as JSON blobs in a single column enables instant retrieval with a single query, trading normalization for read performance — a valid trade-off for a caching layer.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "What is the URLSubscription table and how does it drive automation?",
+            a: "The `URLSubscription` table stores the user_id, URL, and frequency (daily/weekly). Flask-APScheduler reads this table at scheduled intervals, iterates over active subscriptions, and triggers the ML worker to re-crawl and re-analyze each URL, appending new sentiment data points to the historical graph.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "Why did you choose Flask over Django for the frontend?",
+            a: "Flask is a micro-framework that provides only the essentials (routing, templating), keeping the frontend lightweight. Since the heavy ML logic lives in a separate FastAPI worker, Django's batteries-included approach (ORM, admin panel, auth) would have been unnecessary overhead for this UI-focused service.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How did you handle error scenarios when the ML worker is unavailable?",
+            a: "The Flask frontend wraps all HTTP calls to the FastAPI worker in try-except blocks with timeout configurations. If the ML worker is down or times out, the UI displays a user-friendly error message instead of crashing, and cached ProbeResult data from previous runs is served as a fallback.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "What visualization libraries did you use and for what purposes?",
+            a: "I used Chart.js for interactive donut charts (topic distribution) and line charts (historical sentiment tracking over time), vis.js for the physics-based entity knowledge graph, and custom Python WordCloud generation for TF-IDF visual summaries.",
+            difficulty: "Basic"
+          },
+          {
+            q: "How did you structure the ML worker codebase for maintainability?",
+            a: "The ML worker is split into focused modules: `crawler.py` handles Playwright and BeautifulSoup scraping, `analyser.py` handles text cleaning and TextBlob sentiment, `clustering.py` handles TF-IDF and K-Means, `ner.py` handles spaCy NER, and `rag.py` handles Sentence-Transformers and FAISS. This separation of concerns makes each component independently testable.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How did you test the core ML pipeline?",
+            a: "I wrote unit tests in `tests.py` that validate each pipeline stage independently: testing that the crawler returns valid HTML, that the cleaner removes duplicates correctly, that K-Means produces a valid number of clusters, and that the sentiment analyzer returns scores within expected ranges.",
+            difficulty: "Intermediate"
           }
         ]
       },
       {
         topic: "Vibe Connect (WebRTC & WebSockets)",
         questions: [
-          // Original Questions
+          // === ORIGINAL QUESTIONS ===
           {
             q: "Why did you use Firebase Firestore for WebRTC signaling instead of a traditional WebSocket server (like Socket.IO)?",
             a: "Firestore is serverless and highly scalable out of the box. By using Firestore document listeners, clients can react to changes in real-time. The Caller writes an SDP offer to a document, the Callee reads it and writes an answer, and they exchange ICE candidates via sub-collections, entirely eliminating the need to deploy and manage a custom Node.js WebSocket server.",
@@ -134,7 +215,7 @@ export const INTERVIEW_PROJECTS_DATA = [
             a: "Next.js provides excellent developer experience, out-of-the-box TypeScript support, and seamless Vercel deployment. Even though WebRTC is strictly a client-side API, Next.js handles the UI, routing, and environment variable security flawlessly.",
             difficulty: "Basic"
           },
-          // New Expanded Questions
+          // === SECOND BATCH ===
           {
             q: "What is an SDP Offer and Answer in WebRTC?",
             a: "SDP (Session Description Protocol) is a format describing multimedia sessions. The Caller generates an Offer containing details about its media capabilities (codecs, resolutions) and network info. The Callee receives it and generates an Answer with its own corresponding capabilities to establish common ground.",
@@ -174,13 +255,79 @@ export const INTERVIEW_PROJECTS_DATA = [
             q: "Why deploy on Vercel?",
             a: "Vercel integrates seamlessly with Next.js, providing zero-configuration deployments. Pushing code to GitHub automatically triggers a build and deployment, ensuring CI/CD best practices without manual infrastructure management.",
             difficulty: "Basic"
+          },
+          // === THIRD BATCH — EVERY CORNER DETAIL ===
+          {
+            q: "How does Firestore's `onSnapshot` enable real-time signaling?",
+            a: "`onSnapshot` attaches a listener to a Firestore document or collection. Whenever the document changes (e.g., the Callee writes an SDP answer), the listener fires a callback instantly on the other client. This real-time push mechanism replaces the need for WebSocket polling and powers the entire signaling handshake.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "What happens if one peer disconnects unexpectedly mid-call?",
+            a: "The `RTCPeerConnection` fires an `oniceconnectionstatechange` event. When the ICE connection state transitions to 'disconnected' or 'failed', the application detects the remote peer has dropped, stops the remote video tracks, and can either display a reconnection message or trigger a new matchmaking cycle.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "What is NAT (Network Address Translation) and why is it a problem for WebRTC?",
+            a: "NAT maps private internal IP addresses to a single public IP. Peers behind NAT don't know their own public IP and port, so they cannot directly tell another peer how to reach them. WebRTC uses STUN to discover the public IP and TURN to relay traffic when direct connections are impossible.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How did you implement the Fullscreen mode for the remote video?",
+            a: "I used the browser's native Fullscreen API (`element.requestFullscreen()`). When the user clicks the fullscreen button, the remote video container enters fullscreen. The exit is handled via `document.exitFullscreen()` or the browser's native Escape key behavior.",
+            difficulty: "Basic"
+          },
+          {
+            q: "How does the floating Picture-in-Picture (PiP) local video work?",
+            a: "The local video element is positioned using CSS `position: absolute` with a high `z-index`, overlaid on top of the remote video stream. It renders as a small draggable or fixed corner window so the user can see their own camera feed while watching the stranger's video.",
+            difficulty: "Basic"
+          },
+          {
+            q: "Why did you prefix all Firebase environment variables with `NEXT_PUBLIC_`?",
+            a: "In Next.js, environment variables are server-side by default and not exposed to the browser. The `NEXT_PUBLIC_` prefix explicitly marks them as safe to bundle into client-side JavaScript. Since Firebase SDK runs entirely in the browser, all its config values need this prefix.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How do you handle stale documents in the Firestore `waiting` collection?",
+            a: "If a user starts waiting but closes their browser before being matched, their document becomes stale. The next user who claims this document will fail to establish a connection. To handle this, the application detects signaling timeout and re-enters the matchmaking queue. In production, a Cloud Function can periodically clean up stale entries based on `createdAt` timestamps.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "What is the difference between the App Router and Pages Router in Next.js?",
+            a: "The App Router (introduced in Next.js 13+) uses the `app/` directory with React Server Components, layouts, and streaming by default. The Pages Router uses the `pages/` directory with `getServerSideProps`/`getStaticProps`. App Router is the modern recommended approach and supports nested layouts and loading states natively.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How does TypeScript improve the reliability of this project?",
+            a: "TypeScript adds static type checking at compile time. For WebRTC, it catches errors like passing wrong types to `RTCPeerConnection` methods, accessing undefined properties on Firestore snapshots, or mismatched ICE server configurations — all before the code runs in production.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How does the app handle camera/microphone permission denials?",
+            a: "When `getUserMedia` is called and the user denies permission, the Promise rejects. The app catches this error and displays a user-friendly message explaining that camera access is required. The Start button remains disabled until permissions are granted.",
+            difficulty: "Basic"
+          },
+          {
+            q: "Why does WebRTC only work on localhost without HTTPS but requires HTTPS on deployed sites?",
+            a: "Browsers treat `localhost` as a secure context for development purposes. However, `getUserMedia` and other powerful APIs require a secure context (HTTPS) on all other origins. Vercel provides HTTPS automatically, so the deployed app works without extra configuration.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "What is the `createdAt` field in the `waiting` collection used for?",
+            a: "The `createdAt` timestamp is a server-generated Firestore timestamp used to sort the waiting collection in FIFO (first-in, first-out) order. When a new user queries for a match, they use `orderBy('createdAt').limit(1)` to always pick the user who has been waiting the longest.",
+            difficulty: "Basic"
+          },
+          {
+            q: "How would you scale Vibe Connect to support thousands of concurrent users?",
+            a: "Firestore already scales horizontally. For media, since WebRTC is P2P, the server never handles media traffic — it scales naturally. The bottleneck would be TURN server bandwidth for users behind strict NATs. I would use a managed TURN service (like Twilio or Metered) that auto-scales relay capacity.",
+            difficulty: "Advanced"
           }
         ]
       },
       {
         topic: "Quiz Portal (Proctoring & System Design)",
         questions: [
-          // Original Questions
+          // === ORIGINAL QUESTIONS ===
           {
             q: "Your portal uses a '100ms Selection Cleansing Loop'. Why did you build this, and how does it work?",
             a: "To prevent students from copying text or using drag-to-cheat browser extensions, I created a background hook that fires every 100ms. It constantly calls `window.getSelection().removeAllRanges()`, making it physically impossible to highlight even a single character during an active exam.",
@@ -221,7 +368,7 @@ export const INTERVIEW_PROJECTS_DATA = [
             a: "I implemented a `releaseAnswers` flag in the SQLite database. Admins can toggle this flag to suppress instant answer visibility after a student submits. This guarantees exam integrity, allowing the admin to release all correct answers globally only after the entire cohort has completed the test.",
             difficulty: "Intermediate"
           },
-          // New Expanded Questions
+          // === SECOND BATCH ===
           {
             q: "Explain the visual implementation of the 'Frosted Selection & Blur Lockout Workspace'.",
             a: "While permissions are pending or if a cheating strike occurs, the entire question bank container receives a CSS `filter: blur(12px)`. A centered glassmorphic overlay is rendered stating 'Secure Workspace Locked'. The exact millisecond the system state re-secures, the blur is removed, ensuring test content is completely invisible when unproctored.",
@@ -271,6 +418,97 @@ export const INTERVIEW_PROJECTS_DATA = [
             q: "How do you handle cascading deletes in Prisma?",
             a: "In the Prisma schema, relations are defined with `onDelete: Cascade`. This means if an Admin deletes a Quiz, the database engine automatically deletes all related Questions and Student Attempts, maintaining referential integrity without writing manual cleanup code.",
             difficulty: "Intermediate"
+          },
+          // === THIRD BATCH — EVERY CORNER DETAIL ===
+          {
+            q: "How does the keyboard event interception work in the capturing phase?",
+            a: "Standard event listeners use the bubbling phase, which extensions can intercept first. By attaching the listener with `addEventListener('keydown', handler, true)` (the third argument `true` enables the capturing phase), the proctoring engine intercepts keyboard events before any extension or page script can process them, blocking F12, Cmd+Opt+I, and Cmd+Opt+U.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "How does the negative marking system work?",
+            a: "Each Quiz has a `negativeMarks` field (a Float) in the database schema. When a student selects a wrong answer, the grading loop subtracts this value from their total score. If a question is unanswered (selectedOption is null), no penalty is applied, encouraging strategic skipping.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How did you support both SINGLE and MULTIPLE choice question types?",
+            a: "Each Question has a `questionType` field (SINGLE or MULTIPLE) and a `correctOption` field. For SINGLE, correctOption stores one letter (e.g., 'A'). For MULTIPLE, it stores a comma-separated string (e.g., 'A,B'). The grading engine splits and compares sets accordingly, requiring an exact match for full marks.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How does the quiz scheduling system (opensAt/closesAt) work?",
+            a: "Each Quiz has `opensAt` and `closesAt` DateTime fields. The backend checks these timestamps before allowing a student to start an attempt. If `now < opensAt`, the quiz shows as 'Upcoming'. If `now > closesAt`, it shows as 'Closed'. Only quizzes within their active window are accessible.",
+            difficulty: "Basic"
+          },
+          {
+            q: "How does the Admin 'Quiz Reopening' feature work?",
+            a: "Admins can extend the `closesAt` timestamp dynamically via an API endpoint. This is useful when students face technical difficulties or need extra time. The backend updates the DateTime in the database, and the quiz immediately becomes accessible again to all students in that Cohort.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "Explain the three `Attempt` status states in your system.",
+            a: "`IN_PROGRESS` means the student is actively taking the exam. `COMPLETED` means they submitted voluntarily via the Submit button. `FORCE_SUBMITTED` means the system auto-graded — either the timer expired, the proctoring engine disqualified the student (3 strikes), or the backend detected a timer manipulation attempt.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How does the collapsible Admin sidebar work?",
+            a: "The sidebar uses a React state hook (e.g., `isCollapsed`) that toggles between a full-width navigation panel and a narrow icon-only strip. CSS transitions handle the smooth width animation. This maximizes screen real estate for data-heavy tables like the student leaderboard.",
+            difficulty: "Basic"
+          },
+          {
+            q: "Why did you use componentized modals instead of separate pages for entity creation?",
+            a: "Creating separate pages for 'Create Quiz', 'Add Question', 'Create Section', and 'Register Student' would cause page navigation and loss of context. Self-contained popup modals keep the admin on the same dashboard, eliminating scrolling fatigue and allowing quick, context-aware entity creation.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How does the seed script work and why is it important?",
+            a: "The `seed.js` script runs via `npm run seed` and uses Prisma Client to programmatically insert mock data: an Admin user, a Student user, sample Cohorts, Quizzes with Questions, and a pre-loaded Attempt. This enables instant evaluation of the entire application without manually creating test data.",
+            difficulty: "Basic"
+          },
+          {
+            q: "How does the AuthContext manage JWT sessions across the React app?",
+            a: "The `AuthContext.jsx` uses React's Context API to store the JWT token and user data globally. It configures Axios request interceptors to automatically attach the `Authorization: Bearer <token>` header to every outgoing API request, ensuring seamless authentication without repeating token logic in every component.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How do you handle question images in the quiz?",
+            a: "Each Question has an optional `questionImage` field that stores a URL. If present, the ExamPage component renders an `<img>` tag alongside the question text. This supports diagram-based, graph-based, or image-based questions without changing the core data model.",
+            difficulty: "Basic"
+          },
+          {
+            q: "Why did you use SQLite instead of PostgreSQL or MySQL?",
+            a: "SQLite is a serverless, file-based database that requires zero configuration. For a self-contained exam portal that needs to run locally with a single `npm install`, SQLite is ideal. The `dev.db` file ships with the repo, eliminating the need for students to install and configure a separate database server.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "How does the 'Early Submit' button work from any question?",
+            a: "The Submit Quiz button is permanently anchored to the side navigation panel, not tied to the last question. A student can click it from any question number. It triggers a confirmation dialog, and upon acceptance, the backend receives all answers, computes the score with negative marking, and transitions the Attempt status to 'COMPLETED'.",
+            difficulty: "Basic"
+          },
+          {
+            q: "How did you implement glassmorphism in the CSS?",
+            a: "Glassmorphism is achieved using a combination of `background: rgba(255, 255, 255, 0.05)`, `backdrop-filter: blur(10px)`, and subtle `border: 1px solid rgba(255, 255, 255, 0.1)`. This creates a frosted-glass effect that allows the 3D particle background to subtly show through UI elements.",
+            difficulty: "Basic"
+          },
+          {
+            q: "What fonts did you choose and why?",
+            a: "I used the 'Outfit' and 'Plus Jakarta Sans' Google Fonts. These are modern, geometric sans-serif typefaces optimized for screen readability. They provide a clean, premium aesthetic that matches the glassmorphism design system and ensures excellent legibility at all sizes.",
+            difficulty: "Basic"
+          },
+          {
+            q: "Why did you use Lucide Icons instead of Font Awesome or Material Icons?",
+            a: "Lucide is a lightweight, open-source icon library with tree-shakeable React components. Unlike Font Awesome which loads the entire icon font, Lucide only bundles the specific icons you import, resulting in a significantly smaller bundle size.",
+            difficulty: "Basic"
+          },
+          {
+            q: "How does the Express middleware handle JWT verification with both headers and query parameters?",
+            a: "The `authMiddleware.js` first checks the `Authorization` header for a Bearer token. If not found, it falls back to checking `req.query.token`. This dual approach is necessary because the PDF certificate download endpoint needs to pass the token as a URL query parameter for direct browser opening, since browsers cannot set custom headers for `<a>` tag downloads.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "How does the 3D mouse parallax effect work in the particle constellation?",
+            a: "The `ThreeCanvas.jsx` component uses React Three Fiber's `useFrame` hook to read the mouse position on every animation frame. It maps the normalized mouse coordinates (-1 to 1) to subtle rotation offsets on the particle group, creating a depth illusion where the constellation gently follows the cursor.",
+            difficulty: "Advanced"
           }
         ]
       }
