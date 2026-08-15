@@ -387,6 +387,111 @@ export const INTERVIEW_HR_DATA = [
             difficulty: "Intermediate"
           }
         ]
+      },
+      {
+        topic: "Hypothetical & What-If Scenarios",
+        questions: [
+          {
+            q: "If you could go back and change one decision in your life, what would it be and why?",
+            a: "The interviewer is testing self-awareness and maturity, not looking for regret. Choose a professional decision where you learned a valuable lesson. For example, 'I would have started contributing to open-source projects earlier in college. I realized late that building a public portfolio accelerates career growth far more than academic scores alone.' Always pivot to the lesson learned and how it shaped your current approach.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "If you were the CEO of this company, what is the first thing you would change?",
+            a: "This tests strategic thinking and your understanding of the company. Avoid criticizing their core product. Instead, suggest an improvement that shows you have researched them. For example, 'I would invest more in developer experience tooling internally — faster CI/CD pipelines and better documentation reduce engineering friction and compound into massive productivity gains over time.' Show you think about systemic improvements, not surface-level complaints.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "If you had to fire your best friend from your team, how would you handle it?",
+            a: "Acknowledge the emotional difficulty, but emphasize professionalism. Say, 'I would separate my personal relationship from my professional responsibility. I would follow the formal process: document the performance issues, give clear warnings and a chance to improve, and if there's no change, proceed with the termination respectfully and privately. I would be honest with my friend about why this is happening and treat them with dignity throughout.'",
+            difficulty: "Advanced"
+          },
+          {
+            q: "If you were given unlimited budget but only 2 weeks, what product would you build?",
+            a: "This tests creativity, prioritization, and how you think under constraints. Don't say something impossibly ambitious. A strong answer: 'I would build a hyper-focused MVP — say, an AI-powered meeting summarizer that records, transcribes, and extracts action items. With unlimited budget, I'd assemble a small, expert team, use existing APIs (Whisper for transcription, GPT for summarization), and ship a polished, working prototype in 2 weeks.' Show you understand scope management even with resources.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "If you joined our team and realized the codebase is a complete mess, what would you do?",
+            a: "Never trash-talk the existing codebase or the people who built it — they were likely solving different problems under different constraints. Say, 'I would first understand the business context and why it evolved this way. Then I would identify the highest-pain areas causing the most bugs or slowdowns. I would introduce incremental improvements: add tests before refactoring, document as I go, and propose a technical debt budget for each sprint rather than a risky full rewrite.'",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "If you were stranded on a deserted island and could bring only 3 items, what would they be?",
+            a: "The interviewer is assessing your problem-solving approach and personality. Avoid joke answers. A thoughtful response: 'A large knife for cutting wood and preparing food (utility), a waterproof tarp for shelter and rain collection (survival), and a fire starter (warmth, cooking, and signaling). These three cover the fundamental survival priorities: water, shelter, and fire.' This shows you think in structured frameworks even under absurd constraints.",
+            difficulty: "Basic"
+          },
+          {
+            q: "If you were given the task of reducing our company's cloud costs by 40%, where would you start?",
+            a: "Show structured thinking. 'First, I would audit current spending using the cloud provider's cost explorer to identify the biggest line items. Common wins include: right-sizing over-provisioned instances, shutting down idle dev/staging environments outside work hours, switching to reserved or spot instances for predictable workloads, and optimizing storage tiers. I would present findings ranked by impact vs. effort, targeting quick wins first before tackling architectural changes.'",
+            difficulty: "Advanced"
+          },
+          {
+            q: "What would you do if you strongly disagreed with a company policy but it was non-negotiable?",
+            a: "Show professionalism and maturity. 'If the policy doesn't violate ethical or legal standards, I would comply with it while voicing my disagreement through proper channels — writing a constructive email to my manager or HR explaining my reasoning. If the company has a feedback mechanism, I would use it. Ultimately, I respect that not every decision will go my way, and I would not let personal disagreement affect my work quality or team dynamics.'",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "If two of your team members gave you completely opposite technical recommendations, how would you decide?",
+            a: "I would avoid making a gut-feeling decision or siding with the more senior person by default. Instead, I would ask each person to present their case with supporting data: benchmarks, trade-off analysis, or precedent. I would evaluate against our specific constraints (timeline, scalability, maintainability). If the data is inconclusive, I would suggest a quick proof-of-concept or time-boxed spike to validate the riskier option before committing.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "If your project got cancelled after 6 months of hard work, how would you react?",
+            a: "Acknowledge the disappointment honestly — pretending you wouldn't care sounds fake. 'I would be frustrated initially, but I'd focus on extracting value from the experience. I'd document the technical learnings, reusable components, and architectural patterns that can be applied to future projects. I'd also reflect on whether there were early warning signs I missed. Every cancelled project still teaches you about technical execution and business alignment.'",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "If you were interviewing someone and they lied about a skill on their resume, but were otherwise a great candidate, would you hire them?",
+            a: "No. Integrity is a non-negotiable foundation. If a candidate lies about knowing Python or having led a team, it reveals a character flaw that will surface in other situations — missed deadlines, hidden bugs, or blamed colleagues. I would appreciate their other strengths but ultimately pass on them, because trust is the baseline for any professional relationship and it cannot be rebuilt once broken during the hiring stage.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "Imagine you are the only engineer on a critical production system that goes down at 3 AM. What do you do?",
+            a: "First, acknowledge the alert and assess severity — is it a full outage or partial degradation? Check monitoring dashboards and recent deployments for the root cause. If I can identify a fix or rollback quickly, I execute it. If not, I escalate immediately to senior engineers or the on-call chain rather than spending hours alone. I communicate status updates to stakeholders. After resolution, I write a blameless post-mortem and propose preventive measures.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "If you could design the perfect engineering team from scratch, what would it look like?",
+            a: "I would optimize for diversity of thought and complementary skills. A mix of senior architects for system design, mid-level engineers for execution speed, and juniors for fresh perspectives and energy. I would prioritize strong communicators over lone geniuses. I would embed a culture of code reviews, blameless post-mortems, and 20% time for learning. Team size would be 5-7 (two-pizza rule) to keep communication overhead low.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "If a competitor offered you double your salary tomorrow, would you leave?",
+            a: "Be honest but diplomatic. 'Salary is important, but it's not the only factor. I evaluate based on growth opportunities, team culture, the quality of problems I get to solve, and work-life balance. If I am learning, contributing meaningfully, and valued at my current company, doubling my salary alone wouldn't be enough to leave. However, if the new role also offers better challenges and growth, I would seriously consider it.'",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "If you had to explain your most complex project to a 10-year-old, how would you do it?",
+            a: "This tests communication clarity. For example, explaining GistProbe: 'Imagine you have a really long, boring article and you don't want to read it all. My project is like a robot that reads it for you, groups the ideas into piles (like sorting LEGO bricks by color), tells you if the writer sounds happy or angry, and then lets you ask it questions about what it read.' Simplify without being condescending.",
+            difficulty: "Basic"
+          },
+          {
+            q: "What would you do if you were assigned to a project you found completely boring?",
+            a: "Every project has hidden learning opportunities. I would look for ways to make it interesting — perhaps by introducing a new technology, automating a tedious process, or optimizing the existing architecture. If the work is truly unstimulating long-term, I would deliver it professionally while having an honest conversation with my manager about transitioning to more challenging work in the next cycle. I would never let my lack of interest affect the quality of my output.",
+            difficulty: "Basic"
+          },
+          {
+            q: "If you discovered that the AI model your team deployed was producing biased outputs against a minority group, what would you do?",
+            a: "I would immediately raise the concern with the team lead and document specific examples of the biased outputs. I would recommend pulling the model from production or adding a human-in-the-loop review until the bias is investigated. Then I would work with the team to audit the training data for representation imbalances, test with fairness metrics (demographic parity, equalized odds), and retrain with debiased data. Ethical AI is not optional.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "If your manager micromanaged every line of your code, how would you handle it?",
+            a: "I would first try to understand their motivation — perhaps they had a bad experience with a previous team member's quality. I would proactively build trust by delivering high-quality, well-tested code consistently and sending detailed PR descriptions. After establishing a track record, I would have a candid conversation: 'I appreciate your thoroughness. Now that we have a rhythm, could we try a lighter review process to free up your time for strategic work?'",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "If you were given the choice between shipping a feature with known minor bugs or delaying the release by a week, what would you choose?",
+            a: "It depends on context. If the bugs are cosmetic and the release is tied to a critical business deadline (like a marketing campaign), I would ship with documented known issues and a hotfix plan for the following sprint. If the bugs affect data integrity, security, or core user experience, I would delay without hesitation. The key is communicating the trade-off transparently to stakeholders and letting the business make an informed decision.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "If you suddenly became the manager of your current team tomorrow, what is the first thing you would do?",
+            a: "I would schedule 1-on-1 meetings with every team member in the first week to understand their pain points, career goals, and blockers. I would not make any drastic changes immediately — observe first, then act. I would establish clear communication norms and protect the team from unnecessary meetings. My first priority would be earning trust through consistency and transparency rather than asserting authority.",
+            difficulty: "Intermediate"
+          }
+        ]
       }
     ]
   },
