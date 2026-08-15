@@ -856,7 +856,7 @@ export const DIAGRAMS_DATA = {
       <text x="50" y="105" font-size="8" fill="var(--green)" text-anchor="middle">Matches are Opposite</text>
     </svg>
   `,
-  "Standard Deviation": `
+  "Population Standard Deviation": `
     <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
       <!-- Bell curve -->
       <path d="M 10 80 Q 30 80, 40 50 T 50 20 T 60 50 T 90 80" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />

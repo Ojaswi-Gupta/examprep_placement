@@ -1295,6 +1295,7 @@ export const FORMULAS_DATA = [
         type: "Simple",
         formula: "\\bar{x} = \\frac{\\sum x_i}{N}",
         variables: [
+          { symbol: "Concept", definition: "The average value. It represents the central or typical value of a dataset, calculated by distributing the total sum equally among all data points." },
           { symbol: "\\sum x_i", definition: "Sum of all observations" },
           { symbol: "N", definition: "Total number of observations" }
         ]
@@ -1304,6 +1305,7 @@ export const FORMULAS_DATA = [
         type: "Simple",
         formula: "\\begin{aligned} \\text{Odd N: } & \\left(\\frac{N+1}{2}\\right)^{\\text{th}} \\text{ term} \\\\ \\text{Even N: } & \\frac{\\left(\\frac{N}{2}\\right)^{\\text{th}} + \\left(\\frac{N}{2} + 1\\right)^{\\text{th}}}{2} \\end{aligned}",
         variables: [
+          { symbol: "Concept", definition: "The exact middle value when data is sorted. Unlike the mean, it is not skewed by extreme outliers." },
           { symbol: "N", definition: "Total number of observations (sorted)" }
         ]
       },
@@ -1312,7 +1314,7 @@ export const FORMULAS_DATA = [
         type: "Simple",
         formula: "\\text{Mode} = \\text{Value with highest frequency}",
         variables: [
-          { symbol: "\\text{Note}", definition: "A dataset can have no mode, one mode, or multiple modes." }
+          { symbol: "Concept", definition: "The most frequently occurring value in a dataset. Useful for categorical data where mean/median don't make sense." }
         ]
       },
       {
@@ -1320,6 +1322,7 @@ export const FORMULAS_DATA = [
         type: "Advanced",
         formula: "\\sigma^2 = \\frac{\\sum (x_i - \\mu)^2}{N}",
         variables: [
+          { symbol: "Concept", definition: "The average of the squared differences from the Mean. It measures how spread out the entire population is." },
           { symbol: "\\sigma^2", definition: "Population Variance" },
           { symbol: "\\mu", definition: "Population Mean" },
           { symbol: "N", definition: "Population Size" }
@@ -1330,17 +1333,28 @@ export const FORMULAS_DATA = [
         type: "Advanced",
         formula: "s^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n - 1}",
         variables: [
+          { symbol: "Concept", definition: "Measures spread for a sample. We divide by (n-1) instead of n (Bessel's correction) to correct bias and better estimate the true population variance." },
           { symbol: "s^2", definition: "Sample Variance" },
           { symbol: "\\bar{x}", definition: "Sample Mean" },
-          { symbol: "n", definition: "Sample Size (Bessel's correction)" }
+          { symbol: "n", definition: "Sample Size" }
         ]
       },
       {
-        title: "Standard Deviation",
+        title: "Population Standard Deviation",
         type: "Advanced",
-        formula: "\\sigma = \\sqrt{\\sigma^2} \\quad \\text{or} \\quad s = \\sqrt{s^2}",
+        formula: "\\sigma = \\sqrt{\\frac{\\sum (x_i - \\mu)^2}{N}}",
         variables: [
-          { symbol: "\\sigma", definition: "Standard Deviation (square root of variance)" }
+          { symbol: "Concept", definition: "The square root of the population variance. It gives the average distance of each data point from the mean, in the same units as the original data." },
+          { symbol: "\\sigma", definition: "Population Standard Deviation" }
+        ]
+      },
+      {
+        title: "Sample Standard Deviation",
+        type: "Advanced",
+        formula: "s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}",
+        variables: [
+          { symbol: "Concept", definition: "The square root of the sample variance. Used when you only have a sample of the population and want to estimate the spread." },
+          { symbol: "s", definition: "Sample Standard Deviation" }
         ]
       },
       {
@@ -1348,9 +1362,9 @@ export const FORMULAS_DATA = [
         type: "Advanced",
         formula: "CV = \\left( \\frac{\\sigma}{\\mu} \\right) \\times 100\\%",
         variables: [
+          { symbol: "Concept", definition: "A standardized measure of dispersion. It allows you to compare the volatility or spread of two different datasets relative to their means." },
           { symbol: "\\sigma", definition: "Standard Deviation" },
-          { symbol: "\\mu", definition: "Mean" },
-          { symbol: "CV", definition: "Relative measure of dispersion" }
+          { symbol: "\\mu", definition: "Mean" }
         ]
       }
     ]

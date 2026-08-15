@@ -1228,11 +1228,18 @@ export const EXAMPLES_DATA = {
       "Sample Variance $s^2 = \\frac{52}{3} \\approx 17.33$."
     ]
   },
-  "Standard Deviation": {
-    question: "If a dataset has a population variance of 144, what is its standard deviation?",
+  "Population Standard Deviation": {
+    question: "If a dataset has a population variance of 144, what is its population standard deviation?",
     steps: [
       "Standard deviation is simply the square root of the variance.",
       "$\\sigma = \\sqrt{144} = 12$."
+    ]
+  },
+  "Sample Standard Deviation": {
+    question: "If a dataset has a sample variance of 17.33, what is its sample standard deviation?",
+    steps: [
+      "Sample standard deviation is the square root of the sample variance.",
+      "$s = \\sqrt{17.33} \\approx 4.16$."
     ]
   },
   "Coefficient of Variation (CV)": {
