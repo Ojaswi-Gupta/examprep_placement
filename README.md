@@ -54,8 +54,8 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 - **Conceptual Step-by-Step Examples:** Expandable dropdowns attached to formulas containing detailed, step-by-step word problem walkthroughs showing exactly how to apply the formula to solve tough questions.
 - **Real-Time Instant Search:** A built-in search bar in the Formulas tab that filters through all 130+ formulas, definitions, and types instantly across all categories.
 
-### 🤝 6. Technical Interview Prep — 710+ Questions
-- **Massive Q&A Library:** 710+ curated interview questions spanning **10 roles** and **50+ topics**, covering everything from core CS to HR behavioral rounds.
+### 🤝 6. Technical Interview Prep — 780+ Questions
+- **Massive Q&A Library:** 780+ curated interview questions spanning **11 roles** and **50+ topics**, covering everything from core CS to HR behavioral rounds to project-specific deep dives.
 - **Role-Based Filtering:** Drill down into specific roles to focus your preparation:
 
 | Role | Icon | Questions | Key Topics |
@@ -70,11 +70,13 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 | Data Analyst | 📊 | — | SQL, Statistics, Data Visualization, ETL, Business Metrics |
 | HR & Behavioral Interview | 🎯 | 70 | STAR Method, Tricky Scenarios, Teamwork, Leadership, Stress Management |
 | Aptitude & Logical Reasoning | 🧩 | 30 | Puzzles & Brain Teasers, Guesstimates, Situational Judgment & Ethics |
+| **Personal Projects Deep Dive** | 🚀 | **68** | **GistProbe (NLP, RAG, MLOps), Vibe Connect (WebRTC, Firebase), Quiz Portal (Proctoring, Prisma)** |
 
 - **Difficulty Badges:** Every question is tagged with difficulty levels (Basic, Intermediate, Advanced) and color-coded for quick scanning.
 - **Interactive Accordions:** Clean UI where questions act as clickable headers that expand to reveal detailed, thorough answers.
-- **Global Search:** Search across all 710+ questions instantly by keyword.
+- **Global Search:** Search across all 780+ questions instantly by keyword.
 - **Resume-Tailored:** Questions specifically mapped to resume projects (Vibe Connect, GistProbe, Quiz Portal) and technologies (WebRTC, FAISS, Prisma, Docker).
+- **Project Deep Dive:** 68 highly specific questions covering every architectural choice, tiny implementation detail, and corner case across all 3 major resume projects.
 
 ### 💻 7. Programming & MCQs — Syntax & Quizzes
 - **Dynamic Tabbed Interface:** A clean, full-width UI dynamically driven by the data architecture. SQL and Python feature **📖 Syntax & Concepts** and **🎯 Practice MCQs**, while Java renders **5 distinct tabs** including 🏗️ Data Structures and 0️⃣1️⃣ Bit Manipulation.
@@ -94,7 +96,7 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 ├── server.py                    # No-cache dev server for local development
 └── js/
     ├── main.js                  # Core SPA router & global event delegator
-    ├── data/                    # Static data stores (710+ interview Qs)
+    ├── data/                    # Static data stores (780+ interview Qs)
     │   ├── words.js             # Vocabulary dictionary (114 words)
     │   ├── formulas.js          # Formula database with KaTeX syntax
     │   ├── examples.js          # Step-by-step formula word problems
@@ -108,10 +110,12 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
     │   ├── interview_deep2.js   # Deep dive (Java, Python, DSA, Distributed Sys)
     │   ├── interview_hr.js      # HR, behavioral, puzzles, guesstimates
     │   ├── programming.js       # SQL, Python, Java syntax & MCQs data
-    │   └── java/                # Modular Java data structures
-    │       ├── data_structures.js
-    │       ├── strings.js
-    │       └── bit_manipulation.js
+    │   ├── java/                # Modular Java data structures
+    │   │   ├── data_structures.js
+    │   │   ├── strings.js
+    │   │   └── bit_manipulation.js
+    │   └── projects/            # Resume project deep-dive questions
+    │       └── interview_projects.js  # 68 Qs (GistProbe, Vibe Connect, Quiz Portal)
     ├── features/
     │   └── bookmarks.js         # Bookmark toggling logic
     ├── modules/                 # Core logical engines
@@ -174,8 +178,8 @@ No build step, no `npm install`, no frameworks required.
 |---|---|
 | Vocabulary Words | 114 |
 | Math Formulas | 130+ |
-| Interview Questions | 710+ |
-| Interview Roles | 10 |
+| Interview Questions | 780+ |
+| Interview Roles | 11 |
 | Programming Languages | 3 (SQL, Python, Java) |
 | Programming Syntax/Concepts | 60+ |
 | Programming MCQs | 30+ |
