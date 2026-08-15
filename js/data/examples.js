@@ -1167,6 +1167,55 @@ export const EXAMPLES_DATA = {
       "$D = 6 \\times 9 = 54$ diagonals."
     ]
   },
+  "Parallelogram Properties": {
+    question: "If one angle of a parallelogram is 50°, what are the measures of the other three angles?",
+    steps: [
+      "In a parallelogram, adjacent angles are supplementary (sum to 180°) and opposite angles are equal.",
+      "The angle adjacent to 50° is $180° - 50° = 130°$.",
+      "The opposite angles are equal to these two. So the angles are 50°, 130°, 50°, and 130°."
+    ]
+  },
+  "Rhombus Properties": {
+    question: "The diagonals of a rhombus are 6 cm and 8 cm. What is the length of its side?",
+    steps: [
+      "Diagonals of a rhombus bisect each other at exactly 90°.",
+      "This forms 4 right-angled triangles with legs equal to half the diagonals: 3 cm and 4 cm.",
+      "Using Pythagoras theorem for the hypotenuse (which is the side of the rhombus): $s = \\sqrt{3^2 + 4^2}$.",
+      "$s = \\sqrt{9 + 16} = \\sqrt{25} = 5$ cm."
+    ]
+  },
+  "Rectangle Properties": {
+    question: "In a rectangle ABCD, diagonal AC = $5x - 2$ and diagonal BD = $3x + 6$. Find the value of x.",
+    steps: [
+      "A key property of a rectangle is that its diagonals are equal in length.",
+      "Therefore, $5x - 2 = 3x + 6$.",
+      "$2x = 8 \\implies x = 4$."
+    ]
+  },
+  "Square Properties": {
+    question: "If the diagonal of a square is 10 cm, what is the length of its side?",
+    steps: [
+      "A square is a special rhombus/rectangle. The relationship between side ($s$) and diagonal ($d$) is $d = s\\sqrt{2}$.",
+      "$10 = s\\sqrt{2} \\implies s = \\frac{10}{\\sqrt{2}}$.",
+      "Rationalizing the denominator: $s = 5\\sqrt{2}$ cm."
+    ]
+  },
+  "Kite Properties": {
+    question: "In a kite, one diagonal is 12 cm and the other is 8 cm. If the longer diagonal bisects the shorter one, what is the distance from the intersection to the edge of the shorter diagonal?",
+    steps: [
+      "In a kite, only ONE diagonal is bisected by the other.",
+      "The shorter diagonal (8 cm) is bisected, meaning it is cut into two equal halves of 4 cm.",
+      "The distance from the intersection point to the edge of the shorter diagonal is 4 cm."
+    ]
+  },
+  "Trapezium (Trapezoid) Properties": {
+    question: "In a trapezium, two adjacent angles between the parallel sides are given as $2x$ and $3x + 30°$. Find $x$.",
+    steps: [
+      "Angles on the same side of a transversal between two parallel lines are supplementary (sum to 180°).",
+      "$2x + (3x + 30) = 180$.",
+      "$5x = 150 \\implies x = 30°$."
+    ]
+  },
   "Standard Dice Rule": {
     question: "Given a standard dice, what number is opposite to the face with 4 dots?",
     steps: [

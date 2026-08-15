@@ -1259,6 +1259,71 @@ export const FORMULAS_DATA = [
     ]
   },
   {
+    category: "Geometry: Quadrilateral Properties",
+    formulas: [
+      {
+        title: "Parallelogram Properties",
+        type: "Properties",
+        formula: "\\text{Diagonals bisect each other}",
+        variables: [
+          { symbol: "Sides", definition: "Opposite sides are parallel and equal in length." },
+          { symbol: "Angles", definition: "Opposite angles are equal. Adjacent angles are supplementary (sum to 180°)." },
+          { symbol: "Diagonals", definition: "Diagonals bisect each other, but are NOT equal (unless it's a rectangle) and do NOT intersect at 90° (unless it's a rhombus)." }
+        ]
+      },
+      {
+        title: "Rhombus Properties",
+        type: "Properties",
+        formula: "\\text{Diagonals intersect at } 90^\\circ",
+        variables: [
+          { symbol: "Sides", definition: "All four sides are equal. Opposite sides are parallel." },
+          { symbol: "Angles", definition: "Opposite angles are equal." },
+          { symbol: "Diagonals", definition: "Diagonals bisect each other at exactly 90°. They also bisect the interior angles." }
+        ]
+      },
+      {
+        title: "Rectangle Properties",
+        type: "Properties",
+        formula: "\\text{Diagonals are equal}",
+        variables: [
+          { symbol: "Sides", definition: "Opposite sides are parallel and equal." },
+          { symbol: "Angles", definition: "All four interior angles are 90°." },
+          { symbol: "Diagonals", definition: "Diagonals are equal in length and bisect each other (but not at 90° unless it's a square)." }
+        ]
+      },
+      {
+        title: "Square Properties",
+        type: "Properties",
+        formula: "\\text{All Rhombus + Rectangle properties}",
+        variables: [
+          { symbol: "Sides", definition: "All four sides are equal and opposite sides are parallel." },
+          { symbol: "Angles", definition: "All interior angles are 90°." },
+          { symbol: "Diagonals", definition: "Diagonals are equal, bisect each other at exactly 90°, and bisect the interior angles." }
+        ]
+      },
+      {
+        title: "Kite Properties",
+        type: "Properties",
+        formula: "\\text{Diagonals intersect at } 90^\\circ",
+        variables: [
+          { symbol: "Sides", definition: "Two distinct pairs of adjacent sides are equal." },
+          { symbol: "Angles", definition: "One pair of opposite angles (between unequal sides) is equal." },
+          { symbol: "Diagonals", definition: "Diagonals intersect at 90°. Only the main diagonal bisects the other diagonal." }
+        ]
+      },
+      {
+        title: "Trapezium (Trapezoid) Properties",
+        type: "Properties",
+        formula: "\\text{Sum of adjacent angles } = 180^\\circ",
+        variables: [
+          { symbol: "Sides", definition: "Exactly one pair of opposite sides is parallel." },
+          { symbol: "Angles", definition: "Angles on the same side of the non-parallel transversal legs are supplementary (sum to 180°)." },
+          { symbol: "Isosceles", definition: "If non-parallel sides are equal, it's an isosceles trapezium. Diagonals and base angles become equal." }
+        ]
+      }
+    ]
+  },
+  {
     category: "Logical Reasoning: Dices",
     formulas: [
       {
