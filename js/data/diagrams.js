@@ -855,5 +855,30 @@ export const DIAGRAMS_DATA = {
       <text x="50" y="84" font-size="10" fill="var(--text)" text-anchor="middle">B</text>
       <text x="50" y="105" font-size="8" fill="var(--green)" text-anchor="middle">Matches are Opposite</text>
     </svg>
+  `,
+  "Standard Deviation": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <!-- Bell curve -->
+      <path d="M 10 80 Q 30 80, 40 50 T 50 20 T 60 50 T 90 80" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      
+      <!-- Mean line -->
+      <line x1="50" y1="20" x2="50" y2="80" stroke="var(--text)" stroke-width="1.5" stroke-dasharray="3" />
+      
+      <!-- Sigma lines -->
+      <line x1="35" y1="58" x2="35" y2="80" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="2" />
+      <line x1="65" y1="58" x2="65" y2="80" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="2" />
+      
+      <!-- Baseline -->
+      <line x1="5" y1="80" x2="95" y2="80" stroke="var(--text)" stroke-width="2" />
+      
+      <!-- Labels -->
+      <text x="50" y="95" fill="var(--text)" font-size="9" text-anchor="middle">μ</text>
+      <text x="35" y="95" fill="var(--green)" font-size="9" text-anchor="middle">-1σ</text>
+      <text x="65" y="95" fill="var(--green)" font-size="9" text-anchor="middle">+1σ</text>
+      
+      <!-- Annotation -->
+      <path d="M 35 65 Q 50 55, 65 65" fill="none" stroke="var(--green)" stroke-width="1" />
+      <text x="50" y="60" fill="var(--green)" font-size="8" text-anchor="middle">68%</text>
+    </svg>
   `
 };

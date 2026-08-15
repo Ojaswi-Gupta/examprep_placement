@@ -1191,5 +1191,56 @@ export const EXAMPLES_DATA = {
       "If the vertical line has faces A, B, C, D $\\implies$ A is opposite C, and B is opposite D.",
       "The remaining two faces on the 'wings' of the cross shape will also be opposite to each other."
     ]
+  },
+  "Arithmetic Mean": {
+    question: "Find the arithmetic mean of the following dataset: 12, 15, 18, 22, 28.",
+    steps: [
+      "Formula: $\\bar{x} = \\frac{\\sum x_i}{N}$.",
+      "Sum of all values $= 12 + 15 + 18 + 22 + 28 = 95$.",
+      "Total number of values $N = 5$.",
+      "Mean $\\bar{x} = \\frac{95}{5} = 19$."
+    ]
+  },
+  "Median (Ungrouped Data)": {
+    question: "Find the median of the dataset: 7, 3, 15, 9, 12, 18.",
+    steps: [
+      "First, sort the data in ascending order: 3, 7, 9, 12, 15, 18.",
+      "Total number of values $N = 6$ (even).",
+      "Median is the average of the $\\frac{N}{2}$ and $\\frac{N}{2} + 1$ terms.",
+      "$\\text{Median} = \\frac{3^{\\text{rd}} \\text{ term} + 4^{\\text{th}} \\text{ term}}{2} = \\frac{9 + 12}{2} = 10.5$."
+    ]
+  },
+  "Population Variance": {
+    question: "Calculate the population variance for the dataset: 4, 8, 10, 14.",
+    steps: [
+      "Find the population mean ($\\mu$): $\\mu = \\frac{4 + 8 + 10 + 14}{4} = \\frac{36}{4} = 9$.",
+      "Calculate squared deviations $(x_i - \\mu)^2$: $(4-9)^2 = 25$, $(8-9)^2 = 1$, $(10-9)^2 = 1$, $(14-9)^2 = 25$.",
+      "Sum of squared deviations $= 25 + 1 + 1 + 25 = 52$.",
+      "Variance $\\sigma^2 = \\frac{52}{4} = 13$."
+    ]
+  },
+  "Sample Variance": {
+    question: "Calculate the sample variance for the same dataset: 4, 8, 10, 14.",
+    steps: [
+      "Mean ($\\bar{x}$) is still 9.",
+      "Sum of squared deviations is still 52.",
+      "For a sample, divide by $n - 1$ instead of $N$. Here, $n - 1 = 4 - 1 = 3$.",
+      "Sample Variance $s^2 = \\frac{52}{3} \\approx 17.33$."
+    ]
+  },
+  "Standard Deviation": {
+    question: "If a dataset has a population variance of 144, what is its standard deviation?",
+    steps: [
+      "Standard deviation is simply the square root of the variance.",
+      "$\\sigma = \\sqrt{144} = 12$."
+    ]
+  },
+  "Coefficient of Variation (CV)": {
+    question: "Company A's stock has a mean price of $50 and a standard deviation of $5. Company B's stock has a mean price of $100 and a standard deviation of $8. Which stock is more volatile relative to its price?",
+    steps: [
+      "Calculate CV for Company A: $CV_A = \\left(\\frac{5}{50}\\right) \\times 100\\% = 10\\%$.",
+      "Calculate CV for Company B: $CV_B = \\left(\\frac{8}{100}\\right) \\times 100\\% = 8\\%$.",
+      "Since $10\\% > 8\\%$, Company A's stock is relatively more volatile."
+    ]
   }
 };

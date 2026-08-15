@@ -1286,6 +1286,74 @@ export const FORMULAS_DATA = [
         variables: [{ symbol: "Rule", definition: "In a straight line of 3 or 4 squares, alternate squares form opposite faces. Z-shape ends also form opposite faces." }]
       }
     ]
+  },
+  {
+    category: "Statistics & Data Analysis",
+    formulas: [
+      {
+        title: "Arithmetic Mean",
+        type: "Simple",
+        formula: "\\bar{x} = \\frac{\\sum x_i}{N}",
+        variables: [
+          { symbol: "\\sum x_i", definition: "Sum of all observations" },
+          { symbol: "N", definition: "Total number of observations" }
+        ]
+      },
+      {
+        title: "Median (Ungrouped Data)",
+        type: "Simple",
+        formula: "\\begin{aligned} \\text{Odd N: } & \\left(\\frac{N+1}{2}\\right)^{\\text{th}} \\text{ term} \\\\ \\text{Even N: } & \\frac{\\left(\\frac{N}{2}\\right)^{\\text{th}} + \\left(\\frac{N}{2} + 1\\right)^{\\text{th}}}{2} \\end{aligned}",
+        variables: [
+          { symbol: "N", definition: "Total number of observations (sorted)" }
+        ]
+      },
+      {
+        title: "Mode",
+        type: "Simple",
+        formula: "\\text{Mode} = \\text{Value with highest frequency}",
+        variables: [
+          { symbol: "\\text{Note}", definition: "A dataset can have no mode, one mode, or multiple modes." }
+        ]
+      },
+      {
+        title: "Population Variance",
+        type: "Advanced",
+        formula: "\\sigma^2 = \\frac{\\sum (x_i - \\mu)^2}{N}",
+        variables: [
+          { symbol: "\\sigma^2", definition: "Population Variance" },
+          { symbol: "\\mu", definition: "Population Mean" },
+          { symbol: "N", definition: "Population Size" }
+        ]
+      },
+      {
+        title: "Sample Variance",
+        type: "Advanced",
+        formula: "s^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n - 1}",
+        variables: [
+          { symbol: "s^2", definition: "Sample Variance" },
+          { symbol: "\\bar{x}", definition: "Sample Mean" },
+          { symbol: "n", definition: "Sample Size (Bessel's correction)" }
+        ]
+      },
+      {
+        title: "Standard Deviation",
+        type: "Advanced",
+        formula: "\\sigma = \\sqrt{\\sigma^2} \\quad \\text{or} \\quad s = \\sqrt{s^2}",
+        variables: [
+          { symbol: "\\sigma", definition: "Standard Deviation (square root of variance)" }
+        ]
+      },
+      {
+        title: "Coefficient of Variation (CV)",
+        type: "Advanced",
+        formula: "CV = \\left( \\frac{\\sigma}{\\mu} \\right) \\times 100\\%",
+        variables: [
+          { symbol: "\\sigma", definition: "Standard Deviation" },
+          { symbol: "\\mu", definition: "Mean" },
+          { symbol: "CV", definition: "Relative measure of dispersion" }
+        ]
+      }
+    ]
   }
 ];
 
