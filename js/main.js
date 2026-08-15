@@ -13,6 +13,7 @@ import { initDailyQuiz } from './modules/dailyQuiz.js?v=2';
 import { updateStreak } from './data/state.js?v=2';
 import { initDsa } from './ui/dsa.js?v=1';
 import { initGit } from './ui/git.js?v=1';
+import { initConversions } from './ui/conversions.js?v=1';
 
 // ─── Init all modules once ─────────────────────────
 const safeInit = (name, fn) => {
@@ -33,6 +34,7 @@ safeInit('initDailyQuiz', () => initDailyQuiz());
 safeInit('updateStreak', () => updateStreak());
 safeInit('initDsa', () => initDsa());
 safeInit('initGit', () => initGit());
+safeInit('initConversions', () => initConversions());
 
 
 // ─── SPA View Routing ──────────────────────────────
