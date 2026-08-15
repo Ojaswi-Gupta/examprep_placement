@@ -1249,5 +1249,20 @@ export const EXAMPLES_DATA = {
       "Calculate CV for Company B: $CV_B = \\left(\\frac{8}{100}\\right) \\times 100\\% = 8\\%$.",
       "Since $10\\% > 8\\%$, Company A's stock is relatively more volatile."
     ]
+  },
+  "Relation: SD & Variance": {
+    question: "If the standard deviation of a dataset is 7, what is its variance?",
+    steps: [
+      "Variance is the square of the Standard Deviation.",
+      "$\\text{Variance} = 7^2 = 49$."
+    ]
+  },
+  "Empirical Relation: Mean, Median & Mode": {
+    question: "In a moderately skewed distribution, the Mean is 20 and the Median is 22. Find the Mode.",
+    steps: [
+      "Use the empirical relation: $\\text{Mode} = 3\\text{Median} - 2\\text{Mean}$.",
+      "$\\text{Mode} = 3(22) - 2(20)$.",
+      "$\\text{Mode} = 66 - 40 = 26$."
+    ]
   }
 };

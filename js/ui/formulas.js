@@ -168,9 +168,9 @@ function createFormulaCard(f, categoryName) {
   const typeClass = f.type === 'Advanced' ? 'type-advanced' : 'type-simple';
   
   let varsHtml = f.variables.map(v => 
-    `<div style="display: flex; gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.9rem;">
-       <span style="color: var(--accent); font-weight: 600; min-width: 40px;">${v.symbol}</span> 
-       <span style="color: var(--text-2);">${v.definition}</span>
+    `<div style="display: flex; gap: 0.8rem; margin-bottom: 0.6rem; font-size: 0.9rem; align-items: flex-start;">
+       <span style="color: var(--accent); font-weight: 600; min-width: 60px; text-align: right; flex-shrink: 0;">${v.symbol}</span> 
+       <span style="color: var(--text-2); flex: 1; line-height: 1.4; word-wrap: break-word;">${v.definition}</span>
      </div>`
   ).join('');
   

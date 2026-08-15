@@ -1366,6 +1366,25 @@ export const FORMULAS_DATA = [
           { symbol: "\\sigma", definition: "Standard Deviation" },
           { symbol: "\\mu", definition: "Mean" }
         ]
+      },
+      {
+        title: "Relation: SD & Variance",
+        type: "Properties",
+        formula: "\\begin{aligned} \\text{Variance} &= (\\text{Standard Deviation})^2 \\\\ \\text{SD} &= \\sqrt{\\text{Variance}} \\end{aligned}",
+        variables: [
+          { symbol: "Concept", definition: "Variance is simply the square of the Standard Deviation, and SD is the square root of Variance. They are fundamentally the same measure, just in different units." },
+          { symbol: "\\sigma^2", definition: "Variance" },
+          { symbol: "\\sigma", definition: "Standard Deviation" }
+        ]
+      },
+      {
+        title: "Empirical Relation: Mean, Median & Mode",
+        type: "Properties",
+        formula: "\\text{Mode} = 3\\text{Median} - 2\\text{Mean}",
+        variables: [
+          { symbol: "Concept", definition: "In a moderately skewed distribution, the difference between Mean and Mode is roughly three times the difference between Mean and Median." },
+          { symbol: "\\text{Note}", definition: "For a perfectly symmetrical (normal) distribution: Mean = Median = Mode." }
+        ]
       }
     ]
   }
