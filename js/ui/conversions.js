@@ -152,12 +152,20 @@ function renderStaticCards() {
   
   container.innerHTML = '';
   
+  // Apply a proper grid layout for alignment
+  container.style.display = 'grid';
+  container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(350px, 1fr))';
+  container.style.gap = '2rem';
+  container.style.alignItems = 'start'; // Prevents cards from stretching vertically
+  
   CONVERSIONS_DATA.forEach(cat => {
     const card = document.createElement('div');
-    card.className = 'card full-width-card';
+    card.className = 'card';
     card.style.padding = '2rem';
     card.style.display = 'flex';
     card.style.flexDirection = 'column';
+    card.style.height = '100%'; // Make cards stretch to match row height
+    card.style.boxSizing = 'border-box';
     
     let html = `
       <div style="display: flex; align-items: center; gap: 1rem; border-bottom: 2px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
@@ -165,7 +173,7 @@ function renderStaticCards() {
         <h3 style="margin: 0; color: var(--primary); font-size: 1.5rem;">${escapeHTML(cat.category)}</h3>
       </div>
       
-      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.8rem;">
+      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.8rem; flex-grow: 1;">
     `;
     
     cat.memorize.forEach(item => {
