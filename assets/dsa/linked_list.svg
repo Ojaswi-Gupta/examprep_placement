@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 150" width="100%" height="100%">
+  <defs>
+    <style>
+      .box { fill: #f0f0f0; stroke: #333; stroke-width: 2; }
+      .text { font-family: monospace; font-size: 16px; text-anchor: middle; dominant-baseline: middle; fill: #333; font-weight: bold; }
+      .arrow { stroke: #007bff; stroke-width: 3; marker-end: url(#arrowhead); }
+      .null-box { fill: #e0e0e0; stroke: #999; stroke-dasharray: 4; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#007bff" />
+    </marker>
+  </defs>
+  
+  <text x="50" y="30" style="font-family: sans-serif; font-size: 16px; font-weight: bold; fill: #333;">Head</text>
+  <line x1="50" y1="40" x2="50" y2="60" class="arrow" />
+
+  <!-- Node 1 -->
+  <g transform="translate(10, 65)">
+    <rect x="0" y="0" width="50" height="40" class="box" /> <text x="25" y="20" class="text">10</text>
+    <rect x="50" y="0" width="30" height="40" class="box" /> <circle cx="65" cy="20" r="4" fill="#333" />
+  </g>
+  <line x1="85" y1="85" x2="160" y2="85" class="arrow" />
+
+  <!-- Node 2 -->
+  <g transform="translate(170, 65)">
+    <rect x="0" y="0" width="50" height="40" class="box" /> <text x="25" y="20" class="text">20</text>
+    <rect x="50" y="0" width="30" height="40" class="box" /> <circle cx="65" cy="20" r="4" fill="#333" />
+  </g>
+  <line x1="245" y1="85" x2="320" y2="85" class="arrow" />
+
+  <!-- Node 3 -->
+  <g transform="translate(330, 65)">
+    <rect x="0" y="0" width="50" height="40" class="box" /> <text x="25" y="20" class="text">30</text>
+    <rect x="50" y="0" width="30" height="40" class="box" /> <circle cx="65" cy="20" r="4" fill="#333" />
+  </g>
+  <line x1="405" y1="85" x2="480" y2="85" class="arrow" />
+
+  <!-- Null Node -->
+  <g transform="translate(490, 65)">
+    <rect x="0" y="0" width="60" height="40" class="box null-box" /> <text x="30" y="20" class="text" fill="#666">NULL</text>
+  </g>
+</svg>

@@ -11,6 +11,7 @@ import { initScratchpad } from './ui/scratchpad.js?v=2';
 import { initPomodoro } from './ui/pomodoro.js?v=2';
 import { initDailyQuiz } from './modules/dailyQuiz.js?v=2';
 import { updateStreak } from './data/state.js?v=2';
+import { initDsa } from './ui/dsa.js?v=1';
 
 // ─── Init all modules once ─────────────────────────
 const safeInit = (name, fn) => {
@@ -29,6 +30,7 @@ safeInit('initScratchpad', () => initScratchpad());
 safeInit('initPomodoro', () => initPomodoro());
 safeInit('initDailyQuiz', () => initDailyQuiz());
 safeInit('updateStreak', () => updateStreak());
+safeInit('initDsa', () => initDsa());
 
 
 // ─── SPA View Routing ──────────────────────────────
