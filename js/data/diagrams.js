@@ -738,4 +738,65 @@ export const DIAGRAMS_DATA = {
       <text x="85" y="48" fill="var(--text)" font-size="10">a</text>
     </svg>
   `,
+  "Sum of Interior Angles": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <path d="M 50 10 L 90 40 L 75 90 L 25 90 L 10 40 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <!-- Triangulation from one vertex -->
+      <line x1="25" y1="90" x2="50" y2="10" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="3" />
+      <line x1="25" y1="90" x2="90" y2="40" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="3" />
+      <text x="50" y="55" fill="var(--text)" font-size="8">n-2 triangles</text>
+    </svg>
+  `,
+  "Sum of Exterior Angles": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <path d="M 50 30 L 70 70 L 30 70 Z" fill="none" stroke="var(--accent)" stroke-width="2" />
+      <!-- Extended lines -->
+      <line x1="50" y1="30" x2="60" y2="10" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="3" />
+      <line x1="70" y1="70" x2="90" y2="70" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="3" />
+      <line x1="30" y1="70" x2="20" y2="90" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="3" />
+      <path d="M 56 18 A 10 10 0 0 0 50 30" fill="none" stroke="var(--text)" stroke-width="1" />
+      <path d="M 70 70 A 10 10 0 0 0 80 65" fill="none" stroke="var(--text)" stroke-width="1" />
+      <path d="M 30 70 A 10 10 0 0 0 24 82" fill="none" stroke="var(--text)" stroke-width="1" />
+      <text x="50" y="95" fill="var(--text)" font-size="9" text-anchor="middle">Sum = 360°</text>
+    </svg>
+  `,
+  "Standard Dice Rule": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 150px;">
+      <!-- Front face -->
+      <rect x="30" y="40" width="40" height="40" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.2)" stroke="var(--accent)" stroke-width="2" />
+      <!-- Top face -->
+      <path d="M 30 40 L 50 20 L 90 20 L 70 40 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <!-- Right face -->
+      <path d="M 70 40 L 90 20 L 90 60 L 70 80 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.15)" stroke="var(--accent)" stroke-width="2" />
+      
+      <!-- Dots -->
+      <circle cx="50" cy="60" r="3" fill="var(--text)" /> <!-- 1 on front -->
+      <circle cx="50" cy="30" r="3" fill="var(--text)" /> <!-- 2 on top -->
+      <circle cx="70" cy="30" r="3" fill="var(--text)" />
+      
+      <circle cx="75" cy="50" r="3" fill="var(--text)" /> <!-- 3 on right -->
+      <circle cx="80" cy="40" r="3" fill="var(--text)" />
+      <circle cx="85" cy="60" r="3" fill="var(--text)" />
+      
+      <text x="50" y="105" fill="var(--green)" font-size="10" text-anchor="middle">Opposites sum to 7</text>
+    </svg>
+  `,
+  "Unfolded/Open Dice Rule": `
+    <svg viewBox="0 0 100 120" width="100%" height="150" style="max-width: 120px;">
+      <rect x="40" y="10" width="20" height="20" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="1.5" />
+      <rect x="40" y="30" width="20" height="20" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.3)" stroke="var(--accent)" stroke-width="1.5" />
+      <rect x="20" y="30" width="20" height="20" fill="rgba(var(--green-rgb, 34, 197, 94), 0.2)" stroke="var(--green)" stroke-width="1.5" />
+      <rect x="40" y="50" width="20" height="20" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="1.5" />
+      <rect x="60" y="50" width="20" height="20" fill="rgba(var(--green-rgb, 34, 197, 94), 0.2)" stroke="var(--green)" stroke-width="1.5" />
+      <rect x="40" y="70" width="20" height="20" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.3)" stroke="var(--accent)" stroke-width="1.5" />
+      
+      <text x="50" y="24" font-size="10" fill="var(--text)" text-anchor="middle">A</text>
+      <text x="50" y="44" font-size="10" fill="var(--text)" text-anchor="middle">B</text>
+      <text x="30" y="44" font-size="10" fill="var(--text)" text-anchor="middle">C</text>
+      <text x="50" y="64" font-size="10" fill="var(--text)" text-anchor="middle">A</text>
+      <text x="70" y="64" font-size="10" fill="var(--text)" text-anchor="middle">C</text>
+      <text x="50" y="84" font-size="10" fill="var(--text)" text-anchor="middle">B</text>
+      <text x="50" y="105" font-size="8" fill="var(--green)" text-anchor="middle">Matches are Opposite</text>
+    </svg>
+  `
 };

@@ -1088,13 +1088,65 @@ export const EXAMPLES_DATA = {
       "$= \\sqrt{360} = 6\\sqrt{10} \\approx 18.97$ sq cm."
     ]
   },
-  "Perpendicular Distance (Point to Line)": {
+    "Perpendicular Distance (Point to Line)": {
     question: "Find the perpendicular distance from the point (3, 4) to the line 3x + 4y - 5 = 0.",
     steps: [
       "Using formula: $d = \\frac{|ax_1 + by_1 + c|}{\\sqrt{a^2 + b^2}}$.",
       "Here $a = 3, b = 4, c = -5, x_1 = 3, y_1 = 4$.",
       "$d = \\frac{|3(3) + 4(4) + (-5)|}{\\sqrt{3^2 + 4^2}} = \\frac{|9 + 16 - 5|}{\\sqrt{9 + 16}}$.",
       "$= \\frac{20}{5} = 4$ units."
+    ]
+  },
+  "Sum of Interior Angles": {
+    question: "What is the sum of the interior angles of a regular decagon (10-sided polygon)?",
+    steps: [
+      "Formula: $S = (n - 2) \\times 180^\\circ$.",
+      "For a decagon, $n = 10$.",
+      "$S = (10 - 2) \\times 180^\\circ = 8 \\times 180^\\circ$.",
+      "$S = 1440^\\circ$."
+    ]
+  },
+  "Each Interior Angle (Regular Polygon)": {
+    question: "Find the measure of each interior angle of a regular octagon.",
+    steps: [
+      "Formula: $\\theta_{int} = \\frac{(n - 2) \\times 180^\\circ}{n}$.",
+      "For an octagon, $n = 8$.",
+      "$\\theta_{int} = \\frac{6 \\times 180^\\circ}{8} = \\frac{1080^\\circ}{8}$.",
+      "$\\theta_{int} = 135^\\circ$."
+    ]
+  },
+  "Number of Diagonals in a Polygon": {
+    question: "How many diagonals can be drawn in a polygon with 12 sides?",
+    steps: [
+      "Formula: $D = \\frac{n(n - 3)}{2}$.",
+      "Here, $n = 12$.",
+      "$D = \\frac{12(12 - 3)}{2} = \\frac{12 \\times 9}{2}$.",
+      "$D = 6 \\times 9 = 54$ diagonals."
+    ]
+  },
+  "Standard Dice Rule": {
+    question: "Given a standard dice, what number is opposite to the face with 4 dots?",
+    steps: [
+      "In a standard dice, the sum of opposite faces is always 7.",
+      "Opposite to 4 = $7 - 4 = 3$."
+    ]
+  },
+  "Non-Standard Dice (One Common Face)": {
+    question: "Two positions of a dice are shown. In the first position, faces 2, 4, and 5 are visible. In the second position, faces 1, 3, and 5 are visible. What number is opposite to 4?",
+    steps: [
+      "The common face between the two positions is 5.",
+      "Write faces clockwise from 5 for Position 1: 5 $\\rightarrow$ 2 $\\rightarrow$ 4.",
+      "Write faces clockwise from 5 for Position 2: 5 $\\rightarrow$ 1 $\\rightarrow$ 3.",
+      "Comparing the positions: 2 is opposite to 1, and 4 is opposite to 3.",
+      "Therefore, the number opposite to 4 is 3."
+    ]
+  },
+  "Unfolded/Open Dice Rule": {
+    question: "An open dice is given as a cross shape. Which faces will be opposite to each other when folded?",
+    steps: [
+      "Rule: Alternate squares in a straight line form opposite faces.",
+      "If the vertical line has faces A, B, C, D $\\implies$ A is opposite C, and B is opposite D.",
+      "The remaining two faces on the 'wings' of the cross shape will also be opposite to each other."
     ]
   }
 };

@@ -1173,5 +1173,76 @@ export const FORMULAS_DATA = [
         ]
       }
     ]
+  },
+  {
+    category: "Geometry: Polygons & Angles",
+    formulas: [
+      {
+        title: "Sum of Interior Angles",
+        type: "Advanced",
+        formula: "S_{int} = (n - 2) \\times 180^\\circ",
+        variables: [{ symbol: "n", definition: "Number of sides of the polygon" }]
+      },
+      {
+        title: "Each Interior Angle (Regular Polygon)",
+        type: "Simple",
+        formula: "\\theta_{int} = \\frac{(n - 2) \\times 180^\\circ}{n}",
+        variables: [{ symbol: "n", definition: "Number of sides" }]
+      },
+      {
+        title: "Sum of Exterior Angles",
+        type: "Simple",
+        formula: "S_{ext} = 360^\\circ",
+        variables: [{ symbol: "Note", definition: "Sum is always 360° regardless of the number of sides" }]
+      },
+      {
+        title: "Each Exterior Angle (Regular Polygon)",
+        type: "Simple",
+        formula: "\\theta_{ext} = \\frac{360^\\circ}{n}",
+        variables: [{ symbol: "n", definition: "Number of sides" }]
+      },
+      {
+        title: "Number of Diagonals in a Polygon",
+        type: "Advanced",
+        formula: "D = \\frac{n(n - 3)}{2}",
+        variables: [{ symbol: "n", definition: "Number of sides" }, { symbol: "D", definition: "Total number of diagonals" }]
+      },
+      {
+        title: "Interior + Exterior Angle Relation",
+        type: "Simple",
+        formula: "\\theta_{int} + \\theta_{ext} = 180^\\circ",
+        variables: [{ symbol: "Note", definition: "Interior and exterior angles on the same vertex form a linear pair" }]
+      }
+    ]
+  },
+  {
+    category: "Logical Reasoning: Dices",
+    formulas: [
+      {
+        title: "Standard Dice Rule",
+        type: "Simple",
+        formula: "\\text{Sum of opposite faces} = 7",
+        variables: [{ symbol: "Opposites", definition: "1↔6, 2↔5, 3↔4" }]
+      },
+      {
+        title: "Non-Standard Dice (One Common Face)",
+        type: "Advanced",
+        formula: "\\text{Write adjacent faces in clockwise direction}",
+        variables: [{ symbol: "Rule", definition: "If only ONE face is common between two positions, start from the common face and write the numbers clockwise. The numbers at the same positions are opposites." }]
+      },
+      {
+        title: "Non-Standard Dice (Two Common Faces)",
+        type: "Simple",
+        formula: "\\text{The remaining faces are opposite}",
+        variables: [{ symbol: "Rule", definition: "If two positions have TWO faces in common, the third remaining faces are definitely opposite to each other." }]
+      },
+      {
+        title: "Unfolded/Open Dice Rule",
+        type: "Advanced",
+        formula: "\\text{Alternate faces are opposite}",
+        variables: [{ symbol: "Rule", definition: "In a straight line of 3 or 4 squares, alternate squares form opposite faces. Z-shape ends also form opposite faces." }]
+      }
+    ]
   }
 ];
+
