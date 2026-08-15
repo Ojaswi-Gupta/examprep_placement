@@ -1097,6 +1097,49 @@ export const EXAMPLES_DATA = {
       "$= \\frac{20}{5} = 4$ units."
     ]
   },
+  "Chord Properties": {
+    question: "A chord of length 24 cm is drawn at a distance of 5 cm from the center of the circle. Find the radius of the circle.",
+    steps: [
+      "The perpendicular from the center bisects the chord. So, half of the chord = $24 / 2 = 12$ cm.",
+      "This forms a right-angled triangle with the radius as the hypotenuse.",
+      "$r^2 = 5^2 + 12^2 = 25 + 144 = 169$.",
+      "Therefore, the radius $r = \\sqrt{169} = 13$ cm."
+    ]
+  },
+  "Angles in a Circle": {
+    question: "The angle subtended by an arc at the center is 110°. Find the angle subtended by it at any point on the remaining part of the circle.",
+    steps: [
+      "The angle at the center is double the angle at the circumference.",
+      "$\\text{Angle at center} = 2 \\times \\text{Angle at circumference}$.",
+      "$110^\\circ = 2 \\times x$.",
+      "$x = 55^\\circ$."
+    ]
+  },
+  "Intersecting Chords Theorem": {
+    question: "Two chords AB and CD intersect at point P inside a circle. If PA = 4 cm, PB = 6 cm, and PC = 3 cm, find PD.",
+    steps: [
+      "Using the theorem: $PA \\times PB = PC \\times PD$.",
+      "$4 \\times 6 = 3 \\times PD$.",
+      "$24 = 3 \\times PD$.",
+      "$PD = 8$ cm."
+    ]
+  },
+  "Tangent-Secant Theorem": {
+    question: "From an external point P, a tangent PT and a secant PAB are drawn to a circle. If PA = 4 cm and AB = 5 cm, find the length of the tangent PT.",
+    steps: [
+      "The secant length $PB = PA + AB = 4 + 5 = 9$ cm.",
+      "Using the theorem: $PT^2 = PA \\times PB$.",
+      "$PT^2 = 4 \\times 9 = 36$.",
+      "$PT = \\sqrt{36} = 6$ cm."
+    ]
+  },
+  "Alternate Segment Theorem": {
+    question: "A tangent is drawn to a circle at point P. A chord PQ makes an angle of 40° with the tangent. Find the angle subtended by the chord PQ in the major segment.",
+    steps: [
+      "By the Alternate Segment Theorem, the angle between the tangent and the chord equals the angle in the alternate segment.",
+      "Therefore, the angle subtended by chord PQ in the major segment is exactly 40°."
+    ]
+  },
   "Sum of Interior Angles": {
     question: "What is the sum of the interior angles of a regular decagon (10-sided polygon)?",
     steps: [

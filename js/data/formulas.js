@@ -1171,6 +1171,49 @@ export const FORMULAS_DATA = [
           { symbol: "d", definition: "Distance between centers" },
           { symbol: "R, r", definition: "Radii of the circles" }
         ]
+      },
+      {
+        title: "Chord Properties",
+        type: "Geometry",
+        formula: "\\text{Perpendicular from center bisects the chord.} \\\\ AM = MB",
+        variables: [
+          { symbol: "AB", definition: "A chord of the circle" },
+          { symbol: "OM", definition: "Perpendicular line from center O to chord AB" }
+        ]
+      },
+      {
+        title: "Angles in a Circle",
+        type: "Properties",
+        formula: "\\text{Angle at center} = 2 \\times \\text{Angle at circumference}",
+        variables: [
+          { symbol: "\\text{Note}", definition: "Angles subtended by the same arc at the circumference are equal. Angle in a semicircle is 90°." }
+        ]
+      },
+      {
+        title: "Intersecting Chords Theorem",
+        type: "Properties",
+        formula: "PA \\times PB = PC \\times PD",
+        variables: [
+          { symbol: "P", definition: "Point of intersection (inside or outside the circle)" },
+          { symbol: "AB, CD", definition: "Two chords intersecting at P" }
+        ]
+      },
+      {
+        title: "Tangent-Secant Theorem",
+        type: "Properties",
+        formula: "PT^2 = PA \\times PB",
+        variables: [
+          { symbol: "PT", definition: "Tangent segment from external point P to T" },
+          { symbol: "PAB", definition: "Secant line intersecting circle at A and B" }
+        ]
+      },
+      {
+        title: "Alternate Segment Theorem",
+        type: "Properties",
+        formula: "\\text{Angle between tangent and chord} = \\text{Angle in alternate segment}",
+        variables: [
+          { symbol: "\\text{Note}", definition: "The angle between the tangent at a point and a chord through that point equals the angle subtended by the chord in the alternate segment." }
+        ]
       }
     ]
   },

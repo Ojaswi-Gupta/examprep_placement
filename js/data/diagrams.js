@@ -338,6 +338,63 @@ export const DIAGRAMS_DATA = {
       <text x="145" y="85" fill="var(--text)" font-size="10" text-anchor="middle">Touch Externally (d = R+r)</text>
     </svg>
   `,
+  "Chord Properties": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="50" cy="50" r="40" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <line x1="20" y1="70" x2="80" y2="70" stroke="var(--green)" stroke-width="2" />
+      <line x1="50" y1="50" x2="50" y2="70" stroke="var(--text)" stroke-width="1.5" stroke-dasharray="3" />
+      <circle cx="50" cy="50" r="2" fill="var(--text)" />
+      <rect x="50" y="66" width="4" height="4" fill="none" stroke="var(--text)" stroke-width="1" />
+      <text x="50" y="45" fill="var(--text)" font-size="10" text-anchor="middle">O</text>
+      <text x="15" y="75" fill="var(--green)" font-size="10">A</text>
+      <text x="85" y="75" fill="var(--green)" font-size="10">B</text>
+      <text x="55" y="80" fill="var(--text)" font-size="10">M</text>
+    </svg>
+  `,
+  "Angles in a Circle": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="50" cy="50" r="40" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <path d="M 20 75 L 50 50 L 80 75" fill="none" stroke="var(--text)" stroke-width="1.5" />
+      <path d="M 20 75 L 50 10 L 80 75" fill="none" stroke="var(--green)" stroke-width="1.5" />
+      <circle cx="50" cy="50" r="2" fill="var(--text)" />
+      <text x="50" y="65" fill="var(--text)" font-size="10" text-anchor="middle">2x</text>
+      <text x="50" y="25" fill="var(--green)" font-size="10" text-anchor="middle">x</text>
+    </svg>
+  `,
+  "Intersecting Chords Theorem": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="50" cy="50" r="40" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <line x1="20" y1="25" x2="80" y2="75" stroke="var(--green)" stroke-width="2" />
+      <line x1="20" y1="75" x2="80" y2="25" stroke="var(--green)" stroke-width="2" />
+      <circle cx="50" cy="50" r="2" fill="var(--text)" />
+      <text x="50" y="45" fill="var(--text)" font-size="10" text-anchor="middle">P</text>
+      <text x="15" y="20" fill="var(--green)" font-size="10">A</text>
+      <text x="85" y="85" fill="var(--green)" font-size="10">B</text>
+      <text x="15" y="85" fill="var(--green)" font-size="10">C</text>
+      <text x="85" y="20" fill="var(--green)" font-size="10">D</text>
+    </svg>
+  `,
+  "Tangent-Secant Theorem": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="60" cy="50" r="30" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <line x1="10" y1="20" x2="60" y2="20" stroke="var(--green)" stroke-width="2" />
+      <line x1="10" y1="20" x2="90" y2="50" stroke="var(--green)" stroke-width="2" />
+      <text x="5" y="20" fill="var(--text)" font-size="10">P</text>
+      <text x="65" y="15" fill="var(--green)" font-size="10">T</text>
+      <text x="35" y="45" fill="var(--green)" font-size="10">A</text>
+      <text x="95" y="55" fill="var(--green)" font-size="10">B</text>
+    </svg>
+  `,
+  "Alternate Segment Theorem": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <circle cx="50" cy="50" r="40" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
+      <line x1="10" y1="90" x2="90" y2="90" stroke="var(--green)" stroke-width="2" />
+      <path d="M 50 90 L 20 40 L 80 40 Z" fill="none" stroke="var(--text)" stroke-width="1.5" />
+      <text x="50" y="100" fill="var(--green)" font-size="10" text-anchor="middle">P (Tangent point)</text>
+      <text x="40" y="85" fill="var(--accent)" font-size="10">θ</text>
+      <text x="70" y="50" fill="var(--accent)" font-size="10">θ</text>
+    </svg>
+  `,
   "Shortest Distance (Pythagoras)": `
     <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
       <path d="M 20 80 L 80 80 L 80 20 Z" fill="rgba(var(--accent-rgb, 99, 102, 241), 0.1)" stroke="var(--accent)" stroke-width="2" />
