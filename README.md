@@ -2,7 +2,7 @@
 
 A beautifully designed, highly interactive, and comprehensive web application tailored specifically for placement exam preparation. 
 
-Originally built as a vocabulary learning tool, it has evolved into a complete **Single Page Application (SPA)** that covers Verbal Ability, Reading Comprehension, Quantitative Aptitude, Logical Reasoning, Technical Interview Prep (710+ questions), and HR/Behavioral Interview Practice.
+Originally built as a vocabulary learning tool, it has evolved into a complete **Single Page Application (SPA)** that covers Verbal Ability, Reading Comprehension, Quantitative Aptitude, Logical Reasoning, Technical Interview Prep (800+ questions), and HR/Behavioral Interview Practice.
 
 ## 🏛️ Architectural Overview
 
@@ -55,8 +55,8 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 - **Conceptual Step-by-Step Examples:** Expandable dropdowns attached to formulas containing detailed, step-by-step word problem walkthroughs showing exactly how to apply the formula to solve tough questions.
 - **Real-Time Instant Search:** A built-in search bar in the Formulas tab that filters through all 130+ formulas, definitions, and types instantly across all categories.
 
-### 🤝 6. Technical Interview Prep — 780+ Questions
-- **Massive Q&A Library:** 780+ curated interview questions spanning **11 roles** and **50+ topics**, covering everything from core CS to HR behavioral rounds to project-specific deep dives.
+### 🤝 6. Technical Interview Prep — 800+ Questions
+- **Massive Q&A Library:** 800+ curated interview questions spanning **12 roles** and **50+ topics**, covering everything from core CS to HR behavioral rounds to project-specific deep dives.
 - **Role-Based Filtering:** Drill down into specific roles to focus your preparation:
 
 | Role | Icon | Questions | Key Topics |
@@ -68,6 +68,7 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 | AI/ML Deep Dive | 🔬 | 90 | Classical ML, Deep Learning Advanced, GenAI, MLOps, AI Ethics, Math for ML, Agentic AI |
 | Software Engineering Deep | ⚙️ | 80 | Java, Python, Advanced DSA Patterns, Concurrency, Testing, Architecture, Security |
 | System Design Advanced | 🛠️ | 60 | Distributed Systems, Scalability, API Design, Observability, Microservices |
+| Core CS Fundamentals (OS & CN) | 🖥️/🌐 | 20+ | Processes, Threads, Memory, Scheduling, OSI Model, TCP/IP, Web Protocols |
 | Data Analyst | 📊 | — | SQL, Statistics, Data Visualization, ETL, Business Metrics |
 | HR & Behavioral Interview | 🎯 | 70 | STAR Method, Tricky Scenarios, Teamwork, Leadership, Stress Management |
 | Aptitude & Logical Reasoning | 🧩 | 30 | Puzzles & Brain Teasers, Guesstimates, Situational Judgment & Ethics |
@@ -75,7 +76,7 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 
 - **Difficulty Badges:** Every question is tagged with difficulty levels (Basic, Intermediate, Advanced) and color-coded for quick scanning.
 - **Interactive Accordions:** Clean UI where questions act as clickable headers that expand to reveal detailed, thorough answers.
-- **Global Search:** Search across all 780+ questions instantly by keyword.
+- **Global Search:** Search across all 800+ questions instantly by keyword.
 - **Resume-Tailored:** Questions specifically mapped to resume projects (Vibe Connect, GistProbe, Quiz Portal) and technologies (WebRTC, FAISS, Prisma, Docker).
 - **Project Deep Dive:** 68 highly specific questions covering every architectural choice, tiny implementation detail, and corner case across all 3 major resume projects.
 
@@ -110,6 +111,7 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
     │   ├── interview_deep1.js   # Deep dive (Classical ML, GenAI, MLOps, Ethics)
     │   ├── interview_deep2.js   # Deep dive (Java, Python, DSA, Distributed Sys)
     │   ├── interview_hr.js      # HR, behavioral, puzzles, guesstimates
+    │   ├── interview_cs_fundamentals.js # Core CS (OS, Computer Networks)
     │   ├── programming.js       # SQL, Python, Java syntax & MCQs data
     │   ├── java/                # Modular Java data structures
     │   │   ├── data_structures.js
@@ -179,8 +181,8 @@ No build step, no `npm install`, no frameworks required.
 |---|---|
 | Vocabulary Words | 114 |
 | Math Formulas | 130+ |
-| Interview Questions | 780+ |
-| Interview Roles | 11 |
+| Interview Questions | 800+ |
+| Interview Roles | 12 |
 | Programming Languages | 3 (SQL, Python, Java) |
 | Programming Syntax/Concepts | 60+ |
 | Programming MCQs | 30+ |
