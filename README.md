@@ -47,7 +47,8 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 
 ### 📐 5. Quants & Logical Reasoning
 - **Interactive Scratchpad & Calculator:** A global, draggable, floating glassmorphism widget that allows you to doodle math steps or crunch numbers without leaving the page or needing physical paper.
-- **Drill-Down Topic Dashboard:** A clean, icon-based grid dashboard allowing you to select a specific aptitude topic (like "Time & Work") and drill down into only the relevant formulas, eliminating cognitive overload.
+- **Interactive Conversions & Quick Math:** Built-in interactive converter and neatly formatted memory cards for rapid math lookup (Fractions to Percentages, Squares up to 30, Cubes up to 25).
+- **Drill-Down Topic Dashboard:** A clean, icon-based grid dashboard allowing you to select a specific aptitude topic (like "Clocks", "Calendars", "Mixtures", or "Time & Work") and drill down into only the relevant formulas, eliminating cognitive overload.
 - **Textbook-Quality Math:** 100% of the mathematical formulas are beautifully rendered using the **KaTeX engine** (via dynamic CDN) and standard LaTeX syntax. Fractions, exponents, and square roots are stacked vertically just like a printed textbook.
 - **Formula Cheatsheets:** A categorized library of 130+ essential advanced formulas (spanning Number Theory, Circle Geometry, Calendars, Clocks, etc.) perfectly tailored for CAT, aptitude tests, and technical company exams.
 - **Rich SVG Visualizations:** Custom, mathematically accurate SVG diagrams generated inline to explicitly detail concepts like Syllogisms, Relative Speed, Clock Angles, Pipe & Cisterns, Apollonius Theorem, Calendar Repetition, and Advanced Circle Geometry.
