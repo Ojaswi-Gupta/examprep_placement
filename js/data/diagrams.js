@@ -880,5 +880,56 @@ export const DIAGRAMS_DATA = {
       <path d="M 35 65 Q 50 55, 65 65" fill="none" stroke="var(--green)" stroke-width="1" />
       <text x="50" y="60" fill="var(--green)" font-size="8" text-anchor="middle">68%</text>
     </svg>
+  `,
+  "Angle Between Clock Hands": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <!-- Clock Face -->
+      <circle cx="50" cy="50" r="45" fill="none" stroke="var(--border)" stroke-width="2" />
+      <circle cx="50" cy="50" r="3" fill="var(--text)" />
+      <!-- Minute hand -->
+      <line x1="50" y1="50" x2="50" y2="15" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" />
+      <!-- Hour hand -->
+      <line x1="50" y1="50" x2="75" y2="65" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" />
+      <!-- Angle arc -->
+      <path d="M 50 25 A 25 25 0 0 1 65 59" fill="none" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="2" />
+      <text x="70" y="40" fill="var(--green)" font-size="12" font-weight="bold">θ</text>
+      <!-- Tick marks for 12, 3, 6, 9 -->
+      <line x1="50" y1="5" x2="50" y2="10" stroke="var(--text-3)" stroke-width="2" />
+      <line x1="50" y1="95" x2="50" y2="90" stroke="var(--text-3)" stroke-width="2" />
+      <line x1="5" y1="50" x2="10" y2="50" stroke="var(--text-3)" stroke-width="2" />
+      <line x1="95" y1="50" x2="90" y2="50" stroke="var(--text-3)" stroke-width="2" />
+    </svg>
+  `,
+  "Clock Hands Coincide (0°)": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <!-- Clock Face -->
+      <circle cx="50" cy="50" r="45" fill="none" stroke="var(--border)" stroke-width="2" />
+      <circle cx="50" cy="50" r="3" fill="var(--text)" />
+      <!-- Coinciding hands (overlapping) -->
+      <line x1="50" y1="50" x2="75" y2="25" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" />
+      <line x1="50" y1="50" x2="65" y2="35" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" />
+      <text x="75" y="18" fill="var(--green)" font-size="10" font-weight="bold">0° Angle</text>
+      <!-- Tick marks for 12, 3, 6, 9 -->
+      <line x1="50" y1="5" x2="50" y2="10" stroke="var(--text-3)" stroke-width="2" />
+      <line x1="50" y1="95" x2="50" y2="90" stroke="var(--text-3)" stroke-width="2" />
+      <line x1="5" y1="50" x2="10" y2="50" stroke="var(--text-3)" stroke-width="2" />
+      <line x1="95" y1="50" x2="90" y2="50" stroke="var(--text-3)" stroke-width="2" />
+    </svg>
+  `,
+  "Odd Days (Calendars)": `
+    <svg viewBox="0 0 100 100" width="100%" height="150" style="max-width: 200px;">
+      <!-- Calendar Page -->
+      <rect x="20" y="20" width="60" height="60" rx="5" fill="none" stroke="var(--border)" stroke-width="2"/>
+      <rect x="20" y="20" width="60" height="15" fill="var(--primary)" />
+      <!-- Ring binders -->
+      <circle cx="35" cy="20" r="3" fill="var(--text)" />
+      <circle cx="65" cy="20" r="3" fill="var(--text)" />
+      <text x="50" y="31" fill="var(--bg)" font-size="8" text-anchor="middle" font-weight="bold">MONTH</text>
+      <!-- Big number -->
+      <text x="50" y="60" fill="var(--text)" font-size="22" text-anchor="middle" font-weight="bold">31</text>
+      <text x="50" y="74" fill="var(--text-2)" font-size="8" text-anchor="middle">Days</text>
+      <!-- Formula -->
+      <text x="50" y="95" fill="var(--green)" font-size="10" text-anchor="middle" font-weight="bold">31 % 7 = 3 Odd Days</text>
+    </svg>
   `
 };

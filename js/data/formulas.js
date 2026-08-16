@@ -266,20 +266,8 @@ export const FORMULAS_DATA = [
     ]
   },
   {
-    category: "Mixtures, Clocks & Calendars",
+    category: "Mixtures",
     formulas: [
-      {
-        title: "Reflex Angle (Clocks)",
-        type: "Clocks",
-        formula: "\\text{Reflex angle} = 360^{\\circ} - \\theta",
-        variables: [{ symbol: "\theta", definition: "Interior angle" }]
-      },
-      {
-        title: "Century Year Odd Days",
-        type: "Calendars",
-        formula: "\\text{100yr}=5, \\text{200yr}=3, \\text{300yr}=1, \\text{400yr}=0",
-        variables: [{ symbol: "Odd days", definition: "Remainder of days / 7" }]
-      },
       {
         title: "Weighted Average (3 Mixtures)",
         type: "Advanced",
@@ -305,6 +293,17 @@ export const FORMULAS_DATA = [
           { symbol: "y", definition: "Quantity replaced each time" },
           { symbol: "n", definition: "Number of replacement operations" }
         ]
+      }
+    ]
+  },
+  {
+    category: "Clocks",
+    formulas: [
+      {
+        title: "Reflex Angle (Clocks)",
+        type: "Clocks",
+        formula: "\\text{Reflex angle} = 360^{\\circ} - \\theta",
+        variables: [{ symbol: "\\theta", definition: "Interior angle" }]
       },
       {
         title: "Angle Between Clock Hands",
@@ -313,16 +312,6 @@ export const FORMULAS_DATA = [
         variables: [
           { symbol: "H", definition: "Hour (1-12)" },
           { symbol: "M", definition: "Minutes (0-59)" }
-        ]
-      },
-      {
-        title: "Odd Days (Calendars)",
-        type: "Calendars",
-        formula: "\\text{Odd Days} = \\text{Total Days} \\pmod 7",
-        variables: [
-          { symbol: "Ordinary Year", definition: "365 days = 1 odd day" },
-          { symbol: "Leap Year", definition: "366 days = 2 odd days" },
-          { symbol: "100 Years", definition: "5 odd days" }
         ]
       },
       {
@@ -357,6 +346,27 @@ export const FORMULAS_DATA = [
         formula: "\\text{True Time} = \\left( \\frac{\\text{Correct Interval}}{\\text{Faulty Interval}} \\right) \\times \\text{Total Time Passed}",
         variables: [
           { symbol: "Correct Interval", definition: "Usually 65 5/11 minutes for hands to coincide" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Calendars",
+    formulas: [
+      {
+        title: "Century Year Odd Days",
+        type: "Calendars",
+        formula: "\\text{100yr}=5, \\text{200yr}=3, \\text{300yr}=1, \\text{400yr}=0",
+        variables: [{ symbol: "Odd days", definition: "Remainder of days / 7" }]
+      },
+      {
+        title: "Odd Days (Calendars)",
+        type: "Calendars",
+        formula: "\\text{Odd Days} = \\text{Total Days} \\pmod 7",
+        variables: [
+          { symbol: "Ordinary Year", definition: "365 days = 1 odd day" },
+          { symbol: "Leap Year", definition: "366 days = 2 odd days" },
+          { symbol: "100 Years", definition: "5 odd days" }
         ]
       },
       {
