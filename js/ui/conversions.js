@@ -167,13 +167,17 @@ function renderStaticCards() {
     card.style.height = '100%'; // Make cards stretch to match row height
     card.style.boxSizing = 'border-box';
     
+    const ulStyle = cat.columns === 2 
+      ? "list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; flex-grow: 1;"
+      : "list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.8rem; flex-grow: 1;";
+
     let html = `
       <div style="display: flex; align-items: center; gap: 1rem; border-bottom: 2px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
         <span style="font-size: 2.5rem;">${cat.icon}</span>
         <h3 style="margin: 0; color: var(--primary); font-size: 1.5rem;">${escapeHTML(cat.category)}</h3>
       </div>
       
-      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.8rem; flex-grow: 1;">
+      <ul style="${ulStyle}">
     `;
     
     cat.memorize.forEach(item => {
