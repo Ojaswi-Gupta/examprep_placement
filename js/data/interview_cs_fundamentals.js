@@ -226,22 +226,22 @@ export const INTERVIEW_CS_FUNDAMENTALS_DATA = [
           },
           {
             q: "Explain the different types of Joins in SQL.",
-            a: "**INNER JOIN:** Returns records that have matching values in both tables.\n**LEFT JOIN:** Returns all records from the left table, and the matched records from the right table.\n**RIGHT JOIN:** Returns all records from the right table, and the matched records from the left.\n**FULL OUTER JOIN:** Returns all records when there is a match in either left or right table.\n**CROSS JOIN:** Returns the Cartesian product of the two tables.",
+            a: "**INNER JOIN:** Returns records that have matching values in both tables.\n**LEFT JOIN:** Returns all records from the left table, and the matched records from the right table.\n**RIGHT JOIN:** Returns all records from the right table, and the matched records from the left.\n**FULL OUTER JOIN:** Returns all records when there is a match in either left or right table.\n**CROSS JOIN:** Returns the Cartesian product of the two tables.\n\nExample `INNER JOIN`:\n`SELECT e.Name, d.DeptName \nFROM Employees e \nINNER JOIN Departments d ON e.DeptID = d.ID;`",
             difficulty: "Basic"
           },
           {
             q: "What is the difference between TRUNCATE, DELETE, and DROP?",
-            a: "**DELETE:** A DML command that removes rows one by one. Can be rolled back. Can use a WHERE clause.\n**TRUNCATE:** A DDL command that quickly removes all rows by deallocating pages. Cannot be rolled back in most DBs. No WHERE clause.\n**DROP:** A DDL command that entirely deletes the table structure and its data from the database.",
+            a: "**DELETE:** A DML command that removes rows one by one. Can be rolled back. Can use a WHERE clause.\n`DELETE FROM table_name \nWHERE condition;`\n\n**TRUNCATE:** A DDL command that quickly removes all rows by deallocating pages. Cannot be rolled back in most DBs. No WHERE clause.\n`TRUNCATE TABLE table_name;`\n\n**DROP:** A DDL command that entirely deletes the table structure and its data from the database.\n`DROP TABLE table_name;`",
             difficulty: "Basic"
           },
           {
             q: "What is a View in SQL?",
-            a: "A View is a virtual table based on the result-set of an SQL statement. It contains rows and columns just like a real table, but the data is fetched dynamically. Views are used for security (hiding specific columns) and simplifying complex queries.",
+            a: "A View is a virtual table based on the result-set of an SQL statement. It contains rows and columns just like a real table, but the data is fetched dynamically. Views are used for security (hiding specific columns) and simplifying complex queries.\n\nExample:\n`CREATE VIEW ActiveUsers AS \nSELECT id, name \nFROM Users \nWHERE status = 'active';`",
             difficulty: "Intermediate"
           },
           {
             q: "What is a Stored Procedure? How is it different from a Function?",
-            a: "A **Stored Procedure** is a prepared SQL code that you can save and reuse over and over again. It can perform modifications and may or may not return values.\nA **Function** must return a value, cannot make permanent changes to the database environment (like INSERT/UPDATE), and can be used inside a SELECT statement.",
+            a: "A **Stored Procedure** is a prepared SQL code that you can save and reuse over and over again. It can perform modifications and may or may not return values.\n`CREATE PROCEDURE GetUsers() \nBEGIN \n  SELECT * FROM Users; \nEND;`\n\nA **Function** must return a value, cannot make permanent changes to the database environment (like INSERT/UPDATE), and can be used inside a SELECT statement.",
             difficulty: "Intermediate"
           }
         ]

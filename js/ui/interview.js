@@ -145,6 +145,16 @@ function renderTopicList(container) {
   });
 }
 
+// Helper to parse basic markdown for answers
+function parseMarkdown(text) {
+  if (!text) return '';
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`([\s\S]*?)`/g, '<code>$1</code>')
+    .replace(/\n/g, '<br>');
+}
+
 // ─── Level 3: Q&A Accordion ─────────────────────────
 function renderQuestions(container) {
   const role = INTERVIEW_DATA[currentRole];
@@ -169,7 +179,7 @@ function renderQuestions(container) {
             <span class="interview-qa-chevron">▸</span>
           </div>
           <div class="interview-qa-answer">
-            <p>${item.a}</p>
+            <p>${parseMarkdown(item.a)}</p>
           </div>
         </div>
       `).join('')}
@@ -229,7 +239,7 @@ function renderSearchResults(term) {
           </div>
           <div class="interview-qa-answer">
             <div class="interview-qa-breadcrumb">${r.role.role} → ${r.topic.topic}</div>
-            <p>${highlightTerm(r.item.a, term)}</p>
+            <p>${parseMarkdown(highlightTerm(r.item.a, term))}</p>
           </div>
         </div>
       `).join('')}
