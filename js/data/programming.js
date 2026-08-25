@@ -16,6 +16,36 @@ export const PROGRAMMING_DATA = [
         type: 'syntax',
         data: [
       {
+        keyword: "SQL Query Clause Order",
+        meaning: "Syntactical Order (How you write it):\nSELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT\n\nExecution Order (How Database processes it):\nFROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT",
+        example: "SELECT dept_id, COUNT(*) \nFROM employees \nWHERE salary > 50000 \nGROUP BY dept_id \nHAVING COUNT(*) > 5 \nORDER BY dept_id \nLIMIT 10;"
+      },
+      {
+        keyword: "Types of SQL Tables",
+        meaning: "1. Base Tables: Standard permanent tables.\n2. Temporary Tables (#table): Exist only for the session/transaction.\n3. Derived Tables: Created on-the-fly via subqueries in FROM clause.\n4. System Tables: Store database metadata.\n5. Fact & Dimension Tables: Used in Data Warehousing.",
+        example: "CREATE TEMPORARY TABLE temp_emp AS \nSELECT * FROM employees;"
+      },
+      {
+        keyword: "Types of SQL Keys",
+        meaning: "1. Primary Key: Uniquely identifies a record (NOT NULL + UNIQUE).\n2. Foreign Key: Points to a PK in another table (maintains referential integrity).\n3. Unique Key: Ensures all values are distinct (can accept one NULL).\n4. Composite Key: A key made of 2+ columns.\n5. Surrogate Key: System-generated artificial key (e.g., auto-increment ID).",
+        example: "PRIMARY KEY (user_id), \nFOREIGN KEY (dept_id) REFERENCES departments(id)"
+      },
+      {
+        keyword: "DDL, DML, DCL, TCL",
+        meaning: "SQL is divided into 4 sub-languages:\nDDL (Definition): CREATE, ALTER, DROP, TRUNCATE\nDML (Manipulation): SELECT, INSERT, UPDATE, DELETE\nDCL (Control): GRANT, REVOKE\nTCL (Transaction): COMMIT, ROLLBACK, SAVEPOINT",
+        example: "DDL changes table structure. \nDML changes the data inside the table."
+      },
+      {
+        keyword: "Views & Materialized Views",
+        meaning: "View: A virtual table based on a SELECT query. It runs the query every time it's accessed.\nMaterialized View: Physically stores the result on disk (faster reads, but must be refreshed manually).",
+        example: "CREATE VIEW active_users AS \nSELECT * FROM users WHERE status = 'active';"
+      },
+      {
+        keyword: "Database Normalization",
+        meaning: "Organizing data to minimize redundancy:\n1NF: Atomic values only (no repeating groups/arrays).\n2NF: 1NF + No partial dependencies (non-key columns depend on the entire PK).\n3NF: 2NF + No transitive dependencies (non-key columns depend only on the PK).",
+        example: "Decomposing a massive 'Store' table into separate 'Customers', 'Products', and 'Orders' tables."
+      },
+      {
         keyword: "SELECT ... FROM ... WHERE",
         meaning: "Core querying syntax to extract and filter records.",
         example: "SELECT name, salary \nFROM employees \nWHERE salary > 50000;"
