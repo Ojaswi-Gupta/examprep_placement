@@ -106,6 +106,16 @@ export const PROGRAMMING_DATA = [
         example: "SELECT name \nFROM departments d \nWHERE EXISTS (\n  SELECT 1 FROM employees e WHERE e.dept_id = d.id\n);"
       },
       {
+        keyword: "Self Join (Table Aliasing)",
+        meaning: "A Self Join joins a table with itself. It requires giving the table different aliases (e.g., w1, w2) to distinguish the two instances. Useful for comparing rows within the same table.",
+        example: "SELECT w1.id \nFROM Weather w1 \nJOIN Weather w2 \n  ON w1.recordDate = DATE_ADD(w2.recordDate, INTERVAL 1 DAY) \nWHERE w1.temperature > w2.temperature;"
+      },
+      {
+        keyword: "DATEDIFF()",
+        meaning: "Calculates the difference in days between two date values. (Note: Syntax varies by SQL dialect; MySQL uses DATEDIFF(date1, date2), returning date1 - date2).",
+        example: "SELECT w1.id \nFROM Weather w1 \nJOIN Weather w2 \nWHERE DATEDIFF(w1.recordDate, w2.recordDate) = 1 \n  AND w1.temperature > w2.temperature;"
+      },
+      {
         keyword: "DATE, TIME, TIMESTAMP",
         meaning: "Data types for storing date and time. TIMESTAMP includes both date and time (and sometimes timezone depending on SQL engine).",
         example: "CREATE TABLE events (\n  event_name varchar(50), \n  event_date DATE, \n  created_at TIMESTAMP\n);"
