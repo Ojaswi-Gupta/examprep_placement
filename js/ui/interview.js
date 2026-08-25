@@ -7,9 +7,10 @@ import { INTERVIEW_DEEP_2 } from '../data/interview_deep2.js';
 import { INTERVIEW_HR_DATA } from '../data/interview_hr.js';
 import { INTERVIEW_PROJECTS_DATA } from '../data/projects/interview_projects.js';
 import { INTERVIEW_CS_FUNDAMENTALS_DATA } from '../data/interview_cs_fundamentals.js';
+import { INTERVIEW_TECHNICAL_MIXED_DATA } from '../data/interview_technical_mixed.js';
 
 // Merge all interview data sources into one unified array
-const INTERVIEW_DATA = [...BASE_DATA, ...INTERVIEW_RESUME_DATA, ...INTERVIEW_RESUME_DATA_2, ...INTERVIEW_DEEP_1, ...INTERVIEW_DEEP_2, ...INTERVIEW_HR_DATA, ...INTERVIEW_PROJECTS_DATA, ...INTERVIEW_CS_FUNDAMENTALS_DATA];
+const INTERVIEW_DATA = [...BASE_DATA, ...INTERVIEW_TECHNICAL_MIXED_DATA, ...INTERVIEW_RESUME_DATA, ...INTERVIEW_RESUME_DATA_2, ...INTERVIEW_DEEP_1, ...INTERVIEW_DEEP_2, ...INTERVIEW_HR_DATA, ...INTERVIEW_PROJECTS_DATA, ...INTERVIEW_CS_FUNDAMENTALS_DATA];
 
 let currentRole = null;   // index into INTERVIEW_DATA
 let currentTopic = null;  // index into role.topics

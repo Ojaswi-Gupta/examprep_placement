@@ -18,67 +18,67 @@ export const PROGRAMMING_DATA = [
       {
         keyword: "SELECT ... FROM ... WHERE",
         meaning: "Core querying syntax to extract and filter records.",
-        example: "SELECT name, salary FROM employees WHERE salary > 50000;"
+        example: "SELECT name, salary \nFROM employees \nWHERE salary > 50000;"
       },
       {
         keyword: "INNER vs OUTER JOIN",
         meaning: "INNER JOIN returns matches in both tables. LEFT/RIGHT OUTER returns all from one table and matches from the other.",
-        example: "SELECT e.name, d.dept_name FROM employees e LEFT JOIN departments d ON e.dept_id = d.id;"
+        example: "SELECT e.name, d.dept_name \nFROM employees e \nLEFT JOIN departments d ON e.dept_id = d.id;"
       },
       {
         keyword: "GROUP BY ... HAVING",
         meaning: "Groups rows and applies aggregates. HAVING filters after aggregation (WHERE filters before).",
-        example: "SELECT dept_id, AVG(salary) FROM employees GROUP BY dept_id HAVING AVG(salary) > 60000;"
+        example: "SELECT dept_id, AVG(salary) \nFROM employees \nGROUP BY dept_id \nHAVING AVG(salary) > 60000;"
       },
       {
         keyword: "UNION vs UNION ALL",
         meaning: "Combines result sets. UNION removes duplicates (slower), UNION ALL keeps duplicates (faster).",
-        example: "SELECT email FROM customers UNION ALL SELECT email FROM suppliers;"
+        example: "SELECT email FROM customers \nUNION ALL \nSELECT email FROM suppliers;"
       },
       {
         keyword: "ROW_NUMBER() OVER()",
         meaning: "Window function that assigns a sequential integer to each row in a partition.",
-        example: "SELECT name, ROW_NUMBER() OVER(PARTITION BY dept_id ORDER BY salary DESC) as rank FROM employees;"
+        example: "SELECT name, \nROW_NUMBER() OVER(PARTITION BY dept_id ORDER BY salary DESC) as rank \nFROM employees;"
       },
       {
         keyword: "RANK() vs DENSE_RANK()",
         meaning: "RANK skips numbers for ties (1, 2, 2, 4). DENSE_RANK does not skip (1, 2, 2, 3).",
-        example: "SELECT name, DENSE_RANK() OVER(ORDER BY salary DESC) as rank FROM employees;"
+        example: "SELECT name, \nDENSE_RANK() OVER(ORDER BY salary DESC) as rank \nFROM employees;"
       },
       {
         keyword: "WITH (CTEs)",
         meaning: "Common Table Expressions allow creating temporary result sets that can be referenced within a SELECT, INSERT, UPDATE, or DELETE.",
-        example: "WITH HighEarners AS (SELECT * FROM employees WHERE salary > 100000) SELECT * FROM HighEarners WHERE dept_id = 1;"
+        example: "WITH HighEarners AS (\n  SELECT * FROM employees WHERE salary > 100000\n)\nSELECT * FROM HighEarners WHERE dept_id = 1;"
       },
       {
         keyword: "CASE WHEN",
         meaning: "SQL's version of IF-THEN-ELSE logic.",
-        example: "SELECT name, CASE WHEN salary > 100000 THEN 'High' ELSE 'Normal' END as category FROM employees;"
+        example: "SELECT name, \n  CASE \n    WHEN salary > 100000 THEN 'High' \n    ELSE 'Normal' \n  END as category \nFROM employees;"
       },
       {
         keyword: "COALESCE()",
         meaning: "Returns the first non-null value in a list. Useful for handling NULLs in joins.",
-        example: "SELECT name, COALESCE(phone, email, 'No Contact Info') as contact FROM users;"
+        example: "SELECT name, COALESCE(phone, email, 'No Contact Info') as contact \nFROM users;"
       },
       {
         keyword: "INDEX",
         meaning: "Improves read performance but slows down writes (INSERT/UPDATE). Uses B-Tree or Hash structures under the hood.",
-        example: "CREATE INDEX idx_employee_name ON employees(last_name);"
+        example: "CREATE INDEX idx_employee_name \nON employees(last_name);"
       },
       {
         keyword: "Correlated Subquery",
         meaning: "A subquery that uses values from the outer query. It runs once for every row returned by the outer query (can be slow).",
-        example: "SELECT e1.name FROM employees e1 WHERE e1.salary > (SELECT AVG(salary) FROM employees e2 WHERE e1.dept_id = e2.dept_id);"
+        example: "SELECT e1.name \nFROM employees e1 \nWHERE e1.salary > (\n  SELECT AVG(salary) FROM employees e2 WHERE e1.dept_id = e2.dept_id\n);"
       },
       {
         keyword: "EXISTS vs IN",
         meaning: "EXISTS evaluates to true/false and stops checking once a match is found (faster for large subqueries). IN compares all values.",
-        example: "SELECT name FROM departments d WHERE EXISTS (SELECT 1 FROM employees e WHERE e.dept_id = d.id);"
+        example: "SELECT name \nFROM departments d \nWHERE EXISTS (\n  SELECT 1 FROM employees e WHERE e.dept_id = d.id\n);"
       },
       {
         keyword: "DATE, TIME, TIMESTAMP",
         meaning: "Data types for storing date and time. TIMESTAMP includes both date and time (and sometimes timezone depending on SQL engine).",
-        example: "CREATE TABLE events (event_name varchar(50), event_date DATE, created_at TIMESTAMP);"
+        example: "CREATE TABLE events (\n  event_name varchar(50), \n  event_date DATE, \n  created_at TIMESTAMP\n);"
       },
       {
         keyword: "INTERVAL",
@@ -88,12 +88,12 @@ export const PROGRAMMING_DATA = [
       {
         keyword: "EXTRACT() / DATE_PART()",
         meaning: "Extracts a part (year, month, day, hour, etc.) from a given date/time.",
-        example: "SELECT EXTRACT(YEAR FROM order_date) as order_year FROM orders;"
+        example: "SELECT EXTRACT(YEAR FROM order_date) as order_year \nFROM orders;"
       },
       {
         keyword: "CURRENT_DATE / NOW()",
         meaning: "Returns the current date or current date and time.",
-        example: "SELECT * FROM orders WHERE order_date = CURRENT_DATE;"
+        example: "SELECT * \nFROM orders \nWHERE order_date = CURRENT_DATE;"
       }
         ]
       },

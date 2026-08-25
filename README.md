@@ -56,7 +56,7 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 - **Real-Time Instant Search:** A built-in search bar in the Formulas tab that filters through all 130+ formulas, definitions, and types instantly across all categories.
 
 ### 🤝 6. Technical Interview Prep — 800+ Questions
-- **Massive Q&A Library:** 800+ curated interview questions spanning **12 roles** and **50+ topics**, covering everything from core CS to HR behavioral rounds to project-specific deep dives.
+- **Massive Q&A Library:** 800+ curated interview questions spanning **13 roles** and **50+ topics**, covering everything from core CS to HR behavioral rounds to project-specific deep dives.
 - **Role-Based Filtering:** Drill down into specific roles to focus your preparation:
 
 | Role | Icon | Questions | Key Topics |
@@ -182,7 +182,7 @@ No build step, no `npm install`, no frameworks required.
 | Vocabulary Words | 114 |
 | Math Formulas | 130+ |
 | Interview Questions | 800+ |
-| Interview Roles | 12 |
+| Interview Roles | 13 |
 | Programming Languages | 3 (SQL, Python, Java) |
 | Programming Syntax/Concepts | 60+ |
 | Programming MCQs | 30+ |
