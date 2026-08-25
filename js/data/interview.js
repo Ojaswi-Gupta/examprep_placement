@@ -826,12 +826,37 @@ export const INTERVIEW_DATA = [
         ]
       },
       {
-        topic: "Git & DevOps",
+        topic: "Git, Terminal & DevOps",
         questions: [
+          {
+            q: "What is the difference between Git and GitHub?",
+            a: "Git is a distributed version control system (a command-line tool) that tracks changes in your local files. GitHub is a cloud-based hosting service that lets you manage Git repositories online, facilitating collaboration, code review, and project management.",
+            difficulty: "Basic"
+          },
+          {
+            q: "Difference between `git fetch` and `git pull`?",
+            a: "`git fetch` downloads the latest changes from the remote repository to your local repo but does not integrate them into your working directory. `git pull` does a `fetch` and then immediately `merge`s the changes into your current branch.",
+            difficulty: "Basic"
+          },
           {
             q: "Git merge vs rebase",
             a: "Merge creates a new commit that ties two histories together, preserving the exact history but creating a non-linear graph. Rebase rewrites history by moving the base of a branch to a new commit, resulting in a cleaner, linear project history.",
             difficulty: "Intermediate"
+          },
+          {
+            q: "What does `git stash` do?",
+            a: "`git stash` temporarily shelves (saves) changes you've made to your working directory so you can work on something else without committing the incomplete work. You can later restore the changes using `git stash pop`.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "Linux Terminal: How do file permissions and `chmod` work?",
+            a: "In Linux, files have Read (r), Write (w), and Execute (x) permissions for the Owner, Group, and Others. `chmod` (change mode) is used to modify these permissions, often using numeric values (e.g., `chmod 755 file` gives rwx to the owner, and rx to everyone else).",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "Linux Terminal: How do you find a process and kill it?",
+            a: "You can find a running process using `ps aux | grep <process_name>` or `top`/`htop` to get its PID (Process ID). You then terminate it using the `kill <PID>` command (or `kill -9 <PID>` to forcefully terminate it).",
+            difficulty: "Basic"
           },
           {
             q: "CI/CD pipeline stages",

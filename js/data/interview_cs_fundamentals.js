@@ -206,5 +206,106 @@ export const INTERVIEW_CS_FUNDAMENTALS_DATA = [
         ]
       }
     ]
+  },
+  {
+    role: "Core CS Fundamentals: DBMS",
+    icon: "🗄️",
+    topics: [
+      {
+        topic: "SQL & Relational Concepts",
+        questions: [
+          {
+            q: "What is the difference between DDL, DML, DCL, and TCL?",
+            a: "**DDL (Data Definition Language):** Defines structure (CREATE, ALTER, DROP, TRUNCATE).\n**DML (Data Manipulation Language):** Manipulates data (INSERT, UPDATE, DELETE).\n**DCL (Data Control Language):** Manages access (GRANT, REVOKE).\n**TCL (Transaction Control Language):** Manages transactions (COMMIT, ROLLBACK, SAVEPOINT).",
+            difficulty: "Basic"
+          },
+          {
+            q: "What is the difference between Primary Key, Unique Key, and Foreign Key?",
+            a: "**Primary Key:** Uniquely identifies a row. Cannot be NULL. Only one per table.\n**Unique Key:** Ensures all values in a column are unique. Can accept one NULL value. Multiple allowed per table.\n**Foreign Key:** A column that refers to the Primary Key of another table, ensuring referential integrity.",
+            difficulty: "Basic"
+          },
+          {
+            q: "Explain the different types of Joins in SQL.",
+            a: "**INNER JOIN:** Returns records that have matching values in both tables.\n**LEFT JOIN:** Returns all records from the left table, and the matched records from the right table.\n**RIGHT JOIN:** Returns all records from the right table, and the matched records from the left.\n**FULL OUTER JOIN:** Returns all records when there is a match in either left or right table.\n**CROSS JOIN:** Returns the Cartesian product of the two tables.",
+            difficulty: "Basic"
+          },
+          {
+            q: "What is the difference between TRUNCATE, DELETE, and DROP?",
+            a: "**DELETE:** A DML command that removes rows one by one. Can be rolled back. Can use a WHERE clause.\n**TRUNCATE:** A DDL command that quickly removes all rows by deallocating pages. Cannot be rolled back in most DBs. No WHERE clause.\n**DROP:** A DDL command that entirely deletes the table structure and its data from the database.",
+            difficulty: "Basic"
+          },
+          {
+            q: "What is a View in SQL?",
+            a: "A View is a virtual table based on the result-set of an SQL statement. It contains rows and columns just like a real table, but the data is fetched dynamically. Views are used for security (hiding specific columns) and simplifying complex queries.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "What is a Stored Procedure? How is it different from a Function?",
+            a: "A **Stored Procedure** is a prepared SQL code that you can save and reuse over and over again. It can perform modifications and may or may not return values.\nA **Function** must return a value, cannot make permanent changes to the database environment (like INSERT/UPDATE), and can be used inside a SELECT statement.",
+            difficulty: "Intermediate"
+          }
+        ]
+      },
+      {
+        topic: "Normalization & Database Design",
+        questions: [
+          {
+            q: "What is Database Normalization and why is it needed?",
+            a: "Normalization is the process of organizing data in a database to eliminate data redundancy (duplication) and ensure data dependencies make sense. It protects the database against insertion, update, and deletion anomalies.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "Explain 1NF, 2NF, 3NF, and BCNF.",
+            a: "**1NF (First Normal Form):** Each column must contain atomic (indivisible) values, and each record needs to be unique.\n**2NF:** Must be in 1NF. All non-key attributes must be fully functionally dependent on the entire primary key (removes partial dependency).\n**3NF:** Must be in 2NF. There must be no transitive dependency (non-key attributes depending on other non-key attributes).\n**BCNF (Boyce-Codd Normal Form):** A stricter 3NF where for every functional dependency X -> Y, X must be a superkey.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "What is Denormalization and when should it be used?",
+            a: "Denormalization is the deliberate introduction of redundancy into a database (combining tables) to improve the read performance of a database. It is used in heavily read-optimized systems (like OLAP or Data Warehouses) where complex Joins are too expensive.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "Explain Indexing in Databases. How does it improve performance?",
+            a: "An Index is a data structure (usually a B-Tree or Hash Table) that improves the speed of data retrieval operations on a database table at the cost of additional storage space and slower writes (INSERT/UPDATE). It allows the database engine to quickly locate the data without scanning the entire table.",
+            difficulty: "Intermediate"
+          },
+          {
+            q: "What is the difference between a Clustered and a Non-Clustered Index?",
+            a: "**Clustered Index:** Defines the physical sorting order of data in the table. Therefore, there can be only one per table (usually the Primary Key). The leaf nodes contain the actual data rows.\n**Non-Clustered Index:** Contains a sorted list of pointers that point to the physical location of the data. You can have multiple non-clustered indexes per table.",
+            difficulty: "Advanced"
+          }
+        ]
+      },
+      {
+        topic: "Transactions, ACID & Concurrency",
+        questions: [
+          {
+            q: "What are the ACID properties in a DBMS?",
+            a: "**Atomicity:** Transactions are \"all or nothing\". If any part fails, the entire transaction rolls back.\n**Consistency:** The database must remain in a valid state before and after the transaction.\n**Isolation:** Concurrent transactions execute independently without interfering with each other.\n**Durability:** Once a transaction is committed, it remains saved even in the event of a system crash.",
+            difficulty: "Basic"
+          },
+          {
+            q: "Explain the anomalies that occur during concurrent transactions (Dirty Read, Non-Repeatable Read, Phantom Read).",
+            a: "**Dirty Read:** Reading uncommitted data from another transaction.\n**Non-Repeatable Read:** A transaction reads the same row twice and gets different data because another transaction updated it.\n**Phantom Read:** A transaction runs a range query twice, but gets a different set of rows the second time because another transaction inserted/deleted rows in that range.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "Explain the different Transaction Isolation Levels.",
+            a: "1. **Read Uncommitted:** Lowest level, allows Dirty Reads.\n2. **Read Committed:** Prevents Dirty Reads (default in many DBs like Postgres).\n3. **Repeatable Read:** Prevents Dirty and Non-Repeatable reads, but Phantom Reads can occur (default in MySQL InnoDB).\n4. **Serializable:** Highest level, transactions execute strictly sequentially. Prevents all anomalies but severely limits concurrency.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "Explain the concept of Deadlock in DBMS and how it is prevented.",
+            a: "A Deadlock occurs when two or more transactions are waiting indefinitely for one another to release locks. \n**Prevention:** Ensuring transactions acquire locks in the same specific order. \n**Detection & Resolution:** The DBMS runs a deadlock detection algorithm (Wait-For Graph). If a cycle is detected, it aborts (kills) one of the transactions (the victim) to break the cycle.",
+            difficulty: "Advanced"
+          },
+          {
+            q: "What is Write-Ahead Logging (WAL) and its role in Crash Recovery?",
+            a: "Write-Ahead Logging is a standard approach to ensuring Atomicity and Durability. Before making any changes to the actual database files on disk, the DBMS writes a record of the intended changes to an append-only log file (the WAL). If the database crashes, it reads the WAL on reboot to redo committed transactions and undo uncommitted ones.",
+            difficulty: "Advanced"
+          }
+        ]
+      }
+    ]
   }
 ];
