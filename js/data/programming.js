@@ -51,6 +51,11 @@ export const PROGRAMMING_DATA = [
         example: "SELECT name, salary \nFROM employees \nWHERE salary > 50000;"
       },
       {
+        keyword: "Regular Expressions (REGEXP_LIKE)",
+        meaning: "Advanced pattern matching. Key symbols:\n\n• `^` / `$` : Matches start / end of string\n\n• `.` : Matches any character (use `\\\\.` for literal dot)\n\n• `*` : Matches zero or more times\n\n• `[...]` : Matches any character in brackets\n\n• `'c'` flag : Ensures case-sensitive matching.",
+        example: "SELECT user_id, name, mail \nFROM Users \nWHERE REGEXP_LIKE(mail, '^[a-zA-Z][a-zA-Z0-9_.-]*@leetcode\\\\.com$', 'c');"
+      },
+      {
         keyword: "INNER vs OUTER JOIN",
         meaning: "INNER JOIN returns matches in both tables. LEFT/RIGHT OUTER returns all from one table and matches from the other.",
         example: "SELECT e.name, d.dept_name \nFROM employees e \nLEFT JOIN departments d ON e.dept_id = d.id;"

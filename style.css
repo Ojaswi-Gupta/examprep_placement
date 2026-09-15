@@ -2968,6 +2968,8 @@ canvas#scratchCanvas {
   margin: 0.75rem 0;
   color: var(--text-2);
   font-size: 0.95rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
 }
 
 .syntax-example pre {
