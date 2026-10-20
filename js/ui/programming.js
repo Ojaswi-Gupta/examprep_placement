@@ -11,6 +11,7 @@ export function initProgramming() {
       renderProgrammingView();
     });
   }
+  renderProgrammingView();
 }
 
 function renderProgrammingView() {
@@ -87,6 +88,82 @@ function renderProgrammingView() {
         </div>
       </div>
     `;
+  } else if (activeTab.type === 'queries') {
+    html += `
+      <div class="queries-section full-width-card">
+        <div style="text-align: center; margin-bottom: 2.5rem;">
+          <h3 style="font-size: 2rem; color: var(--text); margin-bottom: 0.5rem;">${activeTab.name}</h3>
+          <p style="color: var(--text-2); max-width: 700px; margin: 0 auto; font-size: 1rem;">
+            Core B2B SaaS, CRM, and Product Analytics patterns with sample schemas, edge-case traps, and full MySQL 8.0+ solutions.
+          </p>
+        </div>
+        <div class="queries-list">
+          ${activeTab.data.map((item, qIdx) => `
+            <div class="sql-query-card">
+              <div class="sql-query-header">
+                <h4 class="sql-query-title">${escapeHTML(item.title)}</h4>
+                <div class="sql-query-tags">
+                  <span class="interview-pill pill-intermediate">${escapeHTML(item.badge)}</span>
+                  <span class="interview-pill pill-${(item.difficulty || 'medium').toLowerCase()}">${item.difficulty}</span>
+                </div>
+              </div>
+
+              <div class="sql-query-problem">
+                <p style="margin: 0; font-size: 1.05rem; line-height: 1.6; color: var(--text);">
+                  <strong>📝 Problem:</strong> ${parseMarkdown(item.question)}
+                </p>
+              </div>
+
+              ${item.schema ? `
+                <div style="margin: 1rem 0; font-size: 0.88rem; color: var(--text-2); background: rgba(255,255,255,0.03); padding: 0.75rem 1rem; border-radius: 6px; border: 1px dashed var(--border);">
+                  <strong>🗄️ Relational Schema:</strong><br>
+                  <code style="color: var(--accent); white-space: pre-wrap;">${escapeHTML(item.schema)}</code>
+                </div>
+              ` : ''}
+
+              <!-- Input Tables -->
+              ${item.inputTables && item.inputTables.length ? `
+                <div style="margin-top: 1.25rem; margin-bottom: 0.5rem; font-size: 0.95rem; font-weight: 600; color: var(--text);">
+                  📥 Sample Input Tables:
+                </div>
+                <div class="sql-tables-grid">
+                  ${item.inputTables.map(t => renderSqlTable(t)).join('')}
+                </div>
+              ` : ''}
+
+              <!-- Expected Output Table -->
+              ${item.expectedOutput ? `
+                <div style="margin-top: 1.25rem; margin-bottom: 0.5rem; font-size: 0.95rem; font-weight: 600; color: var(--text);">
+                  🎯 Expected Output:
+                </div>
+                <div class="sql-tables-grid" style="grid-template-columns: 1fr;">
+                  ${renderOutputTable(item.expectedOutput)}
+                </div>
+              ` : ''}
+
+              <!-- Solution Query -->
+              <div class="sql-solution-box">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <strong style="color: #38bdf8; font-size: 0.95rem;">⚡ MySQL 8.0+ Solution Query:</strong>
+                  <span style="font-size: 0.75rem; color: var(--text-3); font-family: monospace;">Tested & Verified</span>
+                </div>
+                <pre><code>${escapeHTML(item.solutionQuery)}</code></pre>
+              </div>
+
+              <!-- Traps & Insights -->
+              ${item.traps && item.traps.length ? `
+                <div class="sql-trap-box">
+                  <div class="sql-trap-title">⚠️ Crucial Online Assessment Traps & Why This Syntax Matters:</div>
+                  <ul class="sql-trap-list">
+                    ${item.traps.map(trap => `<li>${parseMarkdown(trap)}</li>`).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
   }
 
   html += `</div>`;
@@ -142,6 +219,8 @@ function renderProgrammingView() {
 }
 
 function escapeHTML(str) {
+  if (str === null || str === undefined) return '';
+  str = String(str);
   return str.replace(/[&<>'"]/g, 
     tag => ({
         '&': '&amp;',
@@ -149,6 +228,48 @@ function escapeHTML(str) {
         '>': '&gt;',
         "'": '&#39;',
         '"': '&quot;'
-      }[tag])
+      }[tag] || tag)
   );
+}
+
+function renderSqlTable(table) {
+  if (!table || !table.columns) return '';
+  return `
+    <div class="sql-table-wrapper">
+      <div class="sql-table-name"><code>${escapeHTML(table.name)}</code></div>
+      <table class="sql-table">
+        <thead>
+          <tr>${table.columns.map(c => `<th>${escapeHTML(c)}</th>`).join('')}</tr>
+        </thead>
+        <tbody>
+          ${table.rows.map(r => `<tr>${r.map(c => `<td>${escapeHTML(c)}</td>`).join('')}</tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderOutputTable(output) {
+  if (!output || !output.columns) return '';
+  return `
+    <div class="sql-table-wrapper">
+      <table class="sql-table">
+        <thead>
+          <tr>${output.columns.map(c => `<th>${escapeHTML(c)}</th>`).join('')}</tr>
+        </thead>
+        <tbody>
+          ${output.rows.map(r => `<tr>${r.map(c => `<td>${escapeHTML(c)}</td>`).join('')}</tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function parseMarkdown(text) {
+  if (!text) return '';
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`([^`\n]+)`/g, '<code>$1</code>')
+    .replace(/\n/g, '<br>');
 }

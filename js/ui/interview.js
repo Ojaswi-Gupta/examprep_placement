@@ -146,13 +146,33 @@ function renderTopicList(container) {
   });
 }
 
+function escapeHTML(str) {
+  if (!str) return '';
+  return str.replace(/[&<>'"]/g, 
+    tag => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+    }[tag] || tag)
+  );
+}
+
 // Helper to parse basic markdown for answers
 function parseMarkdown(text) {
   if (!text) return '';
+  // Multi-line code blocks
+  text = text.replace(/```(?:xml|sql|html|json)?\n?([\s\S]*?)```/g, (m, code) => {
+    return `<pre><code>${escapeHTML(code.trim())}</code></pre>`;
+  });
+  // Inline code
+  text = text.replace(/`([^`\n]+)`/g, (m, code) => {
+    return `<code>${escapeHTML(code)}</code>`;
+  });
   return text
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/`([\s\S]*?)`/g, '<code>$1</code>')
     .replace(/\n/g, '<br>');
 }
 
@@ -235,7 +255,7 @@ function renderSearchResults(term) {
           <div class="interview-qa-header">
             <span class="interview-qa-number">${r.role.icon}</span>
             <span class="interview-qa-question">${highlightTerm(r.item.q, term)}</span>
-            <span class="interview-pill pill-${r.item.difficulty.toLowerCase()}">${r.item.difficulty}</span>
+            <span class="interview-pill pill-${(r.item.difficulty || 'Basic').toLowerCase()}">${r.item.difficulty || 'Basic'}</span>
             <span class="interview-qa-chevron">▸</span>
           </div>
           <div class="interview-qa-answer">

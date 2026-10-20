@@ -64,6 +64,7 @@
                         <a href="#view-interview" data-view="view-interview">💼 Interview Prep</a>
                     </div>
                 </div>
+                <a href="#view-random" data-view="view-random">🎲 Random</a>
                 <a href="#view-about" data-view="view-about">About</a>
             </nav>
         </div>
@@ -81,6 +82,7 @@
                         <button class="cta-button" data-view="view-vocabulary">📚 Vocabulary</button>
                         <button class="cta-button cta-outline hover-lift" data-view="quiz-section">🎯 Take Quiz</button>
                         <button class="cta-button cta-outline hover-lift" data-view="view-conversions">📏 Conversions</button>
+                        <button class="cta-button cta-outline hover-lift" data-view="view-random">🎲 Random</button>
                         <button class="cta-button cta-outline hover-lift" id="startStudyBtn">🧠 Study Mode</button>
                     </div>
                 </div>
@@ -1294,6 +1296,25 @@
 
                 <!-- Static Grids Area -->
                 <div id="conversionsGrid" class="cards-grid fade-in-up delay-2" style="margin-top: 3rem;"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== VIEW: RANDOM ==================== -->
+    <div class="page-view" id="view-random">
+        <section class="interview-section">
+            <div class="container formulas-container">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h1 style="font-size: 2.5rem; color: var(--text);">🎲 Random & Curated Q&A</h1>
+                    <p style="color: var(--text-2); max-width: 650px; margin: 1rem auto;">Custom-curated interview topics and specific technical questions added for quick revision.</p>
+                </div>
+
+                <!-- Random Search -->
+                <div class="search-box" style="margin-bottom: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <input type="text" id="randomSearchInput" placeholder="Search questions... (e.g. 'UML', 'sequence', 'dynamic')">
+                </div>
+
+                <div id="randomGrid"></div>
             </div>
         </section>
     </div>

@@ -82,11 +82,17 @@ Test your knowledge with multiple question types (Meaning, Definition, Fill-in-t
 
 ### 💻 7. Programming & MCQs — Syntax & Quizzes
 - **Dynamic Tabbed Interface:** A clean, full-width UI dynamically driven by the data architecture. SQL and Python feature **📖 Syntax & Concepts** and **🎯 Practice MCQs**, while Java renders **5 distinct tabs** including 🏗️ Data Structures and 0️⃣1️⃣ Bit Manipulation.
+- **💼 Real-World SQL & CRM Analytics:** Dedicated sub-tab featuring complete MySQL 8.0+ solutions, relational schemas, sample input tables, and expected output tables for 5 high-frequency B2B SaaS patterns (Lead Conversion Rates, Funnel Stages, SLA First-Call Tracking, Churn/Inactivity detection, and Window Rank ties).
 - **Deep-Dive Concepts:** Advanced, placement-level coverage for core programming languages:
   - **🐍 Python:** Decorators, Generators, GIL, Memory Management, Dunder methods, comprehensions, and basic algorithm implementations (Fibonacci, Factorial, Prime).
   - **☕ Java:** Multithreading, OOP traps, extensive Data Structures methods (Collections, Arrays, Maps), String manipulation, and Bitwise operations (Even/Odd checks, Power of 2).
-  - **🛢️ SQL:** Window functions (`ROW_NUMBER`, `RANK`), CTEs, Advanced Joins, `COALESCE`, Indexing, and Date/Time interval arithmetic.
+  - **🛢️ SQL:** Window functions (`ROW_NUMBER`, `RANK`), CTEs, Advanced Joins, `COALESCE`, Indexing, and an extensive Date/Time interval arithmetic & formatting suite.
 - **Interactive MCQ Engine:** Test your knowledge with tricky, output-based questions. Clicking an option provides immediate visual feedback (✅/❌) along with a detailed explanation for the correct answer.
+
+### 🎲 8. Random & Curated Topics (Custom User Q&A)
+- **Standalone Dashboard Tab:** A dedicated section accessible directly from the top navigation bar and dashboard buttons (`#view-random`). Completely decoupled from the standard Interview Prep dashboard.
+- **Curated Questions:** Custom-added topics including **System Design & UML Dynamic Diagrams** (Sequence, Collaboration, State Machine, Activity) and **Data Serialization & XML Schema** (validating `info.xml` from XSD with qualified namespaces).
+- **Topic Filtering & Search:** Real-time search and filter buttons allowing instant drill-down across user-curated topics.
 
 ## 🗂️ Directory Map
 

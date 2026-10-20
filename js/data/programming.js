@@ -1,6 +1,7 @@
 import { javaDataStructures } from './java/data_structures.js';
 import { javaStrings } from './java/strings.js';
 import { javaBitManipulation } from './java/bit_manipulation.js';
+import { sqlCrmQueries } from './sql/crm_queries.js';
 
 // js/data/programming.js
 
@@ -121,24 +122,74 @@ export const PROGRAMMING_DATA = [
         example: "SELECT w1.id \nFROM Weather w1 \nJOIN Weather w2 \nWHERE DATEDIFF(w1.recordDate, w2.recordDate) = 1 \n  AND w1.temperature > w2.temperature;"
       },
       {
-        keyword: "DATE, TIME, TIMESTAMP",
-        meaning: "Data types for storing date and time. TIMESTAMP includes both date and time (and sometimes timezone depending on SQL engine).",
-        example: "CREATE TABLE events (\n  event_name varchar(50), \n  event_date DATE, \n  created_at TIMESTAMP\n);"
+        keyword: "DATE, TIME, DATETIME, TIMESTAMP",
+        meaning: "SQL Temporal Data Types:\n• DATE: 'YYYY-MM-DD' (3 bytes, range 1000 to 9999).\n• TIME: 'HH:MM:SS' (3 bytes, range -838:59:59 to 838:59:59).\n• DATETIME: 'YYYY-MM-DD HH:MM:SS' (8 bytes, timezone-agnostic literal timestamp).\n• TIMESTAMP: (4 bytes, converted from session timezone to UTC for storage and back on retrieval; range 1970-2038).",
+        example: "CREATE TABLE user_logs (\n  log_id INT PRIMARY KEY,\n  event_date DATE,\n  event_time DATETIME,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);"
       },
       {
-        keyword: "INTERVAL",
-        meaning: "Used to add or subtract a specified time interval from a date/time.",
-        example: "SELECT DATE_ADD(event_date, INTERVAL 7 DAY) FROM events; -- MySQL\nSELECT event_date + INTERVAL '1 month' FROM events; -- PostgreSQL"
+        keyword: "CURRENT_DATE, CURRENT_TIME, NOW(), SYSDATE()",
+        meaning: "Current Timestamp Retrieval:\n• CURRENT_DATE / CURDATE(): Returns today's date ('YYYY-MM-DD').\n• CURRENT_TIME / CURTIME(): Returns current time ('HH:MM:SS').\n• NOW() / CURRENT_TIMESTAMP: Returns datetime evaluated at the start of statement execution.\n• SYSDATE(): Returns exact time evaluated dynamically at execution point (can differ within a long batch query).",
+        example: "SELECT \n  CURRENT_DATE AS today,\n  CURRENT_TIME AS time_now,\n  NOW() AS query_start_time,\n  SYSDATE() AS exec_time;"
       },
       {
-        keyword: "EXTRACT() / DATE_PART()",
-        meaning: "Extracts a part (year, month, day, hour, etc.) from a given date/time.",
-        example: "SELECT EXTRACT(YEAR FROM order_date) as order_year \nFROM orders;"
+        keyword: "DATE_ADD() & DATE_SUB() (INTERVAL)",
+        meaning: "Date Arithmetic with Intervals:\nAdds or subtracts temporal durations from dates using INTERVAL keyword (supports DAY, WEEK, MONTH, QUARTER, YEAR, HOUR, MINUTE, SECOND).",
+        example: "SELECT \n  order_id, \n  order_date,\n  DATE_ADD(order_date, INTERVAL 30 DAY) AS due_date,\n  DATE_SUB(order_date, INTERVAL 1 YEAR) AS prior_year_date\nFROM orders;"
       },
       {
-        keyword: "CURRENT_DATE / NOW()",
-        meaning: "Returns the current date or current date and time.",
-        example: "SELECT * \nFROM orders \nWHERE order_date = CURRENT_DATE;"
+        keyword: "TIMESTAMPDIFF(unit, start_datetime, end_datetime)",
+        meaning: "Intermediate/Advanced Time Difference:\nCalculates elapsed time in specified units: MICROSECOND, SECOND, MINUTE, HOUR, DAY, WEEK, MONTH, QUARTER, or YEAR.\n\n⚠️ CRUCIAL TRAP: Argument order is (unit, EARLIER_DATE, LATER_DATE) to compute (end - start). Opposite of DATEDIFF()!",
+        example: "SELECT \n  lead_id,\n  TIMESTAMPDIFF(MINUTE, assigned_at, first_call_at) AS response_minutes,\n  TIMESTAMPDIFF(MONTH, joined_date, CURRENT_DATE) AS tenure_months\nFROM leads;"
+      },
+      {
+        keyword: "TIMESTAMPADD(unit, interval, datetime)",
+        meaning: "Direct Interval Offset:\nAdds an integer interval directly to a datetime value without using the INTERVAL keyword syntax.",
+        example: "SELECT \n  session_id,\n  TIMESTAMPADD(HOUR, 2, session_start) AS session_expiry,\n  TIMESTAMPADD(MONTH, 3, renewal_date) AS next_quarter\nFROM subscriptions;"
+      },
+      {
+        keyword: "DATE_FORMAT(date, format)",
+        meaning: "Date to String Formatting:\n• %Y (4-digit year), %y (2-digit year)\n• %m (01-12 month), %M (Month name: 'October'), %b (Abbrev: 'Oct')\n• %d (01-31 day), %e (1-31 day)\n• %H (00-23 hr), %h (01-12 hr), %i (Minutes), %s (Seconds), %p (AM/PM)\n• %W (Weekday name: 'Monday'), %a (Abbrev: 'Mon')",
+        example: "SELECT \n  order_id,\n  DATE_FORMAT(order_date, '%Y-%m') AS year_month_cohort,\n  DATE_FORMAT(order_date, '%W, %M %e, %Y') AS readable_date\nFROM orders;"
+      },
+      {
+        keyword: "STR_TO_DATE(string, format)",
+        meaning: "String to Date Parsing:\nInverse of DATE_FORMAT(). Parses custom string representations (e.g., from raw CSV imports or API payloads) into real SQL DATE/DATETIME types.",
+        example: "SELECT \n  user_id,\n  STR_TO_DATE('15/08/2026', '%d/%m/%Y') AS parsed_date,\n  STR_TO_DATE('Oct 20, 2026 11:30 PM', '%b %d, %Y %h:%i %p') AS parsed_dt\nFROM raw_imports;"
+      },
+      {
+        keyword: "EXTRACT() & Component Functions",
+        meaning: "Extracting Parts of Dates:\nExtracts specific components using standard EXTRACT(unit FROM dt), or direct MySQL functions: YEAR(d), MONTH(d), DAY(d), HOUR(d), MINUTE(d), SECOND(d), QUARTER(d).",
+        example: "SELECT \n  order_id,\n  EXTRACT(YEAR FROM order_date) AS order_year,\n  EXTRACT(QUARTER FROM order_date) AS fiscal_quarter,\n  MONTH(order_date) AS order_month\nFROM orders;"
+      },
+      {
+        keyword: "DAYOFWEEK(), WEEKDAY(), DAYNAME(), MONTHNAME()",
+        meaning: "Calendar Properties & Day Traps:\n• DAYOFWEEK(d): 1 = Sunday, 2 = Monday, ..., 7 = Saturday (ODBC standard).\n• WEEKDAY(d): 0 = Monday, 1 = Tuesday, ..., 6 = Sunday (Python/ISO index).\n• DAYNAME(d): Returns 'Monday', 'Tuesday', etc.\n• MONTHNAME(d): Returns 'January', 'February', etc.",
+        example: "SELECT \n  appointment_id,\n  DAYNAME(scheduled_at) AS day_of_week,\n  WEEKDAY(scheduled_at) IN (5, 6) AS is_weekend\nFROM appointments;"
+      },
+      {
+        keyword: "LAST_DAY(date)",
+        meaning: "Month-End Calculation:\nReturns the last day of the calendar month for the given date. Vital for financial billing cutoffs, month-end reconciliations, and computing days remaining in a month.",
+        example: "SELECT \n  account_id,\n  LAST_DAY(billing_date) AS month_end_cutoff,\n  DATEDIFF(LAST_DAY(CURRENT_DATE), CURRENT_DATE) AS days_left_in_month\nFROM billing_cycles;"
+      },
+      {
+        keyword: "MAKEDATE() & MAKETIME()",
+        meaning: "Constructing Dates & Times from Numbers:\n• MAKEDATE(year, day_of_year): Creates date from year and 1-366 day index.\n• MAKETIME(hour, minute, second): Creates time from hour, min, sec values.",
+        example: "SELECT \n  MAKEDATE(2026, 1) AS new_years_day,\n  MAKEDATE(2026, 100) AS hundredth_day_of_year,\n  MAKETIME(9, 30, 0) AS daily_standup_time;"
+      },
+      {
+        keyword: "UTC_TIMESTAMP() & CONVERT_TZ()",
+        meaning: "Global Timezone Conversion:\nEssential for multi-region SaaS architectures. Converts datetime values between different timezones using offsets or named timezone tables.",
+        example: "SELECT \n  transaction_id,\n  UTC_TIMESTAMP() AS global_utc,\n  CONVERT_TZ(created_at, '+00:00', '+05:30') AS ist_time,\n  CONVERT_TZ(created_at, '+00:00', '-05:00') AS est_time\nFROM transactions;"
+      },
+      {
+        keyword: "Date Bucketing & Truncation (Cohort Analysis)",
+        meaning: "Aggregating Time Series & Cohorts:\nGrouping events by day, week, or month buckets using DATE_FORMAT(dt, '%Y-%m-01') or DATE(dt) for MRR, active users, and cohort retention.",
+        example: "SELECT \n  DATE_FORMAT(signup_date, '%Y-%m-01') AS cohort_month,\n  COUNT(user_id) AS new_users,\n  SUM(mrr) AS total_mrr\nFROM users\nGROUP BY cohort_month\nORDER BY cohort_month DESC;"
+      },
+      {
+        keyword: "LAG() / LEAD() with Dates (Churn & Streaks)",
+        meaning: "Window Functions across Time:\nCalculates inactivity gaps and user streaks by comparing current event timestamp against previous row timestamp for the same user.",
+        example: "SELECT \n  user_id,\n  activity_date,\n  LAG(activity_date) OVER (\n    PARTITION BY user_id ORDER BY activity_date\n  ) AS prev_activity_date,\n  DATEDIFF(\n    activity_date, \n    LAG(activity_date) OVER (PARTITION BY user_id ORDER BY activity_date)\n  ) AS days_between_visits\nFROM user_activity;"
       }
         ]
       },
@@ -250,6 +301,12 @@ export const PROGRAMMING_DATA = [
         explanation: "EXTRACT(field FROM source) pulls out sub-fields such as year or hour from date/time values."
       }
         ]
+      },
+      {
+        id: 'crm_queries',
+        name: '💼 Real-World CRM Queries',
+        type: 'queries',
+        data: sqlCrmQueries
       }
     ]
   },

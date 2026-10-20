@@ -2758,7 +2758,7 @@ canvas#scratchCanvas {
   padding: 0 1.25rem;
 }
 .interview-qa-card.open .interview-qa-answer {
-  max-height: 600px;
+  max-height: 2000px;
   padding: 0 1.25rem 1.25rem;
 }
 
@@ -3070,4 +3070,141 @@ canvas#scratchCanvas {
 .mcq-feedback.wrong-feedback {
   background: rgba(231, 76, 60, 0.1);
   border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+/* ==================== SQL QUERIES & CRM PATTERNS ==================== */
+.sql-query-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease;
+}
+
+.sql-query-card:hover {
+  border-color: var(--border-hover);
+}
+
+.sql-query-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+
+.sql-query-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.sql-query-tags {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.sql-query-problem {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-1);
+  margin-bottom: 1.25rem;
+}
+
+.sql-tables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.sql-table-wrapper {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.sql-table-name {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.sql-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+.sql-table th, .sql-table td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.sql-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.sql-table td {
+  color: var(--text-2);
+}
+
+.sql-solution-box {
+  margin: 1.5rem 0;
+}
+
+.sql-solution-box pre {
+  margin: 0;
+  background: #18181b;
+  padding: 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+
+.sql-solution-box code {
+  color: #38bdf8;
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.sql-trap-box {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.sql-trap-title {
+  font-weight: 700;
+  color: #f59e0b;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.sql-trap-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--text-2);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.sql-trap-list li {
+  margin-bottom: 0.5rem;
 }

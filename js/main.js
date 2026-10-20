@@ -14,6 +14,7 @@ import { updateStreak } from './data/state.js?v=2';
 import { initDsa } from './ui/dsa.js?v=1';
 import { initGit } from './ui/git.js?v=1';
 import { initConversions } from './ui/conversions.js?v=1';
+import { initRandom, renderRandomView } from './ui/random.js?v=1';
 
 // ─── Init all modules once ─────────────────────────
 const safeInit = (name, fn) => {
@@ -35,17 +36,24 @@ safeInit('updateStreak', () => updateStreak());
 safeInit('initDsa', () => initDsa());
 safeInit('initGit', () => initGit());
 safeInit('initConversions', () => initConversions());
+safeInit('initRandom', () => initRandom());
 
 
 // ─── SPA View Routing ──────────────────────────────
 function showView(viewId) {
+  let target = document.getElementById(viewId);
+  if (!target) {
+    console.warn(`View '${viewId}' not found, falling back to 'view-home'`);
+    viewId = 'view-home';
+    target = document.getElementById('view-home');
+  }
+
   // Hide all views
   document.querySelectorAll('.page-view').forEach(v => {
     v.classList.remove('active-view');
   });
 
   // Show target
-  const target = document.getElementById(viewId);
   if (target) {
     void target.offsetWidth; // force reflow for animations
     target.classList.add('active-view');
@@ -79,12 +87,14 @@ const initialHash = window.location.hash.replace('#', '');
 if (initialHash && document.getElementById(initialHash)) {
   showView(initialHash);
   if (initialHash === 'quiz-section') openQuizSelection();
+  if (initialHash === 'view-random') renderRandomView();
 }
 
 window.addEventListener('hashchange', () => {
   const hash = window.location.hash.replace('#', '');
   if (hash && document.getElementById(hash)) {
     showView(hash);
+    if (hash === 'view-random') renderRandomView();
   } else {
     showView('view-home');
   }
@@ -121,6 +131,9 @@ document.body.addEventListener('click', (e) => {
       if (viewId === 'quiz-section') {
         showView(viewId);
         openQuizSelection();
+      } else if (viewId === 'view-random') {
+        showView(viewId);
+        renderRandomView();
       } else {
         showView(viewId);
       }
